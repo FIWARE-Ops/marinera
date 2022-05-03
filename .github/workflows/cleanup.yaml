@@ -1,19 +1,22 @@
-name: Create namespace on new branch
+name: Delete namespace after pr
 
 on:
-  create:
-    branches:
+  pull_request:
+    types:
+      - closed
+    branches:    
       - 'feature-**'
 
 jobs:
 
-  create:
+  delete:
   
     runs-on: ubuntu-latest
     steps:
 
       - name: Git checkout
         uses: actions/checkout@v1
+
 
       - name: Authenticate and set context
         uses: redhat-actions/oc-login@v1
@@ -30,6 +33,6 @@ jobs:
           # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
 
-      - name: Create namespace
+      - name: Delete namespace
         run: |
-          oc new-project ${GITHUB_REF##*/}
+          oc delete-project ${GITHUB_REF##*/}
