@@ -33,4 +33,4 @@ jobs:
 
       - name: Delete namespace
         run: |
-          oc delete-project ${GITHUB_REF##*/}
+          oc delete project ${GITHUB_HEAD_REF##*/}
