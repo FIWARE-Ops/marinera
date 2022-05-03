@@ -33,3 +33,4 @@ jobs:
       - name: Create namespace
         run: |
           oc new-project ${GITHUB_REF##*/}
+          oc adm policy add-role-to-group admin lodestar-developers -n ${GITHUB_REF##*/}
