@@ -5,27 +5,30 @@ on:
     branches:
 
 jobs:
+
   create:
+  
     runs-on: ubuntu-latest
+    steps:
 
-    - name: Git checkout
-      uses: actions/checkout@v1
+      - name: Git checkout
+        uses: actions/checkout@v1
 
-    - name: Authenticate and set context
-      uses: redhat-actions/oc-login@v1
+      - name: Authenticate and set context
+        uses: redhat-actions/oc-login@v1
 
-      with:
-        # URL to your OpenShift cluster.
-        # Refer to Step 2.
-        openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+        with:
+          # URL to your OpenShift cluster.
+          # Refer to Step 2.
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
 
-        # Authentication Token. Can use username and password instead.
-        # Refer to Step 3.
-        openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          # Authentication Token. Can use username and password instead.
+          # Refer to Step 3.
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
 
-        # Disables SSL cert checking. Use this if you don't have the certificate authority data.
-        insecure_skip_tls_verify: true
+          # Disables SSL cert checking. Use this if you don't have the certificate authority data.
+          insecure_skip_tls_verify: true
 
-    - name: Create namespace
-      run: |
-        oc new-project ${GITHUB_REF##*/}
+      - name: Create namespace
+        run: |
+          oc new-project ${GITHUB_REF##*/}
