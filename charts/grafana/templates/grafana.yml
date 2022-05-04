@@ -1,0 +1,50 @@
+apiVersion: integreatly.org/v1alpha1
+kind: Grafana
+metadata:
+  name: {{ .Values.nameOverride }}
+  labels:
+    {{- include "grafana.labels" . | nindent 4 }}
+spec: 
+  {{- if .Values.grafana.data_persistency.enabled }}
+  dataStorage:
+    accessModes:
+      - ReadWriteOnce
+    size: {{ .Values.grafana.data_persistency.size }}
+  {{- end }}
+  config:
+    log:
+      mode: "console"
+      level: "warn"
+    auth:
+      disable_login_form: False
+      disable_signout_menu: True
+    auth.basic:
+      enabled: True
+    # auth.anonymous:
+    #   enabled: {{ .Values.grafana.security.anonymous.enabled }}
+    users:
+      default_theme: {{ .Values.grafana.customization.default_theme }}
+    security:
+      admin_password: {{ .Values.grafana.security.admin.username }}
+      admin_user: {{ .Values.grafana.security.admin.password }}
+  deployment:
+    annotations: 
+      checksum/secret: {{ include (print $.Template.BasePath "/secret.yml") . | sha256sum }}
+    replicas: {{ .Values.replicaCount }}
+    envFrom:
+      - secretRef:
+          name: {{ .Values.nameOverride }}
+  ingress:
+    enabled: {{ .Values.grafana.route.enabled }}
+    # labels:
+    #   app: grafana
+    # targetPort: grafana-proxy
+    # termination: reencrypt
+  client:
+    preferService: True
+  dashboardLabelSelector:
+    - matchExpressions:
+        - key: "app"
+          operator: In
+          values: 
+            - grafana
