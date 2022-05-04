@@ -34,3 +34,9 @@ jobs:
         run: |
           oc new-project ${GITHUB_REF##*/}
           oc adm policy add-role-to-group admin lodestar-developers -n ${GITHUB_REF##*/}
+    
+      - name: Replace branch name and deploy
+        run: | 
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/main/${GITHUB_REF}/g' {} +
+          find . -name 'app.yaml' -exec oc apply -f {} \;
+    
