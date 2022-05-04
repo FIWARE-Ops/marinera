@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "grafana.labels" . | nindent 4 }}
 spec:
-  name: "{{ .Values.dashboard.name }}"
+  # name: "{{ .Values.dashboard.name }}"
   customFolderName: "{{ .Values.dashboard.folder }}"
   json: |-
         {
