@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: timescaledb-single
+  namespace: labs-ci-cd
+spec:
+  destination:
+    namespace: feature-fiware-core
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: applications/ts-db-single/chart
+    repoURL: https://github.com/FIWARE-Ops/marinera
+    targetRevision: main
+  syncPolicy:
+    automated: {}
