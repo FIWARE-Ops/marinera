@@ -1,0 +1,12 @@
+apiVersion: v2
+name: orion-ld
+description: Chart holder for FIWARE Orion Context Broker LD
+
+type: application
+version: 0.1.0
+appVersion: "1.0.2"
+
+dependencies:
+- name: orion-ld
+  version: 1.0.2
+  repository: https://charts.openshift.io/
