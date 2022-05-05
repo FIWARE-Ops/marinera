@@ -15,7 +15,7 @@ dependencies:
   version: 0.1.18
   repository: https://orchestracities.github.io/charts/
 maintainers:
-  - name: Ernesto Gonzlez
+  - name: Ernesto González
     email: ergonzal@redhat.com
   - name: Arturo Haro
     email: arturo.h@hopu.org
