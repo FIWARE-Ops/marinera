@@ -6,6 +6,8 @@ metadata:
         {{ include "orion.labels" . | nindent 4 }}
     annotations:
         "helm.sh/hook": test
+        argocd.argoproj.io/hook: PostSync
+        argocd.argoproj.io/hook-delete-policy: HookSucceeded
 data:
     test.sh: |-
         curl -X POST {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/ \
