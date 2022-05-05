@@ -6,7 +6,7 @@ This repository contains all scripts required for deploying a FIWARE platform to
 
 Since this repository concentrates on deploying the plattform, we require the underlying infrastructure to be already setup in a defined way. The listed preconditions have to be met and are constantly tested, but it might also work on comparable alternative setups.
 
-:warning: The following preconditions need to be fulfilled before starting:
+:warning: <B>The following preconditions need to be fulfilled before starting:</b>
 
 - [RedHat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) in >= 4.x installed - see [official documentation](https://docs.openshift.com/container-platform/latest/welcome/index.html) for installing it
 - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) >=2.3.x installed - multiple options are available:
