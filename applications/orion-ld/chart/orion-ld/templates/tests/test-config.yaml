@@ -10,7 +10,7 @@ metadata:
 data:
   test.sh: |-
     # Creates entity
-    curl -f -X POST {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/ \
+    curl -X POST {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/ \
                  -H 'Content-Type: application/json' \
                  -d '{
                     "id": "urn:ngsi-ld:test:test-entity",
@@ -19,7 +19,7 @@ data:
                  --retry 10 \
                  --retry-delay 10 \
                  --retry-connrefused 
-                 
+
     # Gets entity
     curl -f -X GET {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/urn:ngsi-ld:test:test-entity
 
