@@ -30,20 +30,28 @@ jobs:
           # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
 
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5.2
+
+      - name: Log the branch name
+        run: |
+          echo ${{ steps.branch-name.outputs.current_branch }}
+
       - name: Create namespace
         run: |
-          oc new-project ${GITHUB_REF##*/}
-          oc adm policy add-role-to-group admin lodestar-developers -n ${GITHUB_REF##*/}
+          oc new-project ${{ steps.branch-name.outputs.current_branch }}
+          oc adm policy add-role-to-group admin lodestar-developers -n ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Rename target branch
         run: |
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/namespace: demo/namespace: ${GITHUB_REFF##*/}/g' {} +
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/name: /name: ${GITHUB_REFF##*/}-/g' {} +
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/targetRevision: main/targetRevision: ${GITHUB_REFF##*/}/g' {} +
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/namespace: demo/namespace: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/name: /name: ${{ steps.branch-name.outputs.current_branch }}-/g' {} +
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/targetRevision: main/targetRevision: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
 
       - name: Deploy applications
         run: |
           # apply argo apps
           find . -name 'app.yaml' -exec oc apply -f {} \;
           # label them with their destination-namespace for better selection
-          find . -name 'app.yaml' -exec oc label destination-namespace=${GITHUB_REFF##*/} -f {} \;
+          find . -name 'app.yaml' -exec oc label destination-namespace=${{ steps.branch-name.outputs.current_branch }} -f {} \;
