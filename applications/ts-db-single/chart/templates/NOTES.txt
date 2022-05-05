@@ -17,13 +17,13 @@ To connect to your database, choose one of these options:
 
 1. Run a postgres pod and connect using the psql cli:
     # login as superuser
-    kubectl run -i --tty --rm psql --image=postgres \
+    kubectl run -i --tty --rm psql --image=quay.io/coreos/postgres \
       --env "PGPASSWORD=$PGPASSWORD_POSTGRES" \
       --command -- psql -U postgres \
       -h {{ template "clusterName" . }}.{{ .Release.Namespace }}.svc.cluster.local postgres
 
     # login as admin
-    kubectl run -i --tty --rm psql --image=postgres \
+    kubectl run -i --tty --rm psql --image=quay.io/coreos/postgres \
       --env "PGPASSWORD=$PGPASSWORD_ADMIN" \
       --command -- psql -U admin \
       -h {{ template "clusterName" . }}.{{ .Release.Namespace }}.svc.cluster.local postgres

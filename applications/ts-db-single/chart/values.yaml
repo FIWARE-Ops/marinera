@@ -10,7 +10,7 @@ nameOverride: timescaledb
 # The default Patroni name of the cluster ("scope") is derived from the name of the release,
 # but you can override this behaviour here
 # https://patroni.readthedocs.io/en/latest/SETTINGS.html#global-universal
-clusterName:
+clusterName: tsdb
 
 # The major PostgreSQL version to use, defaults to the default version of the Docker image
 # However, in pg_upgrade scenarios, you may need to specify an explicit version
@@ -381,7 +381,7 @@ persistentVolumes:
     subPath: ""
     mountPath: "/var/lib/postgresql"
     annotations: {}
-    storageClass: gp2
+    storageClass: ""
     accessModes:
       - ReadWriteOnce
   # WAL will be a subdirectory of the data volume, which means enabling a separate
@@ -390,7 +390,7 @@ persistentVolumes:
     enabled: true
     size: 1Gi
     subPath: ""
-    storageClass: gp2
+    storageClass: ""
     # When changing this mountPath ensure you also change the following key to reflect this:
     # patroni.postgresql.basebackup.[].waldir
     mountPath: "/var/lib/postgresql/wal"
