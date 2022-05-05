@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: "{{ .Release.Name }}-orion-test"
+    labels:
+        {{ include "orion.labels" . | nindent 4 }}
+    annotations:
+        "helm.sh/hook": test
+data:
+    test.sh: |-
+        curl -X POST {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/ \
+             -H 'Content-Type: application/ld+json' \
+             -d '{
+                "id": "urn:ngsi-ld:test:test-entity",
+                "type": "test"
+                }'
+        curl -X GET {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/urn:ngsi-ld:test:test-entity
+        curl -X DELETE {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/urn:ngsi-ld:test:test-entity

@@ -10,5 +10,15 @@ spec:
   containers:
     - name: curl
       image: quay.io/opencloudio/curl:4.2.0-build.8
-      args: [ '{{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/version' ]
+      command: /test-script/test.sh
+      volumeMounts:
+        - name: orion-test-script
+          mountPath: /test-script/
+  volumes:
+    - name: orion-test-script
+      configMap:
+        # Provide the name of the ConfigMap containing the files you want
+        # to add to the container
+        name: "{{ .Release.Name }}-orion-test"    
+        defaultMode: 0777
   restartPolicy: Never
