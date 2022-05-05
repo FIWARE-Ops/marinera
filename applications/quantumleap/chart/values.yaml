@@ -29,11 +29,11 @@ quantumleap:
 
   database:
     timescale:
-      host: tsdb
+      host: host
       port: 5432
-      name: quantumleap
-      user: admin
-      password: PxGr9EvXvbKvEjwM
+      name: db_name
+      user: user
+      password: password
       ssl: false
 
   config:
