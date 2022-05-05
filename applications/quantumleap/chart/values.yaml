@@ -8,9 +8,6 @@ quantumleap:
     tag: 0.8.0
     pullPolicy: IfNotPresent
 
-  chaos:
-    enabled: false
-
   updateStrategy:
     rollingUpdate:
       maxUnavailable: 1
@@ -28,46 +25,9 @@ quantumleap:
     externalPort: 80
     internalPort: 8668
 
-  # Readiness probe
-  readinessProbe:
-    enabled: false
-    initialDelaySeconds: 60
-    timeoutSeconds: 1
-    failureThreshold: 3
-    periodSeconds: 60
-    successThreshold: 1
-
-  # Liveness probe
-  livenessProbe:
-    enabled: false
-    initialDelaySeconds: 240
-    timeoutSeconds: 5
-    failureThreshold: 5
-    periodSeconds: 10
-    successThreshold: 1
-
   affinity: {}
 
-  ingress:
-    enabled: false
-    # Used to create an Ingress record.
-    hosts:
-      - quantumleap.example.com
-    annotations:
-      kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-    tls: {}
-      # Secrets must be manually created in the namespace.
-      # - secretName: chart-example-tls
-      #   hosts:
-      #     - chart-example.local
-
   database:
-    crate:
-    # Endpoint to reach crate database cluster
-      host: crate
-      defaultdb: default
-      port: 4200
     timescale:
       host: tsdb
       port: 5432
@@ -76,38 +36,13 @@ quantumleap:
       password: PxGr9EvXvbKvEjwM
       ssl: false
 
-  runtime:
-    defaultLimit: 10000
-    keepRawEntity: false
-    logLevel: "INFO"
-
   config:
     tenants: {}
-  # example valid configuration
-  #    t1:
-  #        backend: "Timescale"
-  #    t2:
-  #        backend: "Crate"
-  #    t3:
-  #        backend: "Timescale"
     default-backend: "Timescale"
 
-  init:
-    password: password
-    image:
-      repository: smartsdk/quantumleap-pg-init
-      tag: latest
-      pullPolicy: IfNotPresent
-    resources: {}
-
-  geocoding:
-    enabled: false
-    redisHost: redis-redis
-
-  resources: {}
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
+  resources:
+    limits:
+      memory: 1Gi
+    requests:
+      cpu: 100m
+      memory: 256Mi
