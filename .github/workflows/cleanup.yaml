@@ -5,7 +5,7 @@ on:
   delete:
     branches:
       - 'feature-**'
-      
+
 jobs:
 
   delete:
