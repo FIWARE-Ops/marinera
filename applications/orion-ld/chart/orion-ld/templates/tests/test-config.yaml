@@ -10,6 +10,8 @@ metadata:
         argocd.argoproj.io/hook-delete-policy: HookSucceeded
 data:
     test.sh: |-
+        #!/bin/sh
+        
         curl -X POST {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/ \
              -H 'Content-Type: application/ld+json' \
              -d '{
