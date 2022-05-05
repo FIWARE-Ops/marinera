@@ -2,47 +2,69 @@ quantumleap:
   # Default values for quantumleap.
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
+  
+  # -- Number of replicas
   replicaCount: 2
   image:
+    # -- Container image to deploy
     repository: smartsdk/quantumleap
+    # -- Container image tag to deploy
     tag: 0.8.0
+    # -- Pull policy of the image
     pullPolicy: IfNotPresent
 
   updateStrategy:
     rollingUpdate:
+      # -- Max replicas available when upgrading
       maxUnavailable: 1
+    # -- Type of update strategy
     type: RollingUpdate
 
   autoscaling:
+    # -- Autoscaling Enabled/Disabled
     enabled: false
+    # -- Autoscaling min replicas 
     minReplicas: 2
+    # -- Autoscaling max replicas
     maxReplicas: 6
+    # -- Autoscaling target average utilization
     targetAverageUtilization: 50
 
   service:
+    # -- Name of the service
     name: quantumleap
+    # -- Type of the service
     type: ClusterIP
+    # -- Port of the service
     externalPort: 80
+    # -- Port exposed in the application
     internalPort: 8668
-
-  affinity: {}
 
   database:
     timescale:
-      host: host
+      # -- Database hostname
+      host: tsdb
+      # --  Database port
       port: 5432
-      name: db_name
-      user: user
-      password: password
+      # -- Database name inside Timescale
+      name: quantumleap
+      # -- User to connect to the database
+      user: admin
+      # -- Password for the user to connect to the database
+      password: PxGr9EvXvbKvEjwM
+      # -- SSL connection to Timescale. Not working with SSL for the moment
       ssl: false
 
   config:
-    tenants: {}
+    # -- Backend database. Default is timescale
     default-backend: "Timescale"
 
   resources:
     limits:
+      # -- Memory limits
       memory: 1Gi
     requests:
+      # -- CPU request
       cpu: 100m
+      # -- Memory request
       memory: 256Mi
