@@ -43,15 +43,15 @@ quantumleap:
   database:
     timescale:
       # -- Database hostname
-      host: tsdb
+      host: db_hostname
       # --  Database port
       port: 5432
       # -- Database name inside Timescale
-      name: quantumleap
+      name: db_name
       # -- User to connect to the database
-      user: admin
+      user: user
       # -- Password for the user to connect to the database
-      password: PxGr9EvXvbKvEjwM
+      password: password
       # -- SSL connection to Timescale. Not working with SSL for the moment
       ssl: false
 
