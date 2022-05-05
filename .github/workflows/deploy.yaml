@@ -1,0 +1,36 @@
+name: Deploy to the demo namespace
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+
+  deploy:
+  
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Git checkout
+        uses: actions/checkout@v1
+
+      - name: Authenticate and set context
+        uses: redhat-actions/oc-login@v1
+
+        with:
+          # URL to your OpenShift cluster.
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+
+          # Authentication Token. Can use username and password instead.
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+
+          # Disables SSL cert checking. Use this if you don't have the certificate authority data.
+          insecure_skip_tls_verify: true
+
+      - name: Deploy applications
+        run: |
+          # apply argo apps from the folder
+          find . -name 'app.yaml' -exec oc apply -f {} \;
+          # label them with their destination-namespace for better selection(f.e. on deletion)
+          find . -name 'app.yaml' -exec oc label destination-namespace=demo -f {} \;
