@@ -33,4 +33,4 @@ jobs:
 
       - name: Delete namespace
         run: |
-          oc delete project ${GITHUB_EVENT_REF##*/}
+          oc delete project ${{ github.event.ref }}
