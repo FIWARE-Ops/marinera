@@ -7,7 +7,7 @@ quantumleap:
   replicaCount: 2
   image:
     # -- Container image to deploy
-    repository: smartsdk/quantumleap
+    repository: docker.io/smartsdk/quantumleap
     # -- Container image tag to deploy
     tag: 0.8.0
     # -- Pull policy of the image
