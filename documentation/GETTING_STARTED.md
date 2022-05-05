@@ -4,7 +4,7 @@ This repository contains all scripts required for deploying a FIWARE platform to
 
 ## Preconditions
 
-Since this repository concentrates on deploying the plattform, we require the underlying infrastructure to be already setup in a defined way. The listed preconditions have to be met and are constantly tested, but it might also work on comparable alternative setups.
+Since this repository concentrates on deploying the platform, we require the underlying infrastructure to be already setup in a defined way. The listed preconditions have to be met and are constantly tested, but it might also work on comparable alternative setups.
 
 <B>The following preconditions need to be fulfilled before starting :warning: :</B>
 

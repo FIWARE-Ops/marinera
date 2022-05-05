@@ -1,4 +1,4 @@
-# FIWARE Plattform deployment
+# FIWARE Platform Deployment
 
 
 - [How to set-up a new application in the repository](./documentation/APP_SETUP.md)
