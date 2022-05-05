@@ -4,6 +4,8 @@ metadata:
   name: "{{ include "quantumleap.fullname" . }}-test-connection"
   annotations:
     "helm.sh/hook": test
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   containers:
     - name: wget
