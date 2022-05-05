@@ -5,20 +5,19 @@ metadata:
   labels:
     {{ include "orion.labels" . | nindent 4 }}
   annotations:
-    "helm.sh/hook": test
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 data:
   test.sh: |-
     # Creates entity
-    curl -X POST {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/ \
-                 -H 'Content-Type: application/ld+json' \
+    curl -f -X POST {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/ \
+                 -H 'Content-Type: application/json' \
                  -d '{
                     "id": "urn:ngsi-ld:test:test-entity",
                     "type": "test"
                     }'
     # Gets entity
-    curl -X GET {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/urn:ngsi-ld:test:test-entity
+    curl -f -X GET {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/urn:ngsi-ld:test:test-entity
 
     # Deletes entity
-    curl -X DELETE {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/urn:ngsi-ld:test:test-entity
+    curl -f -X DELETE {{ include "orion.fullname" . }}.{{ .Release.Namespace }}:{{ .Values.service.port }}/ngsi-ld/v1/entities/urn:ngsi-ld:test:test-entity
