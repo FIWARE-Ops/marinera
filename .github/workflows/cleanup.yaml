@@ -1,7 +1,9 @@
 name: Delete namespace after pr
 
 on:
-  delete
+  delete:
+    branches:
+      - 'feature-**'
       
 jobs:
 
