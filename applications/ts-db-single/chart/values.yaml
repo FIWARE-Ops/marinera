@@ -31,9 +31,9 @@ secrets:
   # for example PATRONI_SUPERUSER_PASSWORD or PATRONI_REPLICATION_PASSWORD
   # https://patroni.readthedocs.io/en/latest/ENVIRONMENT.html#postgresql
   credentials:
-    PATRONI_SUPERUSER_PASSWORD: ""
-    PATRONI_REPLICATION_PASSWORD: ""
-    PATRONI_admin_PASSWORD: ""
+    PATRONI_SUPERUSER_PASSWORD: "test"
+    PATRONI_REPLICATION_PASSWORD: "test"
+    PATRONI_admin_PASSWORD: "test"
 
   # Selector used to provision your own Secret containing patroni configuration details
   # This is mutually exclusive with `credentials` option and takes precedence over it.
