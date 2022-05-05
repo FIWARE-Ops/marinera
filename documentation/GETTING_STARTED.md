@@ -33,7 +33,7 @@ find . -type f -name "app.yaml" -exec sed -i'' -e 's,repoURL: https://github.com
 
 ### 3. Create the target namespace inside your cluster
 
-> :warning: make sure for the next steps that you are logged in to the cluster via ```oc login``` 
+> :warning: Make sure for the next steps that you are logged in to the cluster via ```oc login``` 
 > and that the account has enough permissions to create namespaces and create resources 
 
 
