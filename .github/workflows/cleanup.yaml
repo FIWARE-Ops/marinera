@@ -1,10 +1,10 @@
 name: Delete namespace after pr
 
 on:
-  pull_request:
-    types:
-      - closed
-      
+  delete:
+    branches:
+      - 'feature-**'
+    
 jobs:
 
   delete:
@@ -33,4 +33,4 @@ jobs:
 
       - name: Delete namespace
         run: |
-          oc delete project ${GITHUB_HEAD_REF##*/}
+          oc delete project ${GITHUB_EVENT_REF##*/}
