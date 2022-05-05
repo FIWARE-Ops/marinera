@@ -6,14 +6,16 @@ metadata:
     {{ include "orion.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   containers:
     - name: curl
       image: quay.io/opencloudio/curl:4.2.0-build.8
-      command: /test-script/test.sh
+      command: ["/test-script/test.sh"]
       volumeMounts:
         - name: orion-test-script
-          mountPath: /test-script/
+          mountPath: /test-script
   volumes:
     - name: orion-test-script
       configMap:
