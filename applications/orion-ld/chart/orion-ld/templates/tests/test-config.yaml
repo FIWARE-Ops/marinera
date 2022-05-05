@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
     name: "{{ .Release.Name }}-orion-test"
     labels:
-        {{ include "orion.labels" . | nindent 4 }}
+        {{ include "orion.labels" . | nindent 6 }}
     annotations:
         "helm.sh/hook": test
         argocd.argoproj.io/hook: PostSync
