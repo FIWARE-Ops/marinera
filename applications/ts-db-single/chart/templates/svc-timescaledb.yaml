@@ -23,11 +23,11 @@ metadata:
 {{ .Values.service.primary.annotations | toYaml | indent 4 }}
 {{- end }}
 spec:
-{{- if .Values.loadBalancer.enabled }}
   selector:
     app: {{ template "timescaledb.fullname" . }}
     cluster-name: {{ template "clusterName" . }}
     role: master
+{{- if .Values.loadBalancer.enabled }}
   type: LoadBalancer
 {{- else }}
   type: {{ .Values.service.primary.type }}
