@@ -10,7 +10,7 @@ independently.
 All the applications of this repo are expected to be Helm charts. That's why inside every application folder there must be a
 `chart` folder containing the chart.
 
-So the structure is as follows: `applications/<APP>/chart/`.
+So the structure is as follows: `applications/<APPLICATION_NAME>/chart/`.
 ```bash                                                                                                               
 ├── applications                                                                                                
 │   ├── mongodb
@@ -26,12 +26,12 @@ So the structure is as follows: `applications/<APP>/chart/`.
 │           └── values.yaml
 ```
 
-* `applications/<AAP>/`: Parent folder for the application, containing both the Helm chart definition and the ArgoCD app definition.
+* `applications/<APPLICATION_NAME>/`: Parent folder for the application, containing both the Helm chart definition and the ArgoCD app definition.
   * `chart` Parent folder for the Helm chart.
   * `app.yaml` ArgoCD application definition.
 
 
-* `applications/<AAP>/chart/`: Parent folder for the Helm chart.
+* `applications/<APPLICATION_NAME>/chart/`: Parent folder for the Helm chart.
   * `Chart.yaml` contains the Helm chart definition using the umbrella helm chart pattern, pointing to an external chart as a dependency.
   * `values.yaml` default Helm values file for the app to work. This very opinionated defaults should work most of the time without any changes.
 
