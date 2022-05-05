@@ -37,13 +37,13 @@ jobs:
 
       - name: Rename target branch
         run: |
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/namespace: demo/namespace: ${GITHUB_REF}/g' {} +
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/name: /name: ${GITHUB_REF}-/g' {} +
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/targetRevision: main/targetRevision: ${GITHUB_REF}/g' {} +
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/namespace: demo/namespace: ${GITHUB_REFF##*/}/g' {} +
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/name: /name: ${GITHUB_REFF##*/}-/g' {} +
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/targetRevision: main/targetRevision: ${GITHUB_REFF##*/}/g' {} +
 
       - name: Deploy applications
         run: |
           # apply argo apps
           find . -name 'app.yaml' -exec oc apply -f {} \;
           # label them with their destination-namespace for better selection
-          find . -name 'app.yaml' -exec oc label destination-namespace=${GITHUB_REF} -f {} \;
+          find . -name 'app.yaml' -exec oc label destination-namespace=${GITHUB_REFF##*/} -f {} \;

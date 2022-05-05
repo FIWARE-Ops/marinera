@@ -1,7 +1,7 @@
 name: Delete namespace after pr
 
 on:
-  delete:
+  delete
       
 jobs:
 
@@ -31,10 +31,10 @@ jobs:
 
       - name: Delete namespace
         run: |
-          oc delete project ${GITHUB_HEAD_REF##*/}
+          oc delete project ${GITHUB_EVENT_REF##*/}
 
 
       - name: Delete applications
         run: |
           # remove all apps deployed for the namespace
-          oc delete application -l destination-namespace=${GITHUB_HEAD_REF##*/} -n labs-ci-cd
+          oc delete application -l destination-namespace=${GITHUB_EVENT_REF##*/} -n labs-ci-cd
