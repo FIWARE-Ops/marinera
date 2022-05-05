@@ -30,13 +30,12 @@ jobs:
           # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
 
-      # delete the namespace associated to the trigger event's branch
-      - name: Delete namespace
-        run: |
-          oc delete project ${{ github.event.ref }}
-
-
       - name: Delete applications
         run: |
           # remove all apps deployed for the namespace corresponding to the branch
           oc delete application -l destination-namespace=${{ github.event.ref }} -n labs-ci-cd
+
+      # delete the namespace associated to the trigger event's branch
+      - name: Delete namespace
+        run: |
+          oc delete project ${{ github.event.ref }}
