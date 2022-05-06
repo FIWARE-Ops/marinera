@@ -2,7 +2,7 @@ quantumleap:
   # Default values for quantumleap.
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
-  
+
   # -- Number of replicas
   replicaCount: 2
   image:
@@ -49,7 +49,7 @@ quantumleap:
       # -- Database name inside Timescale
       name: postgres
       # -- User to connect to the database
-      user: test
+      user: postgres
       # -- Password for the user to connect to the database
       password: test
       # -- SSL connection to Timescale. Not working with SSL for the moment
