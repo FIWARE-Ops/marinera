@@ -219,6 +219,6 @@
     ]
 },
 "timezone": "",
-"title": "{{ .Values.dashboard.name }}",
-"uid": "{{ .Values.dashboard.name | lower | replace " " "-"}}"
+"title": "Orion datasource checker",
+"uid": "orion-datasource-checker"
 }

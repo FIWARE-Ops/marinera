@@ -10,22 +10,13 @@ grafana:
     plugins:
       allow_loading_unsigned_plugins: orion-datasource
     users:
-      default_theme: dark # dark | light
+      default_theme: light # dark | light
     auth.anonymous:
-      enabled: true
+      enabled: false
   initChownData:
     enabled: false
   persistence:
-    type: pvc
     enabled: false
-    accessModes:
-      - ReadWriteOnce
-    size: 10Gi
-    finalizers:
-      - kubernetes.io/pvc-protection
-    inMemory:
-      enabled: false
-      # sizeLimit: 300Mi
   plugins:
     - grafana-simple-json-datasource
     - yesoreyeram-infinity-datasource
@@ -34,18 +25,42 @@ grafana:
     pspEnabled: false
     namespaced: true
   securityContext: ""
+
   sidecar:
     dashboards:
       enabled: true
-      label: grafana
+      SCProvider: true
+      label: grafana_dashboard
+      labelValue: grafana
+      provider:
+        name: datasources-validator
+        orgid: 1
+        folder: "Datasources validator"
+        disableDelete: false
+        allowUIUpdates: true
+
     datasources:
       enabled: true
+      label: grafana_datasource
+      labelValue: grafana
 
+admin:
+  username: fiwareAdmin
+  password: fiwareAdmin
 
 route:
   # -- To enable the OpenShift route
   enabled: true
 
+datasources:
+  orion:
+    url: https//orion
+  timescale:
+    url: tsdb
+    database: postgres
+    credentials:
+      username: admin
+      password: admin
 
 
 
