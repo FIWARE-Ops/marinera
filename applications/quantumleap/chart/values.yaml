@@ -5,13 +5,13 @@ quantumleap:
 
   # -- Number of replicas
   replicaCount: 2
-  
+
   init:
     image:
       # -- Container image to deploy
       repository: docker.io/orchestracities/quantumleap-pg-init
       # -- Container image tag to deploy
-      tag: 0.8.3 
+      tag: 0.8.3
   image:
     # -- Container image to deploy
     repository: docker.io/orchestracities/quantumleap
@@ -20,7 +20,7 @@ quantumleap:
     # -- Pull policy of the image
     pullPolicy: IfNotPresent
 
-  readinessProbe: 
+  readinessProbe:
     enabled: true
   livenessProbe:
     enabled: true
@@ -55,7 +55,7 @@ quantumleap:
   database:
     # -- empty all values to disable cratedb(as enabled by default on the chart)
     crate:
-      host: 
+      host:
       port:
       defaultdb:
     timescale:
@@ -85,10 +85,7 @@ quantumleap:
       cpu: 100m
       # -- Memory request
       memory: 256Mi
-  
 
   geocoding:
     # -- Caching can be disabled by setting the host to empty
     redisHost:
-
-  
