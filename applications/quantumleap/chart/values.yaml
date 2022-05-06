@@ -57,7 +57,7 @@ quantumleap:
 
   config:
     # -- Backend database. Default is timescale
-    default-backend: "Timescale"
+    default-backend: "timescale"
 
   resources:
     limits:
