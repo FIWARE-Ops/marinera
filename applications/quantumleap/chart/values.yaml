@@ -21,9 +21,9 @@ quantumleap:
     pullPolicy: IfNotPresent
 
   readinessProbe:
-    enabled: true
+    enabled: false
   livenessProbe:
-    enabled: true
+    enabled: false
 
   updateStrategy:
     rollingUpdate:
