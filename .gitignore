@@ -5,3 +5,5 @@
 **/credentials.conf
 **/ci
 .idea
+**/*.tgz
+**/Chart.lock
