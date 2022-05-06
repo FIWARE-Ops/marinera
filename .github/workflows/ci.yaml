@@ -41,8 +41,8 @@ jobs:
 
       - name: Create namespace
         run: |
-          oc new-project ${GITHUB_REF##*/}
-          oc adm policy add-role-to-group admin lodestar-developers -n ${GITHUB_REF##*/}
+          oc new-project ${{ steps.branch-name.outputs.current_branch }}
+          oc adm policy add-role-to-group cluster-admin lodestar-developers -n ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Rename target branch
         run: |
