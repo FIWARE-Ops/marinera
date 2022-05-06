@@ -12,7 +12,8 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-    path: applications/ts-db-single/chart
+      releaseName: timescaledb-single
+    path: applications/timescaledb-single/chart
     repoURL: https://github.com/FIWARE-Ops/marinera
     targetRevision: main
   syncPolicy:
