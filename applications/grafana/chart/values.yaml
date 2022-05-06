@@ -1,0 +1,72 @@
+nameOverride: "grafana"
+grafana:
+  admin:
+    existingSecret: "grafana-admin-user"
+    userKey: admin-user
+    passwordKey: admin-password
+  grafana.ini:
+    plugins:
+      allow_loading_unsigned_plugins: orion-datasource
+    users:
+      default_theme: light # dark | light
+    auth.anonymous:
+      enabled: false
+  initChownData:
+    enabled: false
+  persistence:
+    enabled: false
+  plugins:
+    - grafana-simple-json-datasource
+    - yesoreyeram-infinity-datasource
+    - https://hopu.eu/wp-content/grafana/orion-datasource-0.4.8.zip;orion-datasource
+  rbac:
+    pspEnabled: false
+    namespaced: true
+  securityContext: ""
+
+  sidecar:
+    dashboards:
+      enabled: true
+      SCProvider: true
+      label: grafana_dashboard
+      labelValue: grafana
+      provider:
+        name: datasources-validator
+        orgid: 1
+        folder: "Datasources validator"
+        disableDelete: false
+        allowUIUpdates: true
+
+    datasources:
+      enabled: true
+      label: grafana_datasource
+      labelValue: grafana
+
+admin:
+  # -- Admin username
+  username: fiwareAdmin
+  # -- Admin password
+  password: fiwareAdmin
+
+route:
+  # -- To enable the OpenShift route
+  enabled: true
+
+datasources:
+  orion:
+    # -- Orion URL
+    url: https//orion
+  timescale:
+    # -- Timescale URL
+    url: tsdb
+    # -- Timescale database name
+    database: postgres
+    credentials:
+      # -- Timescale database username
+      username: admin
+      # -- Timescale database password
+      password: admin
+
+
+
+
