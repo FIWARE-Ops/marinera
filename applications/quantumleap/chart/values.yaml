@@ -14,16 +14,17 @@ quantumleap:
       tag: 0.8.3
   image:
     # -- Container image to deploy
-    repository: docker.io/wistefan/quantumleap
+    repository: docker.io/orchestracities/quantumleap
     # -- Container image tag to deploy
-    tag: latest
+    tag: 0.8.3
     # -- Pull policy of the image
     pullPolicy: IfNotPresent
 
+  # QL Probes are broken: https://github.com/orchestracities/ngsi-timeseries-api/issues/377
   readinessProbe:
-    enabled: true
+    enabled: false
   livenessProbe:
-    enabled: true
+    enabled: false
 
   updateStrategy:
     rollingUpdate:
