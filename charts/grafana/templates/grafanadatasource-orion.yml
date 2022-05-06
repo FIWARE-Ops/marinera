@@ -1,0 +1,23 @@
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDataSource
+metadata:
+  name: {{ .Values.nameOverride }}-orion-datasource
+  labels:
+    {{- include "grafana.labels" . | nindent 4 }}
+spec:
+  datasources:
+    - name: orion-datasource
+      type: orion-datasource
+      access: proxy
+      orgId: 1
+      uid: "2"
+      url: {{ .Values.datasources.orion.url | default "http://orion:1026" }}
+      basicAuth: false
+      withCredentials: false
+      isDefault: false
+      # jsonData:
+      #   access_via_token: false
+      #   orionPaginationLimit: 500
+      version: 1
+      editable: true   
+  name: {{ .Values.nameOverride }}-orion-datasource.yaml
