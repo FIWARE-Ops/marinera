@@ -68,3 +68,8 @@ quantumleap:
       cpu: 100m
       # -- Memory request
       memory: 256Mi
+  
+
+  geocoding:
+    # -- Caching can be disabled by setting the host to empty
+    redisHost:
