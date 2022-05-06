@@ -42,16 +42,16 @@ quantumleap:
 
   database:
     timescale:
-      # -- Database hostname
-      host: db_hostname
+      # -- Database hostname. Always connect to tsdb service, which is behind the master. Patroni manages the labeling of the Pods.
+      host: tsdb
       # --  Database port
       port: 5432
       # -- Database name inside Timescale
-      name: db_name
+      name: postgres
       # -- User to connect to the database
-      user: user
+      user: test
       # -- Password for the user to connect to the database
-      password: password
+      password: test
       # -- SSL connection to Timescale. Not working with SSL for the moment
       ssl: false
 
