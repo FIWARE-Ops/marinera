@@ -24,4 +24,11 @@ data:
             }
         }
     ]
-    }'
+    }' \
+    --retry 10 \
+    --retry-delay 10 \
+    --retry-connrefused
+
+    curl --location --request DELETE {{ include "quantumleap.fullname" . }}:{{ .Values.quantumleap.service.internalPort }}/v2/entities/urn:ngsi-ld:test:test-entity?type=test \
+    -H 'fiware-service: test' \
+    -H 'fiware-servicepath: /test'
