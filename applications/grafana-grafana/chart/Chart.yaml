@@ -1,0 +1,24 @@
+apiVersion: v2
+name: grafana
+description: A Helm chart for Kubernetes to deploy Grafana using the official Helm Chart.
+type: application
+version: 0.1.0
+appVersion: "v7.5.15"
+icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
+keywords:
+  - grafana
+  - helm
+  - chart
+sources:
+  - https://github.com/FIWARE-Ops/marinera/applications/grafana
+dependencies:
+- name: grafana
+  version: 6.28.0 # Grafana 8.5.0
+  repository: https://grafana.github.io/helm-charts
+  # version: 5.0.26 # Grafana 6.7.3
+  # repository: https://grafana.github.io/helm-charts
+maintainers:
+  - name: Felipe Roca 
+    email: felipe@hopu.org
+  - name: Alvaro Lopez
+    email: alopezme@redhat.com

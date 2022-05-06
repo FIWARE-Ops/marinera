@@ -1,0 +1,48 @@
+
+## GRAFANA Chart configuration values
+nameOverride: "grafana"
+grafana:
+  admin:
+    existingSecret: "{{ template 'grafana.fullname' . }}-admin-user"
+    userKey: admin-user
+    passwordKey: admin-password
+  grafana.ini:
+    plugins:
+      allow_loading_unsigned_plugins: orion-datasource
+    users:
+      default_theme: dark # dark | light
+    auth.anonymous:
+      enabled: true
+  initChownData:
+    enabled: false
+  persistence:
+    type: pvc
+    enabled: false
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
+    inMemory:
+      enabled: false
+      # sizeLimit: 300Mi
+  plugins:
+    - grafana-simple-json-datasource
+    - yesoreyeram-infinity-datasource
+    - https://hopu.eu/wp-content/grafana/orion-datasource-0.4.8.zip;orion-datasource
+  rbac:
+    pspEnabled: false
+    namespaced: true
+  securityContext: ""
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana
+    datasources:
+      enabled: true
+
+
+route:
+  # -- To enable the OpenShift route
+  enabled: true
+
