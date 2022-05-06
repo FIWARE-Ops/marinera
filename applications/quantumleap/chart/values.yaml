@@ -41,6 +41,11 @@ quantumleap:
     internalPort: 8668
 
   database:
+    # -- empty all values to disable cratedb(as enabled by default on the chart)
+    crate:
+      host: 
+      port:
+      defaultdb:
     timescale:
       # -- Database hostname. Always connect to tsdb service, which is behind the master. Patroni manages the labeling of the Pods.
       host: tsdb
@@ -73,3 +78,5 @@ quantumleap:
   geocoding:
     # -- Caching can be disabled by setting the host to empty
     redisHost:
+
+  
