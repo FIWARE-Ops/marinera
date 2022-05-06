@@ -20,5 +20,6 @@ timescaledb-single:
       memory: 500Mi
 
   rbac:
-    openshift: true
     create: true
+    # Specific of this chart. Creates anyuid Role and RoleBinding for the timescaledb SA to run.
+    openshift: true
