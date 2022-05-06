@@ -5,7 +5,7 @@ metadata:
   namespace: labs-ci-cd
 spec:
   destination:
-    namespace: feature-fiware-core
+    namespace: demo
     server: https://kubernetes.default.svc
   project: default
   source:
