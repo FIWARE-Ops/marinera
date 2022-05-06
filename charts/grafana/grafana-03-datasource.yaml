@@ -1,0 +1,68 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: grafana-datasource
+  annotations:
+    description: Template to create a Grafana data source on OCP.
+    tags: grafana,community,operator
+    iconClass: icon-cassandra
+    openshift.io/provider-display-name: Red Hat, Inc.
+    openshift.io/support-url: https://access.redhat.com
+objects:
+- apiVersion: integreatly.org/v1alpha1
+  kind: GrafanaDataSource
+  metadata:
+    name: orion-datasource
+    namespace: ${OPERATOR_NAMESPACE}
+    labels:
+      app: grafana
+  spec:
+    datasources:
+      - name: orion-datasource
+        type: orion-datasource
+        access: proxy
+        orgId: 1
+        uid: "2"
+        url: "https://opendata.hopu.eu/orion"
+        basicAuth: false
+        withCredentials: false
+        isDefault: false
+        jsonData:
+          access_via_token: false
+          orionPaginationLimit: 500
+        secureJsonFields:
+        version: 1
+        editable: true   
+    name: orion-datasource.yaml
+- apiVersion: integreatly.org/v1alpha1
+  kind: GrafanaDataSource
+  metadata:
+    name: postgres-datasource
+    namespace: ${OPERATOR_NAMESPACE}
+    labels:
+      app: grafana
+  spec:
+    datasources:
+      - name: postgres-datasource
+        type: postgres
+        access: proxy
+        orgId: 1
+        uid: "3"
+        url: "postgresql:5432"
+        secureJsonData:
+          user: "admin"
+          password: "admin"
+        basicAuth: false
+        withCredentials: false
+        isDefault: false
+        jsonData:
+          sslmode: disable
+          postgresVersion: 903
+        version: 1
+        editable: true 
+    name: orion-datasource.yaml
+parameters:
+- name: OPERATOR_NAMESPACE
+  description: "The project where the operator will be installed."
+  required: false
+  value: "grafana"

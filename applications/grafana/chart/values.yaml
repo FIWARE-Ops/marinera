@@ -55,7 +55,7 @@ route:
 datasources:
   orion:
     # -- Orion URL
-    url: https//orion
+    url: "http://orion:1026"
   timescale:
     # -- Timescale URL
     url: tsdb
@@ -63,9 +63,9 @@ datasources:
     database: postgres
     credentials:
       # -- Timescale database username
-      username: admin
+      username: postgres
       # -- Timescale database password
-      password: admin
+      password: test
 
 
 

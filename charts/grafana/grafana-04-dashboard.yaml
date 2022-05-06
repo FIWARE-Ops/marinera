@@ -1,0 +1,42 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: grafana-dashboard
+  annotations:
+    description: Template to create a Grafana databoard on OCP.
+    tags: grafana,community,operator
+    iconClass: icon-cassandra
+    openshift.io/provider-display-name: Red Hat, Inc.
+    openshift.io/support-url: https://access.redhat.com
+objects:
+- apiVersion: integreatly.org/v1alpha1
+  kind: GrafanaDashboard
+  metadata:
+    name: ${DASHBOARD_NAME}
+    namespace: ${OPERATOR_NAMESPACE}
+    labels:
+      app: grafana
+  spec:
+    name: ${DASHBOARD_NAME}.json
+    configMapRef:
+      name: ${DASHBOARD_NAME}
+      key: ${DASHBOARD_KEY}
+    customFolderName: "SMART SCHNEKEN"
+    # datasources:
+    #   - inputName: "DS_PROMETHEUS"
+    #     datasourceName: "Prometheus"
+    json:
+      ""
+parameters:
+- name: OPERATOR_NAMESPACE
+  description: "The project where the operator will be installed."
+  required: false
+  value: "grafana"
+- name: DASHBOARD_NAME
+  description: "The name of the dashboard."
+  required: false
+  value: "dashboard-opendata"
+- name: DASHBOARD_KEY
+  description: "The name of the json file inside the ConfigMap."
+  required: false
+  value: "dashboard"
