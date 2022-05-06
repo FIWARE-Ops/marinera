@@ -5,11 +5,18 @@ quantumleap:
 
   # -- Number of replicas
   replicaCount: 2
+  
+  init:
+    image:
+      # -- Container image to deploy
+      repository: docker.io/orchestracities/quantumleap-pg-init
+      # -- Container image tag to deploy
+      tag: 0.8.3 
   image:
     # -- Container image to deploy
     repository: docker.io/orchestracities/quantumleap
     # -- Container image tag to deploy
-    tag: edge
+    tag: 0.8.3
     # -- Pull policy of the image
     pullPolicy: IfNotPresent
 
