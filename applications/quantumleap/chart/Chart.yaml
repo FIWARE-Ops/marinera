@@ -1,0 +1,16 @@
+apiVersion: v2
+name: quantumleap
+description: A Helm chart for Kubernetes to deploy QuantumLeap using the official Helm Chart.
+type: application
+version: 0.1.0
+appVersion: "0.8.0"
+keywords:
+  - quantumleap
+  - helm
+  - chart
+sources:
+  - https://github.com/FIWARE-Ops/marinera/applications/quantumleap
+dependencies:
+- name: quantumleap
+  version: 0.1.18
+  repository: https://orchestracities.github.io/charts/

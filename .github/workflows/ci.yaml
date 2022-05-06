@@ -30,12 +30,32 @@ jobs:
           # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
 
+      # extract the current branch name and provide it as a var for easier integration into sed-commands
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5.2
+
+      - name: Log the branch name
+        run: |
+          echo ${{ steps.branch-name.outputs.current_branch }}
+
       - name: Create namespace
         run: |
-          oc new-project ${GITHUB_REF##*/}
-          oc adm policy add-role-to-group admin lodestar-developers -n ${GITHUB_REF##*/}
+          oc new-project ${{ steps.branch-name.outputs.current_branch }}
+          oc adm policy add-role-to-group cluster-admin lodestar-developers -n ${{ steps.branch-name.outputs.current_branch }}
 
-      - name: Replace branch name and deploy
+      - name: Rename target branch
         run: |
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/main/${GITHUB_REF}/g' {} +
+          # replace the default destination namespace(demo) with the branch namespace
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/namespace: demo/namespace: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
+          # prefix the application name with the branch name to avoid collisions
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/name: /name: ${{ steps.branch-name.outputs.current_branch }}-/g' {} +
+          # set the target revision to the current branch
+          find . -type f -name "app.yaml" -exec sed -i'' -e 's/targetRevision: main/targetRevision: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
+
+      - name: Deploy applications
+        run: |
+          # apply argo apps from the folder
           find . -name 'app.yaml' -exec oc apply -f {} \;
+          # label them with their destination-namespace for better selection(f.e. on deletion)
+          find . -name 'app.yaml' -exec oc label destination-namespace=${{ steps.branch-name.outputs.current_branch }} -f {} \;

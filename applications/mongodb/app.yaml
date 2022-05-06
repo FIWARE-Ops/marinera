@@ -5,13 +5,15 @@ metadata:
   namespace: labs-ci-cd
 spec:
   destination:
-    namespace: feature-fiware-core
+    namespace: demo
     server: https://kubernetes.default.svc
   project: default
   source:
     helm:
       valueFiles:
       - values.yaml
+      # has to be set, so that the application name can be different but the service names do still match
+      releaseName: mongodb-orion
     path: applications/mongodb/chart
     repoURL: https://github.com/FIWARE-Ops/marinera
     targetRevision: main

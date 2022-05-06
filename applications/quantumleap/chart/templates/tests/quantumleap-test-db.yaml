@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ .Release.Name }}-orion-test"
-  labels:
-    {{ include "orion.labels" . | nindent 4 }}
+  name: "{{ include "quantumleap.fullname" . }}-test-db"
   annotations:
     "helm.sh/hook": test
     argocd.argoproj.io/hook: PostSync
@@ -16,10 +14,10 @@ spec:
         - /bin/sh
         - /test-script/test.sh
       volumeMounts:
-        - name: orion-test-script
+        - name: quantumleap-test-script
           mountPath: /test-script
   volumes:
-    - name: orion-test-script
+    - name: quantumleap-test-script
       configMap:
-        name: {{ .Release.Name }}-orion-test
+        name: {{ include "quantumleap.fullname" . }}-test-db
   restartPolicy: Never

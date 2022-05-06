@@ -1,21 +1,19 @@
-name: Delete namespace after pr
+name: Deploy to the demo namespace
 
-# trigger on branch deletion to bind the namespaces lifecycle to the branch lifecycle
 on:
-  delete:
+  push:
     branches:
-      - 'feature-**'
+      - 'main'
 
 jobs:
 
-  delete:
+  deploy:
   
     runs-on: ubuntu-latest
     steps:
 
       - name: Git checkout
         uses: actions/checkout@v1
-
 
       - name: Authenticate and set context
         uses: redhat-actions/oc-login@v1
@@ -30,12 +28,9 @@ jobs:
           # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
 
-      - name: Delete applications
+      - name: Deploy applications
         run: |
-          # remove all apps deployed for the namespace corresponding to the branch
-          oc delete application -l destination-namespace=${{ github.event.ref }} -n labs-ci-cd
-
-      # delete the namespace associated to the trigger event's branch
-      - name: Delete namespace
-        run: |
-          oc delete project ${{ github.event.ref }}
+          # apply argo apps from the folder
+          find . -name 'app.yaml' -exec oc apply -f {} \;
+          # label them with their destination-namespace for better selection(f.e. on deletion)
+          find . -name 'app.yaml' -exec oc label destination-namespace=demo -f {} \;
