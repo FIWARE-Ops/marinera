@@ -4,6 +4,10 @@ on:
   create:
     branches:
       - 'feature-**'
+  push:
+    branches:
+      - 'feature-**'
+
 
 jobs:
 
@@ -40,6 +44,7 @@ jobs:
           echo ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Create namespace
+        if: ${{ github.event.event_name }} == "create"
         run: |
           oc new-project ${{ steps.branch-name.outputs.current_branch }}
           oc adm policy add-role-to-group cluster-admin lodestar-developers -n ${{ steps.branch-name.outputs.current_branch }}
