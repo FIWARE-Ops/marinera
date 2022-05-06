@@ -1,2 +1,9 @@
+.DS_Store
+**/*.crt
+**/*.key
+**/pgbackrest.conf
+**/credentials.conf
+**/ci
+.idea
 **/*.tgz
 **/Chart.lock
