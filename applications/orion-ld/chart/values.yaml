@@ -1,0 +1,13 @@
+orion-ld:
+  broker:
+    db:
+      hosts:
+        - mongodb-orion-0.mongodb-orion-headless
+        - mongodb-orion-1.mongodb-orion-headless
+      replicaSet: rs0
+      user: root
+      auth:
+        password: test
+  mongo:
+    # we want to use the individually deployed mongodb
+    enabled: false

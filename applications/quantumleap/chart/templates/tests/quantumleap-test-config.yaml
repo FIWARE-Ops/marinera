@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ include "quantumleap.fullname" . }}-test-db"
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+data:
+  test.sh: |-
+    # Post Notification 
+    curl -f -X POST {{ include "quantumleap.fullname" . }}:{{ .Values.quantumleap.service.internalPort }}/v2/notify \
+    -H 'fiware-service: test' \
+    -H 'fiware-servicepath: /test' \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "subscriptionId": "simulated-subscription-notification",
+    "data": [
+        {
+            "id": "urn:ngsi-ld:test:test-entity",
+            "type": "test",
+            "test": {
+                "type": "Number",
+                "value": 0
+            }
+        }
+    ]
+    }'

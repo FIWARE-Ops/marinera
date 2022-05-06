@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quantumleap
+  namespace: labs-ci-cd
+spec:
+  destination:
+    namespace: demo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+      # has to be set, so that the application name can be different but the service names do still match
+      releaseName: quantumleap
+    path: applications/quantumleap/chart
+    repoURL: https://github.com/FIWARE-Ops/marinera
+    targetRevision: main
+  syncPolicy:
+    automated: {}

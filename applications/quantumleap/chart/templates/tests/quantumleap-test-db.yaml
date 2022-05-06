@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "quantumleap.fullname" . }}-test-db"
+  annotations:
+    "helm.sh/hook": test
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  containers:
+    - name: curl
+      image: quay.io/opencloudio/curl:4.2.0-build.8
+      command: 
+        - /bin/sh
+        - /test-script/test.sh
+      volumeMounts:
+        - name: quantumleap-test-script
+          mountPath: /test-script
+  volumes:
+    - name: quantumleap-test-script
+      configMap:
+        name: {{ include "quantumleap.fullname" . }}-test-db
+  restartPolicy: Never
