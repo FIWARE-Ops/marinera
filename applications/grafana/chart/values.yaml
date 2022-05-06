@@ -45,7 +45,9 @@ grafana:
       labelValue: grafana
 
 admin:
+  # -- Admin username
   username: fiwareAdmin
+  # -- Admin password
   password: fiwareAdmin
 
 route:
@@ -54,12 +56,17 @@ route:
 
 datasources:
   orion:
+    # -- Orion URL
     url: https//orion
   timescale:
+    # -- Timescale URL
     url: tsdb
+    # -- Timescale database name
     database: postgres
     credentials:
+      # -- Timescale database username
       username: admin
+      # -- Timescale database password
       password: admin
 
 
