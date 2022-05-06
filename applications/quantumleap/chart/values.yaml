@@ -7,9 +7,9 @@ quantumleap:
   replicaCount: 2
   image:
     # -- Container image to deploy
-    repository: docker.io/smartsdk/quantumleap
+    repository: docker.io/orchestracities/quantumleap
     # -- Container image tag to deploy
-    tag: latest
+    tag: edge
     # -- Pull policy of the image
     pullPolicy: IfNotPresent
 
