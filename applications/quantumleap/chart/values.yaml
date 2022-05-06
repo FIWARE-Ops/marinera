@@ -20,6 +20,11 @@ quantumleap:
     # -- Pull policy of the image
     pullPolicy: IfNotPresent
 
+  readinessProbe: 
+    enabled: true
+  livenessProbe:
+    enabled: true
+
   updateStrategy:
     rollingUpdate:
       # -- Max replicas available when upgrading
