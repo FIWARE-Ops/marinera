@@ -1,5 +1,3 @@
-
-## GRAFANA Chart configuration values
 nameOverride: "grafana"
 grafana:
   admin:
