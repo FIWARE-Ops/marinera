@@ -3,7 +3,7 @@
 nameOverride: "grafana"
 grafana:
   admin:
-    existingSecret: "{{ template 'grafana.fullname' . }}-admin-user"
+    existingSecret: "grafana-admin-user"
     userKey: admin-user
     passwordKey: admin-password
   grafana.ini:
@@ -45,4 +45,8 @@ grafana:
 route:
   # -- To enable the OpenShift route
   enabled: true
+
+
+
+
 
