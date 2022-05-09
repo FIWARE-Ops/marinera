@@ -1,6 +1,6 @@
 # MongoDB Helm Chart
 
-A Helm chart for Kubernetes to deploy MongoDB using the official Helm Chart.
+A Helm chart for Kubernetes to deploy MongoDB using the Bitnami MongoDB Helm Chart.
 
 ## Source Code
 
@@ -24,4 +24,4 @@ $ helm install my-release {{ template "chart.name" . }}
 
 ## Values
 
-For the documentation of the original helm chart, go to the official helm chart at: https://github.com/bitnami/charts/tree/master/bitnami/mongodb.
+For the documentation of the original helm chart, go to the Bitnami helm chart at: https://github.com/bitnami/charts/tree/master/bitnami/mongodb.
