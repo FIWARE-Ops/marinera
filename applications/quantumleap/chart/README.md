@@ -1,6 +1,11 @@
-# QuantumLeap Chart
+# QuantumLeap Helm Chart
 
 A Helm chart for Kubernetes to deploy QuantumLeap using the official Helm Chart.
+
+## Source Code
+
+* <https://github.com/FIWARE-Ops/marinera>
+* <https://github.com/orchestracities/charts>
 
 ## Requirements
 
@@ -8,7 +13,7 @@ A Helm chart for Kubernetes to deploy QuantumLeap using the official Helm Chart.
 |------------|------|---------|
 | https://orchestracities.github.io/charts/ | quantumleap | 0.1.18 |
 
-## Installing the Chart
+## Install
 
 To install the chart with the release name `my-release`:
 
