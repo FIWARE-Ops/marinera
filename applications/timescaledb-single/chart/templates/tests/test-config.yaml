@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-tsdb-test"
+  labels:
+    app: {{ template "timescaledb.fullname" . }}
+    chart: {{ template "timescaledb.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    cluster-name: {{ template "clusterName" . }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+data:
+  test.sh: |-
+    # List current databases
+    echo "* List current databases"
+    psql -U admin -h {{ template "clusterName" . }} postgres -c "SELECT datname FROM pg_database;"
+
+    # Remove test database if it exists
+    echo "* Remove test db if exists before test"
+    psql -U admin -h {{ template "clusterName" . }} postgres -c "SELECT datname FROM pg_database;"  | grep test_helm_chart &&   psql -U admin -h {{ template "clusterName" . }} postgres -c "drop database test_helm_chart ;"
+
+    # Create test database
+    echo "* Create test database"
+    psql -U admin -h {{ template "clusterName" . }} postgres -c "create database test_helm_chart ;"
+    sleep 5
+
+    # Check if in the replicas the test database has been syncronized
+    echo "* Check database"
+    psql -U admin -h {{ template "clusterName" . }}-replica postgres -c "SELECT datname FROM pg_database;"  | grep test_helm_chart
+    output=$?
+
+    # Clean the created test database
+    echo "* Cleaning test database"
+    psql -U admin -h {{ template "clusterName" . }} postgres -c "drop database test_helm_chart ;"
+    if [[ "$output" -ne "0" ]]; then
+      exit 1;
+    fi
