@@ -67,6 +67,7 @@ datasources:
       # -- Timescale database password
       password: test
 
-
+tests:
+  enabled: true
 
 
