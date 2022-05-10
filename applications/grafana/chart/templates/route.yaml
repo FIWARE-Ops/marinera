@@ -6,6 +6,9 @@ metadata:
   labels:
     {{- include "grafana.labels" . | nindent 4 }}
 spec:
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
   to:
     kind: Service
     name: {{ template "grafana.fullname" . }}
