@@ -135,5 +135,5 @@ jobs:
                   value: fiwareAdmin
                 command: ['mvn', 'test']
                 imagePullPolicy: Always
-            restartPolicy: "Never"' | oc apply -f -
+            restartPolicy: "Never"' | oc apply -f - -n ${{ steps.branch-name.outputs.current_branch }}
 
