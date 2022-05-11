@@ -3,7 +3,9 @@ kind: OperatorGroup
 metadata:
   name: keycloak
   annotations:
-    "helm.sh/hook": "pre-install"
+    # "helm.sh/hook": "pre-install"
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   targetNamespaces:
     - {{ .Release.Namespace }}

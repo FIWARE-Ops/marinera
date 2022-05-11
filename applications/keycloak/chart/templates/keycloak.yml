@@ -1,0 +1,13 @@
+apiVersion: keycloak.org/v1alpha1
+kind: Keycloak
+metadata:
+  name: {{ include "keycloak.name" . }}
+  # annotations:
+  #   # helm.sh/hook: post-install
+  #   argocd.argoproj.io/sync-wave: "0"
+  labels:
+    {{- include "keycloak.labels" . | nindent 4 }}
+spec:
+  instances: {{ .Values.keycloak.instances }}
+  externalAccess:
+    enabled: True 

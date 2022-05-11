@@ -1,0 +1,19 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakRealm
+metadata:
+  name: {{ include "keycloak.name" . }}-fiware
+  # annotations:
+  #   # helm.sh/hook: post-install
+  #   argocd.argoproj.io/sync-wave: "0"
+  labels:
+    {{- include "keycloak.labels" . | nindent 4 }}
+    realm: {{ include "keycloak.name" . }}-fiware
+spec:
+  realm:
+    id: "fiware-realm"
+    realm: "FIWARE Realm"
+    enabled: True
+    displayName: "FIWARE Realm"
+  instanceSelector:
+    matchLabels:
+      app: {{ include "keycloak.name" . }}
