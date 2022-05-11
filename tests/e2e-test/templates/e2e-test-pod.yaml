@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-marinera-e2e"
+  annotations:
+spec:
+  containers:
+    - name: marinera-e2e
+      image: {{ .Values.image }}
+      env:
+      - name: REMOTE_DRIVER_URL
+        value: {{ .Values.remoteDriverUrl }}
+      - name: GRAFANA_URL
+        value: {{ .Values.grafanaUrl }}
+      - name: BROKER_URL
+        value: {{ .Values.brokerUrl }}
+      - name: QUANTUM_LEAP_URL
+        value: {{ .Values.quantumLeapUrl }}
+      - name: TEST_TENANT
+        value: {{ .Values.testTenant }}
+      - name: GRAFANA_USERNAME
+        value: {{ .Values.grafanaUsername }}
+      - name: GRAFANA_PASSWORD
+        value: {{ .Values.grafanaPassword }}
+      command: ['mvn', 'test']
+      imagePullPolicy: {{ .Values.imagePullPolicy }}
+  restartPolicy: Never

@@ -422,12 +422,3 @@ edgeNode:
 
 # Custom labels for k8s resources
 customLabels: {}
-
-testValues:
-  remoteDriverUrl: http://selenium-hub:4444
-  grafanaUrl: https://grafana-feature-helm-test-for-e2e.apps.fiware-spain.emea-1.rht-labs.com
-  brokerUrl: http://orion-ld:1026
-  quantumLeapUrl: http://quantumleap-quantumleap:8668
-  testTenant: test-tenant
-  grafanaUsername: fiwareAdmin
-  grafanaPassword: fiwareAdmin
