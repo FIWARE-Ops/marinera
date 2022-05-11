@@ -21,6 +21,8 @@ applications:
     - values.yaml
 
   - name: timescaledb-single
+    # Dont override, will break the tests.
+    releaseName: tsdb
     enabled: true
     source_path: applications/timescaledb-single/chart
     source_ref: *branch
