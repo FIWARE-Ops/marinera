@@ -45,8 +45,8 @@ spec:
       values: |
 {{- toYaml .values | nindent 8 }}
 {{- end }}
-{{- if .releaseName }}
-      releaseName: {{ .releaseName }}
+{{- if or .releaseName .name }}
+      releaseName: {{ .releaseName | default .name }}
 {{- end }}
 {{- end }}
     {{- if .source_path }}
