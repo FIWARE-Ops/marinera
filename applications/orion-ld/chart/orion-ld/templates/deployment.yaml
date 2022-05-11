@@ -4,8 +4,6 @@ metadata:
   name: {{ include "orion.fullname" . }}
   labels:
     {{ include "orion.labels" . | nindent 4 }}
-  annotations:
-    argocd.argoproj.io/sync-wave: "10"
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.deployment.replicaCount }}
