@@ -4,6 +4,7 @@ destination_namespace: &destination demo
 branch: &branch main
 
 applications:
+  # Dont change mongodb name, current orion config relies on it.
   - name: mongodb-orion
     enabled: true
     source_path: applications/mongodb/chart
