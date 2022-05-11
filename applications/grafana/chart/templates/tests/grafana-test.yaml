@@ -1,0 +1,28 @@
+{{- if .Values.tests.enabled -}}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-grafana-test"
+  labels:
+    {{ include "grafana.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  containers:
+    - name: curl
+      image: quay.io/opencloudio/curl:4.2.0-build.8
+      command: 
+        - /bin/sh
+        - /test-script/test.sh
+      volumeMounts:
+        - name: grafana-test-script
+          mountPath: /test-script
+  volumes:
+    - name: grafana-test-script
+      configMap:
+        name: {{ .Release.Name }}-grafana-test
+  restartPolicy: Never
+
+{{- end}}

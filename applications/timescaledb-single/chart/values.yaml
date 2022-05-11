@@ -11,13 +11,13 @@ timescaledb-single:
     wal:
       size: 1Gi
 
-  resources:
-    limits:
-      cpu: 2000m
-      memory: 2Gi
-    requests:
-      cpu: 500m
-      memory: 500Mi
+#  resources:
+#    limits:
+#      cpu: 2000m
+#      memory: 2Gi
+#    requests:
+#      cpu: 500m
+#      memory: 500Mi
 
   rbac:
     create: true
