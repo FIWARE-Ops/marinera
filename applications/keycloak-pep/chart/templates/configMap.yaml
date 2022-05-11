@@ -23,7 +23,7 @@ data:
 
     keycloak.realm=fiware-realm
 
-    keycloak.auth-server-url=http://keycloak:8080
+    keycloak.auth-server-url=http://keycloak:8080/auth
 
     keycloak.ssl-required=external
 
