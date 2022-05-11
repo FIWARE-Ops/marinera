@@ -2,8 +2,8 @@ apiVersion: keycloak.org/v1alpha1
 kind: KeycloakRealm
 metadata:
   name: {{ include "keycloak.name" . }}-fiware
-  annotations:
-    helm.sh/hook: post-install
+  # annotations:
+  #   helm.sh/hook: post-install
   labels:
     {{- include "keycloak.labels" . | nindent 4 }}
     realm: {{ include "keycloak.name" . }}-fiware
