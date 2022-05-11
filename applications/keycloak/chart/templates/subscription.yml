@@ -3,7 +3,7 @@ kind: Subscription
 metadata:
   name: keycloak-operator
   annotations:
-    helm.sh/hook: pre-install
+    "helm.sh/hook": "pre-install"
 spec:
   channel: alpha
   installPlanApproval: Automatic
