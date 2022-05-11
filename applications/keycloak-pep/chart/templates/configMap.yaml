@@ -21,11 +21,13 @@ data:
 
     # Keycloak PEP config
 
-    keycloak.realm=FIWARE%20Realm
+    keycloak.realm="FIWARE Realm"
 
     keycloak.auth-server-url=https://keycloak:8443/auth
 
     keycloak.ssl-required=external
+
+    keycloak.allow-any-hostname=true
 
     keycloak.resource=orion-pep
 
