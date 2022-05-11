@@ -14,8 +14,6 @@ metadata:
     {{- with .Values.customLabels }}
       {{- toYaml . | nindent 4 }}
     {{- end }}
-  annotations:
-    argocd.argoproj.io/sync-wave: "20"
 spec:
   replicas: 1
   selector:

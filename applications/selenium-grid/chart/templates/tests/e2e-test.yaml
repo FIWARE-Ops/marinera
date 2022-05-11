@@ -10,7 +10,7 @@ metadata:
 spec:
   containers:
     - name: marinera-e2e
-      image: quay.io/ernesgonzalez33/marinera-e2e
+      image: quay.io/fiware/marinera-e2e:0.0.1-PRE-2
       env:
       - name: REMOTE_DRIVER_URL
         value: {{ .Values.testValues.remoteDriverUrl }}
