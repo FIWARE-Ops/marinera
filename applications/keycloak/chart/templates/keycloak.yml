@@ -1,0 +1,12 @@
+apiVersion: keycloak.org/v1alpha1
+kind: Keycloak
+metadata:
+  name: {{ include "keycloak.name" . }}
+  annotations:
+    helm.sh/hook: post-install
+  labels:
+    {{- include "keycloak.labels" . | nindent 4 }}
+spec:
+  instances: {{ .Values.keycloak.instances }}
+  externalAccess:
+    enabled: True 

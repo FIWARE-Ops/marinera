@@ -1,0 +1,9 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: keycloak
+  annotations:
+    helm.sh/hook: pre-install
+spec:
+  targetNamespaces:
+    - {{ .Release.Namespace }}
