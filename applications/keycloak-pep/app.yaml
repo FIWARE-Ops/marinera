@@ -13,7 +13,7 @@ spec:
       valueFiles:
       - values.yaml
       # has to be set, so that the application name can be different but the service names do still match
-      releaseName: keycloak
+      releaseName: keycloak-pep
     path: applications/keycloak-pep/chart
     repoURL: https://github.com/FIWARE-Ops/marinera
     targetRevision: main
