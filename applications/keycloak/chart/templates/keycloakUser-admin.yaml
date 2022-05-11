@@ -3,7 +3,8 @@ kind: KeycloakUser
 metadata:
   name: {{ include "keycloak.name" . }}-admin
   annotations:
-    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "20"
+    # argocd.argoproj.io/hook: PostSync
   #   # helm.sh/hook: post-install
   #   argocd.argoproj.io/sync-wave: "0"
   labels:

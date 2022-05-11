@@ -3,9 +3,7 @@ kind: Keycloak
 metadata:
   name: {{ include "keycloak.name" . }}
   annotations:
-    argocd.argoproj.io/hook: PostSync
-  #   # helm.sh/hook: post-install
-  #   argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "20"
   labels:
     {{- include "keycloak.labels" . | nindent 4 }}
 spec:
