@@ -27,4 +27,5 @@ spec:
       - name: GRAFANA_PASSWORD
         value: {{ .Values.testValues.grafanaPassword }}
       command: ['mvn', 'test']
+      imagePullPolicy: Always
   restartPolicy: Never
