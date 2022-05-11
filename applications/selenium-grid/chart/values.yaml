@@ -424,9 +424,9 @@ edgeNode:
 customLabels: {}
 
 testValues:
-  remoteDriverUrl: http://selenium-hub.feature-helm-test-for-e2e.svc:4444
-  grafanaUrl: http://grafana.feature-helm-test-for-e2e.svc
-  brokerUrl: http://orion-ld.feature-helm-test-for-e2e.svc:1026
+  remoteDriverUrl: http://selenium-hub:4444
+  grafanaUrl: http://grafana
+  brokerUrl: http://orion-ld:1026
   quantumLeapUrl: http://quantumleap-quantumleap:8668
   testTenant: test-tenant
   grafanaUsername: fiwareAdmin
