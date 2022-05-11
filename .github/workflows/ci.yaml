@@ -112,6 +112,4 @@ jobs:
           sed -i 's/demo/${{ steps.branch-name.outputs.current_branch }}/' values.yaml 
           # install the helm chart
           helm template e2e . | oc apply -f - -n ${{ steps.branch-name.outputs.current_branch }}
-          # wait for the job to complete
-          oc wait --for=condition=complete job/marinera-e2e -n ${{ steps.branch-name.outputs.current_branch }}
 
