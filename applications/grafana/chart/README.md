@@ -42,5 +42,6 @@ $ helm install my-release {{ template "chart.name" . }}
 | datasources.timescale.url | string | `"tsdb"` | Timescale URL |
 | nameOverride | string | `"grafana"` |  |
 | route.enabled | bool | `true` | To enable the OpenShift route |
+| tests.enabled | bool | `true` | To enable default tests |
 
 For the rest of the documentation of the original helm chart, go to the official helm chart at: https://github.com/grafana/helm-charts.
