@@ -55,7 +55,7 @@ route:
 datasources:
   orion:
     # -- Orion URL
-    url: "http://orion:1026"
+    url: "http://orion-ld:1026"
   timescale:
     # -- Timescale URL
     url: tsdb
@@ -67,6 +67,7 @@ datasources:
       # -- Timescale database password
       password: test
 
-
+tests:
+  enabled: true
 
 
