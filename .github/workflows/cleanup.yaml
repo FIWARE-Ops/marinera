@@ -1,4 +1,4 @@
-name: Delete namespace after pr
+name: Delete apps and namespace after deleting branch
 
 # trigger on branch deletion to bind the namespaces lifecycle to the branch lifecycle
 on:
@@ -9,7 +9,7 @@ on:
 jobs:
 
   delete:
-  
+
     runs-on: ubuntu-latest
     steps:
 
