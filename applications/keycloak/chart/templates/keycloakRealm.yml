@@ -16,6 +16,23 @@ spec:
     realm: "FIWARE Realm"
     enabled: True
     displayName: "FIWARE Realm"
+    users:
+      - username: "realm_user"
+        firstName: "John"
+        lastName: "Doe"
+        email: "user@example.com"
+        enabled: True
+        emailVerified: False
+        credentials:
+          - type: "password"
+            value: "12345"
+        realmRoles:
+          - "offline_access"
+        clientRoles:
+          account:
+            - "manage-account"
+          realm-management:
+            - "manage-users"
   instanceSelector:
     matchLabels:
       app: {{ include "keycloak.name" . }}
