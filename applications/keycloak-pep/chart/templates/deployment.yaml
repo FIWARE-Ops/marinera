@@ -11,10 +11,10 @@ spec:
       {{- include "keycloak-pep.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
         checksum/configMap: {{ include (print $.Template.BasePath "/configMap.yml") . | sha256sum }}
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
         {{- include "keycloak-pep.selectorLabels" . | nindent 8 }}
