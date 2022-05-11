@@ -4,7 +4,7 @@ destination_namespace: &destination demo
 branch: &branch main
 
 applications:
-  - name: mongodb
+  - name: mongodb-orion
     enabled: true
     source_path: applications/mongodb/chart
     source_ref: *branch
