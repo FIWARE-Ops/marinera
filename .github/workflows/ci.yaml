@@ -70,4 +70,3 @@ jobs:
           cd fiware-platform/
           # render app of apps and apply it
           helm template . | oc -n labs-ci-cd apply -f -
-
