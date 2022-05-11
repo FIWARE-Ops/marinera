@@ -2,7 +2,8 @@ apiVersion: keycloak.org/v1alpha1
 kind: KeycloakRealm
 metadata:
   name: {{ include "keycloak.name" . }}-fiware
-  # annotations:
+  annotations:
+    argocd.argoproj.io/hook: PostSync
   #   # helm.sh/hook: post-install
   #   argocd.argoproj.io/sync-wave: "0"
   labels:

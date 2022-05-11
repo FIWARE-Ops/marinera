@@ -2,7 +2,8 @@ apiVersion: keycloak.org/v1alpha1
 kind: KeycloakUser
 metadata:
   name: {{ include "keycloak.name" . }}-admin
-  # annotations:
+  annotations:
+    argocd.argoproj.io/hook: PostSync
   #   # helm.sh/hook: post-install
   #   argocd.argoproj.io/sync-wave: "0"
   labels:
