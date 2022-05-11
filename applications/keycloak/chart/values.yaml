@@ -5,3 +5,4 @@ nameOverride: "keycloak"
 
 keycloak:
   instances: 1
+

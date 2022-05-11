@@ -16,23 +16,87 @@ spec:
     realm: "FIWARE Realm"
     enabled: True
     displayName: "FIWARE Realm"
+    roles:
+      client:
+        "orion-pep":
+          - name: admin
+            composite: false
+            clientRole: true
+          - name: producer
+            composite: false
+            clientRole: true
+          - name: subscriber
+            composite: false
+            clientRole: true
+            attributes: {}
+          - name: consumer
+            composite: false
+            clientRole: true
+    clients:
+      - clientId: fiware-login
+        enabled: true
+        baseUrl: http://localhost:8080
+        adminUrl: http://localhost:8080
+        redirectUris:
+          - http://localhost:8080/*
+        defaultClientScopes:
+
+        
+          - roles
+        publicClient: true
+        directAccessGrantsEnabled: true
+      - clientId: orion-pep
+        enabled: true
+        baseUrl: http://localhost:8080
+        adminUrl: http://localhost:8080
+        redirectUris:
+          - http://localhost:8080/*
+        defaultClientScopes:
+          - roles
+        secret: secret
+        directAccessGrantsEnabled: true
+        authorizationServicesEnabled: false
     users:
-      - username: "realm_user"
-        firstName: "John"
-        lastName: "Doe"
-        email: "user@example.com"
+      - username: "admin-user"
+        firstName: "Admin"
+        lastName: "User"
+        email: "admin-user@example.com"
         enabled: True
         emailVerified: False
         credentials:
           - type: "password"
-            value: "12345"
-        realmRoles:
-          - "offline_access"
+            value: "admin-user"
         clientRoles:
           account:
+            - "view-profile"
             - "manage-account"
-          realm-management:
-            - "manage-users"
+      - username: "consumer-user"
+        firstName: "Consumer"
+        lastName: "User"
+        email: "consumer-user@example.com"
+        enabled: True
+        emailVerified: False
+        credentials:
+          - type: "password"
+            value: "consumer-user"
+        clientRoles:
+          account:
+            - "view-profile"
+            - "manage-account"
+      - username: "subscriber-user"
+        firstName: "Subscriber"
+        lastName: "User"
+        email: "subscriber-user@example.com"
+        enabled: True
+        emailVerified: False
+        credentials:
+          - type: "password"
+            value: "subscriber-user"
+        clientRoles:
+          account:
+            - "view-profile"
+            - "manage-account"
+    
   instanceSelector:
     matchLabels:
       app: {{ include "keycloak.name" . }}
