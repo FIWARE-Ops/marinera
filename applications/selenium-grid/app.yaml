@@ -14,7 +14,7 @@ spec:
       - values.yaml
       # has to be set, so that the application name can be different but the service names do still match
       releaseName: selenium
-    path: applications/e2e-test/chart/selenium-grid
+    path: applications/selenium-grid/chart
     repoURL: https://github.com/FIWARE-Ops/marinera
     targetRevision: main
   syncPolicy:
