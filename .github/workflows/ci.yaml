@@ -64,3 +64,45 @@ jobs:
           find . -name 'app.yaml' -exec oc apply -f {} \;
           # label them with their destination-namespace for better selection(f.e. on deletion)
           find . -name 'app.yaml' -exec oc label destination-namespace=${{ steps.branch-name.outputs.current_branch }} -f {} \;
+
+      - name: Check if all apps are healthy
+        run: |
+          # bool to check if the apps are healthy
+          healthy=0
+          # counter to set a number of tries
+          try=0
+          tries=12
+          # get the list of apps in the namespace
+          apps=$(oc get applications.argoproj.io --no-headers -n labs-ci-cd -l destination-namespace=${{ steps.branch-name.outputs.current_branch }} | awk '{ print $3 }') 
+          appslen=$(wc -w <<< $apps)
+          # check if the condition is met
+          while [ $healthy == 0 ] && [ $try -lt $tries ]
+          do
+            healthyapps=0
+            for app in $apps
+            do
+              if [ $app != "Healthy" ]
+              then
+                echo "Trying again in 10 seconds"
+              #   sleep 10
+                try=$(( try + 1 ))
+                break
+              elif [ $app == "Healthy" ]
+              then  
+                healthyapps=$(( healthyapps + 1 ))
+              fi
+              if [ $healthyapps == $appslen ]
+              then
+                healthy=1
+              fi
+            done
+          done
+
+          if [ $try -eq $tries ]
+          then
+            echo "ERROR: Tried too many times"
+            exit 1
+          fi
+
+
+
