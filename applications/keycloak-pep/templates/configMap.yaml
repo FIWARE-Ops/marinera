@@ -1,0 +1,56 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  labels:
+    app: {{ include "keycloak-pep.fullname" . }}
+  name: {{ include "keycloak-pep.fullname" . }}-config
+data:
+  application.properties: >
+
+    server.connection-timeout=5000
+
+    server.port=8080
+
+    # Proxy config
+
+    proxy.schema=http
+
+    proxy.host=echo
+
+    proxy.port=80
+
+    # Keycloak PEP config
+
+    keycloak.realm=spring-boot-quickstart
+
+    keycloak.auth-server-url=http://192.168.1.202:8180
+
+    keycloak.ssl-required=external
+
+    keycloak.resource=app-authz-rest-springboot
+
+    keycloak.bearer-only=true
+
+    keycloak.credentials.secret=secret
+
+    keycloak.securityConstraints[0].authRoles[0]=user
+
+    keycloak.securityConstraints[0].securityCollections[0].name=protected
+
+    keycloak.securityConstraints[0].securityCollections[0].patterns[0]=/*
+
+    keycloak.policy-enforcer-config.enforcement-mode=ENFORCING
+
+    # Logging configuration
+
+    logging.level.root=WARN
+
+    logging.level.org.springframework.boot=WARN
+    
+    logging.level.org.keycloak=TRACE
+    
+    logging.level.org.apache.http=WARN
+
+    spring.main.banner-mode=OFF
+    
+    spring.freemarker.checkTemplateLocation=false
