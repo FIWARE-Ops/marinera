@@ -104,36 +104,12 @@ jobs:
             exit 1
           fi
 
-      - name: Deploy the helm test
+      - name: Deploy the helm chart for the e2e
         run: |
-          echo 'apiVersion: v1
-          kind: Pod
-          metadata:
-            name: e2e-test
-            annotations:
-              "helm.sh/hook": test
-              argocd.argoproj.io/hook: PostSync
-              argocd.argoproj.io/hook-delete-policy: HookSucceeded
-          spec:
-            containers:
-              - name: marinera-e2e
-                image: quay.io/fiware/marinera-e2e:0.0.1
-                env:
-                - name: REMOTE_DRIVER_URL
-                  value: http://selenium-hub:4444
-                - name: GRAFANA_URL
-                  value: https://grafana-feature-helm-test-for-e2e.apps.fiware-spain.emea-1.rht-labs.com
-                - name: BROKER_URL
-                  value: http://orion-ld:1026
-                - name: QUANTUM_LEAP_URL
-                  value: http://quantumleap-quantumleap:8668
-                - name: TEST_TENANT
-                  value: test-tenant
-                - name: GRAFANA_USERNAME
-                  value: fiwareAdmin
-                - name: GRAFANA_PASSWORD
-                  value: fiwareAdmin
-                command: ['mvn', 'test']
-                imagePullPolicy: Always
-            restartPolicy: "Never"' | oc apply -f - -n ${{ steps.branch-name.outputs.current_branch }}
+          # go to the e2e-test directory
+          cd tests/e2e-test
+          # replace the default destination namespace(demo) with the branch namespace in the Grafana URL
+          sed -i 's/demo/${{ steps.branch-name.outputs.current_branch }}/' values.yaml 
+          # install the helm chart
+          helm template . | oc apply -f -
 
