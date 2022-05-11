@@ -15,19 +15,19 @@ data:
 
     proxy.schema=http
 
-    proxy.host=echo
+    proxy.host=orion-ld
 
-    proxy.port=80
+    proxy.port=1026
 
     # Keycloak PEP config
 
-    keycloak.realm=spring-boot-quickstart
+    keycloak.realm=fiware-realm
 
-    keycloak.auth-server-url=http://192.168.1.202:8180
+    keycloak.auth-server-url=http://keycloak:8080
 
     keycloak.ssl-required=external
 
-    keycloak.resource=app-authz-rest-springboot
+    keycloak.resource=orion-pep
 
     keycloak.bearer-only=true
 

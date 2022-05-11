@@ -17,6 +17,11 @@ spec:
     enabled: True
     displayName: "FIWARE Realm"
     roles:
+      realm:
+        - name: user
+          description: User privileges
+          composite: false
+          clientRole: false
       client:
         "orion-pep":
           - name: admin
@@ -40,8 +45,6 @@ spec:
         redirectUris:
           - http://localhost:8080/*
         defaultClientScopes:
-
-        
           - roles
         publicClient: true
         directAccessGrantsEnabled: true
@@ -66,10 +69,14 @@ spec:
         credentials:
           - type: "password"
             value: "admin-user"
+        realmRoles:
+          - user
         clientRoles:
           account:
             - "view-profile"
             - "manage-account"
+          orion-pep:
+            - admin
       - username: "consumer-user"
         firstName: "Consumer"
         lastName: "User"
@@ -79,10 +86,31 @@ spec:
         credentials:
           - type: "password"
             value: "consumer-user"
+        realmRoles:
+          - user
         clientRoles:
           account:
             - "view-profile"
             - "manage-account"
+          orion-pep:
+            - consumer
+      - username: "producer-user"
+        firstName: "producer"
+        lastName: "User"
+        email: "producer-user@example.com"
+        enabled: True
+        emailVerified: False
+        credentials:
+          - type: "password"
+            value: "producer-user"
+        realmRoles:
+          - user
+        clientRoles:
+          account:
+            - "view-profile"
+            - "manage-account"
+          orion-pep:
+            - producer
       - username: "subscriber-user"
         firstName: "Subscriber"
         lastName: "User"
@@ -92,10 +120,14 @@ spec:
         credentials:
           - type: "password"
             value: "subscriber-user"
+        realmRoles:
+          - user
         clientRoles:
           account:
             - "view-profile"
             - "manage-account"
+          orion-pep:
+            - subscriber
     
   instanceSelector:
     matchLabels:
