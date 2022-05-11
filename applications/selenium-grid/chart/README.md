@@ -19,9 +19,9 @@ helm install selenium .
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| testValues.remoteDriverUrl | string | `http://selenium-hub.feature-helm-test-for-e2e.svc:4444` | Remote Driver URL for the test |
-| testValues.grafanaUrl | string | `http://grafana.feature-helm-test-for-e2e.svc` | Grafana URL for the test |
-| testValues.brokerUrl | string | `http://orion-ld.feature-helm-test-for-e2e.svc:1026` | Broker URL for the test |
+| testValues.remoteDriverUrl | string | `http://selenium-hub:4444` | Remote Driver URL for the test |
+| testValues.grafanaUrl | string | `http://grafana` | Grafana URL for the test |
+| testValues.brokerUrl | string | `http://orion-ld:1026` | Broker URL for the test |
 | testValues.quantumLeapUrl | string | `http://quantumleap-quantumleap:8668` | Quantumleap URL for the test |
 | testValues.testTenant | string | `test-tenant` | Test tenant for the test |
 | testValues.grafanaUsername | string | `fiwareAdmin` | Grafana username for the test |
