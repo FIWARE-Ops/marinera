@@ -13,7 +13,7 @@ metadata:
 spec:
   realm:
     id: "fiware-realm"
-    realm: "FIWARE Realm"
+    realm: "fiware-realm"
     enabled: True
     displayName: "FIWARE Realm"
     roles:
@@ -58,7 +58,33 @@ spec:
           - roles
         secret: secret
         directAccessGrantsEnabled: true
-        authorizationServicesEnabled: false
+        authorizationServicesEnabled: true
+        authorizationSettings:
+          allowRemoteResourceManagement: true
+          policyEnforcementMode: ENFORCING
+          resources:
+            - name: Default Resource
+              type: urn:orion-pep:resources:default
+              ownerManagedAccess: false
+              attributes: {}
+              uris:
+                - "/*"
+          policies:
+            - name: Admin policy
+              description: Only admin users
+              type: role
+              logic: POSITIVE
+              decisionStrategy: UNANIMOUS
+              config:
+                roles: '[{"id":"orion-pep/admin","required":false}]'
+            - name: Admin users
+              type: resource
+              logic: POSITIVE
+              decisionStrategy: UNANIMOUS
+              config:
+                resources: '["Default Resource"]'
+                applyPolicies: '["Admin policy"]'
+          decisionStrategy: UNANIMOUS     
     users:
       - username: "admin-user"
         firstName: "Admin"

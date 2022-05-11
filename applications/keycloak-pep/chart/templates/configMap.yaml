@@ -21,7 +21,7 @@ data:
 
     # Keycloak PEP config
 
-    keycloak.realm=FIWARE Realm
+    keycloak.realm=fiware-realm
 
     keycloak.auth-server-url=https://keycloak:8443/auth
 
