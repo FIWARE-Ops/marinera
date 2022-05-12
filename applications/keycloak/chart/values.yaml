@@ -28,6 +28,9 @@ keycloak:
 
 
   postgresql:
+    auth:
+      username: bn_keycloak
+      password: secretpassword
     primary:
       podSecurityContext:
         enabled: false
