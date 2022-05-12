@@ -117,12 +117,16 @@ jobs:
           # install the helm chart
           helm install e2e . -n ${{ steps.branch-name.outputs.current_branch }}
           
-      - name: Uninstall the e2e helm charts
+      - name: Uninstall marinera-e2e helm chart
         if: always()
         continue-on-error: true
         run: |
           # uninstall the e2e helm chart
           helm uninstall e2e -n ${{ steps.branch-name.outputs.current_branch }}
+
+      - name: Uninstall selenium-grid helm chart
+        if: always()
+        run: |
           # uninstall the selenium-grid helm chart
           helm uninstall selenium -n ${{ steps.branch-name.outputs.current_branch }}
 
