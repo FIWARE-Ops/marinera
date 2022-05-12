@@ -1,6 +1,6 @@
 # Default values for Keycloak.
 
-nameOverride: "keycloak"
+# nameOverride: "keycloak"
 
 keycloak:
   replicaCount: 1
@@ -15,4 +15,14 @@ keycloak:
     adminPassword: fiwareAdmin
 
   postgresql:
-  
+    primary:
+      podSecurityContext:
+        enabled: false
+      containerSecurityContext:
+        enabled: false
+    readReplicas:
+      podSecurityContext:
+        enabled: false
+      containerSecurityContext:
+        enabled: false
+      
