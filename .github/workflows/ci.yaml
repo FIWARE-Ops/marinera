@@ -109,7 +109,7 @@ jobs:
           # go to selenium-grid directory
           cd tests/selenium-grid
           # install selenium-grid
-          helm install selenium . -n ${{ steps.branch-name.outputs.current_branch }}
+          helm install --wait selenium . -n ${{ steps.branch-name.outputs.current_branch }}
           # go to the e2e-test directory
           cd ../e2e-test
           # replace the default destination namespace(demo) with the branch namespace in the Grafana URL
@@ -118,6 +118,8 @@ jobs:
           helm install e2e . -n ${{ steps.branch-name.outputs.current_branch }}
           
       - name: Uninstall the e2e helm charts
+        if: always()
+        continue-on-error: true
         run: |
           # uninstall the e2e helm chart
           helm uninstall e2e -n ${{ steps.branch-name.outputs.current_branch }}
