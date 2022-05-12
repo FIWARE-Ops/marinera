@@ -45,13 +45,7 @@ jobs:
 
       - name: Create namespace
         run: |
-        
-          oc get project ${{ steps.branch-name.outputs.current_branch }} > /dev/null 2>&1
-
-          if [ "$?" == "0" ]; then
-              exit 0
-          fi        
-          oc new-project ${{ steps.branch-name.outputs.current_branch }}
+          oc new-project ${{ steps.branch-name.outputs.current_branch }} || oc project ${{ steps.branch-name.outputs.current_branch }}
           oc adm policy add-role-to-group cluster-admin lodestar-developers -n ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Rename target branch
