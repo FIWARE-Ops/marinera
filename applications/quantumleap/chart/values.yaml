@@ -9,9 +9,9 @@ quantumleap:
   init:
     image:
       # -- Container image to deploy
-      repository: docker.io/orchestracities/quantumleap-pg-init
+      repository: quay.io/fiware/quantumleap-pg-init
       # -- Container image tag to deploy
-      tag: 0.8.3
+      tag: 0.9.0-PRE
   image:
     # -- Container image to deploy
     repository: quay.io/fiware/quantumleap
