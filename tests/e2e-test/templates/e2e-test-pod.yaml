@@ -24,6 +24,10 @@ spec:
         value: {{ .Values.grafanaUsername }}
       - name: GRAFANA_PASSWORD
         value: {{ .Values.grafanaPassword }}
+      - name: FIWARE_SERVICE
+        value: ""
+      - name: FIWARE_SERVICE_PATH
+        value: "/"
       command: ['mvn', 'test']
       imagePullPolicy: {{ .Values.imagePullPolicy }}
   restartPolicy: Never
