@@ -317,68 +317,6 @@ data:
               "attributes": {}
             }
           ],
-          "iotagent-pep": [
-            {
-              "name": "admin",
-              "description": "Los admin pueden acceder a los path /version /admin y al resto de paths",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
-              "attributes": {}
-            },
-            {
-              "name": "uma_protection",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
-              "attributes": {}
-            },
-            {
-              "name": "producer",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
-              "attributes": {}
-            },
-            {
-              "name": "consumer",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
-              "attributes": {}
-            }
-          ],
-          "quantumleap-pep": [
-            {
-              "name": "admin",
-              "description": "Los admin pueden acceder a los path /version /admin y al resto de paths",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
-              "attributes": {}
-            },
-            {
-              "name": "uma_protection",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
-              "attributes": {}
-            },
-            {
-              "name": "producer",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
-              "attributes": {}
-            },
-            {
-              "name": "consumer",
-              "composite": false,
-              "clientRole": true,
-              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
-              "attributes": {}
-            }
-          ],
           "account": [
             {
               "id": "6a93a2eb-2445-4090-9cdb-1f3686536697",
@@ -454,12 +392,6 @@ data:
             "user"
           ],
           "clientRoles": {
-            "quantumleap-pep": [
-              "admin"
-            ],
-            "iotagent-pep": [
-              "admin"
-            ],
             "orion-pep": [
               "admin"
             ]
@@ -588,12 +520,6 @@ data:
                 "user"
               ],
               "clientRoles": {
-                "quantumleap-pep": [
-                  "consumer"
-                ],
-                "iotagent-pep": [
-                  "consumer"
-                ],
                 "orion-pep": [
                   "consumer"
                 ]
@@ -609,12 +535,6 @@ data:
                 "user"
               ],
               "clientRoles": {
-                "quantumleap-pep": [
-                  "producer"
-                ],
-                "iotagent-pep": [
-                  "producer"
-                ],
                 "orion-pep": [
                   "producer"
                 ]
