@@ -3,7 +3,7 @@ name: keycloak
 description: A Helm chart for Kubernetes to deploy Keycloak using the official Keycloak Operator.
 type: application
 version: 0.1.0
-appVersion: "18.0.0"
+appVersion: "17.0.0"
 home: https://www.keycloak.org/
 icon: https://www.keycloak.org/resources/images/keycloak_icon_512px.svg
 keywords:
