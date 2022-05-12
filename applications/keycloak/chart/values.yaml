@@ -23,9 +23,9 @@ keycloak:
         verbs:
         - use
 
-  ingress:
-    enabled: true
-    hostname: ""
+  # ingress:
+  #   enabled: true
+  #   hostname: ""
 
 
   postgresql:
@@ -43,3 +43,5 @@ keycloak:
       containerSecurityContext:
         enabled: false
       
+route:
+  enabled: true
