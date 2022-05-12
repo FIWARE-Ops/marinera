@@ -30,6 +30,9 @@ keycloak:
   keycloakConfigCli:
     image: 
       tag: 5.2.0-debian-10-r4
+    extraEnvVars:
+      - name: IMPORT_FILES_LOCATION
+        value: "/config/"
     podSecurityContext:
       enabled: false
     containerSecurityContext:
