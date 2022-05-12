@@ -38,7 +38,7 @@ keycloak:
     containerSecurityContext:
       enabled: false
     enabled: true
-    existingConfigmap: keycloak-realm-fiware
+    existingConfigmap: keycloak-realm
 
 
   # ingress:
