@@ -1,4 +1,4 @@
-name: Create namespace on new branch
+name: Create namespace and deploy on new branch
 
 on:
   create:
@@ -8,11 +8,10 @@ on:
     branches:
       - 'feature-**'
 
-
 jobs:
 
   create:
-  
+
     runs-on: ubuntu-latest
     steps:
 
@@ -51,19 +50,26 @@ jobs:
 
       - name: Rename target branch
         run: |
+          cd fiware-platform/
           # replace the default destination namespace(demo) with the branch namespace
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/namespace: demo/namespace: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
+          sed -i'' -e 's/destination_namespace: \&destination demo/destination_namespace: \&destination ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
           # prefix the application name with the branch name to avoid collisions
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/name: /name: ${{ steps.branch-name.outputs.current_branch }}-/g' {} +
+          sed -i'' -e 's/release: demo/release: ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
           # set the target revision to the current branch
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/targetRevision: main/targetRevision: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
+          sed -i'' -e 's/branch: \&branch main/branch: \&branch ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
+
+      # See https://github.com/helm/chart-releaser-action/issues/6
+      - name: Install Helm
+        run: |
+          curl -fsSLo get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          ./get_helm.sh
 
       - name: Deploy applications
         run: |
-          # apply argo apps from the folder
-          find . -name 'app.yaml' -exec oc apply -f {} \;
-          # label them with their destination-namespace for better selection(f.e. on deletion)
-          find . -name 'app.yaml' -exec oc label destination-namespace=${{ steps.branch-name.outputs.current_branch }} -f {} \;
+          cd fiware-platform/
+          # render app of apps and apply it
+          helm template . | oc -n labs-ci-cd apply -f -
 
       - name: Check if all apps are healthy
         run: |

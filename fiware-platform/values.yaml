@@ -1,0 +1,48 @@
+source: https://github.com/FIWARE-Ops/marinera
+release: demo
+destination_namespace: &destination demo
+branch: &branch main
+
+applications:
+  # Dont change mongodb name, current orion config relies on it.
+  - name: mongodb-orion
+    enabled: true
+    source_path: applications/mongodb/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+
+  - name: orion-ld
+    enabled: true
+    source_path: applications/orion-ld/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+
+  - name: timescaledb-single
+    # Dont override, will break the tests.
+    releaseName: tsdb
+    enabled: true
+    source_path: applications/timescaledb-single/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+
+  - name: quantumleap
+    enabled: true
+    source_path: applications/quantumleap/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+
+  - name: grafana
+    enabled: true
+    source_path: applications/grafana/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml

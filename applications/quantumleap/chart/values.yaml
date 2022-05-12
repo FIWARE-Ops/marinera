@@ -9,22 +9,22 @@ quantumleap:
   init:
     image:
       # -- Container image to deploy
-      repository: docker.io/orchestracities/quantumleap-pg-init
+      repository: quay.io/fiware/quantumleap-pg-init
       # -- Container image tag to deploy
-      tag: 0.8.3
+      tag: 0.9.0-PRE
   image:
     # -- Container image to deploy
-    repository: docker.io/orchestracities/quantumleap
+    repository: quay.io/fiware/quantumleap
     # -- Container image tag to deploy
-    tag: 0.8.3
+    tag: 0.9.0-PRE
     # -- Pull policy of the image
     pullPolicy: IfNotPresent
 
-  # QL Probes are broken: https://github.com/orchestracities/ngsi-timeseries-api/issues/377
+  # health checks are fixed in ql master
   readinessProbe:
-    enabled: false
+    enabled: true
   livenessProbe:
-    enabled: false
+    enabled: true
 
   updateStrategy:
     rollingUpdate:

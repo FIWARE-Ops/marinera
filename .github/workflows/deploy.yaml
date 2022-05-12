@@ -8,7 +8,7 @@ on:
 jobs:
 
   deploy:
-  
+
     runs-on: ubuntu-latest
     steps:
 
@@ -30,7 +30,7 @@ jobs:
 
       - name: Deploy applications
         run: |
-          # apply argo apps from the folder
-          find . -name 'app.yaml' -exec oc apply -f {} \;
-          # label them with their destination-namespace for better selection(f.e. on deletion)
-          find . -name 'app.yaml' -exec oc label destination-namespace=demo -f {} \;
+
+          cd fiware-platform/
+          # render app of apps and apply it
+          helm template . | oc -n labs-ci-cd apply -f -
