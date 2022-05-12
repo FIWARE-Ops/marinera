@@ -1,4 +1,4 @@
-image: quay.io/fiware/marinera-e2e:0.0.2-PRE-3
+image: quay.io/fiware/marinera-e2e:0.0.2
 
 imagePullPolicy: IfNotPresent
 
