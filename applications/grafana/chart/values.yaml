@@ -5,6 +5,10 @@ grafana:
     userKey: admin-user
     passwordKey: admin-password
   grafana.ini:
+    log:
+      level: warn
+    log.console:
+      format: json
     plugins:
       allow_loading_unsigned_plugins: orion-datasource
     users:
@@ -41,6 +45,11 @@ grafana:
       enabled: true
       label: grafana_datasource
       labelValue: grafana
+  podLabels:
+    marinera/platform: fiware
+    marinera/component:	visualization
+    marinera/subcomponent: ui
+    marinera/product: grafana
 
 admin:
   # -- Admin username

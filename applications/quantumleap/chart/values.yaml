@@ -36,7 +36,7 @@ quantumleap:
   autoscaling:
     # -- Autoscaling Enabled/Disabled
     enabled: false
-    # -- Autoscaling min replicas 
+    # -- Autoscaling min replicas
     minReplicas: 2
     # -- Autoscaling max replicas
     maxReplicas: 6
@@ -90,3 +90,5 @@ quantumleap:
   geocoding:
     # -- Caching can be disabled by setting the host to empty
     redisHost:
+  runtime:
+    logLevel: "WARNING"

@@ -1,4 +1,13 @@
 timescaledb-single:
+  patroni:
+    log:
+      level: WARNING
+    bootstrap:
+      dcs:
+        postgresql:
+          parameters:
+            log_min_messages: WARNING
+
   secrets:
     credentials:
       PATRONI_SUPERUSER_PASSWORD: "test"

@@ -50,7 +50,11 @@ deployment:
     # -- specification of the image pull policy
     pullPolicy: IfNotPresent
   # -- additional labels for the deployment, if required
-  additionalLabels: {}
+  additionalLabels:
+    marinera/platform: fiware
+    marinera/component: core
+    marinera/subcomponent: broker
+    marinera/product: orion-ld
   # -- additional annotations for the deployment, if required
   additionalAnnotations: {}
   # -- orion resource requests and limits, we leave the default empty to make that a concious choice by the user.
@@ -239,10 +243,12 @@ broker:
     ## to make the traces to standard out formated for humans
     # forHumans: false
     ## log line maximum length
-    # lineMaxSize: 
+    # lineMaxSize:
     ## for those log traces at INFO level that print request and/or response payloads, this is the maximum allowed size for those payloads
     # infoPayloadMaxSize:
-
+    ## to convert logs to json
+    # true to enable
+    jsonformat: true
   ## database configuration
   db:
     # -- configuration of the mongo-db hosts. if multiple hosts are inserted, its assumed that mongo is running as a replica set
@@ -257,7 +263,7 @@ broker:
       # --name of the secret
       # name:
       # --key to get the password from
-      # key: 
+      # key:
     # -- Database authentication (not needed if MongoDB doesn't use --auth)
     # auth:
       # -- password to be used on mongo
@@ -269,7 +275,7 @@ broker:
     # -- enable SSL in the connection to MongoDB. needs to correspond with the mongoDB setting
     # sslEnabled: true
     # -- specifies the timeout in milliseconds for connections to the replica set
-    # timeout: 
+    # timeout:
     # -- database connection pool
     # poolSize: 10
     # -- write concern for MongoDB write operations: acknowledged (1) or unacknowledged (0)

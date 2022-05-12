@@ -3,6 +3,8 @@ mongodb:
   global:
     nameOverride: "mongodb-orion"
     fullnameOverride: "mongodb-orion"
+  commonLabels:
+    marinera/manu: test
   auth:
     enabled: true
     #existingSecret: mongodb-secret
@@ -27,3 +29,14 @@ mongodb:
       enabled: false
     containerSecurityContext:
       enabled: false
+    podLabels:
+      marinera/platform: fiware
+      marinera/component: core
+      marinera/subcomponent: persistence
+      marinera/product: mongodb
+  systemLogVerbosity: 1
+  podLabels:
+    marinera/platform: fiware
+    marinera/component: core
+    marinera/subcomponent: persistence
+    marinera/product: mongodb
