@@ -25,6 +25,7 @@ keycloak:
 
   ingress:
     enabled: true
+    hostname: ""
 
 
   postgresql:
