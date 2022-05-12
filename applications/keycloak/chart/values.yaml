@@ -24,6 +24,8 @@ realm:
 
 keycloak:
   replicaCount: 1
+  image:
+    debug: true
 
   auth:
     adminUser: fiwareAdmin
