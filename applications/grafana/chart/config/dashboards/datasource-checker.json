@@ -181,8 +181,8 @@
         "queryFilter": "",
         "refId": "A",
         "selectedRequest": "Entities",
-        "service": "AirQuality",
-        "servicePath": "/alcantarilla",
+        "service": "",
+        "servicePath": "/",
         "target": "select metric",
         "type": "table"
         }
