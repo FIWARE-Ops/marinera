@@ -119,7 +119,6 @@ jobs:
           
       - name: Uninstall marinera-e2e helm chart
         if: always()
-        continue-on-error: true
         run: |
           # uninstall the e2e helm chart
           helm uninstall e2e -n ${{ steps.branch-name.outputs.current_branch }}
