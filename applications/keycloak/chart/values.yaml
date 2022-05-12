@@ -28,13 +28,12 @@ keycloak:
         verbs:
         - use
   keycloakConfigCli:
+    image: 
+      tag: 5.2.0-debian-10-r4
     podSecurityContext:
       enabled: false
     containerSecurityContext:
       enabled: false
-    extraEnvVar:
-      - name: IMPORT_FILES_LOCATIONS
-        value: /config/
     enabled: true
     existingConfigmap: keycloak-realm
 
