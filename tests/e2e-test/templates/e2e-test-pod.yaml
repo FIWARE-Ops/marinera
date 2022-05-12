@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: marinera-e2e-{{ randAlphaNum 5 }}
+  name: marinera-e2e-{{ randAlphaNum 5 | lower }}
   annotations:
     "helm.sh/hook": pre-install
     "helm.sh/hook-delete-policy": hook-succeeded
