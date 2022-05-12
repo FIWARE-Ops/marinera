@@ -16,4 +16,9 @@ maintainers:
     email: felipe@hopu.org
   - name: Alvaro Lopez
     email: alopezme@redhat.com
+dependencies:
+- name: keycloak
+  version: 8.0.0 # Keycloak 17.0.1
+  repository: https://charts.bitnami.com/bitnami
+
 
