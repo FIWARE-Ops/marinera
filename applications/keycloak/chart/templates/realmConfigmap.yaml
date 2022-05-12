@@ -825,18 +825,18 @@ data:
         {
           "id": "d74936be-9b6e-477d-8bb5-802ba95a5771",
           "clientId": "grafana",
-          "rootUrl": "https://{{ domain }}{{ uri.grafana }}",
-          "adminUrl": "https://{{ domain }}{{ uri.grafana }}",
+          "rootUrl": "https://{{ .Values.domain }}{{ .Values.uri.grafana }}",
+          "adminUrl": "https://{{ .Values.domain }}{{ .Values.uri.grafana }}",
           "surrogateAuthRequired": false,
           "enabled": true,
           "clientAuthenticatorType": "client-secret",
           "secret": "secret",
           "redirectUris": [
-            "https://{{ domain }}{{ uri.grafana }}/*",
-            "https://{{ domain }}/*"
+            "https://{{ .Values.domain }}{{ .Values.uri.grafana }}/*",
+            "https://{{ .Values.domain }}/*"
           ],
           "webOrigins": [
-            "https://{{ domain }}{{ uri.grafana }}"
+            "https://{{ .Values.domain }}{{ .Values.uri.grafana }}"
           ],
           "notBefore": 0,
           "bearerOnly": false,
@@ -883,17 +883,17 @@ data:
         {
           "id": "0fddfe5c-e4df-4cc2-9106-97c99fcc59f9",
           "clientId": "orion-pep",
-          "adminUrl": "https://{{ domain }}/{{ uri.orion }}/*",
-          "baseUrl": "https://{{ domain }}/{{ uri.orion }}/*",
+          "adminUrl": "https://{{ .Values.domain }}/{{ .Values.uri.orion }}/*",
+          "baseUrl": "https://{{ .Values.domain }}/{{ .Values.uri.orion }}/*",
           "surrogateAuthRequired": false,
           "enabled": true,
           "clientAuthenticatorType": "client-secret",
           "secret": "978ad148-d99b-406d-83fc-578597290a79",
           "redirectUris": [
-            "https://{{ domain }}/{{ uri.orion }}/*"
+            "https://{{ .Values.domain }}/{{ .Values.uri.orion }}/*"
           ],
           "webOrigins": [
-            "https://{{ domain }}/{{ uri.orion }}/*"
+            "https://{{ .Values.domain }}/{{ .Values.uri.orion }}/*"
           ],
           "notBefore": 0,
           "bearerOnly": false,
@@ -1206,18 +1206,18 @@ data:
         {
           "id": "14e52a86-5281-494f-b084-659ae1d4c57e",
           "clientId": "iotagent-pep",
-          "rootUrl": "https://{{ domain }}/{{ uri.iotagent_json }}",
-          "adminUrl": "https://{{ domain }}/{{ uri.iotagent_json }}",
+          "rootUrl": "https://{{ .Values.domain }}/{{ .Values.uri.iotagent_json }}",
+          "adminUrl": "https://{{ .Values.domain }}/{{ .Values.uri.iotagent_json }}",
           "secret": "1463a9ea-b27e-4197-a4fe-1acf91b13879",
           "baseUrl": "",
           "surrogateAuthRequired": false,
           "enabled": true,
           "clientAuthenticatorType": "client-secret",
           "redirectUris": [
-            "https://{{ domain }}/{{ uri.iotagent_json }}/*"
+            "https://{{ .Values.domain }}/{{ .Values.uri.iotagent_json }}/*"
           ],
           "webOrigins": [
-            "https://{{ domain }}/{{ uri.iotagent_json }}"
+            "https://{{ .Values.domain }}/{{ .Values.uri.iotagent_json }}"
           ],
           "notBefore": 0,
           "bearerOnly": false,
@@ -1451,18 +1451,18 @@ data:
         {
           "id": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
           "clientId": "quantumleap-pep",
-          "rootUrl": "https://{{ domain }}/{{ uri.quantumleap }}",
-          "adminUrl": "https://{{ domain }}/{{ uri.quantumleap }}",
+          "rootUrl": "https://{{ .Values.domain }}/{{ .Values.uri.quantumleap }}",
+          "adminUrl": "https://{{ .Values.domain }}/{{ .Values.uri.quantumleap }}",
           "secret": "1463a9ea-b27e-4197-a4fe-1acf91b13863",
           "baseUrl": "",
           "surrogateAuthRequired": false,
           "enabled": true,
           "clientAuthenticatorType": "client-secret",
           "redirectUris": [
-            "https://{{ domain }}/{{ uri.quantumleap }}/*"
+            "https://{{ .Values.domain }}/{{ .Values.uri.quantumleap }}/*"
           ],
           "webOrigins": [
-            "https://{{ domain }}/{{ uri.quantumleap }}"
+            "https://{{ .Values.domain }}/{{ .Values.uri.quantumleap }}"
           ],
           "notBefore": 0,
           "bearerOnly": false,
