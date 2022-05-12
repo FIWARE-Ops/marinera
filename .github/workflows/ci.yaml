@@ -71,7 +71,7 @@ jobs:
           healthy=0
           # counter to set a number of tries
           try=0
-          tries=12
+          tries=30
           # get the list of apps in the namespace
           apps=$(oc get applications.argoproj.io --no-headers -n labs-ci-cd -l destination-namespace=${{ steps.branch-name.outputs.current_branch }} | awk '{ print $3 }') 
           appslen=$(wc -w <<< $apps)
