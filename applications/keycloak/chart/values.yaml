@@ -9,14 +9,23 @@ keycloak:
     adminUser: fiwareAdmin
     adminPassword: fiwareAdmin
 
-  containerSecurityContext:
-    enabled: false
+  serviceAccount:
+    create: true
+  rbac:
+    create: true
+    rules:
+      - apiGroups:
+        - security.openshift.io
+        resourceNames:
+        - anyuid
+        resources:
+        - securitycontextconstraints
+        verbs:
+        - use
 
   ingress:
     enabled: true
 
-  podSecurityContext:
-    enabled: false
 
   postgresql:
     primary:
