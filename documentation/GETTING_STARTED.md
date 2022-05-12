@@ -14,6 +14,7 @@ Since this repository concentrates on deploying the platform, we require the und
     - [use OpenShift operator](https://argocd-operator-helm.readthedocs.io/en/latest/ocp/ocp4.html)
     - [FIWARE installation documentation](https://github.com/FIWARE-Ops/fiware-gitops#4-install-argocd)
 - [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) installed - see [installation documentation](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli)
+- [Helm](https://helm.sh/docs/intro/install/) installed.
 
 ## Installation steps
 
@@ -91,8 +92,7 @@ This can be done with the following command:
 ```shell
 sed -i'' -e 's/branch: \&branch main/branch: \&branch <FORK_BRANCH>/g' fiware-platform/values.yaml
 ```
-
-### 6. Apply the applications to the cluster
+### 7. Apply the applications to the cluster
 
 Now that everything is prepared, we can deploy the FIWARE components chosen by creating the ArgoCD applications
 and applying them to the cluster:
@@ -104,3 +104,38 @@ helm template . | oc -n <ARGOCD_NAMESPACE> apply -f -
 This will create ArgoCD apps.
 
 ![FIWARE components deployed](./images/argocd-apps.png)
+
+## E2E Testing
+
+Inside the `tests/` folder in the repo there are two helm charts. The `e2e-test` helm chart and the `selenium-grid` helm chart.
+
+## Usage
+
+To deploy the E2E tests it is important to have Selenium running and ready in the cluster first:
+
+```shell
+cd tests/selenium-grid
+helm install --wait <my-selenium-release> . -n <PLATFORM_NAMESPACE>
+```
+
+After this, you can run the e2e test the following way:
+
+```shell
+cd ../e2e-test
+helm install <my-e2e-release> . -n <PLATFORM_NAMESPACE>
+```
+
+The e2e tests will spin up a pod called `marinera-e2e` and run the tests, to see the logs you could do the following:
+
+```shell
+oc logs -f marinera-e2e -n <PLATFORM_NAMESPACE>
+```
+
+If the test e2e works, the pod will get to a `Completed` status and will be deleted automatically. If it doesn't work, the helm installation will failed and the pod will remain with an `Error` status.
+
+After that, to remove the helm charts you can do the following:
+
+```shell
+helm uninstall <my-e2e-release> -n <PLATFORM_NAMESPACE>
+helm uninstall <my-selenium-release> -n <PLATFORM_NAMESPACE>
+```

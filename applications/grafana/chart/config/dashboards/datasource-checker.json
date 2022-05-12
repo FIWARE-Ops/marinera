@@ -101,7 +101,7 @@
             "hide": false,
             "metricColumn": "none",
             "rawQuery": true,
-            "rawSql": "SELECT *\nFROM mttest.etairqualityobserved\n\n",
+            "rawSql": "SELECT *\nFROM etairqualityobserved\n\n",
             "refId": "B",
             "select": [
             [
