@@ -33,6 +33,8 @@ keycloak:
     extraEnvVars:
       - name: IMPORT_FILES_LOCATIONS
         value: "/config/*"
+      - name: LOGGING_LEVEL_ROOT
+        value: "TRACE"
     podSecurityContext:
       enabled: false
     containerSecurityContext:
