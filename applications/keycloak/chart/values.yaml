@@ -14,6 +14,10 @@ keycloak:
     adminUser: fiwareAdmin
     adminPassword: fiwareAdmin
 
+  extraEnvVars:
+    - name: KEYCLOAK_EXTRA_ARGS
+      value: "-Dkeycloak.profile.feature.upload_scripts=enabled"  
+
   serviceAccount:
     create: true
   rbac:
