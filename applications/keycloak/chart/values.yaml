@@ -2,6 +2,26 @@
 
 # nameOverride: "keycloak"
 
+realm:
+  grafana:
+    rootUrl: https://grafana
+    adminUrl: https://grafana
+    redirectUris: 
+      - https://grafana/
+      - https://grafana-2/
+    webOrigins: 
+      - https://grafana/
+      - https://grafana-2/
+  orionPep:
+    baseUrl: https://orion-ld
+    adminUrl: https://orion-ld
+    redirectUris: 
+      - https://orion-ld/
+      - https://orion-ld-2/
+    webOrigins: 
+      - https://grorion-lda/
+      - https://graorion-ld-2/
+
 domain: test
 uri:
   grafana: test
