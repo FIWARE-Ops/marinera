@@ -3,8 +3,6 @@ mongodb:
   global:
     nameOverride: "mongodb-orion"
     fullnameOverride: "mongodb-orion"
-  commonLabels:
-    marinera/manu: test
   auth:
     enabled: true
     #existingSecret: mongodb-secret
