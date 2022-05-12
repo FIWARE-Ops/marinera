@@ -19,13 +19,8 @@ realm:
       - https://orion-ld/
       - https://orion-ld-2/
     webOrigins: 
-      - https://grorion-lda/
-      - https://graorion-ld-2/
-
-domain: test
-uri:
-  grafana: test
-
+      - https://orion-ld/
+      - https://orion-ld-2/
 
 keycloak:
   replicaCount: 1
