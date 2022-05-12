@@ -34,6 +34,10 @@ keycloak:
     adminUser: fiwareAdmin
     adminPassword: fiwareAdmin
 
+  extraEnvVars:
+    - name: KEYCLOAK_EXTRA_ARGS
+      value: "-Dkeycloak.profile.feature.upload_scripts=enabled"  
+
   serviceAccount:
     create: true
   rbac:
@@ -53,6 +57,8 @@ keycloak:
     extraEnvVars:
       - name: IMPORT_FILES_LOCATIONS
         value: "/config/*"
+      - name: LOGGING_LEVEL_ROOT
+        value: "TRACE"
     podSecurityContext:
       enabled: false
     containerSecurityContext:
