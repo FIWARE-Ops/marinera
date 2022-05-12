@@ -70,6 +70,7 @@ jobs:
           cd fiware-platform/
           # render app of apps and apply it
           helm template . | oc -n labs-ci-cd apply -f -
+          cd ..
 
       - name: Check if all apps are healthy
         run: |
@@ -78,12 +79,12 @@ jobs:
           # counter to set a number of tries
           try=0
           tries=30
-          # get the list of apps in the namespace
-          apps=$(oc get applications.argoproj.io --no-headers -n labs-ci-cd -l destination-namespace=${{ steps.branch-name.outputs.current_branch }} | awk '{ print $3 }') 
-          appslen=$(wc -w <<< $apps)
+          # get the list of apps in the namespace 
+          componentsInstalled=$(grep "enabled: true" fiware-platform/values.yaml -c)
           # check if the condition is met
           while [ $healthy == 0 ] && [ $try -lt $tries ]
           do
+            apps=$(oc get applications.argoproj.io --no-headers -n labs-ci-cd -l destination-namespace=${{ steps.branch-name.outputs.current_branch }} | awk '{ print $3 }')
             healthyapps=0
             for app in $apps
             do
@@ -97,7 +98,7 @@ jobs:
               then  
                 healthyapps=$(( healthyapps + 1 ))
               fi
-              if [ $healthyapps == $appslen ]
+              if [ $healthyapps == $componentsInstalled ]
               then
                 healthy=1
               fi
