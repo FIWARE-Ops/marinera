@@ -8,10 +8,14 @@ on:
     branches:
       - 'feature-**'
 
+
+concurrency: 
+    group: ${{ github.ref }}
+    cancel-in-progress: false
+
 jobs:
 
   create:
-
     runs-on: ubuntu-latest
     steps:
 
@@ -42,14 +46,6 @@ jobs:
         run: |
           echo ${{ steps.branch-name.outputs.current_branch }}
 
-      - name: Create lock
-        uses: abatilo/github-action-locks@v1
-        with:
-          timeout: "30"
-          table: "github-action-locks"
-          key: "CI-Lock"
-          name: "${{ github.workflow }}-${{ steps.branch-name.outputs.current_branch }}" 
-
       - name: Create namespace
         if: ${{ github.event_name == 'create' }}
         run: |
@@ -65,7 +61,7 @@ jobs:
           sed -i'' -e 's/release: demo/release: ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
           # set the target revision to the current branch
           sed -i'' -e 's/branch: \&branch main/branch: \&branch ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
-
+      
       # See https://github.com/helm/chart-releaser-action/issues/6
       - name: Install Helm
         run: |
