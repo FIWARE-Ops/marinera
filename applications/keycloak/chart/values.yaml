@@ -29,7 +29,7 @@ keycloak:
         - use
   extraEnvVars:
     - name: KEYCLOAK_EXTRA_ARGS
-      value: "-Dkeycloak.profile.feature.upload_scripts=enabled -Dkeycloak.import=/config/realm.json"
+      value: " -Dkeycloak.import=/config/realm.json"
   extraVolumeMounts:
     - name: config
       mountPath: "/config"
