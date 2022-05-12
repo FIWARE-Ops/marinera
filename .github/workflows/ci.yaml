@@ -112,4 +112,9 @@ jobs:
           sed -i 's/demo/${{ steps.branch-name.outputs.current_branch }}/' values.yaml 
           # install the helm chart
           helm install e2e . -n ${{ steps.branch-name.outputs.current_branch }}
+          
+      - name: Uninstall the e2e helm chart
+        run: |
+          # uninstall the e2e helm chart
+          helm uninstall e2e -n ${{ steps.branch-name.outputs.current_branch }}
 
