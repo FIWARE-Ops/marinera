@@ -3,6 +3,8 @@ kind: Pod
 metadata:
   name: "{{ .Release.Name }}-marinera-e2e"
   annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   containers:
     - name: marinera-e2e
