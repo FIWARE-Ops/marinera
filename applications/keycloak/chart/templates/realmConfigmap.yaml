@@ -1,0 +1,1812 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  realm.json: |-
+    {
+      "id": "fiware-server",
+      "realm": "fiware-server",
+      "displayName": "Keycloak",
+      "displayNameHtml": "<div class=\"kc-logo-text\"><span>Keycloak</span></div>",
+      "roles": {
+        "realm": [
+          {
+            "id": "80813112-333d-472e-8c3e-32554cdd5051",
+            "name": "offline_access",
+            "description": "${role_offline-access}",
+            "composite": false,
+            "clientRole": false,
+            "containerId": "fiware-server",
+            "attributes": {}
+          },
+          {
+            "id": "de779ea4-2fc4-4b40-89f4-b64e2e8deba8",
+            "name": "user",
+            "description": "User privileges",
+            "composite": false,
+            "clientRole": false,
+            "containerId": "fiware-server",
+            "attributes": {}
+          },
+          {
+            "id": "27e5d39c-7158-42ed-b172-7830a36538e4",
+            "name": "people-manager",
+            "description": "People manager privileges",
+            "composite": false,
+            "clientRole": false,
+            "containerId": "fiware-server",
+            "attributes": {}
+          },
+          {
+            "id": "32052ed1-b3ce-4f34-9b50-ec10eeca356f",
+            "name": "uma_authorization",
+            "description": "${role_uma_authorization}",
+            "composite": false,
+            "clientRole": false,
+            "containerId": "fiware-server",
+            "attributes": {}
+          }
+        ],
+        "client": {
+          "realm-management": [
+            {
+              "id": "e983dc4c-56ac-4c42-9b56-44cae103836b",
+              "name": "view-events",
+              "description": "${role_view-events}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "fdc83fe1-950c-4a32-8a60-31a4f8550e9d",
+              "name": "query-realms",
+              "description": "${role_query-realms}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "0d4125bd-e108-49bf-bebc-2a7718fceec9",
+              "name": "manage-authorization",
+              "description": "${role_manage-authorization}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "9dd36159-3823-4498-80d4-5a0e1b8a5bae",
+              "name": "manage-users",
+              "description": "${role_manage-users}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "817d5208-b461-4e40-b118-c031e8074893",
+              "name": "view-clients",
+              "description": "${role_view-clients}",
+              "composite": true,
+              "composites": {
+                "client": {
+                  "realm-management": [
+                    "query-clients"
+                  ]
+                }
+              },
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "b51e7717-b3a0-4c13-a0ce-6dbf0d194eeb",
+              "name": "view-users",
+              "description": "${role_view-users}",
+              "composite": true,
+              "composites": {
+                "client": {
+                  "realm-management": [
+                    "query-users",
+                    "query-groups"
+                  ]
+                }
+              },
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "21c246ae-84f0-4d12-aeeb-5a303c5a3b18",
+              "name": "manage-clients",
+              "description": "${role_manage-clients}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "3161bf29-ff63-4df9-9415-9d9a4b890679",
+              "name": "view-realm",
+              "description": "${role_view-realm}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "15f66692-be29-40aa-a50f-ffce078132f2",
+              "name": "create-client",
+              "description": "${role_create-client}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "68b7b1dc-07c2-4e92-9d8b-24bfe443fee7",
+              "name": "manage-identity-providers",
+              "description": "${role_manage-identity-providers}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "36ca8e49-e03a-4354-957f-00a304a6d6ed",
+              "name": "view-authorization",
+              "description": "${role_view-authorization}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "06c15a85-d430-46e5-9e57-f4f952629682",
+              "name": "impersonation",
+              "description": "${role_impersonation}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "a20e423a-6511-46b6-8ded-a12123adff3d",
+              "name": "manage-realm",
+              "description": "${role_manage-realm}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "54eef22a-8714-4f0d-98ea-b4bda5360f94",
+              "name": "query-users",
+              "description": "${role_query-users}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "c9831722-ebb5-4187-906c-233db48c06f6",
+              "name": "realm-admin",
+              "description": "${role_realm-admin}",
+              "composite": true,
+              "composites": {
+                "client": {
+                  "realm-management": [
+                    "view-events",
+                    "query-realms",
+                    "manage-authorization",
+                    "manage-users",
+                    "view-clients",
+                    "view-users",
+                    "manage-clients",
+                    "view-realm",
+                    "create-client",
+                    "manage-identity-providers",
+                    "view-authorization",
+                    "impersonation",
+                    "manage-realm",
+                    "query-users",
+                    "manage-events",
+                    "query-clients",
+                    "view-identity-providers",
+                    "query-groups"
+                  ]
+                }
+              },
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "7e616e1f-c405-4a58-bd01-68885b29f5b4",
+              "name": "manage-events",
+              "description": "${role_manage-events}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "f19c5464-1435-4432-bf85-c1fc19ccaa99",
+              "name": "query-clients",
+              "description": "${role_query-clients}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "b7cccbae-cc51-4251-be85-6fa0810d9bd4",
+              "name": "view-identity-providers",
+              "description": "${role_view-identity-providers}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            },
+            {
+              "id": "8dd1fd6f-4e34-405e-8eb0-b85497b82718",
+              "name": "query-groups",
+              "description": "${role_query-groups}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e7b1a625-84db-48e8-8d3a-478bd1912f81",
+              "attributes": {}
+            }
+          ],
+          "security-admin-console": [],
+          "admin-cli": [],
+          "broker": [
+            {
+              "id": "6e4d4382-2148-414b-a486-0bb495da9c50",
+              "name": "read-token",
+              "description": "${role_read-token}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "e5532790-3d93-4428-9851-fe9051acc958",
+              "attributes": {}
+            }
+          ],
+          "orion-pep": [
+            {
+              "id": "0490c508-c8e5-4fc6-a101-7eb6cbf6e30a",
+              "name": "admin",
+              "description": "Los admin pueden acceder a los path /version /admin y al resto de paths",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "0fddfe5c-e4df-4cc2-9106-97c99fcc59f9",
+              "attributes": {}
+            },
+            {
+              "id": "8521d7a2-7ca8-43b2-91dd-5f63c4311770",
+              "name": "uma_protection",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "0fddfe5c-e4df-4cc2-9106-97c99fcc59f9",
+              "attributes": {}
+            },
+            {
+              "id": "536220bf-42bd-4454-9d25-0d0cad43032a",
+              "name": "producer",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "0fddfe5c-e4df-4cc2-9106-97c99fcc59f9",
+              "attributes": {}
+            },
+            {
+              "id": "1d67b3fd-7f6a-41a0-b9b6-781118facd57",
+              "name": "subscriptor",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "0fddfe5c-e4df-4cc2-9106-97c99fcc59f9",
+              "attributes": {}
+            },
+            {
+              "id": "dfef2564-c70e-470b-ac88-b89a624c8678",
+              "name": "consumer",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "0fddfe5c-e4df-4cc2-9106-97c99fcc59f9",
+              "attributes": {}
+            }
+          ],
+          "iotagent-pep": [
+            {
+              "name": "admin",
+              "description": "Los admin pueden acceder a los path /version /admin y al resto de paths",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
+              "attributes": {}
+            },
+            {
+              "name": "uma_protection",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
+              "attributes": {}
+            },
+            {
+              "name": "producer",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
+              "attributes": {}
+            },
+            {
+              "name": "consumer",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "14e52a86-5281-494f-b084-659ae1d4c57e",
+              "attributes": {}
+            }
+          ],
+          "quantumleap-pep": [
+            {
+              "name": "admin",
+              "description": "Los admin pueden acceder a los path /version /admin y al resto de paths",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
+              "attributes": {}
+            },
+            {
+              "name": "uma_protection",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
+              "attributes": {}
+            },
+            {
+              "name": "producer",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
+              "attributes": {}
+            },
+            {
+              "name": "consumer",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
+              "attributes": {}
+            }
+          ],
+          "account": [
+            {
+              "id": "6a93a2eb-2445-4090-9cdb-1f3686536697",
+              "name": "manage-account-links",
+              "description": "${role_manage-account-links}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "7075204c-a583-478d-a9ca-a303960587c1",
+              "attributes": {}
+            },
+            {
+              "id": "bc647bb9-8fa7-4931-91aa-8cc98fa02821",
+              "name": "view-profile",
+              "description": "${role_view-profile}",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "7075204c-a583-478d-a9ca-a303960587c1",
+              "attributes": {}
+            },
+            {
+              "id": "81eb1c5e-b4e5-42ae-9b41-54650f9d2812",
+              "name": "manage-account",
+              "description": "${role_manage-account}",
+              "composite": true,
+              "composites": {
+                "client": {
+                  "account": [
+                    "manage-account-links"
+                  ]
+                }
+              },
+              "clientRole": true,
+              "containerId": "7075204c-a583-478d-a9ca-a303960587c1",
+              "attributes": {}
+            }
+          ],
+          "fiware-login": [],
+          "grafana": [
+            {
+              "id": "8a37307b-97ad-4600-98dd-022601438a1d",
+              "name": "Admin",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "d74936be-9b6e-477d-8bb5-802ba95a5771",
+              "attributes": {}
+            },
+            {
+              "id": "336ae871-7ce7-48e2-83fe-d2333ce7653c",
+              "name": "Viewer",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "d74936be-9b6e-477d-8bb5-802ba95a5771",
+              "attributes": {}
+            },
+            {
+              "id": "4da454be-e808-4583-9225-4e08d3b8fce3",
+              "name": "Editor",
+              "composite": false,
+              "clientRole": true,
+              "containerId": "d74936be-9b6e-477d-8bb5-802ba95a5771",
+              "attributes": {}
+            }
+          ]
+        }
+      },
+      "groups": [
+        {
+          "id": "fc39b16f-907a-4be8-87ad-7a0c2fc77132",
+          "name": "admin",
+          "path": "/admin",
+          "attributes": {},
+          "realmRoles": [
+            "user"
+          ],
+          "clientRoles": {
+            "quantumleap-pep": [
+              "admin"
+            ],
+            "iotagent-pep": [
+              "admin"
+            ],
+            "orion-pep": [
+              "admin"
+            ]
+          },
+          "subGroups": []
+        },
+        {
+          "id": "73668860-5f42-4098-a93b-47c4a5755b13",
+          "name": "hopu",
+          "path": "/hopu",
+          "attributes": {
+            "fiware-service": [
+              "hopa",
+              "hopu"
+            ],
+            "fiware-servicepath": [
+              "/hopa",
+              "/hopu"
+            ]
+          },
+          "realmRoles": [
+            "uma_authorization"
+          ],
+          "clientRoles": {},
+          "subGroups": []
+        },
+        {
+          "id": "1670ff52-1f91-43ba-afd0-c1d110c60bb7",
+          "name": "pilotohopu-consumer",
+          "path": "/pilotohopu-consumer",
+          "attributes": {
+            "fiware-service": [
+              "pilotohopu"
+            ],
+            "fiware-servicepath": [
+              "/ambience"
+            ]
+          },
+          "realmRoles": [
+            "user"
+          ],
+          "clientRoles": {
+            "orion-pep": [
+              "consumer"
+            ]
+          },
+          "subGroups": []
+        },
+        {
+          "id": "ccb62f84-b64f-4d99-b170-6889496b6d6a",
+          "name": "grafana-admin",
+          "path": "/grafana-admin",
+          "attributes": {},
+          "realmRoles": [],
+          "clientRoles": {
+            "grafana": [
+              "Admin"
+            ]
+          },
+          "subGroups": []
+        },
+        {
+          "id": "a0e63fee-f0bc-4878-a5c3-a8886f8fdc40",
+          "name": "grafana-editor",
+          "path": "/grafana-editor",
+          "attributes": {},
+          "realmRoles": [],
+          "clientRoles": {
+            "grafana": [
+              "Editor"
+            ]
+          },
+          "subGroups": []
+        },
+        {
+          "id": "c8982627-c86f-4f9a-bd05-b86ac8c6548e",
+          "name": "grafana-viewer",
+          "path": "/grafana-viewer",
+          "attributes": {},
+          "realmRoles": [],
+          "clientRoles": {
+            "grafana": [
+              "Viewer"
+            ]
+          },
+          "subGroups": []
+        },
+        {
+          "id": "5f7001d8-620b-4336-a6c0-00060a113032",
+          "name": "test-test",
+          "path": "/test-test",
+          "attributes": {
+            "fiware-service": [
+              "Test"
+            ],
+            "fiware-servicepath": [
+              "/test"
+            ]
+          },
+          "realmRoles": [
+            "user"
+          ],
+          "clientRoles": {},
+          "subGroups": [
+            {
+              "id": "35d81450-74d0-4b93-bd32-7ab00b43fc9e",
+              "name": "test-test-subscriptor",
+              "path": "/test-test/test-test-subscriptor",
+              "attributes": {},
+              "realmRoles": [
+                "user"
+              ],
+              "clientRoles": {
+                "orion-pep": [
+                  "subscriptor"
+                ]
+              },
+              "subGroups": []
+            },
+            {
+              "id": "f62a0a8a-f469-4ad6-a15d-3b1f7c8020f9",
+              "name": "test-test-consumer",
+              "path": "/test-test/test-test-consumer",
+              "attributes": {},
+              "realmRoles": [
+                "user"
+              ],
+              "clientRoles": {
+                "quantumleap-pep": [
+                  "consumer"
+                ],
+                "iotagent-pep": [
+                  "consumer"
+                ],
+                "orion-pep": [
+                  "consumer"
+                ]
+              },
+              "subGroups": []
+            },
+            {
+              "id": "8aaddc73-7f50-41af-9623-3261cfbab6b0",
+              "name": "test-test-producer",
+              "path": "/test-test/test-test-producer",
+              "attributes": {},
+              "realmRoles": [
+                "user"
+              ],
+              "clientRoles": {
+                "quantumleap-pep": [
+                  "producer"
+                ],
+                "iotagent-pep": [
+                  "producer"
+                ],
+                "orion-pep": [
+                  "producer"
+                ]
+              },
+              "subGroups": []
+            }
+          ]
+        }
+      ],
+      "requiredCredentials": [
+        "password"
+      ],
+      "otpPolicyType": "totp",
+      "otpPolicyAlgorithm": "HmacSHA1",
+      "otpPolicyInitialCounter": 0,
+      "otpPolicyDigits": 6,
+      "otpPolicyLookAheadWindow": 1,
+      "otpPolicyPeriod": 30,
+      "otpSupportedApplications": [
+        "FreeOTP",
+        "Google Authenticator"
+      ],
+      "users": [
+        {
+          "id": "bf58fdb0-9b7b-4a3f-a3e9-de4c151634bc",
+          "createdTimestamp": 1576241386642,
+          "username": "admin-user",
+          "enabled": true,
+          "totp": false,
+          "emailVerified": false,
+          "email": "admin-user@hopu.eu",
+          "credentials": [
+            {
+              "type": "password",
+              "hashedSaltedValue": "6TwU59EkyFFHSFsK8KJPfv4ck+swws5hK/pZbU+9BBPlCBfDmrg8+tZV+mfuZzxmk69/wkgdHxBcARpJ4tz22Q==",
+              "salt": "bCxgN/2dJGBDz5yxamernw==",
+              "hashIterations": 27500,
+              "counter": 0,
+              "algorithm": "pbkdf2-sha256",
+              "digits": 0,
+              "period": 0,
+              "createdDate": 1576241393285,
+              "config": {}
+            }
+          ],
+          "disableableCredentialTypes": [
+            "password"
+          ],
+          "requiredActions": [],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "notBefore": 0,
+          "groups": [
+            "/admin",
+            "/grafana-admin"
+          ]
+        },
+        {
+          "id": "6c5004a4-c019-4615-8861-ef2d30a42775",
+          "createdTimestamp": 1615801558858,
+          "username": "consumer-user",
+          "enabled": true,
+          "totp": false,
+          "emailVerified": false,
+          "credentials": [
+            {
+              "type": "password",
+              "hashedSaltedValue": "SvigG0xx6AYzaLV7nfcR8Ie17SrbPL89vJojtfoPecARocUj5InbLGlEQb4xCXl2YzQOM5LoUe6RovmYEuSZCg==",
+              "salt": "p44ZILqaR64rSmJDUPnfIA==",
+              "hashIterations": 27500,
+              "counter": 0,
+              "algorithm": "pbkdf2-sha256",
+              "digits": 0,
+              "period": 0,
+              "createdDate": 1615801573342,
+              "config": {}
+            }
+          ],
+          "disableableCredentialTypes": [
+            "password"
+          ],
+          "requiredActions": [],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "notBefore": 0,
+          "groups": [
+            "/test-test/test-test-consumer"
+          ]
+        },
+        {
+          "id": "3fdd8119-ca1a-48dc-a66d-aaadcb4b4d2a",
+          "createdTimestamp": 1615801582098,
+          "username": "producer-user",
+          "enabled": true,
+          "totp": false,
+          "emailVerified": false,
+          "credentials": [
+            {
+              "type": "password",
+              "hashedSaltedValue": "3Mrh7FndS04O0y5D3s6GUsGz8nT1IfI38PQzD6vaYiWDtFaKRUhOsRSBIXOeBxmXFirWZhlTPiF8FTgNZHSq3g==",
+              "salt": "d6rYj0e7piR69SagYD9j4g==",
+              "hashIterations": 27500,
+              "counter": 0,
+              "algorithm": "pbkdf2-sha256",
+              "digits": 0,
+              "period": 0,
+              "createdDate": 1615801593279,
+              "config": {}
+            }
+          ],
+          "disableableCredentialTypes": [
+            "password"
+          ],
+          "requiredActions": [],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "notBefore": 0,
+          "groups": [
+            "/test-test/test-test-producer"
+          ]
+        },
+        {
+          "id": "15de6bd4-e116-455a-8406-68606276dff6",
+          "createdTimestamp": 1615801612460,
+          "username": "subscriptor-user",
+          "enabled": true,
+          "totp": false,
+          "emailVerified": false,
+          "credentials": [
+            {
+              "type": "password",
+              "hashedSaltedValue": "EQRtKfbtcOUJdhZ+AnRAkDEvg2VqsB7lJvxaBs7wlGFRctdMPuPrTzmGRIo/3Di5v42hUOwAMIDSr2whh6KTJw==",
+              "salt": "6iQXjpEt0uRg4JIAEEEgCw==",
+              "hashIterations": 27500,
+              "counter": 0,
+              "algorithm": "pbkdf2-sha256",
+              "digits": 0,
+              "period": 0,
+              "createdDate": 1615801635905,
+              "config": {}
+            }
+          ],
+          "disableableCredentialTypes": [
+            "password"
+          ],
+          "requiredActions": [],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "notBefore": 0,
+          "groups": [
+            "/test-test/test-test-subscriptor"
+          ]
+        }
+      ],
+      "clients": [
+        {
+          "id": "ca3d2942-8c67-4bea-9427-1089642c3a3c",
+          "clientId": "fiware-login",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "secret": "da756bc9-b059-4e0e-be39-93f49e4df999",
+          "redirectUris": [],
+          "webOrigins": [],
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": false,
+          "publicClient": true,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "attributes": {},
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1,
+          "defaultClientScopes": [
+            "web-origins",
+            "role_list",
+            "profile",
+            "roles",
+            "fiware-scope",
+            "email"
+          ],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ]
+        },
+        {
+          "id": "d74936be-9b6e-477d-8bb5-802ba95a5771",
+          "clientId": "grafana",
+          "rootUrl": "https://{{ domain }}{{ uri.grafana }}",
+          "adminUrl": "https://{{ domain }}{{ uri.grafana }}",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "secret": "secret",
+          "redirectUris": [
+            "https://{{ domain }}{{ uri.grafana }}/*",
+            "https://{{ domain }}/*"
+          ],
+          "webOrigins": [
+            "https://{{ domain }}{{ uri.grafana }}"
+          ],
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": false,
+          "publicClient": false,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "attributes": {
+            "saml.assertion.signature": "false",
+            "saml.multivalued.roles": "false",
+            "saml.force.post.binding": "false",
+            "saml.encrypt": "false",
+            "saml.server.signature": "false",
+            "saml.server.signature.keyinfo.ext": "false",
+            "exclude.session.state.from.auth.response": "false",
+            "saml_force_name_id_format": "false",
+            "saml.client.signature": "false",
+            "tls.client.certificate.bound.access.tokens": "false",
+            "saml.authnstatement": "false",
+            "display.on.consent.screen": "false",
+            "saml.onetimeuse.condition": "false"
+          },
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1,
+          "defaultClientScopes": [
+            "web-origins",
+            "role_list",
+            "profile",
+            "roles",
+            "email"
+          ],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ]
+        },
+        {
+          "id": "0fddfe5c-e4df-4cc2-9106-97c99fcc59f9",
+          "clientId": "orion-pep",
+          "adminUrl": "https://{{ domain }}/{{ uri.orion }}/*",
+          "baseUrl": "https://{{ domain }}/{{ uri.orion }}/*",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "secret": "978ad148-d99b-406d-83fc-578597290a79",
+          "redirectUris": [
+            "https://{{ domain }}/{{ uri.orion }}/*"
+          ],
+          "webOrigins": [
+            "https://{{ domain }}/{{ uri.orion }}/*"
+          ],
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": true,
+          "authorizationServicesEnabled": true,
+          "publicClient": false,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "attributes": {
+            "saml.assertion.signature": "false",
+            "saml.force.post.binding": "false",
+            "saml.multivalued.roles": "false",
+            "saml.encrypt": "false",
+            "saml.server.signature": "false",
+            "saml.server.signature.keyinfo.ext": "false",
+            "exclude.session.state.from.auth.response": "false",
+            "saml_force_name_id_format": "false",
+            "saml.client.signature": "false",
+            "tls.client.certificate.bound.access.tokens": "false",
+            "saml.authnstatement": "false",
+            "display.on.consent.screen": "false",
+            "saml.onetimeuse.condition": "false"
+          },
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1,
+          "protocolMappers": [
+            {
+              "id": "1c768825-3797-4236-9dff-3380da8e5f27",
+              "name": "Client ID",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientId",
+                "userinfo.token.claim": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientId",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "id": "f19985fb-b9ac-4255-993a-0d9a43b31fd2",
+              "name": "Client Host",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientHost",
+                "userinfo.token.claim": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientHost",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "id": "3a8f3d2a-8088-47fc-a38b-3d27b3ea303b",
+              "name": "Client IP Address",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientAddress",
+                "userinfo.token.claim": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientAddress",
+                "jsonType.label": "String"
+              }
+            }
+          ],
+          "defaultClientScopes": [
+            "web-origins",
+            "role_list",
+            "profile",
+            "roles",
+            "fiware-scope",
+            "email"
+          ],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ],
+          "authorizationSettings": {
+            "allowRemoteResourceManagement": true,
+            "policyEnforcementMode": "ENFORCING",
+            "resources": [
+              {
+                "name": "v1",
+                "type": "orion:context-management",
+                "ownerManagedAccess": false,
+                "displayName": "Context management v1 API",
+                "attributes": {},
+                "_id": "40127a74-4f7c-4d57-aa4f-2ac38f3b2f39",
+                "uris": [
+                  "/v1/*"
+                ]
+              },
+              {
+                "name": "v2",
+                "type": "orion:context-management",
+                "ownerManagedAccess": false,
+                "displayName": "Context management v2 API",
+                "attributes": {},
+                "_id": "12490976-8125-4c04-beee-bf97a5624854",
+                "uris": [
+                  "/v2/*"
+                ]
+              },
+              {
+                "name": "version",
+                "type": "orion:admin",
+                "ownerManagedAccess": false,
+                "displayName": "List version",
+                "attributes": {},
+                "_id": "29f2f2ab-3f33-480a-a2dc-a233db516dce",
+                "uris": [
+                  "/version"
+                ]
+              },
+              {
+                "name": "admin",
+                "type": "orion:admin",
+                "ownerManagedAccess": false,
+                "displayName": "Admin API",
+                "attributes": {},
+                "_id": "d7c2960f-d119-43cb-998c-08c217b0370f",
+                "uris": [
+                  "/admin/*"
+                ]
+              },
+              {
+                "name": "subscriptions",
+                "type": "orion:subscriptions",
+                "ownerManagedAccess": false,
+                "attributes": {},
+                "_id": "72cfd191-4d8d-43fa-9e51-683d965bdec3",
+                "uris": [
+                  "/v2/subscriptions",
+                  "/v2/subscriptions/*"
+                ]
+              }
+            ],
+            "policies": [
+              {
+                "id": "706a4589-1800-4ca8-964f-27fb67ba54f9",
+                "name": "fiware-headers context management v3",
+                "description": "",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].equals(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"orion-roles\") &&\n            ((fiware_scope[\"orion-roles\"].equals('consumer') && request_method === 'GET') ||\n             (fiware_scope[\"orion-roles\"].equals('producer') && ['POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1))\n            ) {\n                $evaluation.grant();\n        }            \n    }\n}"
+                }
+              },
+              {
+                "id": "9094834e-5d57-4188-b1b8-d96b4fb868bc",
+                "name": "consumer method",
+                "description": "Comprueba que el método de la petición es el permitido para un consumer (GET)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'GET') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "id": "09a0ce41-8220-4767-ab31-b4be3d169426",
+                "name": "consumer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"fiware-headers context management v3\",\"consumer method\",\"consumer user\"]"
+                }
+              },
+              {
+                "id": "a7a7fc09-996a-412a-af2d-977f2013d926",
+                "name": "consumer user",
+                "description": "Comprueba que el usuario tiene rol consumer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/consumer\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "295d47d2-f3b0-4b9c-98ae-cbffdee9efe2",
+                "name": "producer user",
+                "description": "Comprueba que el usuario tiene rol producer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/producer\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "d3460cdb-452d-46ed-8dae-07f7c4ca21dd",
+                "name": "producer method",
+                "description": "Comprueba que el método de la petición es el permitido para un producer (POST, PUT, PATCH o DELETE)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'POST' || method === 'PUT' || method === 'PATCH' || method === 'DELETE') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "id": "cc7814a3-d7ec-4e59-b144-185f5562b79e",
+                "name": "admin user",
+                "description": "Comprueba que el usuario tiene rol admin",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/admin\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "bce0e81b-13e2-4b48-8b73-9c9125e5b2ea",
+                "name": "subscriptor user",
+                "description": "Comprueba que el usuario tiene el rol subscriptor",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/subscriptor\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "357b2cfd-578c-4efd-8e9d-81204ecd3ebd",
+                "name": "producer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"producer user\",\"fiware-headers context management v3\",\"producer method\"]"
+                }
+              },
+              {
+                "id": "f431cdb2-3d58-4fb0-b9ea-512b9bf0be39",
+                "name": "fiware-headers subscriptions v3",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].contains(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"orion-roles\") &&\n            (fiware_scope[\"orion-roles\"].contains('subscriptor') && ['GET','POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1)) {\n            $evaluation.grant();\n        }            \n    }\n}"
+                }
+              },
+              {
+                "id": "bbb2bf8c-4e03-475a-9f9c-bb2a5727407e",
+                "name": "subscriptor policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"fiware-headers subscriptions v3\",\"subscriptor user\"]"
+                }
+              },
+              {
+                "id": "29ce03a5-bbba-4d5e-b69a-21230fba63c1",
+                "name": "context management resources",
+                "description": "Para acceder a la api de context management (/v1 o /v2) el usuario debe ser admin o consumer o producer",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "AFFIRMATIVE",
+                "config": {
+                  "defaultResourceType": "orion:context-management",
+                  "applyPolicies": "[\"producer policy v3\",\"consumer policy v3\",\"admin user\"]"
+                }
+              },
+              {
+                "id": "ea8f39d7-32a2-44fa-bd62-55c001b0c389",
+                "name": "admin resources",
+                "description": "Sólo los usuarios admin pueden acceder a los recursos orion:admin (/version y /admin)",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "defaultResourceType": "orion:admin",
+                  "applyPolicies": "[\"admin user\"]"
+                }
+              },
+              {
+                "id": "9f612449-4016-420e-a441-93c120d71e7c",
+                "name": "subscriptions",
+                "description": "Para acceder a la api de subscription el usuario debe ser subscriptor",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "AFFIRMATIVE",
+                "config": {
+                  "resources": "[\"subscriptions\"]",
+                  "applyPolicies": "[\"subscriptor policy v3\",\"admin user\"]"
+                }
+              }
+            ],
+            "scopes": []
+          }
+        },
+        {
+          "id": "14e52a86-5281-494f-b084-659ae1d4c57e",
+          "clientId": "iotagent-pep",
+          "rootUrl": "https://{{ domain }}/{{ uri.iotagent_json }}",
+          "adminUrl": "https://{{ domain }}/{{ uri.iotagent_json }}",
+          "secret": "1463a9ea-b27e-4197-a4fe-1acf91b13879",
+          "baseUrl": "",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "redirectUris": [
+            "https://{{ domain }}/{{ uri.iotagent_json }}/*"
+          ],
+          "webOrigins": [
+            "https://{{ domain }}/{{ uri.iotagent_json }}"
+          ],
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": true,
+          "authorizationServicesEnabled": true,
+          "publicClient": false,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "attributes": {
+            "saml.assertion.signature": "false",
+            "saml.multivalued.roles": "false",
+            "saml.force.post.binding": "false",
+            "saml.encrypt": "false",
+            "saml.server.signature": "false",
+            "saml.server.signature.keyinfo.ext": "false",
+            "exclude.session.state.from.auth.response": "false",
+            "saml_force_name_id_format": "false",
+            "saml.client.signature": "false",
+            "tls.client.certificate.bound.access.tokens": "false",
+            "saml.authnstatement": "false",
+            "display.on.consent.screen": "false",
+            "saml.onetimeuse.condition": "false"
+          },
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1,
+          "protocolMappers": [
+            {
+              "name": "Client ID",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientId",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientId",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "Client IP Address",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientAddress",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientAddress",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "Client Host",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientHost",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientHost",
+                "jsonType.label": "String"
+              }
+            }
+          ],
+          "defaultClientScopes": [
+            "web-origins",
+            "role_list",
+            "fiware-scope",
+            "profile",
+            "roles",
+            "email"
+          ],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ],
+          "access": {
+            "view": true,
+            "configure": true,
+            "manage": true
+          },
+          "authorizationSettings": {
+            "allowRemoteResourceManagement": true,
+            "policyEnforcementMode": "ENFORCING",
+            "resources": [
+              {
+                "name": "iot",
+                "type": "iotagent:iot",
+                "ownerManagedAccess": false,
+                "attributes": {},
+                "_id": "9e20678a-fcbb-4e79-924b-da3faff53b76",
+                "uris": [
+                  "/iot/*"
+                ]
+              },
+              {
+                "name": "admin",
+                "type": "iotagent:admin",
+                "ownerManagedAccess": false,
+                "displayName": "Admin API",
+                "attributes": {},
+                "_id": "581f893e-2caf-48ad-abed-42adf9f5f194",
+                "uris": [
+                  "/admin/*"
+                ]
+              }
+            ],
+            "policies": [
+              {
+                "id": "10c18385-0652-45af-9726-422353462e43",
+                "name": "producer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"producer method\",\"producer user\",\"fiware-headers context management v3\"]"
+                }
+              },
+              {
+                "id": "ad476271-f352-437c-be48-3a5688a1d8a9",
+                "name": "producer user",
+                "description": "Comprueba que el usuario tiene rol producer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"iotagent-pep/producer\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "62654ad9-cd4f-4fbe-bd0d-0c26b35c75fe",
+                "name": "producer method",
+                "description": "Comprueba que el método de la petición es el permitido para un producer (POST, PUT, PATCH o DELETE)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'POST' || method === 'PUT' || method === 'PATCH' || method === 'DELETE') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "id": "ad0c2128-d98f-4760-a45b-012fd2758214",
+                "name": "consumer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"consumer method\",\"fiware-headers context management v3\",\"consumer user\"]"
+                }
+              },
+              {
+                "id": "75690e4d-0baf-43c5-90d1-eb048d490613",
+                "name": "consumer user",
+                "description": "Comprueba que el usuario tiene rol consumer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"iotagent-pep/consumer\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "848e3cf7-5130-4748-8601-1d319c76309e",
+                "name": "consumer method",
+                "description": "Comprueba que el método de la petición es el permitido para un consumer (GET)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'GET') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "id": "15332f68-5f2d-4777-a29e-33db8d779b87",
+                "name": "admin user",
+                "description": "Comprueba que el usuario tiene rol admin",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"iotagent-pep/admin\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "6f3c02a7-313a-42d1-b73a-e3b310706aa3",
+                "name": "fiware-headers context management v3",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].equals(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"iota-roles\") &&\n            ((fiware_scope[\"iota-roles\"].equals('consumer') && request_method === 'GET') ||\n             (fiware_scope[\"iota-roles\"].equals('producer') && ['POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1))\n            ) {\n                $evaluation.grant();\n        }            \n    }\n}"
+                }
+              },
+              {
+                "id": "6ec84c88-9116-467e-9ca8-6ab7bc6fcfbe",
+                "name": "iot api",
+                "description": "Para acceder a la api iot (/iot) el usuario debe ser admin o consumer o producer",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "AFFIRMATIVE",
+                "config": {
+                  "defaultResourceType": "iotagent:iot",
+                  "applyPolicies": "[\"producer policy v3\",\"admin user\",\"consumer policy v3\"]"
+                }
+              },
+              {
+                "id": "7f12bb58-3386-4f08-bd50-1cf1723fe8b6",
+                "name": "admin resources",
+                "description": "Sólo los usuarios admin pueden acceder a los recursos iotagent:admin",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "defaultResourceType": "iotagent:admin",
+                  "applyPolicies": "[\"admin user\"]"
+                }
+              }
+            ],
+            "scopes": []
+          }
+        },
+        {
+          "id": "1176757e-a168-49ef-93b3-fec5f9ae5b03",
+          "clientId": "quantumleap-pep",
+          "rootUrl": "https://{{ domain }}/{{ uri.quantumleap }}",
+          "adminUrl": "https://{{ domain }}/{{ uri.quantumleap }}",
+          "secret": "1463a9ea-b27e-4197-a4fe-1acf91b13863",
+          "baseUrl": "",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "redirectUris": [
+            "https://{{ domain }}/{{ uri.quantumleap }}/*"
+          ],
+          "webOrigins": [
+            "https://{{ domain }}/{{ uri.quantumleap }}"
+          ],
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": true,
+          "authorizationServicesEnabled": true,
+          "publicClient": false,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "attributes": {
+            "saml.assertion.signature": "false",
+            "saml.multivalued.roles": "false",
+            "saml.force.post.binding": "false",
+            "saml.encrypt": "false",
+            "saml.server.signature": "false",
+            "saml.server.signature.keyinfo.ext": "false",
+            "exclude.session.state.from.auth.response": "false",
+            "saml_force_name_id_format": "false",
+            "saml.client.signature": "false",
+            "tls.client.certificate.bound.access.tokens": "false",
+            "saml.authnstatement": "false",
+            "display.on.consent.screen": "false",
+            "saml.onetimeuse.condition": "false"
+          },
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1,
+          "protocolMappers": [
+            {
+              "name": "Client ID",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientId",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientId",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "Client IP Address",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientAddress",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientAddress",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "Client Host",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usersessionmodel-note-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.session.note": "clientHost",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "clientHost",
+                "jsonType.label": "String"
+              }
+            }
+          ],
+          "defaultClientScopes": [
+            "web-origins",
+            "role_list",
+            "fiware-scope",
+            "profile",
+            "roles",
+            "email"
+          ],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ],
+          "access": {
+            "view": true,
+            "configure": true,
+            "manage": true
+          },
+          "authorizationSettings": {
+            "allowRemoteResourceManagement": true,
+            "policyEnforcementMode": "ENFORCING",
+            "resources": [
+              {
+                "name": "health",
+                "type": "ql:admin",
+                "ownerManagedAccess": false,
+                "displayName": "health",
+                "attributes": {},
+                "_id": "a5d8cef6-5aac-423d-8935-616f4d0a3403",
+                "uris": [
+                  "/health"
+                ]
+              },
+              {
+                "name": "config",
+                "type": "ql:admin",
+                "ownerManagedAccess": false,
+                "displayName": "config",
+                "attributes": {},
+                "_id": "b62c8192-a97a-4ac6-9896-d714bf449122",
+                "uris": [
+                  "/config"
+                ]
+              },
+              {
+                "name": "version",
+                "type": "ql:admin",
+                "ownerManagedAccess": false,
+                "displayName": "version",
+                "attributes": {},
+                "_id": "b23f1c54-a78c-4afd-940c-4e1e86f81bf6",
+                "uris": [
+                  "/version"
+                ]
+              },
+              {
+                "name": "v2",
+                "type": "ql:v2",
+                "ownerManagedAccess": false,
+                "displayName": "v2",
+                "attributes": {},
+                "_id": "93f6f81b-db87-454a-9aac-aaef0e907ecd",
+                "uris": [
+                  "/v2*",
+                  "/v2/*"
+                ]
+              }
+            ],
+            "policies": [
+              {
+                "id": "8f70c4ed-b232-4aba-93cb-f6ea8abe41b0",
+                "name": "fiware-headers context management v3",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].equals(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"ql-roles\") &&\n            ((fiware_scope[\"ql-roles\"].equals('consumer') && request_method === 'GET') ||\n             (fiware_scope[\"ql-roles\"].equals('producer') && ['POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1))\n            ) {\n                $evaluation.grant();\n        }            \n    }\n}"
+                }
+              },
+              {
+                "id": "44177424-37ed-4ba2-878e-6b2e1aed5837",
+                "name": "admin user",
+                "description": "Comprueba que el usuario tiene rol admin",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"quantumleap-pep/admin\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "1f57386b-4562-441f-a1e4-1f99b5747dc8",
+                "name": "consumer method",
+                "description": "Comprueba que el método de la petición es el permitido para un consumer (GET)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'GET') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "id": "615aca03-a148-4939-86b8-ca9e89169d97",
+                "name": "consumer user",
+                "description": "Comprueba que el usuario tiene rol consumer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"quantumleap-pep/consumer\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "8447ebb2-f343-4463-8d0d-029e4faae9c7",
+                "name": "consumer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"consumer method\",\"consumer user\",\"fiware-headers context management v3\"]"
+                }
+              },
+              {
+                "id": "6536fd12-5f0b-4709-ab44-9addbb4c712f",
+                "name": "producer method",
+                "description": "Comprueba que el método de la petición es el permitido para un producer (POST, PUT, PATCH o DELETE)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'POST' || method === 'PUT' || method === 'PATCH' || method === 'DELETE') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "id": "7f9c95a4-b490-4fde-a15c-9c1b28058283",
+                "name": "producer user",
+                "description": "Comprueba que el usuario tiene rol producer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"quantumleap-pep/producer\",\"required\":true}]"
+                }
+              },
+              {
+                "id": "2b68f934-8d96-43ef-a228-25fe64633d0e",
+                "name": "producer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"fiware-headers context management v3\",\"producer method\",\"producer user\"]"
+                }
+              },
+              {
+                "id": "d146814f-5ef9-4f8c-b3e9-d9eb81884a35",
+                "name": "admin resources",
+                "description": "Sólo los usuarios admin pueden acceder a los recursos ql:admin",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "defaultResourceType": "ql:admin",
+                  "applyPolicies": "[\"admin user\"]"
+                }
+              },
+              {
+                "id": "cc294fd6-4ec2-465f-9630-9594c73dbb7d",
+                "name": "v2 api",
+                "description": "Para acceder a la api v2 (/v2) el usuario debe ser admin, consumer o producer",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "AFFIRMATIVE",
+                "config": {
+                  "defaultResourceType": "ql:v2",
+                  "applyPolicies": "[\"admin user\",\"consumer policy v3\",\"producer policy v3\"]"
+                }
+              }
+            ],
+            "scopes": []
+          }
+        }
+      ],
+      "clientScopes": [
+        {
+          "id": "782879f3-8eb9-49fd-9d78-404c105f219f",
+          "name": "fiware-scope",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "false"
+          },
+          "protocolMappers": [
+            {
+              "id": "c494ec61-2743-4e1c-9370-45ef64ab941b",
+              "name": "fiware-service",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "aggregate.attrs": "true",
+                "userinfo.token.claim": "true",
+                "multivalued": "true",
+                "user.attribute": "fiware-service",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "fiware-service",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "id": "947ba0f0-a6d9-4d18-9ec5-963d5e040d32",
+              "name": "fiware-servicepath mapper",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "aggregate.attrs": "true",
+                "userinfo.token.claim": "true",
+                "multivalued": "true",
+                "user.attribute": "fiware-servicepath",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "fiware-servicepath",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "id": "49a3939b-5eb0-4a87-843b-d17b9aed0480",
+              "name": "fiware-scope-object",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-script-based-protocol-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "multivalued": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "fiware-scope-object",
+                "script": "/**\n * Available variables: \n * user - the current user\n * realm - the current realm\n * token - the current token\n * userSession - the current userSession\n * keycloakSession - the current userSession\n */\n\nvar ArrayList = Java.type(\"java.util.ArrayList\");\nvar fiware_scope = new ArrayList();\n\nvar forEach = Array.prototype.forEach;\n\nvar fiware_service;\nvar fiware_servicepath;\nvar fiware_entry;\nvar roles = '';\n\nvar orion_client = realm.getClientByClientId('orion-pep');\nvar iotagent_pep = realm.getClientByClientId('iotagent-pep');\nvar quantumleap_client = realm.getClientByClientId('quantumleap-pep');\n\nfiware_service = user.getFirstAttribute('fiware-service');\nfiware_servicepath = user.getFirstAttribute('fiware-servicepath');\nif (fiware_service !== null && fiware_servicepath !== null) {\n\n    fiware_entry = {\n        \"fiware-service\": fiware_service,\n        \"fiware-servicepath\": fiware_servicepath\n    };\n\n    var roleModels = user.getClientRoleMappings(orion_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(orion_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"orion-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(iotagent_pep);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(iotagent_pep).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"iota-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(quantumleap_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(quantumleap_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"ql-roles\"] = roles;\n        roles = '';\n    }\n\n    fiware_scope.add(JSON.stringify(fiware_entry));\n    fiware_entry = {};\n}\n\nforEach.call(\n    user.getGroups().toArray(),\n    function (group) {\n\n        fiware_service = group.getFirstAttribute('fiware-service');\n        fiware_servicepath = group.getFirstAttribute('fiware-servicepath');\n        if (fiware_service !== null && fiware_servicepath !== null) {\n            fiware_entry = {\n                \"fiware-service\": fiware_service,\n                \"fiware-servicepath\": fiware_servicepath\n            };\n\n            var roleModels = group.getClientRoleMappings(orion_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(orion_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"orion-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(iotagent_pep);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(iotagent_pep).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"iota-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(quantumleap_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(quantumleap_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"ql-roles\"] = roles;\n                roles = '';\n            }\n\n            fiware_scope.add(JSON.stringify(fiware_entry));\n            fiware_entry = {};\n        } else if (group.getParentId() !== null) {\n            fiware_service = group.getParent().getFirstAttribute('fiware-service');\n            fiware_servicepath = group.getParent().getFirstAttribute('fiware-servicepath');\n\n            if (fiware_service !== null && fiware_servicepath !== null) {\n                fiware_entry = {\n                    \"fiware-service\": fiware_service,\n                    \"fiware-servicepath\": fiware_servicepath\n                };\n                var subroleModels = group.getClientRoleMappings(orion_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(orion_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"orion-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(iotagent_pep);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(iotagent_pep).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"iota-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(quantumleap_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(quantumleap_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"ql-roles\"] = roles;\n                    roles = '';\n                }\n\n                fiware_scope.add(JSON.stringify(fiware_entry));\n                fiware_entry = '';\n            }\n        }\n    }\n);\n\nexports = fiware_scope;"
+              }
+            },
+            {
+              "id": "d0f7f729-b29c-4de7-b4cd-654013cb5214",
+              "name": "fiware-scope",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-script-based-protocol-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "multivalued": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "fiware-scope",
+                "script": "/**\n * Available variables: \n * user - the current user\n * realm - the current realm\n * token - the current token\n * userSession - the current userSession\n * keycloakSession - the current userSession\n */\n\n\n//insert your code here...\nvar ArrayList = Java.type(\"java.util.ArrayList\");\nvar fiware_scope = new ArrayList();\n\nvar forEach = Array.prototype.forEach;\n\nvar fiware_service;\nvar fiware_servicepath;\nvar fiware_entry;\nvar roles = '';\n\nvar orion_client = realm.getClientByClientId('orion-pep');\nvar iotagent_pep = realm.getClientByClientId('iotagent-pep');\nvar quantumleap_client = realm.getClientByClientId('quantumleap-pep');\n\nfiware_service = user.getFirstAttribute('fiware-service');\nfiware_servicepath = user.getFirstAttribute('fiware-servicepath');\nif (fiware_service !== null && fiware_servicepath !== null) {\n\n    fiware_entry = {\n        \"fiware-service\": fiware_service,\n        \"fiware-servicepath\": fiware_servicepath\n    };\n\n    var roleModels = user.getClientRoleMappings(orion_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(orion_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"orion-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(iotagent_pep);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(iotagent_pep).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"iota-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(quantumleap_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(quantumleap_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"ql-roles\"] = roles;\n        roles = '';\n    }\n\n    fiware_scope.add(JSON.stringify(fiware_entry));\n    fiware_entry = {};\n}\n\nforEach.call(\n    user.getGroups().toArray(),\n    function (group) {\n\n        fiware_service = group.getFirstAttribute('fiware-service');\n        fiware_servicepath = group.getFirstAttribute('fiware-servicepath');\n        if (fiware_service !== null && fiware_servicepath !== null) {\n            fiware_entry = {\n                \"fiware-service\": fiware_service,\n                \"fiware-servicepath\": fiware_servicepath\n            };\n\n            var roleModels = group.getClientRoleMappings(orion_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(orion_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"orion-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(iotagent_pep);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(iotagent_pep).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"iota-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(quantumleap_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(quantumleap_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"ql-roles\"] = roles;\n                roles = '';\n            }\n\n            fiware_scope.add(JSON.stringify(fiware_entry));\n            fiware_entry = {};\n        } else if (group.getParentId() !== null) {\n            fiware_service = group.getParent().getFirstAttribute('fiware-service');\n            fiware_servicepath = group.getParent().getFirstAttribute('fiware-servicepath');\n\n            if (fiware_service !== null && fiware_servicepath !== null) {\n                fiware_entry = fiware_service + \";\" + fiware_servicepath;\n\n                var subroleModels = group.getClientRoleMappings(orion_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(orion_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"orion-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(iotagent_pep);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(iotagent_pep).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"iota-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(quantumleap_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(quantumleap_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"ql-roles\"] = roles;\n                    roles = '';\n                }\n\n                fiware_scope.add(fiware_entry);\n                fiware_entry = '';\n            }\n        }\n    }\n);\n\nexports = fiware_scope;"
+              }
+            }
+          ]
+        }
+      ],
+      "defaultDefaultClientScopes": [
+        "role_list",
+        "profile",
+        "email",
+        "roles",
+        "web-origins"
+      ],
+        "defaultOptionalClientScopes": [
+          "offline_access",
+          "address",
+          "phone",
+          "microprofile-jwt"
+        ]
+    }
+    

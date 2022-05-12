@@ -22,17 +22,26 @@ keycloak:
         - securitycontextconstraints
         verbs:
         - use
-
-  keycloakConfigCli:
-    enabled: true
-    containerSecurityContext:
-      enabled: false
-    podSecurityContext:
-      enabled: false
-
+  extraEnvVars:
+    - name: KEYCLOAK_EXTRA_ARGS
+      value: "-Dkeycloak.import=/config/realm.json"
+  extraVolumeMounts:
+    - name: config
+      mountPath: "/config"
+      readOnly: true
+  extraVolumes:
+    - name: config
+      configMap:
+        name: keycloak-realm
+        items:
+        - key: "realm.json"
+          path: "realm.json"
   # ingress:
   #   enabled: true
   #   hostname: ""
+
+  service:
+    type: ClusterIP
 
 
   postgresql:
