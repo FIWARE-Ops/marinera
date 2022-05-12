@@ -2,15 +2,17 @@
 
 nameOverride: "keycloak"
 
-replicaCount: 1
+keycloak:
+  replicaCount: 1
 
-podSecurityContext:
-  enabled: false
-containerSecurityContext:
-  enabled: false
+  podSecurityContext:
+    enabled: false
+  containerSecurityContext:
+    enabled: false
 
-auth:
-  adminUser: fiwareAdmin
-  adminPassword: fiwareAdmin
+  auth:
+    adminUser: fiwareAdmin
+    adminPassword: fiwareAdmin
 
-
+  postgresql:
+  
