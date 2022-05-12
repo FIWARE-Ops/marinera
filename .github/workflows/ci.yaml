@@ -42,6 +42,14 @@ jobs:
         run: |
           echo ${{ steps.branch-name.outputs.current_branch }}
 
+      - name: Create lock
+        uses: abatilo/github-action-locks@v1
+        with:
+          timeout: "30"
+          table: "github-action-locks"
+          key: "CI-Lock"
+          name: "${{ github.workflow }}-${{ steps.branch-name.outputs.current_branch }}" 
+
       - name: Create namespace
         if: ${{ github.event_name == 'create' }}
         run: |
