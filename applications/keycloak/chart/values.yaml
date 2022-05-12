@@ -23,6 +23,13 @@ keycloak:
         verbs:
         - use
 
+  keycloakConfigCli:
+    enabled: true
+    containerSecurityContext:
+      enabled: false
+    podSecurityContext:
+      enabled: false
+
   # ingress:
   #   enabled: true
   #   hostname: ""
