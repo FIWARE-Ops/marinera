@@ -50,6 +50,11 @@ keycloak:
 
   keycloakConfigCli:
     enabled: true
+    extraEnvVars:
+      - name: LOGGING_LEVEL_ROOT
+        value: TRACE
+      - name: IMPORT_FILES_LOCATIONS
+        value: "/config/*"
     containerSecurityContext:
       enabled: false
     podSecurityContext:
