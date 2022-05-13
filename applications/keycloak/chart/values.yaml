@@ -51,6 +51,8 @@ keycloak:
   keycloakConfigCli:
     enabled: true
     extraEnvVars:
+      - name: IMPORT_VALIDATE
+        value: "true"
       - name: LOGGING_LEVEL_ROOT
         value: TRACE
       - name: IMPORT_FILES_LOCATIONS
