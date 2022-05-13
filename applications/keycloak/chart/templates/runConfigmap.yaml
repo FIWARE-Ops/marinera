@@ -38,6 +38,5 @@ data:
     if am_i_root; then
         exec gosu "$KEYCLOAK_DAEMON_USER" /bin/bash -c "${start_command[@]}"
     else
-        exec /bin/bash -c "/opt/bitnami/keycloak/bin/kc.sh import --file /opt/bitnami/keycloak/data/import/fiware-server-realm.json"
-        exec /bin/bash -c "${start_command[@]}"
+        exec /bin/bash -c "/opt/bitnami/keycloak/bin/kc.sh import --file /opt/bitnami/keycloak/data/import/fiware-server-realm.json && ${start_command[@]}"
     fi
