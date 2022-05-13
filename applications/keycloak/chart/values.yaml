@@ -23,7 +23,6 @@ realm:
       - https://orion-ld-2/
 
 keycloak:
-  extraStartupArgs: "--log-level=TRACE"
 
   replicaCount: 1
   image:
@@ -34,6 +33,8 @@ keycloak:
     adminPassword: fiwareAdmin
 
   extraEnvVars:
+    - name: KEYCLOAK_LOG_LEVEL
+      value: DEBUG
     - name: KEYCLOAK_EXTRA_ARGS
       value: "-Dkeycloak.profile.feature.upload_scripts=enabled"  
 
