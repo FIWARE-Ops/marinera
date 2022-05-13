@@ -1,0 +1,14 @@
+{{- if .Values.broker.logging.jsonformat }}
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "orion.fullname" . }}-jsonconvert-script
+  labels:
+    {{ include "orion.labels" . | nindent 4 }}
+data:
+  logstojson.sh: |
+    #!/bin/bash
+    while read line; do
+    echo "$line" |  sed -r 's/\s\|\s([a-z]+=)/", "\1/g'  | sed -r 's/([a-z]+)\=/\1":"/g' | sed -e 's/^/\{"/'  | sed -e 's/$/"\}/'
+    done
+{{- end }}

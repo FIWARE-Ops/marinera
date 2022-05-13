@@ -101,7 +101,7 @@
             "hide": false,
             "metricColumn": "none",
             "rawQuery": true,
-            "rawSql": "SELECT *\nFROM mttest.etairqualityobserved\n\n",
+            "rawSql": "SELECT *\nFROM etairqualityobserved\n\n",
             "refId": "B",
             "select": [
             [
@@ -181,8 +181,8 @@
         "queryFilter": "",
         "refId": "A",
         "selectedRequest": "Entities",
-        "service": "AirQuality",
-        "servicePath": "/alcantarilla",
+        "service": "",
+        "servicePath": "/",
         "target": "select metric",
         "type": "table"
         }

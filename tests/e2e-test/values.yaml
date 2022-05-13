@@ -1,0 +1,11 @@
+image: quay.io/fiware/marinera-e2e:0.0.3
+
+imagePullPolicy: IfNotPresent
+
+remoteDriverUrl: http://selenium-hub:4444
+grafanaUrl: https://grafana-demo.apps.fiware-spain.emea-1.rht-labs.com
+brokerUrl: http://orion-ld:1026
+quantumLeapUrl: http://quantumleap-quantumleap:8668
+testTenant: test-tenant
+grafanaUsername: fiwareAdmin
+grafanaPassword: fiwareAdmin
