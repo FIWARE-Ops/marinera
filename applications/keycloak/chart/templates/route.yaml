@@ -1,0 +1,13 @@
+{{- if .Values.route.enabled -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "keycloak.fullname" . }}
+spec:
+  to:
+    kind: Service
+    name: {{ include "keycloak.fullname" . }}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+{{- end }}

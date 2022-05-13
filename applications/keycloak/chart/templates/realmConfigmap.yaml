@@ -1,0 +1,1016 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "keycloak.name" . }}-realm
+data:
+  realm.json: |-
+    {
+      "id": "fiware-server",
+      "realm": "fiware-server",
+      "displayName": "Keycloak",
+      "displayNameHtml": "<div class=\"kc-logo-text\"><span>Keycloak</span></div>",
+      "enabled": true,
+      "roles": {
+        "realm": [
+          {
+            "name": "user",
+            "description": "User privileges",
+            "composite": false,
+            "clientRole": false,
+            "containerId": "fiware-server",
+            "attributes": {}
+          }
+        ],
+        "client": {
+          "orion-pep": [
+            {
+              "name": "admin",
+              "description": "A",
+              "composite": false,
+              "clientRole": true
+            },
+            {
+              "name": "uma_protection",
+              "composite": false,
+              "clientRole": true
+            },
+            {
+              "name": "producer",
+              "composite": false,
+              "clientRole": true
+            },
+            {
+              "name": "subscriptor",
+              "composite": false,
+              "clientRole": true
+            },
+            {
+              "name": "consumer",
+              "composite": false,
+              "clientRole": true
+            }
+          ],
+          "fiware-login": [],
+          "grafana": [
+            {
+              "name": "Admin",
+              "composite": false,
+              "clientRole": true
+            },
+            {
+              "name": "Viewer",
+              "composite": false,
+              "clientRole": true
+            },
+            {
+              "name": "Editor",
+              "composite": false,
+              "clientRole": true
+            }
+          ]
+        }
+      },
+      "groups": [
+        {
+          "name": "admin",
+          "path": "/admin",
+          "realmRoles": [
+            "user"
+          ],
+          "clientRoles": {
+            "orion-pep": [
+              "admin"
+            ]
+          }
+        },
+        {
+          "name": "grafana-admin",
+          "path": "/grafana-admin",
+          "clientRoles": {
+            "grafana": [
+              "Admin"
+            ]
+          }
+        },
+        {
+          "name": "grafana-editor",
+          "path": "/grafana-editor",
+          "clientRoles": {
+            "grafana": [
+              "Editor"
+            ]
+          }
+        },
+        {
+          "name": "grafana-viewer",
+          "path": "/grafana-viewer",
+          "clientRoles": {
+            "grafana": [
+              "Viewer"
+            ]
+          }
+        },
+        {
+          "name": "test-test",
+          "path": "/test-test",
+          "attributes": {
+            "fiware-service": [
+              "Test"
+            ],
+            "fiware-servicepath": [
+              "/test"
+            ]
+          },
+          "realmRoles": [
+            "user"
+          ],
+          "subGroups": [
+            {
+              "name": "test-test-subscriptor",
+              "path": "/test-test/test-test-subscriptor",
+              "clientRoles": {
+                "orion-pep": [
+                  "subscriptor"
+                ]
+              }
+            },
+            {
+              "name": "test-test-consumer",
+              "path": "/test-test/test-test-consumer",
+              "clientRoles": {
+                "orion-pep": [
+                  "consumer"
+                ]
+              }
+            },
+            {
+              "name": "test-test-producer",
+              "path": "/test-test/test-test-producer",
+              "clientRoles": {
+                "orion-pep": [
+                  "producer"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "users": [
+        {
+          "username": "admin-user",
+          "enabled": true,
+          "email": "admin-user@hopu.eu",
+          "credentials": [
+            {
+              "type": "password",
+              "value": "admin-user"
+            }
+          ],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "groups": [
+            "/admin",
+            "/grafana-admin"
+          ]
+        },
+        {
+          "username": "consumer-user",
+          "enabled": true,
+          "credentials": [
+            {
+              "type": "password",
+              "value": "consumer-user"
+            }
+          ],
+          "disableableCredentialTypes": [
+            "password"
+          ],
+          "requiredActions": [],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "notBefore": 0,
+          "groups": [
+            "/test-test/test-test-consumer"
+          ]
+        },
+        {
+          "username": "producer-user",
+          "enabled": true,
+          "credentials": [
+            {
+              "type": "password",
+              "value": "producer-user"
+            }
+          ],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "groups": [
+            "/test-test/test-test-producer"
+          ]
+        },
+        {
+          "username": "subscriptor-user",
+          "enabled": true,
+          "credentials": [
+            {
+              "type": "password",
+              "value": "subscriptor-user"
+            }
+          ],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "groups": [
+            "/test-test/test-test-subscriptor"
+          ]
+        }
+      ],
+      "clients": [
+        {
+          "clientId": "fiware-login",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "secret": "da756bc9-b059-4e0e-be39-93f49e4df999",
+          "redirectUris": [],
+          "webOrigins": [],
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": false,
+          "publicClient": true,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "attributes": {},
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1
+        },
+        {
+          "clientId": "grafana",
+          "rootUrl": "{{ .Values.realm.grafana.rootUrl }}",
+          "adminUrl": "{{ .Values.realm.grafana.adminUrl }}",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "secret": "secret",
+          "redirectUris": {{ .Values.realm.grafana.redirectUris | toPrettyJson | indent 12 }},
+          "webOrigins": {{ .Values.realm.grafana.webOrigins | toPrettyJson | indent 12 }},
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": false,
+          "publicClient": false,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1
+        },
+        {
+          "clientId": "orion-pep",
+          "adminUrl": "{{ .Values.realm.orionPep.adminUrl }}",
+          "baseUrl": "{{ .Values.realm.orionPep.baseUrl }}",
+          "surrogateAuthRequired": false,
+          "enabled": true,
+          "clientAuthenticatorType": "client-secret",
+          "secret": "978ad148-d99b-406d-83fc-578597290a79",
+          "redirectUris": {{ .Values.realm.orionPep.redirectUris | toPrettyJson | indent 12 }},
+          "webOrigins": {{ .Values.realm.orionPep.webOrigins | toPrettyJson | indent 12}},
+          "notBefore": 0,
+          "bearerOnly": false,
+          "consentRequired": false,
+          "standardFlowEnabled": true,
+          "implicitFlowEnabled": false,
+          "directAccessGrantsEnabled": true,
+          "serviceAccountsEnabled": true,
+          "authorizationServicesEnabled": true,
+          "publicClient": false,
+          "frontchannelLogout": false,
+          "protocol": "openid-connect",
+          "authenticationFlowBindingOverrides": {},
+          "fullScopeAllowed": true,
+          "nodeReRegistrationTimeout": -1,
+          "authorizationSettings": {
+            "allowRemoteResourceManagement": true,
+            "policyEnforcementMode": "ENFORCING",
+            "resources": [
+              {
+                "name": "v1",
+                "type": "orion:context-management",
+                "ownerManagedAccess": false,
+                "displayName": "Context management v1 API",
+                "uris": [
+                  "/v1/*"
+                ]
+              },
+              {
+                "name": "v2",
+                "type": "orion:context-management",
+                "ownerManagedAccess": false,
+                "displayName": "Context management v2 API",
+                "uris": [
+                  "/v2/*"
+                ]
+              },
+              {
+                "name": "version",
+                "type": "orion:admin",
+                "ownerManagedAccess": false,
+                "displayName": "List version",
+                "uris": [
+                  "/version"
+                ]
+              },
+              {
+                "name": "admin",
+                "type": "orion:admin",
+                "ownerManagedAccess": false,
+                "displayName": "Admin API",
+                "uris": [
+                  "/admin/*"
+                ]
+              },
+              {
+                "name": "subscriptions",
+                "type": "orion:subscriptions",
+                "ownerManagedAccess": false,
+                "uris": [
+                  "/v2/subscriptions",
+                  "/v2/subscriptions/*"
+                ]
+              }
+            ],
+            "policies": [
+              {
+                "name": "fiware-headers context management v3",
+                "description": "",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].equals(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"orion-roles\") &&\n            ((fiware_scope[\"orion-roles\"].equals('consumer') && request_method === 'GET') ||\n             (fiware_scope[\"orion-roles\"].equals('producer') && ['POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1))\n            ) {\n                $evaluation.grant();\n        }            \n    }\n}"
+                }
+              },
+              {
+                "name": "consumer method",
+                "description": "Comprueba que el método de la petición es el permitido para un consumer (GET)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'GET') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "name": "consumer user",
+                "description": "Comprueba que el usuario tiene rol consumer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/consumer\",\"required\":true}]"
+                }
+              },
+
+              {
+                "name": "consumer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"fiware-headers context management v3\",\"consumer method\",\"consumer user\"]"
+                }
+              },
+
+              {
+                "name": "producer user",
+                "description": "Comprueba que el usuario tiene rol producer",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/producer\",\"required\":true}]"
+                }
+              },
+              {
+                "name": "producer method",
+                "description": "Comprueba que el método de la petición es el permitido para un producer (POST, PUT, PATCH o DELETE)",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nvar method = attributes.getValue('http.method').asString(0);\n\nif (method === 'POST' || method === 'PUT' || method === 'PATCH' || method === 'DELETE') {\n    $evaluation.grant();\n}\n"
+                }
+              },
+              {
+                "name": "producer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"producer user\",\"fiware-headers context management v3\",\"producer method\"]"
+                }
+              },
+
+              {
+                "name": "admin user",
+                "description": "Comprueba que el usuario tiene rol admin",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/admin\",\"required\":true}]"
+                }
+              },
+
+              {
+                "name": "fiware-headers subscriptions v3",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].contains(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"orion-roles\") &&\n            (fiware_scope[\"orion-roles\"].contains('subscriptor') && ['GET','POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1)) {\n            $evaluation.grant();\n        }            \n    }\n}"
+                }
+              },
+
+              {
+                "name": "subscriptor user",
+                "description": "Comprueba que el usuario tiene el rol subscriptor",
+                "type": "role",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "roles": "[{\"id\":\"orion-pep/subscriptor\",\"required\":true}]"
+                }
+              },
+              {
+                "name": "subscriptor policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"fiware-headers subscriptions v3\",\"subscriptor user\"]"
+                }
+              },
+
+              {
+                "name": "context management resources",
+                "description": "Para acceder a la api de context management (/v1 o /v2) el usuario debe ser admin o consumer o producer",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "AFFIRMATIVE",
+                "config": {
+                  "defaultResourceType": "orion:context-management",
+                  "applyPolicies": "[\"producer policy v3\",\"consumer policy v3\",\"admin user\"]"
+                }
+              },
+              {
+                "name": "admin resources",
+                "description": "Sólo los usuarios admin pueden acceder a los recursos orion:admin (/version y /admin)",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "defaultResourceType": "orion:admin",
+                  "applyPolicies": "[\"admin user\"]"
+                }
+              },
+              {
+                "name": "subscriptions",
+                "description": "Para acceder a la api de subscription el usuario debe ser subscriptor",
+                "type": "resource",
+                "logic": "POSITIVE",
+                "decisionStrategy": "AFFIRMATIVE",
+                "config": {
+                  "resources": "[\"subscriptions\"]",
+                  "applyPolicies": "[\"subscriptor policy v3\",\"admin user\"]"
+                }
+              }
+            ],
+            "scopes": []
+          },
+          "defaultClientScopes": [
+            "web-origins",
+            "profile",
+            "roles",
+            "fiware-scope",
+            "email"
+          ],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ]
+        }
+      ],
+      "clientScopes": [
+        {
+          "name": "fiware-scope",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "false"
+          },
+          "protocolMappers": [
+            {
+              "name": "fiware-scope-object",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-script-based-protocol-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "multivalued": "true",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "fiware-scope-object",
+                "script": "/**\n * Available variables: \n * user - the current user\n * realm - the current realm\n * token - the current token\n * userSession - the current userSession\n * keycloakSession - the current userSession\n */\n\nvar ArrayList = Java.type(\"java.util.ArrayList\");\nvar fiware_scope = new ArrayList();\n\nvar forEach = Array.prototype.forEach;\n\nvar fiware_service;\nvar fiware_servicepath;\nvar fiware_entry;\nvar roles = '';\n\nvar orion_client = realm.getClientByClientId('orion-pep');\n\nfiware_service = user.getFirstAttribute('fiware-service');\nfiware_servicepath = user.getFirstAttribute('fiware-servicepath');\nif (fiware_service !== null && fiware_servicepath !== null) {\n\n    fiware_entry = {\n        \"fiware-service\": fiware_service,\n        \"fiware-servicepath\": fiware_servicepath\n    };\n\n    var roleModels = user.getClientRoleMappings(orion_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(orion_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"orion-roles\"] = roles;\n        roles = '';\n    }\n\n    fiware_scope.add(JSON.stringify(fiware_entry));\n    fiware_entry = {};\n}\n\nforEach.call(\n    user.getGroups().toArray(),\n    function (group) {\n\n        fiware_service = group.getFirstAttribute('fiware-service');\n        fiware_servicepath = group.getFirstAttribute('fiware-servicepath');\n        if (fiware_service !== null && fiware_servicepath !== null) {\n            fiware_entry = {\n                \"fiware-service\": fiware_service,\n                \"fiware-servicepath\": fiware_servicepath\n            };\n\n            var roleModels = group.getClientRoleMappings(orion_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(orion_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"orion-roles\"] = roles;\n                roles = '';\n            }\n\n            fiware_scope.add(JSON.stringify(fiware_entry));\n            fiware_entry = {};\n        } else if (group.getParentId() !== null) {\n            fiware_service = group.getParent().getFirstAttribute('fiware-service');\n            fiware_servicepath = group.getParent().getFirstAttribute('fiware-servicepath');\n\n            if (fiware_service !== null && fiware_servicepath !== null) {\n                fiware_entry = {\n                    \"fiware-service\": fiware_service,\n                    \"fiware-servicepath\": fiware_servicepath\n                };\n                var subroleModels = group.getClientRoleMappings(orion_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(orion_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"orion-roles\"] = roles;\n                    roles = '';\n                }\n\n                fiware_scope.add(JSON.stringify(fiware_entry));\n                fiware_entry = '';\n            }\n        }\n    }\n);\n\nexports = fiware_scope;"
+              }
+            }
+          ]
+        },
+        {
+          "name": "offline_access",
+          "description": "OpenID Connect built-in scope: offline_access",
+          "protocol": "openid-connect",
+          "attributes": {
+            "consent.screen.text": "${offlineAccessScopeConsentText}",
+            "display.on.consent.screen": "true"
+          }
+        },
+        {
+          "name": "microprofile-jwt",
+          "description": "Microprofile - JWT built-in scope",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "false"
+          },
+          "protocolMappers": [
+            {
+              "name": "upn",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-property-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "username",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "upn",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "groups",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-realm-role-mapper",
+              "consentRequired": false,
+              "config": {
+                "multivalued": "true",
+                "user.attribute": "foo",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "groups",
+                "jsonType.label": "String"
+              }
+            }
+          ]
+        },
+        {
+          "name": "roles",
+          "description": "OpenID Connect scope for add user roles to the access token",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "false",
+            "display.on.consent.screen": "true",
+            "consent.screen.text": "${rolesScopeConsentText}"
+          },
+          "protocolMappers": [
+            {
+              "name": "audience resolve",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-audience-resolve-mapper",
+              "consentRequired": false,
+              "config": {}
+            },
+            {
+              "name": "client roles",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-client-role-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.attribute": "foo",
+                "access.token.claim": "true",
+                "claim.name": "resource_access.${client_id}.roles",
+                "jsonType.label": "String",
+                "multivalued": "true"
+              }
+            },
+            {
+              "name": "realm roles",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-realm-role-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.attribute": "foo",
+                "access.token.claim": "true",
+                "claim.name": "realm_access.roles",
+                "jsonType.label": "String",
+                "multivalued": "true"
+              }
+            }
+          ]
+        },
+        {
+          "name": "email",
+          "description": "OpenID Connect built-in scope: email",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true",
+            "consent.screen.text": "${emailScopeConsentText}"
+          },
+          "protocolMappers": [
+            {
+              "name": "email",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-property-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "email",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "email",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "email verified",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-property-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "emailVerified",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "email_verified",
+                "jsonType.label": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "name": "phone",
+          "description": "OpenID Connect built-in scope: phone",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true",
+            "consent.screen.text": "${phoneScopeConsentText}"
+          },
+          "protocolMappers": [
+            {
+              "name": "phone number verified",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "phoneNumberVerified",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "phone_number_verified",
+                "jsonType.label": "boolean"
+              }
+            },
+            {
+              "name": "phone number",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "phoneNumber",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "phone_number",
+                "jsonType.label": "String"
+              }
+            }
+          ]
+        },
+        {
+          "name": "address",
+          "description": "OpenID Connect built-in scope: address",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true",
+            "consent.screen.text": "${addressScopeConsentText}"
+          },
+          "protocolMappers": [
+            {
+              "name": "address",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-address-mapper",
+              "consentRequired": false,
+              "config": {
+                "user.attribute.formatted": "formatted",
+                "user.attribute.country": "country",
+                "user.attribute.postal_code": "postal_code",
+                "userinfo.token.claim": "true",
+                "user.attribute.street": "street",
+                "id.token.claim": "true",
+                "user.attribute.region": "region",
+                "access.token.claim": "true",
+                "user.attribute.locality": "locality"
+              }
+            }
+          ]
+        },
+        {
+          "name": "role_list",
+          "description": "SAML role list",
+          "protocol": "saml",
+          "attributes": {
+            "consent.screen.text": "${samlRoleListScopeConsentText}",
+            "display.on.consent.screen": "true"
+          },
+          "protocolMappers": [
+            {
+              "name": "role list",
+              "protocol": "saml",
+              "protocolMapper": "saml-role-list-mapper",
+              "consentRequired": false,
+              "config": {
+                "single": "false",
+                "attribute.nameformat": "Basic",
+                "attribute.name": "Role"
+              }
+            }
+          ]
+        },
+        {
+          "name": "profile",
+          "description": "OpenID Connect built-in scope: profile",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "true",
+            "display.on.consent.screen": "true",
+            "consent.screen.text": "${profileScopeConsentText}"
+          },
+          "protocolMappers": [
+            {
+              "name": "zoneinfo",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "zoneinfo",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "zoneinfo",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "nickname",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "nickname",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "nickname",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "profile",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "profile",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "profile",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "full name",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-full-name-mapper",
+              "consentRequired": false,
+              "config": {
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "userinfo.token.claim": "true"
+              }
+            },
+            {
+              "name": "birthdate",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "birthdate",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "birthdate",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "family name",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-property-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "lastName",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "family_name",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "picture",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "picture",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "picture",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "website",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "website",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "website",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "locale",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "locale",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "locale",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "username",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-property-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "username",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "preferred_username",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "given name",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-property-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "firstName",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "given_name",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "updated at",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "updatedAt",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "updated_at",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "middle name",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "middleName",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "middle_name",
+                "jsonType.label": "String"
+              }
+            },
+            {
+              "name": "gender",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-usermodel-attribute-mapper",
+              "consentRequired": false,
+              "config": {
+                "userinfo.token.claim": "true",
+                "user.attribute": "gender",
+                "id.token.claim": "true",
+                "access.token.claim": "true",
+                "claim.name": "gender",
+                "jsonType.label": "String"
+              }
+            }
+          ]
+        },
+        {
+          "name": "web-origins",
+          "description": "OpenID Connect scope for add allowed web origins to the access token",
+          "protocol": "openid-connect",
+          "attributes": {
+            "include.in.token.scope": "false",
+            "display.on.consent.screen": "false",
+            "consent.screen.text": ""
+          },
+          "protocolMappers": [
+            {
+              "name": "allowed web origins",
+              "protocol": "openid-connect",
+              "protocolMapper": "oidc-allowed-origins-mapper",
+              "consentRequired": false,
+              "config": {}
+            }
+          ]
+        }
+      ],
+      "defaultDefaultClientScopes": [
+        "roles",
+        "role_list",
+        "email",
+        "web-origins",
+        "profile"
+      ],
+      "defaultOptionalClientScopes": [
+        "microprofile-jwt",
+        "phone",
+        "address",
+        "offline_access"
+      ]
+    }

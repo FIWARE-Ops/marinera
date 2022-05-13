@@ -46,3 +46,19 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
+
+  - name: keycloak
+    enabled: true
+    source_path: applications/keycloak/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+
+  - name: keycloak-pep
+    enabled: true
+    source_path: applications/keycloak-pep/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
