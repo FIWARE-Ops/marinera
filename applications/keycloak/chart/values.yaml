@@ -23,6 +23,8 @@ realm:
       - https://orion-ld-2/
 
 keycloak:
+  extraStartupArgs: "--log-level=TRACE"
+
   replicaCount: 1
   image:
     debug: true
