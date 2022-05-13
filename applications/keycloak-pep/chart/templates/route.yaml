@@ -7,4 +7,7 @@ spec:
   to:
     kind: Service
     name: {{ include "keycloak-pep.fullname" . }}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
 {{- end }}
