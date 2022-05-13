@@ -5,9 +5,9 @@ metadata:
 data:
   realm.json: |-
     {
-    "id": "fiware-server",
-    "realm": "fiware-server",
-    "displayName": "Keycloak",
+      "id": "fiware-server",
+      "realm": "fiware-server",
+      "displayName": "Keycloak",
       "displayNameHtml": "<div class=\"kc-logo-text\"><span>Keycloak</span></div>",
       "enabled": true,
       "roles": {
@@ -393,6 +393,7 @@ data:
                   "roles": "[{\"id\":\"orion-pep/consumer\",\"required\":true}]"
                 }
               },
+
               {
                 "name": "consumer policy v3",
                 "type": "aggregate",
@@ -402,6 +403,7 @@ data:
                   "applyPolicies": "[\"fiware-headers context management v3\",\"consumer method\",\"consumer user\"]"
                 }
               },
+
               {
                 "name": "producer user",
                 "description": "Comprueba que el usuario tiene rol producer",
@@ -423,6 +425,16 @@ data:
                 }
               },
               {
+                "name": "producer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"producer user\",\"fiware-headers context management v3\",\"producer method\"]"
+                }
+              },
+
+              {
                 "name": "admin user",
                 "description": "Comprueba que el usuario tiene rol admin",
                 "type": "role",
@@ -432,6 +444,17 @@ data:
                   "roles": "[{\"id\":\"orion-pep/admin\",\"required\":true}]"
                 }
               },
+
+              {
+                "name": "fiware-headers subscriptions v3",
+                "type": "js",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].contains(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"orion-roles\") &&\n            (fiware_scope[\"orion-roles\"].contains('subscriptor') && ['GET','POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1)) {\n            $evaluation.grant();\n        }            \n    }\n}"
+                }
+              },
+
               {
                 "name": "subscriptor user",
                 "description": "Comprueba que el usuario tiene el rol subscriptor",
@@ -443,24 +466,6 @@ data:
                 }
               },
               {
-                "name": "producer policy v3",
-                "type": "aggregate",
-                "logic": "POSITIVE",
-                "decisionStrategy": "UNANIMOUS",
-                "config": {
-                  "applyPolicies": "[\"producer user\",\"fiware-headers context management v3\",\"producer method\"]"
-                }
-              },
-              {
-                "name": "fiware-headers subscriptions v3",
-                "type": "js",
-                "logic": "POSITIVE",
-                "decisionStrategy": "UNANIMOUS",
-                "config": {
-                  "code": "var context = $evaluation.getContext();\nvar attributes = context.getAttributes();\nvar identity = context.getIdentity();\n \nif (attributes.exists('http.fiware-service') && \n    attributes.exists('http.fiware-servicepath') && \n    attributes.exists('http.method') && \n    identity.getAttributes().exists('fiware-scope-object')) {\n\n    var request_service = attributes.getValue('http.fiware-service').asString(0);\n    var request_servicepath = attributes.getValue('http.fiware-servicepath').asString(0);\n    var request_method = attributes.getValue('http.method').asString(0);\n    \n    var fiware_scopes = identity.getAttributes().getValue('fiware-scope-object');\n    var fiware_scope;\n\n    var index;\n    for (index = 0; index < fiware_scopes.size(); index++) {\n        fiware_scope = JSON.parse(fiware_scopes.asString(index));\n\n        if (fiware_scope.hasOwnProperty(\"fiware-service\") &&\n            fiware_scope[\"fiware-service\"] === request_service && \n            fiware_scope.hasOwnProperty(\"fiware-servicepath\") &&\n            fiware_scope[\"fiware-servicepath\"].contains(request_servicepath) && \n            fiware_scope.hasOwnProperty(\"orion-roles\") &&\n            (fiware_scope[\"orion-roles\"].contains('subscriptor') && ['GET','POST', 'PUT', 'PATCH', 'DELETE'].indexOf(request_method) != -1)) {\n            $evaluation.grant();\n        }            \n    }\n}"
-                }
-              },
-              {
                 "name": "subscriptor policy v3",
                 "type": "aggregate",
                 "logic": "POSITIVE",
@@ -469,6 +474,7 @@ data:
                   "applyPolicies": "[\"fiware-headers subscriptions v3\",\"subscriptor user\"]"
                 }
               },
+
               {
                 "name": "context management resources",
                 "description": "Para acceder a la api de context management (/v1 o /v2) el usuario debe ser admin o consumer o producer",
@@ -504,7 +510,20 @@ data:
               }
             ],
             "scopes": []
-          }
+          },
+          "defaultClientScopes": [
+            "web-origins",
+            "profile",
+            "roles",
+            "fiware-scope",
+            "email"
+          ],
+          "optionalClientScopes": [
+            "address",
+            "phone",
+            "offline_access",
+            "microprofile-jwt"
+          ]
         }
       ],
       "clientScopes": [
@@ -517,38 +536,6 @@ data:
           },
           "protocolMappers": [
             {
-              "name": "fiware-service",
-              "protocol": "openid-connect",
-              "protocolMapper": "oidc-usermodel-attribute-mapper",
-              "consentRequired": false,
-              "config": {
-                "aggregate.attrs": "true",
-                "userinfo.token.claim": "true",
-                "multivalued": "true",
-                "user.attribute": "fiware-service",
-                "id.token.claim": "true",
-                "access.token.claim": "true",
-                "claim.name": "fiware-service",
-                "jsonType.label": "String"
-              }
-            },
-            {
-              "name": "fiware-servicepath mapper",
-              "protocol": "openid-connect",
-              "protocolMapper": "oidc-usermodel-attribute-mapper",
-              "consentRequired": false,
-              "config": {
-                "aggregate.attrs": "true",
-                "userinfo.token.claim": "true",
-                "multivalued": "true",
-                "user.attribute": "fiware-servicepath",
-                "id.token.claim": "true",
-                "access.token.claim": "true",
-                "claim.name": "fiware-servicepath",
-                "jsonType.label": "String"
-              }
-            },
-            {
               "name": "fiware-scope-object",
               "protocol": "openid-connect",
               "protocolMapper": "oidc-script-based-protocol-mapper",
@@ -559,21 +546,7 @@ data:
                 "id.token.claim": "true",
                 "access.token.claim": "true",
                 "claim.name": "fiware-scope-object",
-                "script": "/**\n * Available variables: \n * user - the current user\n * realm - the current realm\n * token - the current token\n * userSession - the current userSession\n * keycloakSession - the current userSession\n */\n\nvar ArrayList = Java.type(\"java.util.ArrayList\");\nvar fiware_scope = new ArrayList();\n\nvar forEach = Array.prototype.forEach;\n\nvar fiware_service;\nvar fiware_servicepath;\nvar fiware_entry;\nvar roles = '';\n\nvar orion_client = realm.getClientByClientId('orion-pep');\nvar iotagent_pep = realm.getClientByClientId('iotagent-pep');\nvar quantumleap_client = realm.getClientByClientId('quantumleap-pep');\n\nfiware_service = user.getFirstAttribute('fiware-service');\nfiware_servicepath = user.getFirstAttribute('fiware-servicepath');\nif (fiware_service !== null && fiware_servicepath !== null) {\n\n    fiware_entry = {\n        \"fiware-service\": fiware_service,\n        \"fiware-servicepath\": fiware_servicepath\n    };\n\n    var roleModels = user.getClientRoleMappings(orion_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(orion_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"orion-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(iotagent_pep);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(iotagent_pep).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"iota-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(quantumleap_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(quantumleap_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"ql-roles\"] = roles;\n        roles = '';\n    }\n\n    fiware_scope.add(JSON.stringify(fiware_entry));\n    fiware_entry = {};\n}\n\nforEach.call(\n    user.getGroups().toArray(),\n    function (group) {\n\n        fiware_service = group.getFirstAttribute('fiware-service');\n        fiware_servicepath = group.getFirstAttribute('fiware-servicepath');\n        if (fiware_service !== null && fiware_servicepath !== null) {\n            fiware_entry = {\n                \"fiware-service\": fiware_service,\n                \"fiware-servicepath\": fiware_servicepath\n            };\n\n            var roleModels = group.getClientRoleMappings(orion_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(orion_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"orion-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(iotagent_pep);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(iotagent_pep).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"iota-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(quantumleap_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(quantumleap_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"ql-roles\"] = roles;\n                roles = '';\n            }\n\n            fiware_scope.add(JSON.stringify(fiware_entry));\n            fiware_entry = {};\n        } else if (group.getParentId() !== null) {\n            fiware_service = group.getParent().getFirstAttribute('fiware-service');\n            fiware_servicepath = group.getParent().getFirstAttribute('fiware-servicepath');\n\n            if (fiware_service !== null && fiware_servicepath !== null) {\n                fiware_entry = {\n                    \"fiware-service\": fiware_service,\n                    \"fiware-servicepath\": fiware_servicepath\n                };\n                var subroleModels = group.getClientRoleMappings(orion_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(orion_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"orion-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(iotagent_pep);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(iotagent_pep).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"iota-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(quantumleap_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(quantumleap_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"ql-roles\"] = roles;\n                    roles = '';\n                }\n\n                fiware_scope.add(JSON.stringify(fiware_entry));\n                fiware_entry = '';\n            }\n        }\n    }\n);\n\nexports = fiware_scope;"
-              }
-            },
-            {
-              "name": "fiware-scope",
-              "protocol": "openid-connect",
-              "protocolMapper": "oidc-script-based-protocol-mapper",
-              "consentRequired": false,
-              "config": {
-                "userinfo.token.claim": "true",
-                "multivalued": "true",
-                "id.token.claim": "true",
-                "access.token.claim": "true",
-                "claim.name": "fiware-scope",
-                "script": "/**\n * Available variables: \n * user - the current user\n * realm - the current realm\n * token - the current token\n * userSession - the current userSession\n * keycloakSession - the current userSession\n */\n\n\n//insert your code here...\nvar ArrayList = Java.type(\"java.util.ArrayList\");\nvar fiware_scope = new ArrayList();\n\nvar forEach = Array.prototype.forEach;\n\nvar fiware_service;\nvar fiware_servicepath;\nvar fiware_entry;\nvar roles = '';\n\nvar orion_client = realm.getClientByClientId('orion-pep');\nvar iotagent_pep = realm.getClientByClientId('iotagent-pep');\nvar quantumleap_client = realm.getClientByClientId('quantumleap-pep');\n\nfiware_service = user.getFirstAttribute('fiware-service');\nfiware_servicepath = user.getFirstAttribute('fiware-servicepath');\nif (fiware_service !== null && fiware_servicepath !== null) {\n\n    fiware_entry = {\n        \"fiware-service\": fiware_service,\n        \"fiware-servicepath\": fiware_servicepath\n    };\n\n    var roleModels = user.getClientRoleMappings(orion_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(orion_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"orion-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(iotagent_pep);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(iotagent_pep).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"iota-roles\"] = roles;\n        roles = '';\n    }\n    roleModels = user.getClientRoleMappings(quantumleap_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(quantumleap_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"ql-roles\"] = roles;\n        roles = '';\n    }\n\n    fiware_scope.add(JSON.stringify(fiware_entry));\n    fiware_entry = {};\n}\n\nforEach.call(\n    user.getGroups().toArray(),\n    function (group) {\n\n        fiware_service = group.getFirstAttribute('fiware-service');\n        fiware_servicepath = group.getFirstAttribute('fiware-servicepath');\n        if (fiware_service !== null && fiware_servicepath !== null) {\n            fiware_entry = {\n                \"fiware-service\": fiware_service,\n                \"fiware-servicepath\": fiware_servicepath\n            };\n\n            var roleModels = group.getClientRoleMappings(orion_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(orion_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"orion-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(iotagent_pep);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(iotagent_pep).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"iota-roles\"] = roles;\n                roles = '';\n            }\n            roleModels = group.getClientRoleMappings(quantumleap_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(quantumleap_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"ql-roles\"] = roles;\n                roles = '';\n            }\n\n            fiware_scope.add(JSON.stringify(fiware_entry));\n            fiware_entry = {};\n        } else if (group.getParentId() !== null) {\n            fiware_service = group.getParent().getFirstAttribute('fiware-service');\n            fiware_servicepath = group.getParent().getFirstAttribute('fiware-servicepath');\n\n            if (fiware_service !== null && fiware_servicepath !== null) {\n                fiware_entry = fiware_service + \";\" + fiware_servicepath;\n\n                var subroleModels = group.getClientRoleMappings(orion_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(orion_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"orion-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(iotagent_pep);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(iotagent_pep).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"iota-roles\"] = roles;\n                    roles = '';\n                }\n                subroleModels = group.getClientRoleMappings(quantumleap_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(quantumleap_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"ql-roles\"] = roles;\n                    roles = '';\n                }\n\n                fiware_scope.add(fiware_entry);\n                fiware_entry = '';\n            }\n        }\n    }\n);\n\nexports = fiware_scope;"
+                "script": "/**\n * Available variables: \n * user - the current user\n * realm - the current realm\n * token - the current token\n * userSession - the current userSession\n * keycloakSession - the current userSession\n */\n\nvar ArrayList = Java.type(\"java.util.ArrayList\");\nvar fiware_scope = new ArrayList();\n\nvar forEach = Array.prototype.forEach;\n\nvar fiware_service;\nvar fiware_servicepath;\nvar fiware_entry;\nvar roles = '';\n\nvar orion_client = realm.getClientByClientId('orion-pep');\n\nfiware_service = user.getFirstAttribute('fiware-service');\nfiware_servicepath = user.getFirstAttribute('fiware-servicepath');\nif (fiware_service !== null && fiware_servicepath !== null) {\n\n    fiware_entry = {\n        \"fiware-service\": fiware_service,\n        \"fiware-servicepath\": fiware_servicepath\n    };\n\n    var roleModels = user.getClientRoleMappings(orion_client);\n    if (roleModels.size() > 0) {\n        forEach.call(\n            user.getClientRoleMappings(orion_client).toArray(),\n            function (role) {\n                roles = roles + role.getName() + \",\";\n            }\n        );\n        roles = roles.substring(0, roles.length - 1);\n        fiware_entry[\"orion-roles\"] = roles;\n        roles = '';\n    }\n\n    fiware_scope.add(JSON.stringify(fiware_entry));\n    fiware_entry = {};\n}\n\nforEach.call(\n    user.getGroups().toArray(),\n    function (group) {\n\n        fiware_service = group.getFirstAttribute('fiware-service');\n        fiware_servicepath = group.getFirstAttribute('fiware-servicepath');\n        if (fiware_service !== null && fiware_servicepath !== null) {\n            fiware_entry = {\n                \"fiware-service\": fiware_service,\n                \"fiware-servicepath\": fiware_servicepath\n            };\n\n            var roleModels = group.getClientRoleMappings(orion_client);\n            if (roleModels.size() > 0) {\n                forEach.call(\n                    group.getClientRoleMappings(orion_client).toArray(),\n                    function (role) {\n                        roles = roles + role.getName() + \",\";\n                    }\n                );\n                roles = roles.substring(0, roles.length - 1);\n                fiware_entry[\"orion-roles\"] = roles;\n                roles = '';\n            }\n\n            fiware_scope.add(JSON.stringify(fiware_entry));\n            fiware_entry = {};\n        } else if (group.getParentId() !== null) {\n            fiware_service = group.getParent().getFirstAttribute('fiware-service');\n            fiware_servicepath = group.getParent().getFirstAttribute('fiware-servicepath');\n\n            if (fiware_service !== null && fiware_servicepath !== null) {\n                fiware_entry = {\n                    \"fiware-service\": fiware_service,\n                    \"fiware-servicepath\": fiware_servicepath\n                };\n                var subroleModels = group.getClientRoleMappings(orion_client);\n                if (subroleModels.size() > 0) {\n                    forEach.call(\n                        group.getClientRoleMappings(orion_client).toArray(),\n                        function (role) {\n                            roles = roles + role.getName() + \",\";\n                        }\n                    );\n                    roles = roles.substring(0, roles.length - 1);\n                    fiware_entry[\"orion-roles\"] = roles;\n                    roles = '';\n                }\n\n                fiware_scope.add(JSON.stringify(fiware_entry));\n                fiware_entry = '';\n            }\n        }\n    }\n);\n\nexports = fiware_scope;"
               }
             }
           ]
