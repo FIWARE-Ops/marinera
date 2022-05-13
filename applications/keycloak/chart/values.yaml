@@ -34,7 +34,7 @@ keycloak:
     - name: KEYCLOAK_LOG_LEVEL
       value: DEBUG
     - name: KEYCLOAK_EXTRA_ARGS
-      value: "-Dkeycloak.migration.action=import,-Dkeycloak.migration.provider=singleFile,-Dkeycloak.migration.file=/opt/bitnami/keycloak/conf/fiware-server-realm.json"
+      value: "-Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/bitnami/keycloak/conf/fiware-server-realm.json"
 
   serviceAccount:
     create: true
