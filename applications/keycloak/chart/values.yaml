@@ -54,11 +54,6 @@ keycloak:
     podSecurityContext:
       enabled: false
     existingConfigmap: keycloak-realm
-    podLabels:
-      marinera/platform: fiware
-      marinera/component:	security
-      marinera/subcomponent: auth
-      marinera/product: keycloak
 
   extraVolumeMounts:
     - name: profiles
@@ -72,9 +67,15 @@ keycloak:
   
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
-      value: "WARN"
-    - name: KEYCLOAK_EXTRA_ARGS
-      value: -Dkeycloak.log.console.output=json
+      value: WARN
+    #- name: KEYCLOAK_EXTRA_ARGS
+    #  value: -Dkeycloak.log.console.output=json
+
+  podLabels:
+    marinera/platform: fiware
+    marinera/component:	security
+    marinera/subcomponent: auth
+    marinera/product: keycloak
 
   # ingress:
   #   enabled: true
