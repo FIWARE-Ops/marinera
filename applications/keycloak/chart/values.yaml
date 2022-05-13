@@ -23,6 +23,8 @@ realm:
       - https://orion-ld-2/
 
 keycloak:
+  image:
+    tag: 16.1.1-debian-10-r103 
 
   replicaCount: 1
 
