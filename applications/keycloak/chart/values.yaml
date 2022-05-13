@@ -30,10 +30,6 @@ keycloak:
     adminUser: fiwareAdmin
     adminPassword: fiwareAdmin
   
-  extraEnvVars:
-    - name: KEYCLOAK_LOG_LEVEL
-      value: ALL
-
   serviceAccount:
     create: true
   rbac:
@@ -51,10 +47,6 @@ keycloak:
   keycloakConfigCli:
     enabled: true
     extraEnvVars:
-      - name: IMPORT_VALIDATE
-        value: "true"
-      - name: LOGGING_LEVEL_ROOT
-        value: TRACE
       - name: IMPORT_FILES_LOCATIONS
         value: "/config/*"
     containerSecurityContext:
