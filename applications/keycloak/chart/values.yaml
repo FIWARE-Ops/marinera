@@ -50,22 +50,23 @@ keycloak:
         verbs:
         - use
 
-  initdbScriptsConfigMap: keycloak-init
+  keycloakConfigCli:
+    enabled: true
+    containerSecurityContext:
+      enabled: false
+    podSecurityContext:
+      enabled: false
+    existingConfigmap: keycloak-realm
 
   extraVolumeMounts:
     - name: profiles
       mountPath: /opt/bitnami/keycloak/conf/profile.properties
       subPath: profile.properties
-    - name: realm
-      mountPath: /opt/bitnami/keycloak/data/import/fiware-server-realm.json
-      subPath: realm.json
+
   extraVolumes: 
     - name: profiles
       configMap:
         name: keycloak-profile
-    - name: realm
-      configMap:
-        name: keycloak-realm
 
 
   # ingress:
