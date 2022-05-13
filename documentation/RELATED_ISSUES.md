@@ -4,18 +4,18 @@ This page contains all issues that have been found and should be considered rega
 
 ## Logging Issues
 
-These issues has been pushed in order to improve the logs of the platform. 
+These issues has been pushed in order to improve the logs of the platform.
 
 | Issue | Component | Description |
 |------------|------|---------|
 | https://github.com/orchestracities/charts/pull/96 | quantumleap | Pull Request to be able to add pod labels in values.yaml |
 | https://github.com/orchestracities/ngsi-timeseries-api/issues/647 | quantumleap | Requested JSON format |
 | https://github.com/timescale/timescaledb-kubernetes/issues/368 | timescale | Requested JSON format |
-| https://access.redhat.com/solutions/6610621 | ClusterLogForwarder | Send JSON log |
+| https://access.redhat.com/solutions/6610621 | Openshift Loggging | Send logs duplicated to the internal elastic |
 
 ## Security Issues
 
-Solving the following issues would bring to the platform a better security as well as liveness and readiness. 
+Solving the following issues would bring to the platform a better security as well as liveness and readiness.
 
 | Issue | Component | Description |
 |------------|------|---------|
@@ -31,7 +31,7 @@ Solving the following issues would bring to the platform a better security as we
 | https://github.com/argoproj/argo-cd/issues/5065#issuecomment-745593317 |  | Helm Value files from different location |
 
 
-## OpenShift Hel Charts Repo
+## OpenShift Helm Charts Repo
 
 | Issue | Component | Description |
 |------------|------|---------|
