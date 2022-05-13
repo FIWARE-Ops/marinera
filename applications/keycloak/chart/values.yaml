@@ -56,7 +56,7 @@ keycloak:
       mountPath: /opt/bitnami/scripts/keycloak/run.sh
       subPath: run.sh
     - name: realm
-      mountPath: /data/import/fiware-server-realm.json
+      mountPath: /opt/bitnami/keycloak/data/import/fiware-server-realm.json
       subPath: realm.json
   extraVolumes: 
     - name: profiles
