@@ -58,7 +58,7 @@ keycloak:
   extraVolumes: 
     - name: profiles
       configMap:
-        name: profile-properties
+        name: keycloak-profile
   keycloakConfigCli:
     image: 
       tag: 5.2.0-debian-10-r4

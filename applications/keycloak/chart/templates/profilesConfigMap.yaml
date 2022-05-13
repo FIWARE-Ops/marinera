@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-profile
+data:
+  profile.properties: |-
+    feature.scripts=enabled
+    feature.upload_scripts=enabled
