@@ -11,7 +11,7 @@ data:
       "displayNameHtml": "<div class=\"kc-logo-text\"><span>Keycloak</span></div>",
       "enabled": true,
       "attributes": {
-        "frontendUrl": "https://keycloak:8443",
+        "frontendUrl": "http://keycloak:80",
       },
       "roles": {
         "realm": [
