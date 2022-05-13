@@ -34,7 +34,7 @@ keycloak:
 
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
-      value: DEBUG
+      value: ALL
     - name: KEYCLOAK_EXTRA_ARGS
       value: "-Dkeycloak.profile.feature.upload_scripts=enabled"  
 
