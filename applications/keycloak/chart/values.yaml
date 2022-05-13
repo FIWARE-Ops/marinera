@@ -51,6 +51,10 @@ keycloak:
       enabled: false
     existingConfigmap: keycloak-realm
 
+  extraEnvVars:
+  - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
+    value: "true"
+
   extraVolumeMounts:
     - name: profiles
       mountPath: /opt/bitnami/keycloak/conf/profile.properties
