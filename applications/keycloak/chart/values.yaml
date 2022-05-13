@@ -33,8 +33,6 @@ keycloak:
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
       value: DEBUG
-    - name: KEYCLOAK_IMPORT
-      value: /opt/bitnami/keycloak/data/import/fiware-server-realm.json
 
   serviceAccount:
     create: true
