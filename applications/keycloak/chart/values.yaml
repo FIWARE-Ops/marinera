@@ -25,14 +25,10 @@ realm:
 keycloak:
 
   replicaCount: 1
-  image:
-    debug: true
 
   auth:
     adminUser: fiwareAdmin
     adminPassword: fiwareAdmin
-    
-  extraStartupArgs: "-Dkeycloak.profile.feature.upload_scripts=enabled"  
   
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
@@ -51,6 +47,7 @@ keycloak:
         - securitycontextconstraints
         verbs:
         - use
+
   extraVolumeMounts:
     - name: profiles
       mountPath: /opt/bitnami/keycloak/conf/profile.properties
@@ -59,6 +56,7 @@ keycloak:
     - name: profiles
       configMap:
         name: keycloak-profile
+
   keycloakConfigCli:
     image: 
       tag: 5.2.0-debian-10-r4
@@ -71,7 +69,7 @@ keycloak:
       enabled: false
     containerSecurityContext:
       enabled: false
-    enabled: false
+    enabled: true
     existingConfigmap: keycloak-realm
 
 
