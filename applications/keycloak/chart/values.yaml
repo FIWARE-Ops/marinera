@@ -32,7 +32,7 @@ keycloak:
     adminUser: fiwareAdmin
     adminPassword: fiwareAdmin
     
-  extraStartupArgs: "-Dkeycloak.profile.feature.scripts=enabled,-Dkeycloak.profile.feature.upload_scripts=enabled"  
+  extraStartupArgs: "-Dkeycloak.profile.feature.upload_scripts=enabled"  
   
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
