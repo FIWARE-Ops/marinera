@@ -52,10 +52,17 @@ keycloak:
     - name: profiles
       mountPath: /opt/bitnami/keycloak/conf/profile.properties
       subPath: profile.properties
+    - name: run
+      mountPath: /opt/bitnami/scripts/keycloak/run.sh
+      subPath: run.sh
   extraVolumes: 
     - name: profiles
       configMap:
         name: keycloak-profile
+    - name: run
+      configMap:
+        name: keycloak-run
+        defaultMode: 555
 
   keycloakConfigCli:
     image: 
