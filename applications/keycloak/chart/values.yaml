@@ -32,7 +32,7 @@ keycloak:
   
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
-      value: DEBUG
+      value: ALL
 
   serviceAccount:
     create: true
