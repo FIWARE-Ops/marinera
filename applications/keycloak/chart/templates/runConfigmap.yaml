@@ -32,11 +32,12 @@ data:
     # Add extra args
     if [[ -n "$KEYCLOAK_EXTRA_ARGS" ]]; then
         read -r -a extra_args <<< "$KEYCLOAK_EXTRA_ARGS"
-        start_command="$start_command --import-realm"
+        start_command="$start_command $extra_args"
     fi
 
     if am_i_root; then
         exec gosu "$KEYCLOAK_DAEMON_USER" /bin/bash -c "${start_command[@]}"
     else
+        exec /bin/bash -c "/opt/bitnami/keycloak/bin/kc.sh import --file /opt/bitnami/keycloak/data/import/fiware-server-realm.json"
         exec /bin/bash -c "${start_command[@]}"
     fi
