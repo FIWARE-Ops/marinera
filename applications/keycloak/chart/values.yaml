@@ -35,6 +35,8 @@ keycloak:
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
       value: DEBUG
+    - name: KEYCLOAK_PRODUCTION
+      value: "false"
 
   serviceAccount:
     create: true
