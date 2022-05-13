@@ -32,7 +32,8 @@ data:
     # Add extra args
     if [[ -n "$KEYCLOAK_EXTRA_ARGS" ]]; then
         read -r -a extra_args <<< "$KEYCLOAK_EXTRA_ARGS"
-        start_command="$start_command -Dkeycloak.migration.action=import -Dkeycloak.migration.realmName=fiware-server -Dkeycloak.migration.dir=/opt/bitnami/keycloak/conf/"
+        start_command="$start_command -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/bitnami/keycloak/conf/fiware-server-realm.json"
+    fi
     fi
 
     if am_i_root; then
