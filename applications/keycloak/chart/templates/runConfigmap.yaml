@@ -32,7 +32,7 @@ data:
     # Add extra args
     if [[ -n "$KEYCLOAK_EXTRA_ARGS" ]]; then
         read -r -a extra_args <<< "$KEYCLOAK_EXTRA_ARGS"
-        start_command="$start_command $extra_args"
+        start_command="$start_command -Dkeycloak.import=/opt/bitnami/keycloak/data/import/fiware-server-realm.json"
     fi
 
     if am_i_root; then
