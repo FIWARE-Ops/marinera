@@ -70,7 +70,7 @@ keycloak:
     - name: run
       configMap:
         name: keycloak-run
-        defaultMode: 555
+        defaultMode: 0555
 
 
   # ingress:
