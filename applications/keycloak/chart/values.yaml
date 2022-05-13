@@ -33,6 +33,8 @@ keycloak:
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
       value: DEBUG
+    - name: KEYCLOAK_IMPORT
+      value: /opt/bitnami/keycloak/data/import/fiware-server-realm.json
 
   serviceAccount:
     create: true
@@ -52,9 +54,6 @@ keycloak:
     - name: profiles
       mountPath: /opt/bitnami/keycloak/conf/profile.properties
       subPath: profile.properties
-    - name: run
-      mountPath: /opt/bitnami/scripts/keycloak/run.sh
-      subPath: run.sh
     - name: realm
       mountPath: /opt/bitnami/keycloak/data/import/fiware-server-realm.json
       subPath: realm.json
