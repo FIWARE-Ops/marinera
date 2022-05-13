@@ -1,18 +1,18 @@
-name: Create namespace on new branch
+name: Create namespace and deploy on new branch
 
 on:
-  create:
-    branches:
-      - 'feature-**'
   push:
     branches:
       - 'feature-**'
 
 
+concurrency: 
+    group: ${{ github.ref }}
+    cancel-in-progress: false
+
 jobs:
 
   create:
-  
     runs-on: ubuntu-latest
     steps:
 
@@ -44,23 +44,95 @@ jobs:
           echo ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Create namespace
-        if: ${{ github.event_name == 'create' }}
         run: |
-          oc new-project ${{ steps.branch-name.outputs.current_branch }}
+          oc new-project ${{ steps.branch-name.outputs.current_branch }} || oc project ${{ steps.branch-name.outputs.current_branch }}
           oc adm policy add-role-to-group cluster-admin lodestar-developers -n ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Rename target branch
         run: |
+          cd fiware-platform/
           # replace the default destination namespace(demo) with the branch namespace
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/namespace: demo/namespace: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
+          sed -i'' -e 's/destination_namespace: \&destination demo/destination_namespace: \&destination ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
           # prefix the application name with the branch name to avoid collisions
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/name: /name: ${{ steps.branch-name.outputs.current_branch }}-/g' {} +
+          sed -i'' -e 's/release: demo/release: ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
           # set the target revision to the current branch
-          find . -type f -name "app.yaml" -exec sed -i'' -e 's/targetRevision: main/targetRevision: ${{ steps.branch-name.outputs.current_branch }}/g' {} +
+          sed -i'' -e 's/branch: \&branch main/branch: \&branch ${{ steps.branch-name.outputs.current_branch }}/g' values.yaml
+      
+      # See https://github.com/helm/chart-releaser-action/issues/6
+      - name: Install Helm
+        run: |
+          curl -fsSLo get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          ./get_helm.sh
 
       - name: Deploy applications
         run: |
-          # apply argo apps from the folder
-          find . -name 'app.yaml' -exec oc apply -f {} \;
-          # label them with their destination-namespace for better selection(f.e. on deletion)
-          find . -name 'app.yaml' -exec oc label destination-namespace=${{ steps.branch-name.outputs.current_branch }} -f {} \;
+          cd fiware-platform/
+          # render app of apps and apply it
+          helm template . | oc -n labs-ci-cd apply -f -
+          cd ..
+
+      - name: Check if all apps are healthy
+        run: |
+          # bool to check if the apps are healthy
+          healthy=0
+          # counter to set a number of tries
+          try=0
+          tries=30
+          # get the list of apps in the namespace 
+          componentsInstalled=$(grep "enabled: true" fiware-platform/values.yaml -c)
+          # check if the condition is met
+          while [ $healthy == 0 ] && [ $try -lt $tries ]
+          do
+            apps=$(oc get applications.argoproj.io --no-headers -n labs-ci-cd -l destination-namespace=${{ steps.branch-name.outputs.current_branch }} | awk '{ print $3 }')
+            healthyapps=0
+            for app in $apps
+            do
+              if [ $app != "Healthy" ]
+              then
+                echo "Trying again in 10 seconds"
+                sleep 10
+                try=$(( try + 1 ))
+                break
+              elif [ $app == "Healthy" ]
+              then  
+                healthyapps=$(( healthyapps + 1 ))
+              fi
+              if [ $healthyapps == $componentsInstalled ]
+              then
+                healthy=1
+              fi
+            done
+          done
+
+          if [ $try -eq $tries ]
+          then
+            echo "ERROR: Tried too many times"
+            exit 1
+          fi
+
+      - name: Deploy the helm charts for the e2e
+        run: |
+          # go to selenium-grid directory
+          cd tests/selenium-grid
+          # install selenium-grid
+          helm install --wait selenium . -n ${{ steps.branch-name.outputs.current_branch }}
+          # go to the e2e-test directory
+          cd ../e2e-test
+          # replace the default destination namespace(demo) with the branch namespace in the Grafana URL
+          sed -i 's/demo/${{ steps.branch-name.outputs.current_branch }}/' values.yaml 
+          # install the helm chart
+          helm install e2e . -n ${{ steps.branch-name.outputs.current_branch }}
+          
+      - name: Uninstall marinera-e2e helm chart
+        if: always()
+        run: |
+          # uninstall the e2e helm chart
+          helm uninstall e2e -n ${{ steps.branch-name.outputs.current_branch }}
+
+      - name: Uninstall selenium-grid helm chart
+        if: always()
+        run: |
+          # uninstall the selenium-grid helm chart
+          helm uninstall selenium -n ${{ steps.branch-name.outputs.current_branch }}
+

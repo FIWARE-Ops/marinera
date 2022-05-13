@@ -30,7 +30,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       {{- end }}
-    spec: 
+    spec:
       serviceAccountName: {{ include "orion.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
@@ -39,9 +39,18 @@ spec:
           {{ if and (.Values.broker.noDevTrace) (eq .Values.deployment.image.repository "fiware/orion-ld") }}
           args: ["-lmtmp"]
           {{ end }}
-          # special handling for the health check of telefonica/orion
-          {{ if eq .Values.broker.envPrefix "ORION_" }}
-          command: ["/bin/bash", "-c", "/usr/bin/contextBroker -fg | sed '/SUMMARY/w /tmp/healthcheck'"]
+          # special handling for the health check of telefonica/orion and json log format
+          {{ if or (eq .Values.broker.envPrefix "ORION_") (.Values.broker.logging.jsonformat) }}
+          command:
+            - "/bin/bash"
+            - "-c"
+            {{ if and  (eq .Values.broker.envPrefix "ORION_") (.Values.broker.logging.jsonformat) }}
+            - "/usr/bin/contextBroker -fg | sed '/SUMMARY/w /tmp/healthcheck' | /scripts/logstojson.sh "
+            {{ else if eq .Values.broker.envPrefix "ORION_" }}
+            - "/usr/bin/contextBroker -fg | sed '/SUMMARY/w /tmp/healthcheck'"
+            {{ else }}
+            - "orionld -fg -multiservice -ngsiv1Autocast | /scripts/logstojson.sh"
+            {{ end }}
           {{ end }}
           ports:
             - name: http
@@ -125,7 +134,7 @@ spec:
             {{- if .Values.broker.mutexPolicy }}
             - name: {{ .Values.broker.envPrefix }}MUTEX_POLICY
               value: {{ .Values.broker.mutexPolicy }}
-            {{- end }}     
+            {{- end }}
             {{- if .Values.broker.cprForwardLimit }}
             - name: {{ .Values.broker.envPrefix }}CPR_FORWARD_LIMIT
               value: {{ .Values.broker.cprForwardLimit }}
@@ -214,7 +223,7 @@ spec:
                 secretKeyRef:
                   name: {{ include "orion.fullname" . }}
                   key: dbPassword
-              {{- if .Values.broker.db.auth.mech }} 
+              {{- if .Values.broker.db.auth.mech }}
             - name: {{ .Values.broker.envPrefix }}MONGO_AUTH_MECH
               value: {{ .Values.broker.db.auth.mech }}
               {{- end }}
@@ -245,7 +254,7 @@ spec:
             - name: {{ .Values.broker.envPrefix }}MONGO_AUTH_SOURCE
               value: admin
             {{- end }}
-            
+
             # metrics
             {{ if .Values.broker.metrics  }}
             {{ if eq .Values.broker.metrics.enabled "false"  }}
@@ -295,7 +304,7 @@ spec:
             {{- if .Values.broker.logging.relogAlarms }}
             - name: {{ .Values.broker.envPrefix }}RELOG_ALARMS
               value: {{ .Values.broker.logging.relogAlarms | upper }}
-            {{- end }} 
+            {{- end }}
             {{- if .Values.broker.logging.forHumans }}
             - name: {{ .Values.broker.envPrefix }}LOG_FOR_HUMANS
               value: {{ .Values.broker.logging.forHumans | upper }}
@@ -344,10 +353,25 @@ spec:
       {{- if .Values.deployment.sidecars }}
         {{- toYaml .Values.deployment.sidecars | nindent 8 }}
       {{- end }}
-      {{- if .Values.deployment.volumes }}
+          {{- if .Values.broker.logging.jsonformat }}
+          volumeMounts:
+            - name: jsonconvert-script
+              mountPath: /scripts/
+          {{- end }}
+
+      {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
       volumes:
+        {{- if .Values.deployment.volumes }}
         {{- toYaml .Values.deployment.volumes | nindent 8 }}
+        {{- end }}
+        {{- if .Values.broker.logging.jsonformat }}
+        - name: jsonconvert-script
+          configMap:
+            name: {{ include "orion.fullname" . }}-jsonconvert-script
+            defaultMode: 360
+        {{- end }}
       {{- end }}
+
       {{- with .Values.deployment.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
