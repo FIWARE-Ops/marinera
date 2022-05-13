@@ -10,6 +10,9 @@ data:
       "displayName": "Keycloak",
       "displayNameHtml": "<div class=\"kc-logo-text\"><span>Keycloak</span></div>",
       "enabled": true,
+      "attributes": {
+        "frontendUrl": "https://keycloak:8443",
+      },
       "roles": {
         "realm": [
           {
