@@ -384,15 +384,6 @@ data:
                 }
               },
               {
-                "name": "consumer policy v3",
-                "type": "aggregate",
-                "logic": "POSITIVE",
-                "decisionStrategy": "UNANIMOUS",
-                "config": {
-                  "applyPolicies": "[\"fiware-headers context management v3\",\"consumer method\",\"consumer user\"]"
-                }
-              },
-              {
                 "name": "consumer user",
                 "description": "Comprueba que el usuario tiene rol consumer",
                 "type": "role",
@@ -400,6 +391,15 @@ data:
                 "decisionStrategy": "UNANIMOUS",
                 "config": {
                   "roles": "[{\"id\":\"orion-pep/consumer\",\"required\":true}]"
+                }
+              },
+              {
+                "name": "consumer policy v3",
+                "type": "aggregate",
+                "logic": "POSITIVE",
+                "decisionStrategy": "UNANIMOUS",
+                "config": {
+                  "applyPolicies": "[\"fiware-headers context management v3\",\"consumer method\",\"consumer user\"]"
                 }
               },
               {
