@@ -34,7 +34,7 @@ keycloak:
     - name: KEYCLOAK_LOG_LEVEL
       value: ALL
     - name: KEYCLOAK_EXTRA_ARGS
-      value: "-Dkeycloak.import=/opt/bitnami/keycloak/conf/realm.json"
+      value: "-Dkeycloak.migration.action=import,-Dkeycloak.migration.provider=singleFile,-Dkeycloak.migration.file=/opt/bitnami/keycloak/conf/fiware-server-realm.json"
 
   serviceAccount:
     create: true
@@ -58,7 +58,7 @@ keycloak:
       mountPath: /opt/bitnami/scripts/keycloak/run.sh
       subPath: run.sh
     - name: realm
-      mountPath: /opt/bitnami/keycloak/conf/realm.json
+      mountPath: /opt/bitnami/keycloak/conf/fiware-server-realm.json
       subPath: realm.json
   extraVolumes: 
     - name: profiles
