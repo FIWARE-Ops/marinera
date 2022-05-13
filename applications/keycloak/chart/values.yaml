@@ -51,6 +51,14 @@ keycloak:
         - securitycontextconstraints
         verbs:
         - use
+  extraVolumeMounts:
+    - name: profiles
+      mountPath: /opt/bitnami/keycloak/conf/profile.properties
+      subPath: profile.properties
+  extraVolumes: 
+    - name: profiles
+      configMap:
+        name: profile-properties
   keycloakConfigCli:
     image: 
       tag: 5.2.0-debian-10-r4
