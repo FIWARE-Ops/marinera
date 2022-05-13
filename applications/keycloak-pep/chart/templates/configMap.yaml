@@ -23,7 +23,7 @@ data:
 
     keycloak.realm=fiware-realm
 
-    keycloak.auth-server-url=https://keycloak:8443/auth
+    keycloak.auth-server-url=https://keycloak:8443
 
     keycloak.ssl-required=external
 
@@ -44,6 +44,14 @@ data:
     keycloak.securityConstraints[0].securityCollections[0].patterns[0]=/*
 
     keycloak.policy-enforcer-config.enforcement-mode=ENFORCING
+
+    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.uri]={request.relativePath}
+
+    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.method]={request.method}
+    
+    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-service]={request.header['fiware-service']}
+    
+    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-servicepath]={request.header['fiware-servicepath']}
 
     # Logging configuration
 
