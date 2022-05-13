@@ -34,7 +34,7 @@ keycloak:
     - name: KEYCLOAK_LOG_LEVEL
       value: ALL
     - name: KEYCLOAK_EXTRA_ARGS
-      value: "-Dkeycloak.import="
+      value: "-Dkeycloak.import=/opt/bitnami/keycloak/conf/realm.json"
 
   serviceAccount:
     create: true
@@ -57,6 +57,9 @@ keycloak:
     - name: run
       mountPath: /opt/bitnami/scripts/keycloak/run.sh
       subPath: run.sh
+    - name: realm
+      mountPath: /opt/bitnami/keycloak/conf/realm.json
+      subPath: realm.json
   extraVolumes: 
     - name: profiles
       configMap:
@@ -68,21 +71,6 @@ keycloak:
       configMap:
         name: keycloak-run
         defaultMode: 555
-
-  keycloakConfigCli:
-    image: 
-      tag: 5.2.0-debian-10-r4
-    extraEnvVars:
-      - name: IMPORT_FILES_LOCATIONS
-        value: "/config/*"
-      - name: LOGGING_LEVEL_ROOT
-        value: "TRACE"
-    podSecurityContext:
-      enabled: false
-    containerSecurityContext:
-      enabled: false
-    enabled: true
-    existingConfigmap: keycloak-realm
 
 
   # ingress:
