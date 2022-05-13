@@ -13,6 +13,7 @@ data:
       "attributes": {
         "frontendUrl": "http://keycloak:80",
       },
+      "sslRequired": "none",
       "roles": {
         "realm": [
           {
