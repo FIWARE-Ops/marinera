@@ -21,9 +21,9 @@ data:
 
     # Keycloak PEP config
 
-    keycloak.realm=fiware-realm
+    keycloak.realm=fiware-server
 
-    keycloak.auth-server-url=https://keycloak:8443
+    keycloak.auth-server-url=http://keycloak:80
 
     keycloak.ssl-required=external
 
@@ -35,7 +35,7 @@ data:
 
     keycloak.bearer-only=true
 
-    keycloak.credentials.secret=secret
+    keycloak.credentials.secret=978ad148-d99b-406d-83fc-578597290a79
 
     keycloak.securityConstraints[0].authRoles[0]=user
 
@@ -45,13 +45,13 @@ data:
 
     keycloak.policy-enforcer-config.enforcement-mode=ENFORCING
 
-    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.uri]={request.relativePath}
+    keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.uri]={request.relativePath}
 
-    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.method]={request.method}
+    keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.method]={request.method}
     
-    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-service]={request.header['fiware-service']}
+    keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-service]={request.header['fiware-service']}
     
-    # keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-servicepath]={request.header['fiware-servicepath']}
+    keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-servicepath]={request.header['fiware-servicepath']}
 
     # Logging configuration
 

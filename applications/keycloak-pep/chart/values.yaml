@@ -6,11 +6,6 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "dev"
 
-# nameOverride: ""
-# fullnameOverride: ""
-
-# podAnnotations: {}
-
 service:
   type: ClusterIP
   port: 8080
