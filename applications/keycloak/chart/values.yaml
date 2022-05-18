@@ -2,19 +2,19 @@ realm:
   grafana:
     rootUrl: https://grafana
     adminUrl: https://grafana
-    redirectUris: 
+    redirectUris:
       - https://grafana/
       - https://grafana-2/
-    webOrigins: 
+    webOrigins:
       - https://grafana/
       - https://grafana-2/
   orionPep:
     baseUrl: https://orion-ld
     adminUrl: https://orion-ld
-    redirectUris: 
+    redirectUris:
       - https://orion-ld/
       - https://orion-ld-2/
-    webOrigins: 
+    webOrigins:
       - https://orion-ld/
       - https://orion-ld-2/
 
@@ -60,11 +60,11 @@ keycloak:
       mountPath: /opt/bitnami/keycloak/conf/profile.properties
       subPath: profile.properties
 
-  extraVolumes: 
+  extraVolumes:
     - name: profiles
       configMap:
         name: keycloak-profile
-  
+
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
       value: WARN
@@ -102,8 +102,11 @@ keycloak:
         enabled: false
     audit:
       clientMinMessages: warning
-  
+
   metrics:
     enabled: true
+    service:
+      ports:
+        http: 8080
     serviceMonitor:
       enabled: true
