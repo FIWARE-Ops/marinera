@@ -97,6 +97,7 @@ keycloak:
         marinera/product: postgresql
     architecture: replication
     readReplicas:
+      replicaCount: 2
       podSecurityContext:
         enabled: false
       containerSecurityContext:
