@@ -517,7 +517,7 @@ nodeSelector: {}
 # Prometheus exporter for PostgreSQL server metrics.
 # https://github.com/wrouesnel/postgres_exporter
 prometheus:
-  enabled: false
+  enabled: true
   image:
     repository: wrouesnel/postgres_exporter
     tag: v0.7.0
@@ -551,10 +551,10 @@ prometheus:
 
 serviceMonitor:
   # Specifies whether ServiceMonitor for Prometheus operator should be created
-  enabled: false
+  enabled: true
   portName: metrics
   path: /metrics
-  interval: 10s
+  interval: 30s
   # scrapeTimeout: 30s
   # Specifies namespace, where ServiceMonitor should be installed
   # namespace: monitoring
