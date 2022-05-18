@@ -85,6 +85,7 @@ keycloak:
     auth:
       username: bn_keycloak
       password: secretpassword
+      replicationPassword: secretreplicationpassword
     primary:
       podSecurityContext:
         enabled: false
