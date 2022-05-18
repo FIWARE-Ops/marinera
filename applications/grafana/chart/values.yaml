@@ -53,7 +53,7 @@ grafana:
 
   env:
     - name: GF_PANELS_DISABLE_SANITIZE_HTML
-      value: true
+      value: "true"
 
 admin:
   # -- Admin username
