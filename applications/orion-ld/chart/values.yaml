@@ -11,7 +11,7 @@ orion-ld:
     logging:
       level: "WARN"
   deployment:
-    replicaCount: 3
+    replicaCount: 1
   mongo:
     # we want to use the individually deployed mongodb
     enabled: false
