@@ -62,7 +62,6 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
-
   
   - name: airquality-simulator
     enabled: true
