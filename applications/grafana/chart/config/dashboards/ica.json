@@ -24,8 +24,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
-  "iteration": 1652869233305,
+  "id": 5,
+  "iteration": 1652878485823,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -42,7 +42,7 @@
       },
       "id": 2,
       "options": {
-        "content": "<style>\n\n.dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon span {\n  height: 20px;\n  width: auto;\n  line-height: 37px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n    display: none;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .back-container-icon {\n    width: 30px;\n    height: 30px;\n    margin: 20px 10px;\n  }\n  \n  .back-container-icon span {\n    line-height: 17px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n</style>\n\n  <div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY - POLLUTANTS\n          </h1>\n        </div>\n      </div>\n      <a href=\"/d/aqapp-home\">\n        <div class=\"dashboard-header-left-right\">\n          <div class=\"back-container-text\">\n          </div>\n          <div class=\"back-container-icon\">\n            <span class=\"fa fa-chevron-left\"></span>\n          </div>\n        </div>\n      </a>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div\n",
+        "content": "<style>\n\n.dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon span {\n  height: 20px;\n  width: auto;\n  line-height: 37px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n    display: none;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .back-container-icon {\n    width: 30px;\n    height: 30px;\n    margin: 20px 10px;\n  }\n  \n  .back-container-icon span {\n    line-height: 17px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n</style>\n\n  <div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY INDEX (ICA)\n          </h1>\n        </div>\n      </div>\n      <a href=\"/d/aqapp-home\">\n        <div class=\"dashboard-header-left-right\">\n          <div class=\"back-container-text\">\n          </div>\n          <div class=\"back-container-icon\">\n            <span class=\"fa fa-chevron-left\"></span>\n          </div>\n        </div>\n      </a>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div\n",
         "mode": "html"
       },
       "pluginVersion": "8.5.2",
@@ -120,7 +120,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
+        "h": 19,
         "w": 16,
         "x": 8,
         "y": 4
@@ -512,7 +512,7 @@
               "type": "avg"
             }
           ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(no2) as \"NO2\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(no2) as \"NO2\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -706,7 +706,7 @@
               "type": "avg"
             }
           ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(o3) as \"O3\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "query": "SELECT timestamp, avg(hour_avg_o3) OVER(ORDER BY timestamp ASC ROWS 7 PRECEDING) as \"O3\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(o3) as \"hour_avg_o3\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and o3 > 0 and o3 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -900,7 +900,7 @@
               "type": "avg"
             }
           ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(so2) as \"SO2\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) as \"SO2\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND so2 >= 0 AND so2 < 1000 GROUP BY time ORDER BY time ASC",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -933,62 +933,62 @@
                   "index": 0,
                   "text": "GOOD"
                 },
-                "to": 500
+                "to": 10
               },
               "type": "range"
             },
             {
               "options": {
-                "from": 501,
+                "from": 11,
                 "result": {
                   "index": 1,
                   "text": "FAIR"
                 },
-                "to": 1000
+                "to": 20
               },
               "type": "range"
             },
             {
               "options": {
-                "from": 1001,
+                "from": 21,
                 "result": {
                   "index": 2,
                   "text": "MODERATE"
                 },
-                "to": 1500
+                "to": 25
               },
               "type": "range"
             },
             {
               "options": {
-                "from": 1501,
+                "from": 26,
                 "result": {
                   "index": 3,
                   "text": "POOR"
                 },
-                "to": 2000
+                "to": 50
               },
               "type": "range"
             },
             {
               "options": {
-                "from": 2001,
+                "from": 51,
                 "result": {
                   "index": 4,
                   "text": "VERY POOR"
                 },
-                "to": 2500
+                "to": 75
               },
               "type": "range"
             },
             {
               "options": {
-                "from": 2501,
+                "from": 76,
                 "result": {
                   "index": 5,
                   "text": "EXTREMELY POOR"
                 },
-                "to": 10000
+                "to": 800
               },
               "type": "range"
             },
@@ -1005,7 +1005,7 @@
             },
             {
               "options": {
-                "from": 10001,
+                "from": 801,
                 "result": {
                   "index": 7,
                   "text": "OUT OF RANGE"
@@ -1030,27 +1030,27 @@
               },
               {
                 "color": "#50c8a333",
-                "value": 500
+                "value": 10
               },
               {
                 "color": "#ebeb3633",
-                "value": 1000
+                "value": 20
               },
               {
                 "color": "#ff4f5c33",
-                "value": 1500
+                "value": 25
               },
               {
                 "color": "#c0000033",
-                "value": 2000
+                "value": 50
               },
               {
                 "color": "#9900ff33",
-                "value": 2500
+                "value": 75
               },
               {
                 "color": "#7c8996",
-                "value": 10000
+                "value": 800
               }
             ]
           },
@@ -1064,7 +1064,7 @@
         "x": 0,
         "y": 17
       },
-      "id": 8,
+      "id": 28,
       "options": {
         "alignValue": "left",
         "legend": {
@@ -1094,7 +1094,201 @@
               "type": "avg"
             }
           ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(co) as \"CO\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "query": "SELECT timestamp, avg(hour_avg_pm25) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM2.5\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm25) as \"hour_avg_pm25\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm25 > 0 and pm25 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "whereClauses": []
+        }
+      ],
+      "transparent": true,
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "crate-datasource",
+        "uid": "5"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 67,
+            "lineWidth": 0,
+            "spanNulls": 3600000
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "index": 0,
+                  "text": "GOOD"
+                },
+                "to": 20
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 21,
+                "result": {
+                  "index": 1,
+                  "text": "FAIR"
+                },
+                "to": 40
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 41,
+                "result": {
+                  "index": 2,
+                  "text": "MODERATE"
+                },
+                "to": 50
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 51,
+                "result": {
+                  "index": 3,
+                  "text": "POOR"
+                },
+                "to": 100
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 101,
+                "result": {
+                  "index": 4,
+                  "text": "VERY POOR"
+                },
+                "to": 150
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 151,
+                "result": {
+                  "index": 5,
+                  "text": "EXTREMELY POOR"
+                },
+                "to": 1200
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -100000,
+                "result": {
+                  "index": 6,
+                  "text": "OUT OF RANGE"
+                },
+                "to": -1
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 1201,
+                "result": {
+                  "index": 7,
+                  "text": "OUT OF RANGE"
+                },
+                "to": 1000000
+              },
+              "type": "range"
+            }
+          ],
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#7c8996",
+                "value": null
+              },
+              {
+                "color": "#00fffa33",
+                "value": 0
+              },
+              {
+                "color": "#50c8a333",
+                "value": 20
+              },
+              {
+                "color": "#ebeb3633",
+                "value": 40
+              },
+              {
+                "color": "#ff4f5c33",
+                "value": 50
+              },
+              {
+                "color": "#c0000033",
+                "value": 100
+              },
+              {
+                "color": "#9900ff33",
+                "value": 150
+              },
+              {
+                "color": "#7c8996",
+                "value": 1200
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 20
+      },
+      "id": 30,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": false,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "crate-datasource",
+            "uid": "5"
+          },
+          "groupByAliases": [],
+          "groupByColumns": [],
+          "metricAggs": [
+            {
+              "$$hashKey": "object:10",
+              "column": "value",
+              "type": "avg"
+            }
+          ],
+          "query": "SELECT timestamp, avg(hour_avg_pm10) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM10\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm10) as \"hour_avg_pm10\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm10 > 0 and pm10 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1110,7 +1304,41 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 23
+      },
+      "id": 36,
+      "panels": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 23,
+            "w": 24,
+            "x": 0,
+            "y": 24
+          },
+          "id": 38,
+          "options": {
+            "content": "<style>\n    table {\n        width: 100%;\n    }\n\n.heatMap tr:nth-child(1) { \n  background: #00efe6;\n    color: black;\n    font-weight: 450;  \n}\n.heatMap tr:nth-child(2) { background: #00edaa;\n    color: black;\n    font-weight: 450;  \n}\n.heatMap tr:nth-child(3) { background: #ebeb36; \n    color: black;\n    font-weight: 450;  \n}\n.heatMap tr:nth-child(4) { background: #ff5751; \n    color: black;\n    font-weight: 450;  \n}\n.heatMap tr:nth-child(5) { background: #ad0531; \n    color: white;\n    font-weight: 450;  \n}\n.heatMap tr:nth-child(6) { background: #941283;\n    color: white;\n    font-weight: 450;  \n}\n\n</style>\n\n# Concentration bands and index categories\n\nThe air quality index bands have been established taking into consideration the relative risks associated with short-term exposure to PM2,5, O<sub>3</sub> y NO<sub>2</sub>, as established by the World Health Organisation (3) and in the case of SO<sub>2</sub>, the limit values set out in the EU Air Quality Directive.\n\n<div class=\"heatMap\">\n\n| Index Category            | SO<sub>2</sub>  | O<sub>3</sub> | NO<sub>2</sub>  | PM2,5   | PM10      |\n| --                              | --              | --            | --              | --      | --        |\n| GOOD                           | 0-100           | 0-50          | 0-40            | 0-10    | 0-20      |\n| FAIR           | 101-200         | 51-100        | 41-90           | 11-20   | 21-40     |\n| MODERATE                         | 201-350         | 101-130       | 91-120          | 21-25   | 41-50     |\n| POOR                    | 351-500         | 131-240       | 121-230         | 26-50   | 51-100    |\n| VERY POOR                | 501-750         | 241-380       | 231-340         | 51-75   | 101-150   |\n| EXTREMELY POOR     | 501-750         | 381-800       | 341-1000        | 75-800  | 151-1200  |\n\n</div>\n\n<br>\n\n# Health recommendations\n\nThe air quality index incorporates health recommendations for the general population and for the sensitive population, in line with the health recommendations of the European air quality index. The sensitive population includes both adults and children with respiratory problems and adults with heart conditions.\n\n<div class=\"heatMap\">\n\n| Index Category            | Health messages | At-risk groups  | General population  | \n| --                              | --              | --            | --              | \n| GOOD                           | Satisfactory air quality.           | Enjoy your outdoor activities as normal.          | Enjoy your outdoor activities as normal.            | \n| FAIR            | Acceptable air quality, the pollution does not pose a health risk.         | Enjoy your outdoor activities as normal.        | Enjoy your outdoor activities as normal.           | \n| MODERATE                         | Air quality is unlikely to affect the general population but may present a moderate risk to at-risk groups.         | Consider reducing prolonged and strenuous outdoor activities. People with asthma or respiratory diseases should carefully follow their medication plan. People with heart problems may experience palpitations, difficulty breathing or unusual fatigue.       | Enjoy your outdoor activities as normal. However, watch for symptoms such as coughing, sore throat, shortness of breath, excessive fatigue or palpitations.          | \n| POOR                    | The whole population may experience negative health effects, with risk groups experiencing much more serious effects.         | Consider reducing outdoor activities, and either do them indoors or postpone them to when the air quality is good or reasonably good. Follow the medical treatment plan meticulously.       | Consider reducing prolonged and vigorous outdoor activities, especially if you experience coughing, shortness of breath or throat irritation.         | \n| VERY POOR                | Public health emergency conditions, the entire population may be seriously affected.         | Reduce all outdoor activity, and consider indoor activities or postpone them to when the air quality is good or reasonably good. Follow the medical treatment plan meticulously.       | Reduce all outdoor activities, and consider reducing outdoor activities, and either do them indoors or postpone them to when air quality is good or reasonably good.         | \n| EXTREMELY POOR     | Public health emergency conditions, the entire population may be severely affected.         | Avoid prolonged stay outdoors. Follow the medical treatment plan, if applicable, meticulously, and go to an emergency department if your condition worsens.       | Reduce all outdoor activities and consider doing activities indoors or postpone them to when air quality is good or reasonably good. Use appropriate protection for work that must be done outdoors.        | \n\n</div>\n",
+            "mode": "markdown"
+          },
+          "pluginVersion": "8.5.2",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "title": "Concentration bands and health recommendations",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
       },
       "id": 14,
       "panels": [
@@ -1149,7 +1377,7 @@
                   "mode": "none"
                 },
                 "thresholdsStyle": {
-                  "mode": "off"
+                  "mode": "area"
                 }
               },
               "mappings": [],
@@ -1157,41 +1385,41 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "#7c8996"
                   },
                   {
-                    "color": "red",
-                    "value": 80
+                    "color": "#00fffa33",
+                    "value": 0
+                  },
+                  {
+                    "color": "#50c8a333",
+                    "value": 40
+                  },
+                  {
+                    "color": "#ebeb3633",
+                    "value": 90
+                  },
+                  {
+                    "color": "#ff4f5c33",
+                    "value": 120
+                  },
+                  {
+                    "color": "#c0000033",
+                    "value": 230
+                  },
+                  {
+                    "color": "#9900ff33",
+                    "value": 340
+                  },
+                  {
+                    "color": "#7c8996",
+                    "value": 1000
                   }
                 ]
               },
               "unit": "conμgm3"
             },
             "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* daily average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
               {
                 "matcher": {
                   "id": "byRegexp",
@@ -1203,34 +1431,11 @@
                     "value": 3
                   },
                   {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
                     "id": "color",
                     "value": {
                       "fixedColor": "semi-dark-blue",
                       "mode": "fixed"
                     }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly max"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
                   }
                 ]
               }
@@ -1240,7 +1445,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 22
+            "y": 25
           },
           "id": 19,
           "options": {
@@ -1269,51 +1474,9 @@
                   "type": "avg"
                 }
               ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND no2 >= 0 AND no2 < 500 GROUP BY time ORDER BY time ASC",
               "rawQuery": true,
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(no2) AS \"NO2 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(no2) AS \"NO2 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
               "resultFormat": "time_series",
               "whereClauses": []
             }
@@ -1357,7 +1520,7 @@
                   "mode": "none"
                 },
                 "thresholdsStyle": {
-                  "mode": "off"
+                  "mode": "area"
                 }
               },
               "mappings": [],
@@ -1365,12 +1528,35 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "#7c8996"
                   },
                   {
-                    "color": "red",
-                    "value": 80
+                    "color": "#00fffa33",
+                    "value": 0
+                  },
+                  {
+                    "color": "#50c8a333",
+                    "value": 50
+                  },
+                  {
+                    "color": "#ebeb3633",
+                    "value": 100
+                  },
+                  {
+                    "color": "#ff4f5c33",
+                    "value": 130
+                  },
+                  {
+                    "color": "#c0000033",
+                    "value": 240
+                  },
+                  {
+                    "color": "#9900ff33",
+                    "value": 380
+                  },
+                  {
+                    "color": "#7c8996",
+                    "value": 10000
                   }
                 ]
               },
@@ -1380,39 +1566,12 @@
               {
                 "matcher": {
                   "id": "byRegexp",
-                  "options": ".* daily average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly average"
+                  "options": ".* average"
                 },
                 "properties": [
                   {
                     "id": "custom.lineWidth",
                     "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
                   },
                   {
                     "id": "color",
@@ -1422,25 +1581,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly max"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
               }
             ]
           },
@@ -1448,7 +1588,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 30
+            "y": 33
           },
           "id": 15,
           "options": {
@@ -1477,51 +1617,9 @@
                   "type": "avg"
                 }
               ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(o3) AS \"O3 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "query": "SELECT timestamp, avg(hour_avg_o3) OVER(ORDER BY timestamp ASC ROWS 7 PRECEDING) as \"O3 eight-hour moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(o3) as \"hour_avg_o3\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and o3 > 0 and o3 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
               "rawQuery": true,
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(o3) AS \"O3 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(o3) AS \"O3 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
               "resultFormat": "time_series",
               "whereClauses": []
             }
@@ -1565,7 +1663,7 @@
                   "mode": "none"
                 },
                 "thresholdsStyle": {
-                  "mode": "off"
+                  "mode": "area"
                 }
               },
               "mappings": [],
@@ -1573,41 +1671,41 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "#7c8996"
                   },
                   {
-                    "color": "red",
-                    "value": 80
+                    "color": "#00fffa33",
+                    "value": 0
+                  },
+                  {
+                    "color": "#50c8a333",
+                    "value": 100
+                  },
+                  {
+                    "color": "#ebeb3633",
+                    "value": 200
+                  },
+                  {
+                    "color": "#ff4f5c33",
+                    "value": 350
+                  },
+                  {
+                    "color": "#c0000033",
+                    "value": 500
+                  },
+                  {
+                    "color": "#9900ff33",
+                    "value": 750
+                  },
+                  {
+                    "color": "#7c8996",
+                    "value": 10000
                   }
                 ]
               },
               "unit": "conμgm3"
             },
             "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* daily average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
               {
                 "matcher": {
                   "id": "byRegexp",
@@ -1619,34 +1717,11 @@
                     "value": 3
                   },
                   {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
                     "id": "color",
                     "value": {
                       "fixedColor": "semi-dark-blue",
                       "mode": "fixed"
                     }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly max"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
                   }
                 ]
               }
@@ -1656,7 +1731,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 38
+            "y": 41
           },
           "id": 16,
           "options": {
@@ -1685,51 +1760,9 @@
                   "type": "avg"
                 }
               ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) AS \"SO2 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) as \"SO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND so2 >= 0 AND so2 < 1000 GROUP BY time ORDER BY time ASC",
               "rawQuery": true,
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(so2) AS \"SO2 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(so2) AS \"SO2 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
               "resultFormat": "time_series",
               "whereClauses": []
             }
@@ -1773,7 +1806,7 @@
                   "mode": "none"
                 },
                 "thresholdsStyle": {
-                  "mode": "off"
+                  "mode": "area"
                 }
               },
               "mappings": [],
@@ -1781,12 +1814,35 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "#7c8996"
                   },
                   {
-                    "color": "red",
-                    "value": 80
+                    "color": "#00fffa33",
+                    "value": 0
+                  },
+                  {
+                    "color": "#50c8a333",
+                    "value": 10
+                  },
+                  {
+                    "color": "#ebeb3633",
+                    "value": 20
+                  },
+                  {
+                    "color": "#ff4f5c33",
+                    "value": 25
+                  },
+                  {
+                    "color": "#c0000033",
+                    "value": 50
+                  },
+                  {
+                    "color": "#9900ff33",
+                    "value": 75
+                  },
+                  {
+                    "color": "#7c8996",
+                    "value": 1000
                   }
                 ]
               },
@@ -1796,39 +1852,12 @@
               {
                 "matcher": {
                   "id": "byRegexp",
-                  "options": ".* daily average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly average"
+                  "options": ".* average"
                 },
                 "properties": [
                   {
                     "id": "custom.lineWidth",
                     "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
                   },
                   {
                     "id": "color",
@@ -1838,25 +1867,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly max"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
               }
             ]
           },
@@ -1864,9 +1874,9 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 46
+            "y": 49
           },
-          "id": 17,
+          "id": 32,
           "options": {
             "legend": {
               "calcs": [],
@@ -1893,12 +1903,135 @@
                   "type": "avg"
                 }
               ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(co) AS \"CO hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "query": "SELECT timestamp, avg(hour_avg_pm25) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM2.5 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm25) as \"hour_avg_pm25\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm25 > 0 and pm25 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
               "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
               "whereClauses": []
+            }
+          ],
+          "title": "PM2.5",
+          "transparent": true,
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "crate-datasource",
+            "uid": "5"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "area"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "#7c8996"
+                  },
+                  {
+                    "color": "#00fffa33",
+                    "value": 0
+                  },
+                  {
+                    "color": "#50c8a333",
+                    "value": 20
+                  },
+                  {
+                    "color": "#ebeb3633",
+                    "value": 40
+                  },
+                  {
+                    "color": "#ff4f5c33",
+                    "value": 50
+                  },
+                  {
+                    "color": "#c0000033",
+                    "value": 100
+                  },
+                  {
+                    "color": "#9900ff33",
+                    "value": 150
+                  },
+                  {
+                    "color": "#7c8996",
+                    "value": 1200
+                  }
+                ]
+              },
+              "unit": "conμgm3"
             },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byRegexp",
+                  "options": ".* average"
+                },
+                "properties": [
+                  {
+                    "id": "custom.lineWidth",
+                    "value": 3
+                  },
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "semi-dark-blue",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 57
+          },
+          "id": 34,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
             {
               "datasource": {
                 "type": "crate-datasource",
@@ -1906,7 +2039,6 @@
               },
               "groupByAliases": [],
               "groupByColumns": [],
-              "hide": false,
               "metricAggs": [
                 {
                   "$$hashKey": "object:54",
@@ -1914,40 +2046,19 @@
                   "type": "avg"
                 }
               ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(co) AS \"CO hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "query": "SELECT timestamp, avg(hour_avg_pm10) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM10 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm10) as \"hour_avg_pm10\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm10 > 0 and pm10 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
               "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(co) AS \"CO daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
+              "refId": "A",
               "resultFormat": "time_series",
               "whereClauses": []
             }
           ],
-          "title": "CO",
+          "title": "PM10",
           "transparent": true,
           "type": "timeseries"
         }
       ],
-      "title": "Show details",
+      "title": "Air Quality Index details",
       "type": "row"
     },
     {
@@ -1956,7 +2067,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 25
       },
       "id": 21,
       "panels": [
@@ -2019,7 +2130,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 23
+            "y": 26
           },
           "id": 22,
           "options": {
@@ -2041,6 +2152,7 @@
               },
               "groupByAliases": [],
               "groupByColumns": [],
+              "hide": false,
               "metricAggs": [
                 {
                   "$$hashKey": "object:54",
@@ -2048,19 +2160,103 @@
                   "type": "avg"
                 }
               ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\", avg(o3) AS \"O3 hourly average\", avg(so2) AS \"SO2 hourly average\", avg(co) AS \"CO hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND no2 >= 0 AND no2 < 500 GROUP BY time ORDER BY time ASC",
               "rawQuery": true,
               "refId": "A",
-              "resultFormat": "table",
+              "resultFormat": "time_series",
+              "whereClauses": []
+            },
+            {
+              "datasource": {
+                "type": "crate-datasource",
+                "uid": "5"
+              },
+              "groupByAliases": [],
+              "groupByColumns": [],
+              "hide": false,
+              "metricAggs": [
+                {
+                  "$$hashKey": "object:54",
+                  "column": "value",
+                  "type": "avg"
+                }
+              ],
+              "query": "SELECT timestamp, avg(hour_avg_o3) OVER(ORDER BY timestamp ASC ROWS 7 PRECEDING) as \"O3 eight-hour moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(o3) as \"hour_avg_o3\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and o3 > 0 and o3 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "whereClauses": []
+            },
+            {
+              "datasource": {
+                "type": "crate-datasource",
+                "uid": "5"
+              },
+              "groupByAliases": [],
+              "groupByColumns": [],
+              "hide": false,
+              "metricAggs": [
+                {
+                  "$$hashKey": "object:54",
+                  "column": "value",
+                  "type": "avg"
+                }
+              ],
+              "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) as \"SO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND so2 >= 0 AND so2 < 1000 GROUP BY time ORDER BY time ASC",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "whereClauses": []
+            },
+            {
+              "datasource": {
+                "type": "crate-datasource",
+                "uid": "5"
+              },
+              "groupByAliases": [],
+              "groupByColumns": [],
+              "hide": false,
+              "metricAggs": [
+                {
+                  "$$hashKey": "object:54",
+                  "column": "value",
+                  "type": "avg"
+                }
+              ],
+              "query": "SELECT timestamp, avg(hour_avg_pm25) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM2.5 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm25) as \"hour_avg_pm25\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm25 > 0 and pm25 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "whereClauses": []
+            },
+            {
+              "datasource": {
+                "type": "crate-datasource",
+                "uid": "5"
+              },
+              "groupByAliases": [],
+              "groupByColumns": [],
+              "hide": false,
+              "metricAggs": [
+                {
+                  "$$hashKey": "object:54",
+                  "column": "value",
+                  "type": "avg"
+                }
+              ],
+              "query": "SELECT timestamp, avg(hour_avg_pm10) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM10 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm10) as \"hour_avg_pm10\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm10 > 0 and pm10 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "rawQuery": true,
+              "refId": "E",
+              "resultFormat": "time_series",
               "whereClauses": []
             }
           ],
-          "title": "Pollutants comparative",
+          "title": "Comparative",
           "transparent": true,
           "type": "timeseries"
         }
       ],
-      "title": "Pollutants comparative",
+      "title": "Air Quality Index comparative",
       "type": "row"
     }
   ],
@@ -2224,8 +2420,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Air Quality - Pollutants",
-  "uid": "aqapp-po",
-  "version": 13,
+  "title": "Air Qyuality Index (ICA)",
+  "uid": "aqapp-ica",
+  "version": 7,
   "weekStart": ""
 }
