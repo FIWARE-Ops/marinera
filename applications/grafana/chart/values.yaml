@@ -50,6 +50,9 @@ grafana:
     marinera/component:	visualization
     marinera/subcomponent: ui
     marinera/product: grafana
+  serviceMonitor:
+    enabled: true
+    interval: 30s
 
 admin:
   # -- Admin username
@@ -78,5 +81,6 @@ datasources:
 
 tests:
   enabled: true
+
 
 
