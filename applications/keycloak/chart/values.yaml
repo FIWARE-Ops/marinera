@@ -105,7 +105,5 @@ keycloak:
 
   metrics:
     enabled: true
-    serviceMonitor:
-      enabled: true
   containerPorts:
     management: 8080
