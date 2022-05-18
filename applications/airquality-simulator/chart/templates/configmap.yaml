@@ -6,4 +6,4 @@ metadata:
     {{ include "airquality-simulator.labels" . | nindent 4 }}
 data:
   application.yaml: |-
-    {{ .Values.config | toYaml | indent 4 }}
+    {{ .Values.config | toYaml | nindent 4 }}
