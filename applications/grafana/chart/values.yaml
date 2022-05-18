@@ -52,8 +52,7 @@ grafana:
     marinera/product: grafana
 
   env:
-    - name: GF_PANELS_DISABLE_SANITIZE_HTML
-      value: "true"
+    GF_PANELS_DISABLE_SANITIZE_HTML: true
 
 admin:
   # -- Admin username
