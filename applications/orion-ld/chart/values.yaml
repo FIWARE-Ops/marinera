@@ -9,7 +9,9 @@ orion-ld:
       auth:
         password: test
     logging:
-      level: "WARN"        
+      level: "WARN"
+  deployment:
+    replicaCount: 2
   mongo:
     # we want to use the individually deployed mongodb
     enabled: false
