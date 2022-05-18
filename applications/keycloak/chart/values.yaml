@@ -64,6 +64,19 @@ keycloak:
     - name: profiles
       configMap:
         name: keycloak-profile
+  
+  extraEnvVars:
+    - name: KEYCLOAK_LOG_LEVEL
+      value: WARN
+    #- name: KEYCLOAK_EXTRA_ARGS
+    #  value: -Dkeycloak.log.console.output=json
+
+  podLabels:
+    marinera/platform: fiware
+    marinera/component:	security
+    marinera/subcomponent: auth
+    marinera/product: keycloak
+
 
   service:
     type: ClusterIP
@@ -77,9 +90,15 @@ keycloak:
         enabled: false
       containerSecurityContext:
         enabled: false
+      podLabels:
+        marinera/platform: fiware
+        marinera/component:	security
+        marinera/subcomponent: persistence
+        marinera/product: postgresql
     readReplicas:
       podSecurityContext:
         enabled: false
       containerSecurityContext:
         enabled: false
-      
+    audit:
+      clientMinMessages: warning
