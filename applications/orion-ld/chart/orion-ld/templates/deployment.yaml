@@ -141,7 +141,7 @@ spec:
             {{- end }}
             {{- if .Values.broker.subCacheIval }}
             - name: {{ .Values.broker.envPrefix }}SUBCACHE_IVAL
-              value: {{ .Values.broker.subCacheIval }}
+              value: {{ .Values.broker.subCacheIval | quote }}
             {{- end }}
             {{- if .Values.broker.noCache }}
             - name: {{ .Values.broker.envPrefix }}NOCACHE
