@@ -24,30 +24,36 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
-  "iteration": 1652866470621,
+  "iteration": 1652876496773,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "aliasColors": {},
+      "css_data": ".dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon span {\n  height: 20px;\n  width: auto;\n  line-height: 37px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n    display: none;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .back-container-icon {\n    width: 30px;\n    height: 30px;\n    margin: 20px 10px;\n  }\n  \n  .back-container-icon span {\n    line-height: 17px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n\n\n  \n",
       "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
+      "doInit": {},
+      "format": "short",
       "gridPos": {
         "h": 4,
         "w": 24,
         "x": 0,
         "y": 0
       },
+      "handleMetric": {},
+      "html_data": "<div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY - POLLUTANTS\n          </h1>\n        </div>\n      </div>\n      <a href=\"/d/aqapp-home\">\n        <div class=\"dashboard-header-left-right\">\n          <div class=\"back-container-text\">\n          </div>\n          <div class=\"back-container-icon\">\n            <span class=\"fa fa-chevron-left\"></span>\n          </div>\n        </div>\n      </a>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div>",
       "id": 2,
-      "options": {
-        "content": "<style>\n\n.dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon span {\n  height: 20px;\n  width: auto;\n  line-height: 37px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n    display: none;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .back-container-icon {\n    width: 30px;\n    height: 30px;\n    margin: 20px 10px;\n  }\n  \n  .back-container-icon span {\n    line-height: 17px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n</style>\n\n  <div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY - POLLUTANTS\n          </h1>\n        </div>\n      </div>\n      <a href=\"/d/aqapp-home\">\n        <div class=\"dashboard-header-left-right\">\n          <div class=\"back-container-text\">\n          </div>\n          <div class=\"back-container-icon\">\n            <span class=\"fa fa-chevron-left\"></span>\n          </div>\n        </div>\n      </a>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div\n",
-        "mode": "html"
-      },
-      "pluginVersion": "8.5.2",
+      "js_code": "",
+      "js_init_code": "",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pluginVersion": "8.5.0",
       "transparent": true,
-      "type": "text"
+      "type": "aidanmountford-html-panel"
     },
     {
       "datasource": {
@@ -65,34 +71,41 @@
         "content": "**Dispositivo seleccionado:** $device_name\n",
         "mode": "markdown"
       },
-      "pluginVersion": "8.5.2",
+      "pluginVersion": "8.5.0",
       "transparent": true,
       "type": "text"
     },
     {
+      "aliasColors": {},
+      "css_data": "",
       "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
+      "doInit": {},
+      "format": "short",
       "gridPos": {
         "h": 4,
         "w": 3,
         "x": 5,
         "y": 4
       },
+      "handleMetric": {},
+      "html_data": "<div style=\"accent-color: auto;align-content: normal;align-items: normal;align-self: auto;animation-delay: 0s;animation-direction: normal;animation-duration: 0s;animation-fill-mode: none;animation-iteration-count: 1;animation-name: none;animation-play-state: running;animation-timing-function: ease;appearance: none;aspect-ratio: auto;backface-visibility: visible;background-attachment: scroll;background-blend-mode: normal;background-clip: border-box;background-color: rgba(255, 255, 255, 0.8);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;block-size: 120px;border-block-end-color: rgb(85, 85, 85);border-block-end-style: none;border-block-end-width: 0px;border-block-start-color: rgb(85, 85, 85);border-block-start-style: none;border-block-start-width: 0px;border-bottom-color: rgb(85, 85, 85);border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;border-bottom-style: none;border-bottom-width: 0px;border-collapse: separate;border-end-end-radius: 5px;border-end-start-radius: 5px;border-image-outset: 0;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;border-inline-end-color: rgb(85, 85, 85);border-inline-end-style: none;border-inline-end-width: 0px;border-inline-start-color: rgb(85, 85, 85);border-inline-start-style: none;border-inline-start-width: 0px;border-left-color: rgb(85, 85, 85);border-left-style: none;border-left-width: 0px;border-right-color: rgb(85, 85, 85);border-right-style: none;border-right-width: 0px;border-spacing: 0px 0px;border-start-end-radius: 5px;border-start-start-radius: 5px;border-top-color: rgb(85, 85, 85);border-top-left-radius: 5px;border-top-right-radius: 5px;border-top-style: none;border-top-width: 0px;bottom: 0px;box-decoration-break: slice;box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px 0px;box-sizing: border-box;break-after: auto;break-before: auto;break-inside: auto;caption-side: top;caret-color: rgb(85, 85, 85);clear: both;clip: auto;clip-path: none;clip-rule: nonzero;color: rgb(85, 85, 85);color-interpolation: srgb;color-interpolation-filters: linearrgb;color-scheme: normal;column-count: auto;column-fill: balance;column-gap: normal;column-rule-color: rgb(85, 85, 85);column-rule-style: none;column-rule-width: 0px;column-span: none;column-width: auto;contain: none;content: normal;counter-increment: none;counter-reset: none;counter-set: none;cursor: auto;cx: 0px;cy: 0px;d: none;direction: ltr;display: flex;dominant-baseline: auto;empty-cells: show;fill: rgb(0, 0, 0);fill-opacity: 1;fill-rule: nonzero;filter: none;flex-basis: auto;flex-direction: column;flex-grow: 0;flex-shrink: 1;flex-wrap: nowrap;float: left;flood-color: rgb(0, 0, 0);flood-opacity: 1;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-synthesis: weight style small-caps;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;grid-auto-columns: auto;grid-auto-flow: row;grid-auto-rows: auto;grid-column-end: auto;grid-column-start: auto;grid-row-end: auto;grid-row-start: auto;grid-template-areas: none;grid-template-columns: none;grid-template-rows: none;height: 120px;hyphenate-character: auto;hyphens: manual;image-orientation: from-image;image-rendering: auto;ime-mode: auto;inline-size: 195.2px;inset-block-end: 0px;inset-block-start: 0px;inset-inline-end: 0px;inset-inline-start: 0px;isolation: auto;justify-content: normal;justify-items: normal;justify-self: auto;left: 0px;letter-spacing: normal;lighting-color: rgb(255, 255, 255);line-break: auto;line-height: 18px;list-style-image: none;list-style-position: outside;list-style-type: disc;margin-block-end: 10px;margin-block-start: 0px;margin-bottom: 10px;margin-inline-end: 8px;margin-inline-start: 10px;margin-left: 10px;margin-right: 8px;margin-top: 0px;marker-end: none;marker-mid: none;marker-start: none;mask-clip: border-box;mask-composite: add;mask-image: none;mask-mode: match-source;mask-origin: border-box;mask-position-x: 0%;mask-position-y: 0%;mask-repeat: repeat;mask-size: auto;mask-type: luminance;max-block-size: none;max-height: none;max-inline-size: none;max-width: none;min-block-size: 0px;min-height: 0px;min-inline-size: 0px;min-width: 0px;mix-blend-mode: normal;object-fit: fill;object-position: 50% 50%;offset-anchor: auto;offset-distance: 0px;offset-path: none;offset-rotate: auto;opacity: 1;order: 0;outline-color: rgb(85, 85, 85);outline-offset: 0px;outline-style: none;outline-width: 0px;overflow-anchor: auto;overflow-block: visible;overflow-inline: visible;overflow-wrap: normal;overflow-x: visible;overflow-y: visible;overscroll-behavior-block: auto;overscroll-behavior-inline: auto;overscroll-behavior-x: auto;overscroll-behavior-y: auto;padding-block-end: 6px;padding-block-start: 6px;padding-bottom: 6px;padding-inline-end: 8px;padding-inline-start: 8px;padding-left: 8px;padding-right: 8px;padding-top: 6px;paint-order: normal;perspective: none;perspective-origin: 97.6px 60px;pointer-events: auto;position: relative;print-color-adjust: economy;quotes: auto;r: 0px;resize: none;right: 0px;rotate: none;row-gap: normal;ruby-align: space-around;ruby-position: alternate;rx: auto;ry: auto;scale: none;scroll-behavior: auto;scroll-margin-block-end: 0px;scroll-margin-block-start: 0px;scroll-margin-bottom: 0px;scroll-margin-inline-end: 0px;scroll-margin-inline-start: 0px;scroll-margin-left: 0px;scroll-margin-right: 0px;scroll-margin-top: 0px;scroll-padding-block-end: auto;scroll-padding-block-start: auto;scroll-padding-bottom: auto;scroll-padding-inline-end: auto;scroll-padding-inline-start: auto;scroll-padding-left: auto;scroll-padding-right: auto;scroll-padding-top: auto;scroll-snap-align: none;scroll-snap-type: none;scrollbar-color: auto;scrollbar-gutter: auto;scrollbar-width: auto;shape-image-threshold: 0;shape-margin: 0px;shape-outside: none;shape-rendering: auto;stop-color: rgb(0, 0, 0);stop-opacity: 1;stroke: none;stroke-dasharray: none;stroke-dashoffset: 0px;stroke-linecap: butt;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-opacity: 1;stroke-width: 1px;tab-size: 8;table-layout: auto;text-align: start;text-align-last: auto;text-anchor: start;text-combine-upright: none;text-decoration-color: rgb(85, 85, 85);text-decoration-line: none;text-decoration-skip-ink: auto;text-decoration-style: solid;text-decoration-thickness: auto;text-emphasis-color: rgb(85, 85, 85);text-emphasis-position: over right;text-emphasis-style: none;text-indent: 0px;text-justify: auto;text-orientation: mixed;text-overflow: clip;text-rendering: auto;text-shadow: none;text-transform: none;text-underline-offset: auto;text-underline-position: auto;top: 0px;touch-action: auto;transform: none;transform-box: border-box;transform-origin: 97.6px 60px;transform-style: flat;transition-delay: 0s;transition-duration: 0s;transition-property: all;transition-timing-function: ease;translate: none;unicode-bidi: isolate;user-select: auto;vector-effect: none;vertical-align: baseline;visibility: visible;white-space: normal;width: 195.2px;will-change: auto;word-break: normal;word-spacing: 0px;writing-mode: horizontal-tb;x: 0px;y: 0px;z-index: 800;-moz-box-align: stretch;-moz-box-direction: normal;-moz-box-flex: 0;-moz-box-ordinal-group: 1;-moz-box-orient: horizontal;-moz-box-pack: start;-moz-float-edge: content-box;-moz-force-broken-image-icon: 0;-moz-image-region: auto;-moz-orient: inline;-moz-text-size-adjust: auto;-moz-user-focus: none;-moz-user-input: auto;-moz-user-modify: read-only;-moz-window-dragging: default;-webkit-line-clamp: none;-webkit-text-fill-color: rgb(85, 85, 85);-webkit-text-stroke-color: rgb(85, 85, 85);-webkit-text-stroke-width: 0px;\">\n<div style=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(0, 255, 250, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i> Good</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(80, 200, 163, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Fair</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(235, 235, 54, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Moderate</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(255, 79, 92, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Poor</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(192, 0, 0, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Very poor</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(153, 0, 255,0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Extremely poor</div>\n</div>\n",
       "id": 26,
-      "options": {
-        "content": "<div style=\"accent-color: auto;align-content: normal;align-items: normal;align-self: auto;animation-delay: 0s;animation-direction: normal;animation-duration: 0s;animation-fill-mode: none;animation-iteration-count: 1;animation-name: none;animation-play-state: running;animation-timing-function: ease;appearance: none;aspect-ratio: auto;backface-visibility: visible;background-attachment: scroll;background-blend-mode: normal;background-clip: border-box;background-color: rgba(255, 255, 255, 0.8);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;block-size: 120px;border-block-end-color: rgb(85, 85, 85);border-block-end-style: none;border-block-end-width: 0px;border-block-start-color: rgb(85, 85, 85);border-block-start-style: none;border-block-start-width: 0px;border-bottom-color: rgb(85, 85, 85);border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;border-bottom-style: none;border-bottom-width: 0px;border-collapse: separate;border-end-end-radius: 5px;border-end-start-radius: 5px;border-image-outset: 0;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;border-inline-end-color: rgb(85, 85, 85);border-inline-end-style: none;border-inline-end-width: 0px;border-inline-start-color: rgb(85, 85, 85);border-inline-start-style: none;border-inline-start-width: 0px;border-left-color: rgb(85, 85, 85);border-left-style: none;border-left-width: 0px;border-right-color: rgb(85, 85, 85);border-right-style: none;border-right-width: 0px;border-spacing: 0px 0px;border-start-end-radius: 5px;border-start-start-radius: 5px;border-top-color: rgb(85, 85, 85);border-top-left-radius: 5px;border-top-right-radius: 5px;border-top-style: none;border-top-width: 0px;bottom: 0px;box-decoration-break: slice;box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px 0px;box-sizing: border-box;break-after: auto;break-before: auto;break-inside: auto;caption-side: top;caret-color: rgb(85, 85, 85);clear: both;clip: auto;clip-path: none;clip-rule: nonzero;color: rgb(85, 85, 85);color-interpolation: srgb;color-interpolation-filters: linearrgb;color-scheme: normal;column-count: auto;column-fill: balance;column-gap: normal;column-rule-color: rgb(85, 85, 85);column-rule-style: none;column-rule-width: 0px;column-span: none;column-width: auto;contain: none;content: normal;counter-increment: none;counter-reset: none;counter-set: none;cursor: auto;cx: 0px;cy: 0px;d: none;direction: ltr;display: flex;dominant-baseline: auto;empty-cells: show;fill: rgb(0, 0, 0);fill-opacity: 1;fill-rule: nonzero;filter: none;flex-basis: auto;flex-direction: column;flex-grow: 0;flex-shrink: 1;flex-wrap: nowrap;float: left;flood-color: rgb(0, 0, 0);flood-opacity: 1;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-synthesis: weight style small-caps;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;grid-auto-columns: auto;grid-auto-flow: row;grid-auto-rows: auto;grid-column-end: auto;grid-column-start: auto;grid-row-end: auto;grid-row-start: auto;grid-template-areas: none;grid-template-columns: none;grid-template-rows: none;height: 120px;hyphenate-character: auto;hyphens: manual;image-orientation: from-image;image-rendering: auto;ime-mode: auto;inline-size: 195.2px;inset-block-end: 0px;inset-block-start: 0px;inset-inline-end: 0px;inset-inline-start: 0px;isolation: auto;justify-content: normal;justify-items: normal;justify-self: auto;left: 0px;letter-spacing: normal;lighting-color: rgb(255, 255, 255);line-break: auto;line-height: 18px;list-style-image: none;list-style-position: outside;list-style-type: disc;margin-block-end: 10px;margin-block-start: 0px;margin-bottom: 10px;margin-inline-end: 8px;margin-inline-start: 10px;margin-left: 10px;margin-right: 8px;margin-top: 0px;marker-end: none;marker-mid: none;marker-start: none;mask-clip: border-box;mask-composite: add;mask-image: none;mask-mode: match-source;mask-origin: border-box;mask-position-x: 0%;mask-position-y: 0%;mask-repeat: repeat;mask-size: auto;mask-type: luminance;max-block-size: none;max-height: none;max-inline-size: none;max-width: none;min-block-size: 0px;min-height: 0px;min-inline-size: 0px;min-width: 0px;mix-blend-mode: normal;object-fit: fill;object-position: 50% 50%;offset-anchor: auto;offset-distance: 0px;offset-path: none;offset-rotate: auto;opacity: 1;order: 0;outline-color: rgb(85, 85, 85);outline-offset: 0px;outline-style: none;outline-width: 0px;overflow-anchor: auto;overflow-block: visible;overflow-inline: visible;overflow-wrap: normal;overflow-x: visible;overflow-y: visible;overscroll-behavior-block: auto;overscroll-behavior-inline: auto;overscroll-behavior-x: auto;overscroll-behavior-y: auto;padding-block-end: 6px;padding-block-start: 6px;padding-bottom: 6px;padding-inline-end: 8px;padding-inline-start: 8px;padding-left: 8px;padding-right: 8px;padding-top: 6px;paint-order: normal;perspective: none;perspective-origin: 97.6px 60px;pointer-events: auto;position: relative;print-color-adjust: economy;quotes: auto;r: 0px;resize: none;right: 0px;rotate: none;row-gap: normal;ruby-align: space-around;ruby-position: alternate;rx: auto;ry: auto;scale: none;scroll-behavior: auto;scroll-margin-block-end: 0px;scroll-margin-block-start: 0px;scroll-margin-bottom: 0px;scroll-margin-inline-end: 0px;scroll-margin-inline-start: 0px;scroll-margin-left: 0px;scroll-margin-right: 0px;scroll-margin-top: 0px;scroll-padding-block-end: auto;scroll-padding-block-start: auto;scroll-padding-bottom: auto;scroll-padding-inline-end: auto;scroll-padding-inline-start: auto;scroll-padding-left: auto;scroll-padding-right: auto;scroll-padding-top: auto;scroll-snap-align: none;scroll-snap-type: none;scrollbar-color: auto;scrollbar-gutter: auto;scrollbar-width: auto;shape-image-threshold: 0;shape-margin: 0px;shape-outside: none;shape-rendering: auto;stop-color: rgb(0, 0, 0);stop-opacity: 1;stroke: none;stroke-dasharray: none;stroke-dashoffset: 0px;stroke-linecap: butt;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-opacity: 1;stroke-width: 1px;tab-size: 8;table-layout: auto;text-align: start;text-align-last: auto;text-anchor: start;text-combine-upright: none;text-decoration-color: rgb(85, 85, 85);text-decoration-line: none;text-decoration-skip-ink: auto;text-decoration-style: solid;text-decoration-thickness: auto;text-emphasis-color: rgb(85, 85, 85);text-emphasis-position: over right;text-emphasis-style: none;text-indent: 0px;text-justify: auto;text-orientation: mixed;text-overflow: clip;text-rendering: auto;text-shadow: none;text-transform: none;text-underline-offset: auto;text-underline-position: auto;top: 0px;touch-action: auto;transform: none;transform-box: border-box;transform-origin: 97.6px 60px;transform-style: flat;transition-delay: 0s;transition-duration: 0s;transition-property: all;transition-timing-function: ease;translate: none;unicode-bidi: isolate;user-select: auto;vector-effect: none;vertical-align: baseline;visibility: visible;white-space: normal;width: 195.2px;will-change: auto;word-break: normal;word-spacing: 0px;writing-mode: horizontal-tb;x: 0px;y: 0px;z-index: 800;-moz-box-align: stretch;-moz-box-direction: normal;-moz-box-flex: 0;-moz-box-ordinal-group: 1;-moz-box-orient: horizontal;-moz-box-pack: start;-moz-float-edge: content-box;-moz-force-broken-image-icon: 0;-moz-image-region: auto;-moz-orient: inline;-moz-text-size-adjust: auto;-moz-user-focus: none;-moz-user-input: auto;-moz-user-modify: read-only;-moz-window-dragging: default;-webkit-line-clamp: none;-webkit-text-fill-color: rgb(85, 85, 85);-webkit-text-stroke-color: rgb(85, 85, 85);-webkit-text-stroke-width: 0px;\">\n<div style=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(0, 255, 250, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i> Good</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(80, 200, 163, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Fair</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(235, 235, 54, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Moderate</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(255, 79, 92, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Poor</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(192, 0, 0, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Very poor</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(153, 0, 255,0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Extremely poor</div>\n</div>\n\n",
-        "mode": "html"
-      },
-      "pluginVersion": "8.5.2",
+      "js_code": "",
+      "js_init_code": "",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pluginVersion": "8.5.0",
       "transparent": true,
-      "type": "text"
+      "type": "aidanmountford-html-panel"
     },
     {
       "datasource": {
-        "type": "orion-datasource",
-        "uid": "4"
+        "type": "postgres",
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -197,29 +210,39 @@
           "zoom": 14
         }
       },
-      "pluginVersion": "8.5.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
-          "attributes": "All",
-          "currentTimeColumn": false,
           "datasource": {
-            "type": "orion-datasource",
-            "uid": "4"
+            "type": "postgres",
+            "uid": "3"
           },
-          "defaultFiwareService": false,
-          "enableTypeSearch": false,
-          "entityId": "All",
-          "entityType": "All",
-          "executePostQueryFilter": false,
-          "hide": false,
-          "invertLocationCoordinates": false,
-          "queryFilter": "",
-          "refId": "B",
-          "selectedRequest": "Entities",
-          "service": "$service",
-          "servicePath": "$servicepath",
-          "target": "select metric",
-          "type": "table"
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transformations": [
@@ -328,8 +351,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -499,23 +522,35 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "3"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(no2) as \"NO2\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
-          "rawQuery": true,
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -523,8 +558,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -693,23 +728,35 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "3"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(o3) as \"O3\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
-          "rawQuery": true,
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -717,8 +764,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -887,23 +934,35 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "3"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(so2) as \"SO2\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
-          "rawQuery": true,
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -911,8 +970,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -1081,30 +1140,42 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "3"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(co) as \"CO\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
-          "rawQuery": true,
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
       "type": "state-timeline"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1112,1050 +1183,899 @@
         "y": 21
       },
       "id": 14,
-      "panels": [
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media diaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media horaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* máximo horario"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 22
-          },
-          "id": 19,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 media horaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(no2) AS \"NO2 máximo horario\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(no2) AS \"NO2 media diaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "Evolución contaminante NO2",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media diaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media horaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* máximo horario"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 30
-          },
-          "id": 15,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(o3) AS \"O3 media horaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(o3) AS \"O3 máximo horario\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(o3) AS \"O3 media diaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "Evolución contaminante O3",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media diaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media horaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* máximo horario"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 38
-          },
-          "id": 16,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) AS \"SO2 media horaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(so2) AS \"SO2 máximo horario\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(so2) AS \"SO2 media diaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "Evolución contaminante SO2",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media diaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media horaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* máximo horario"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 46
-          },
-          "id": 17,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(co) AS \"CO media horaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(co) AS \"CO máximo horario\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(co) AS \"CO media diaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "Evolución contaminante SO2",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media diaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* media horaria"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* máximo horario"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 54
-          },
-          "id": 18,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(h2s) AS \"H2S media horaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(h2s) AS \"H2S máximo horario\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(h2s) AS \"H2S media diaria\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "Evolución contaminante H2S",
-          "transparent": true,
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "title": "Evolución gases contaminantes",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media diaria"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media horaria"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* máximo horario"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Evolución contaminante NO2",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media diaria"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media horaria"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* máximo horario"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Evolución contaminante O3",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media diaria"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media horaria"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* máximo horario"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Evolución contaminante SO2",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media diaria"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media horaria"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* máximo horario"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Evolución contaminante SO2",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media diaria"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* media horaria"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* máximo horario"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "Evolución contaminante H2S",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "collapsed": true,
@@ -2163,7 +2083,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 62
       },
       "id": 21,
       "panels": [
@@ -2210,8 +2130,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -2289,6 +2208,9 @@
           "uid": "4"
         },
         "definition": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\",\n            \"queryFilter\": \"ica==true\"\n }",
+        "error": {
+          "message": "Datasource 4 was not found"
+        },
         "hide": 0,
         "includeAll": false,
         "label": "Device",
@@ -2313,6 +2235,9 @@
           "uid": "4"
         },
         "definition": "        {\n            \"request\": \"Entities\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"attributeName\": \"id,name\",\n            \"queryFilter\": \"name=='$device_name'\",\n            \"executePostQueryFilter\": true\n        }",
+        "error": {
+          "message": "Datasource 4 was not found"
+        },
         "hide": 2,
         "includeAll": false,
         "multi": false,
@@ -2434,6 +2359,6 @@
   "timezone": "",
   "title": "Air Quality - Pollutants",
   "uid": "aqpp-po",
-  "version": 7,
+  "version": 1,
   "weekStart": ""
 }

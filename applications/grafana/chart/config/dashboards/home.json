@@ -24,34 +24,40 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "aliasColors": {},
+      "css_data": ".dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon img {\n  height: 20px;\n  width: auto;\n  margin: 12px auto auto -3px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n\n  \n",
       "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
+      "doInit": {},
+      "format": "short",
       "gridPos": {
         "h": 4,
         "w": 24,
         "x": 0,
         "y": 0
       },
+      "handleMetric": {},
+      "html_data": "<div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY DATA MONITOR\n          </h1>\n        </div>\n      </div>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div>",
       "id": 2,
-      "options": {
-        "content": "<style>\n\n.dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon img {\n  height: 20px;\n  width: auto;\n  margin: 12px auto auto -3px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n</style>\n\n  <div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY DATA MONITOR\n          </h1>\n        </div>\n      </div>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div>\n",
-        "mode": "html"
-      },
-      "pluginVersion": "8.5.2",
+      "js_code": "",
+      "js_init_code": "",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pluginVersion": "8.5.0",
       "transparent": true,
-      "type": "text"
+      "type": "aidanmountford-html-panel"
     },
     {
       "datasource": {
-        "type": "orion-datasource",
-        "uid": "4"
+        "type": "postgres",
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -156,29 +162,39 @@
           "zoom": 14
         }
       },
-      "pluginVersion": "8.5.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
-          "attributes": "All",
-          "currentTimeColumn": false,
           "datasource": {
-            "type": "orion-datasource",
-            "uid": "4"
+            "type": "postgres",
+            "uid": "3"
           },
-          "defaultFiwareService": false,
-          "enableTypeSearch": false,
-          "entityId": "All",
-          "entityType": "All",
-          "executePostQueryFilter": false,
-          "hide": false,
-          "invertLocationCoordinates": false,
-          "queryFilter": "",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": false,
+          "rawSql": "SELECT\n  time_index AS \"time\",\n  humidity\nFROM etairqualityobserved\nWHERE\n  $__timeFilter(time_index)\nORDER BY 1",
           "refId": "A",
-          "selectedRequest": "Entities",
-          "service": "Device",
-          "servicePath": "/alcantarilla",
-          "target": "select metric",
-          "type": "table"
+          "select": [
+            [
+              {
+                "params": [
+                  "humidity"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "etairqualityobserved",
+          "timeColumn": "time_index",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transformations": [
@@ -248,64 +264,85 @@
       "type": "geomap"
     },
     {
+      "aliasColors": {},
+      "css_data": "",
       "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
+      "doInit": {},
+      "format": "short",
       "gridPos": {
         "h": 2,
         "w": 6,
         "x": 18,
         "y": 4
       },
+      "handleMetric": {},
+      "html_data": "<a href=\"/d/aqapp-ica?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality Index (ICA)</h1>\n    </div>\n  </div>\n</a>",
       "id": 8,
-      "options": {
-        "content": "<a href=\"/d/aqapp-ica?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality Index (ICA)</h1>\n    </div>\n  </div>\n</a>",
-        "mode": "html"
-      },
-      "pluginVersion": "8.5.2",
+      "js_code": "",
+      "js_init_code": "",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pluginVersion": "8.5.0",
       "transparent": true,
-      "type": "text"
+      "type": "aidanmountford-html-panel"
     },
     {
+      "aliasColors": {},
+      "css_data": "",
       "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
+      "doInit": {},
+      "format": "short",
       "gridPos": {
         "h": 2,
         "w": 6,
         "x": 18,
         "y": 6
       },
+      "handleMetric": {},
+      "html_data": "<a href=\"/d/aqapp-po?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Pollutants</h1>\n    </div>\n  </div>\n</a>",
       "id": 7,
-      "options": {
-        "content": "<a href=\"/d/aqapp-po?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Pollutants</h1>\n    </div>\n  </div>\n</a>",
-        "mode": "html"
-      },
-      "pluginVersion": "8.5.2",
+      "js_code": "",
+      "js_init_code": "",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pluginVersion": "8.5.0",
       "transparent": true,
-      "type": "text"
+      "type": "aidanmountford-html-panel"
     },
     {
+      "aliasColors": {},
+      "css_data": "",
       "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
+      "doInit": {},
+      "format": "short",
       "gridPos": {
         "h": 2,
         "w": 6,
         "x": 18,
         "y": 8
       },
+      "handleMetric": {},
+      "html_data": "<a href=\"/d/aqapp-pm?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Particulate matter</h1>\n    </div>\n  </div>\n</a>",
       "id": 6,
-      "options": {
-        "content": "<a href=\"/d/aqapp-pm?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Particulate matter</h1>\n    </div>\n  </div>\n</a>",
-        "mode": "html"
-      },
-      "pluginVersion": "8.5.2",
+      "js_code": "",
+      "js_init_code": "",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pluginVersion": "8.5.0",
       "transparent": true,
-      "type": "text"
+      "type": "aidanmountford-html-panel"
     }
   ],
   "schemaVersion": 36,
