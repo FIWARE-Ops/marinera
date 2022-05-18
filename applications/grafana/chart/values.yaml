@@ -51,6 +51,10 @@ grafana:
     marinera/subcomponent: ui
     marinera/product: grafana
 
+  env:
+    - name: GF_PANELS_DISABLE_SANITIZE_HTML
+      value: true
+
 admin:
   # -- Admin username
   username: fiwareAdmin
