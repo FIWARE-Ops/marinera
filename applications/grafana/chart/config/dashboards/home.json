@@ -1,0 +1,327 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "content": "<style>\n\n.dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon img {\n  height: 20px;\n  width: auto;\n  margin: 12px auto auto -3px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n</style>\n\n  <div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY DATA MONITOR\n          </h1>\n        </div>\n      </div>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "8.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "orion-datasource",
+        "uid": "4"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 18,
+        "x": 0,
+        "y": 4
+      },
+      "id": 4,
+      "options": {
+        "basemap": {
+          "config": {
+            "showLabels": true,
+            "theme": "auto"
+          },
+          "name": "Layer 0",
+          "type": "carto"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showDebug": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "fixed": "#0971b8"
+                },
+                "opacity": 0.8,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "clamped"
+                },
+                "size": {
+                  "fixed": 7,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "field": "id",
+                  "fixed": "",
+                  "mode": "fixed"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "latitude": "latitude",
+              "longitude": "longitude",
+              "mode": "coords"
+            },
+            "name": "Devices",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "view": {
+          "id": "coords",
+          "lat": 37.973241,
+          "lon": -1.215439,
+          "zoom": 14
+        }
+      },
+      "pluginVersion": "8.5.2",
+      "targets": [
+        {
+          "attributes": "All",
+          "currentTimeColumn": false,
+          "datasource": {
+            "type": "orion-datasource",
+            "uid": "4"
+          },
+          "defaultFiwareService": false,
+          "enableTypeSearch": false,
+          "entityId": "All",
+          "entityType": "All",
+          "executePostQueryFilter": false,
+          "hide": false,
+          "invertLocationCoordinates": false,
+          "queryFilter": "",
+          "refId": "A",
+          "selectedRequest": "Entities",
+          "service": "Device",
+          "servicePath": "/alcantarilla",
+          "target": "select metric",
+          "type": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "source": "location"
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "coordinates"
+              }
+            ],
+            "match": "any",
+            "type": "exclude"
+          }
+        },
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "replace": false,
+            "source": "coordinates"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "0": false,
+              "coordinates": true,
+              "dataProvider": true,
+              "id": true,
+              "location": true,
+              "source": true,
+              "type 1": true,
+              "type 2": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "0": "longitude",
+              "1": "latitude",
+              "operationalStatus": "status"
+            }
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [],
+            "fields": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 18,
+        "y": 4
+      },
+      "id": 8,
+      "options": {
+        "content": "<a href=\"/d/aqapp-ica?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality Index (ICA)</h1>\n    </div>\n  </div>\n</a>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 18,
+        "y": 6
+      },
+      "id": 7,
+      "options": {
+        "content": "<a href=\"/d/aqapp-po?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Pollutants</h1>\n    </div>\n  </div>\n</a>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 18,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "content": "<a href=\"/d/aqapp-pm?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Particulate matter</h1>\n    </div>\n  </div>\n</a>",
+        "mode": "html"
+      },
+      "pluginVersion": "8.5.2",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Air Quality Data Monitor",
+  "uid": "aqapp-home",
+  "version": 1,
+  "weekStart": ""
+}
