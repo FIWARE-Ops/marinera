@@ -85,7 +85,7 @@ keycloak:
     enabled: true
     serviceMonitor:
       interval: 30s
-      
+
   containerPorts:
     management: 8080
 
@@ -107,11 +107,13 @@ keycloak:
       podSecurityContext:
         enabled: false
       containerSecurityContext:
-        enabled: false
+        enabled: false 
     audit:
       clientMinMessages: warning
     metrics:
       enabled: true
+      containerSecurityContext:
+        enabled: false
       serviceMonitor:
         enabled: true
         interval: 30s
