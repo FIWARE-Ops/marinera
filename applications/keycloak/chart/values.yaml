@@ -81,6 +81,14 @@ keycloak:
   service:
     type: ClusterIP
 
+  metrics:
+    enabled: true
+    serviceMonitor:
+      interval: 30s
+      
+  containerPorts:
+    management: 8080
+
   postgresql:
     auth:
       username: bn_keycloak
@@ -102,8 +110,8 @@ keycloak:
         enabled: false
     audit:
       clientMinMessages: warning
-
-  metrics:
-    enabled: true
-  containerPorts:
-    management: 8080
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        interval: 30s
