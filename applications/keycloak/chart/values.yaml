@@ -102,3 +102,8 @@ keycloak:
         enabled: false
     audit:
       clientMinMessages: warning
+  
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
