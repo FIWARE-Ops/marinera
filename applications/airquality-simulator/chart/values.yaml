@@ -70,7 +70,7 @@ readinessProbe:
 
 config: 
   general:
-    brokerUrl: "http://localhost:1026"
+    brokerUrl: "http://orion-ld:1026"
     historicDensity: 15
     fiwareService: ""
     fiwareServicePath: "/"
