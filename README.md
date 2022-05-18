@@ -1,3 +1,5 @@
+![Demo deployment](https://github.com/FIWARE-Ops/marinera/actions/workflows/deploy.yaml/badge.svg)
+
 # FIWARE Platform Deployment
 
 
