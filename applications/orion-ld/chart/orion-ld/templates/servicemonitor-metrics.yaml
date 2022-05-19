@@ -13,6 +13,7 @@ spec:
   - interval: 30s
     path: /probe?target=http://localhost:1026/statistics
     port: http-metrics
+    scheme: http
   namespaceSelector:
     matchNames:
       - {{ .Release.Namespace }}
