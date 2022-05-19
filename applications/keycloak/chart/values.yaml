@@ -21,6 +21,9 @@ realm:
 route:
   enabled: true
 
+tests:
+  enabled: true
+
 keycloak:
   replicaCount: 2
   auth:
