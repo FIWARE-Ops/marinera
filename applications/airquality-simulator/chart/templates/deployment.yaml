@@ -20,6 +20,7 @@ spec:
         {{- end }}
       {{- if .Values.additionalAnnotations -}}
       annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         prometheus.io/scrape: {{ .Values.prometheus.enabled | quote }}
         prometheus.io/path: {{ .Values.prometheus.path }}
         prometheus.io/port: { { .Values.prometheus.port } }
