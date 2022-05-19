@@ -1,0 +1,224 @@
+{
+"annotations": {
+    "list": [
+    {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+    }
+    ]
+},
+"editable": true,
+"gnetId": null,
+"graphTooltip": 0,
+"id": 2,
+"links": [],
+"panels": [
+        {
+        "datasource": "timescale-datasource",
+        "fieldConfig": {
+        "defaults": {
+            "color": {
+            "mode": "thresholds"
+            },
+            "custom": {
+            "align": null,
+            "filterable": false
+            },
+            "mappings": [],
+            "thresholds": {
+            "mode": "absolute",
+            "steps": [
+                {
+                "color": "green",
+                "value": null
+                },
+                {
+                "color": "red",
+                "value": 80
+                }
+            ]
+            }
+        },
+        "overrides": [
+            {
+            "matcher": {
+                "id": "byName",
+                "options": "table_name"
+            },
+            "properties": [
+                {
+                "id": "custom.width",
+                "value": 273
+                }
+            ]
+            }
+        ]
+        },
+        "gridPos": {
+        "h": 8,
+        "w": 21,
+        "x": 0,
+        "y": 0
+        },
+        "id": 4,
+        "options": {
+        "showHeader": true,
+        "sortBy": []
+        },
+        "pluginVersion": "7.5.15",
+        "targets": [
+        {
+            "format": "table",
+            "group": [],
+            "hide": true,
+            "metricColumn": "none",
+            "queryType": "randomWalk",
+            "rawQuery": true,
+            "rawSql": "SELECT *\nFROM md_ets_metadata\nLIMIT 100",
+            "refId": "A",
+            "select": [
+            [
+                {
+                "params": [
+                    "value"
+                ],
+                "type": "column"
+                }
+            ]
+            ],
+            "table": "md_ets_metadata",
+            "timeColumn": "entity",
+            "where": []
+        },
+        {
+            "format": "table",
+            "group": [],
+            "hide": false,
+            "metricColumn": "none",
+            "rawQuery": true,
+            "rawSql": "SELECT *\nFROM etairqualityobserved\n\n",
+            "refId": "B",
+            "select": [
+            [
+                {
+                "params": [
+                    "value"
+                ],
+                "type": "column"
+                }
+            ]
+            ],
+            "timeColumn": "time",
+            "where": [
+            {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+            }
+            ]
+        }
+        ],
+        "title": "Timescale DB",
+        "type": "table"
+    },
+    {
+    "columns": [],
+    "datasource": "orion-datasource",
+    "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+    },
+    "fontSize": "100%",
+    "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+    },
+    "id": 2,
+    "pageSize": null,
+    "showHeader": true,
+    "sort": {
+        "col": 0,
+        "desc": true
+    },
+    "styles": [
+        {
+        "alias": "Time",
+        "align": "auto",
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "pattern": "Time",
+        "type": "date"
+        },
+        {
+        "alias": "",
+        "align": "right",
+        "colorMode": null,
+        "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+        ],
+        "decimals": 2,
+        "pattern": "/.*/",
+        "thresholds": [],
+        "type": "number",
+        "unit": "short"
+        }
+    ],
+    "targets": [
+        {
+        "attributes": "All",
+        "enableTypeSearch": false,
+        "entityId": "All",
+        "entityType": "All",
+        "hide": false,
+        "queryFilter": "",
+        "refId": "A",
+        "selectedRequest": "Entities",
+        "service": "",
+        "servicePath": "/",
+        "target": "select metric",
+        "type": "table"
+        }
+    ],
+    "timeFrom": null,
+    "timeShift": null,
+    "title": "Panel Title",
+    "transform": "table",
+    "type": "table-old"
+    }
+],
+"schemaVersion": 27,
+"style": "dark",
+"tags": [],
+"templating": {
+    "list": []
+},
+"time": {
+    "from": "now-6h",
+    "to": "now"
+},
+"timepicker": {
+    "refresh_intervals": [
+    "5s",
+    "10s",
+    "30s",
+    "1m",
+    "5m",
+    "15m",
+    "30m",
+    "1h",
+    "2h",
+    "1d"
+    ]
+},
+"timezone": "",
+"title": "Orion datasource checker",
+"uid": "orion-datasource-checker"
+}

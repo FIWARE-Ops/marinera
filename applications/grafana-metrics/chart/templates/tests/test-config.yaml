@@ -1,0 +1,42 @@
+{{- if .Values.tests.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-grafana-test"
+  labels:
+    {{ include "grafana.labels" . | nindent 4 }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+data:
+  test.sh: |-
+
+    # This test assumes two statements:
+    ## 1) Datasources are only two: orion-datasource and timescale-datasource.
+    ## 2) Dashboards' file name is equal to dashboard name inside the JSON file.
+
+    set -e
+    # Get Orion Datasource
+    curl {{ include "grafana.fullname" . }}.{{ .Release.Namespace }}.svc/api/datasources/name/orion-datasource \
+                -H 'Content-Type: application/json' \
+                -H "Accept: application/json" \
+                -u {{ .Values.admin.username }}:{{ .Values.admin.password }}
+
+    # Get Timescale Datasource
+    curl {{ include "grafana.fullname" . }}.{{ .Release.Namespace }}.svc/api/datasources/name/timescale-datasource \
+                -H 'Content-Type: application/json' \
+                -H "Accept: application/json" \
+                -u {{ .Values.admin.username }}:{{ .Values.admin.password }}
+
+
+    # Check Dashboards
+    {{- range $path, $bytes := .Files.Glob "config/dashboards/**.json" }}
+
+    curl {{ include "grafana.fullname" $ }}.{{ $.Release.Namespace }}.svc/api/dashboards/uid/{{ base $path | replace ".json" ""}} \
+                -H 'Content-Type: application/json' \
+                -H "Accept: application/json" \
+                -u {{ $.Values.admin.username }}:{{ $.Values.admin.password }}
+
+    {{- end }}
+
+{{- end}}
