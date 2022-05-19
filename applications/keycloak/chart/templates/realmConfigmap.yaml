@@ -305,7 +305,7 @@ data:
           "groups": [
             "/airquality-data/producer"
           ]
-        },
+        }
       ],
       "clients": [
         {
