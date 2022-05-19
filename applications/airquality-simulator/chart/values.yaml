@@ -83,7 +83,15 @@ config:
         age: 10
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
       - id: "urn:ngsi:AirQualityObserved:simulated-3"
-
+  keycloak: 
+    enabled: true
+    clientId: orion-pep
+    clientSecret: 978ad148-d99b-406d-83fc-578597290a79
+    username: airqualityapp-user
+    password: airqualityapp
+    realm: fiware-server
+    url: http://keycloak
+    
 ## configuration for the init-containers 
 init:
   ## configuration for the subscription init-container
