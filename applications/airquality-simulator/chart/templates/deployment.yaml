@@ -30,7 +30,7 @@ spec:
       {{- end }}
     spec: 
       serviceAccountName: {{ include "airquality-simulator.serviceAccountName" . }}
-      {{- if .Values.init.enabled  -}}
+      {{- if .Values.init.enabled  }}
       init-containers:
         - name: subscription-init
           imagePullPolicy: {{ .Values.init.image.pullPolicy }}
