@@ -55,7 +55,7 @@ spec:
             - name: http
               containerPort: {{ .Values.broker.port}}
               protocol: TCP
-          {{ if eq .Values.deployment.image.repository "fiware/orion-ld" }}
+          {{ if eq .Values.broker.envPrefix "ORIONLD_" }}
           readinessProbe:
             tcpSocket:
               port: 1027
@@ -140,7 +140,7 @@ spec:
             {{- end }}
             {{- if .Values.broker.subCacheIval }}
             - name: {{ .Values.broker.envPrefix }}SUBCACHE_IVAL
-              value: {{ .Values.broker.subCacheIval }}
+              value: {{ .Values.broker.subCacheIval | quote }}
             {{- end }}
             {{- if .Values.broker.noCache }}
             - name: {{ .Values.broker.envPrefix }}NOCACHE
