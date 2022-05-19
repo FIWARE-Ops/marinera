@@ -40,7 +40,20 @@ grafana:
         folder: "Dashboards"
         disableDelete: false
         allowUIUpdates: true
-
+  
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'air-quality'
+        orgId: 1
+        folder: 'Air Quality'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /tmp/dashboards/air-quality  # should match sidecar.dashboards.defaultFolderName
+    
     datasources:
       enabled: true
       label: grafana_datasource
