@@ -30,6 +30,23 @@ spec:
       {{- end }}
     spec: 
       serviceAccountName: {{ include "airquality-simulator.serviceAccountName" . }}
+      {{- if .Values.init.enabled  -}}
+      init-containers:
+        - name: subscription-init
+          imagePullPolicy: {{ .Values.init.image.pullPolicy }}
+          image: "{{ .Values.init.image.repository }}:{{ .Values.init.image.tag }}"
+          env:
+            - name: FIWARE_SERVICE
+              value: {{ .Values.config.general.fiwareService }}
+            - name: FIWARE_SERVICE_PATH
+              value: {{ .Values.config.general.fiwareServicePath }}
+            - name: BROKER_URL
+              value: {{ .Values.config.general.brokerUrl }}
+            - name: QUANTUM_LEAP_URL
+              value: {{ .Values.init.quantumLeapUrl }}
+            - name: ENTITY_TYPE
+              value: {{ .Values.init.entityType }}
+      {{- end }}
       containers:
         - name: airquality-simulator
           imagePullPolicy: {{ .Values.image.pullPolicy }}

@@ -17,7 +17,7 @@ serviceAccount:
 # -- initial number of target replications
 replicaCount: 1
 
- ## configuration of the image to be used
+## configuration of the image to be used
 image:
   # -- airquality-simulator image name
   # ref: https://quay.io/repository/fiware/airquality-simulator
@@ -68,6 +68,7 @@ readinessProbe:
   successThreshold: 1
   timeoutSeconds: 30
 
+## configuration to be used for the simulator
 config: 
   general:
     brokerUrl: "http://orion-ld:1026"
@@ -82,3 +83,21 @@ config:
         age: 10
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
       - id: "urn:ngsi:AirQualityObserved:simulated-3"
+
+## configuration for the init-container to create subscriptions
+init: 
+  # -- should the init-container be enabled
+  enabled: true 
+  ## configuration of the image to be used
+  image:
+    # -- subscription init image name
+    # ref: https://quay.io/fiware/v2-subscription-init
+    repository: quay.io/fiware/v2-subscription-init
+    # -- tag of the image to be used
+    tag: 0.1.0-PRE-6
+    # -- specification of the image pull policy
+    pullPolicy: IfNotPresent
+  # -- URL of the quantum leap instance to be notified
+  quantumLeapUrl: "http://quantumleap-quantumleap:8668"
+  # -- type of the entities to be send
+  entityType: "AirQualityObserved"
