@@ -23,7 +23,7 @@ image:
   # ref: https://quay.io/repository/fiware/airquality-simulator
   repository: quay.io/fiware/airquality-simulator
   # -- tag of the image to be used
-  tag: 0.0.3
+  tag: 0.1.0-PRE-6
   # -- specification of the image pull policy
   pullPolicy: IfNotPresent
 
