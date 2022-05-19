@@ -3,14 +3,12 @@ name: airquality-simulator
 description: A Helm chart for Kubernetes to deploy an application that simulates airquality-data.
 type: application
 version: 0.1.0
-appVersion: "0.0.2"
+appVersion: "0.1.0"
 home: https://github.com/FIWARE-Ops/aq-simulator
 keywords:
   - airquality-data
   - FIWARE
   - Java
-sources:
-  - xxx
 maintainers:
   - name: Stefan Wiedemann 
     email: stefan.wiedemann@fiware.org
