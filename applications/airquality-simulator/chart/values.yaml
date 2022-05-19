@@ -72,7 +72,7 @@ config:
   general:
     brokerUrl: "http://orion-ld:1026"
     historicDensity: 15
-    fiwareService: ""
+    fiwareService: "simulated"
     fiwareServicePath: "/"
     aqSimulations:
       - id: "urn:ngsi:AirQualityObserved:simulated-1"
