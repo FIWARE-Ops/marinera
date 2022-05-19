@@ -33,6 +33,17 @@ spec:
     spec:
       serviceAccountName: {{ include "orion.serviceAccountName" . }}
       containers:
+        - name: {{ .Chart.Name }}-metrics
+          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
+          image: "quay.io/prometheuscommunity/json-exporter"
+          args: ["--config.file=/config.yml"]
+          ports:
+            - name: http-metrics
+              containerPort: 7979
+              protocol: TCP
+          volumeMounts:
+            - name: json_exporter_config
+              mountPath: /
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
@@ -359,8 +370,12 @@ spec:
               mountPath: /scripts/
           {{- end }}
 
-      {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
       volumes:
+        - name: json_exporter_config
+          configMap:
+            name:  {{ include "orion.fullname" . }}-json-exporter-config
+            
+      {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
         {{- if .Values.deployment.volumes }}
         {{- toYaml .Values.deployment.volumes | nindent 8 }}
         {{- end }}
