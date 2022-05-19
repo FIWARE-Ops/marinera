@@ -36,7 +36,7 @@ spec:
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
-          {{ if and (.Values.broker.noDevTrace) (eq .Values.deployment.image.repository "fiware/orion-ld") }}
+          {{ if and (.Values.broker.noDevTrace) (eq .Values.broker.envPrefix "ORIONLD_") }}
           args: ["-lmtmp"]
           {{ end }}
           # special handling for the health check of telefonica/orion and json log format
