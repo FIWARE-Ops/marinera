@@ -71,7 +71,7 @@ readinessProbe:
 ## configuration to be used for the simulator
 config: 
   general:
-    brokerUrl: "http://orion-ld:1026"
+    brokerUrl: "http://keycloak-pep:8080"
     historicDensity: 15
     fiwareService: "simulated"
     fiwareServicePath: "/"
@@ -91,7 +91,7 @@ config:
     password: airqualityapp
     realm: fiware-server
     url: http://keycloak
-    
+
 ## configuration for the init-containers 
 init:
   ## configuration for the subscription init-container
