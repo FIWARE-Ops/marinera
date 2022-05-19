@@ -62,3 +62,11 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
+
+  - name: grafana-metrics
+    enabled: true
+    source_path: applications/grafana-metrics/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
