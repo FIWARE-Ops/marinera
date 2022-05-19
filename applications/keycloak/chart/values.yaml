@@ -22,7 +22,7 @@ route:
   enabled: true
 
 keycloak:
-  replicaCount: 1
+  replicaCount: 2
   auth:
     adminUser: fiwareAdmin
     adminPassword: fiwareAdmin
@@ -60,11 +60,11 @@ keycloak:
       mountPath: /opt/bitnami/keycloak/conf/profile.properties
       subPath: profile.properties
 
-  extraVolumes: 
+  extraVolumes:
     - name: profiles
       configMap:
         name: keycloak-profile
-  
+
   extraEnvVars:
     - name: KEYCLOAK_LOG_LEVEL
       value: WARN
@@ -85,6 +85,7 @@ keycloak:
     auth:
       username: bn_keycloak
       password: secretpassword
+      replicationPassword: secretreplicationpassword
     primary:
       podSecurityContext:
         enabled: false
@@ -95,7 +96,9 @@ keycloak:
         marinera/component:	security
         marinera/subcomponent: persistence
         marinera/product: postgresql
+    architecture: replication
     readReplicas:
+      replicaCount: 2
       podSecurityContext:
         enabled: false
       containerSecurityContext:
