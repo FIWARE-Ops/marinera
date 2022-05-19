@@ -266,19 +266,19 @@ spec:
             {{- end }}
             {{ if .Values.broker.metrics.statCountersEnabled  }}
             - name: {{ .Values.broker.envPrefix }}STAT_COUNTERS
-              value: {{ .Values.broker.metrics.statCountersEnabled | string | upper }}
+              value: "TRUE"
             {{ end }}
             {{ if .Values.broker.metrics.statSemWaitEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_SEM_WAIT
-              value: {{ .Values.broker.metrics.statSemWaitEnabled | string | upper }}
+              value: "TRUE"
             {{- end }}
             {{ if .Values.broker.metrics.statTimingEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_TIMING
-              value: {{ .Values.broker.metrics.statTimingEnabled | string | upper }}
+              value: "TRUE"
             {{- end }}
             {{ if .Values.broker.metrics.statNotifQueueEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_NOTIF_QUEUE
-              value: {{ .Values.broker.metrics.statNotifQueueEnabled | string | upper }}
+              value: "TRUE"
             {{- end }}
             {{- end }}
 
