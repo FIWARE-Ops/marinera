@@ -25,7 +25,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 4,
-  "iteration": 1652869682243,
+  "iteration": 1652946705197,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -336,8 +336,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -506,23 +506,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(pm1) as \"PM1\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm1) as \"PM1\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -530,8 +540,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -700,23 +710,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(pm25) as \"PM2.5\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm25) as \"PM2.5\"\nFROM\n   ${table:raw}\nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -724,8 +744,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -894,30 +914,40 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(pm10) as \"PM10\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm10) as \"PM10\"\nFROM\n   ${table:raw}\nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
       "type": "state-timeline"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -925,634 +955,721 @@
         "y": 21
       },
       "id": 14,
-      "panels": [
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* daily average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly max"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 22
-          },
-          "id": 19,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(pm1) AS \"PM1 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(pm1) AS \"PM1 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(pm1) AS \"PM1 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "PM1",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* daily average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly max"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 30
-          },
-          "id": 15,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(pm25) AS \"PM2.5 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(pm25) AS \"PM2.5 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(pm25) AS \"PM2.5 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "PM2.5",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "conμgm3"
-            },
-            "overrides": [
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* daily average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.drawStyle",
-                    "value": "points"
-                  },
-                  {
-                    "id": "custom.pointSize",
-                    "value": 10
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-yellow",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly average"
-                },
-                "properties": [
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 3
-                  },
-                  {
-                    "id": "custom.fillOpacity",
-                    "value": 7
-                  },
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "semi-dark-blue",
-                      "mode": "fixed"
-                    }
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byRegexp",
-                  "options": ".* hourly max"
-                },
-                "properties": [
-                  {
-                    "id": "color",
-                    "value": {
-                      "fixedColor": "super-light-blue",
-                      "mode": "fixed"
-                    }
-                  },
-                  {
-                    "id": "custom.lineWidth",
-                    "value": 2
-                  }
-                ]
-              }
-            ]
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 38
-          },
-          "id": 16,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(pm10) AS \"PM10 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(pm10) AS \"PM10 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            },
-            {
-              "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
-              },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(pm10) AS \"PM10 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
-            }
-          ],
-          "title": "PM10",
-          "transparent": true,
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "title": "Show details",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* daily average"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly average"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly max"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm1) as \"PM1 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(pm1) as \"PM1 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(pm1) as \"PM1 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "PM1",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* daily average"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly average"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly max"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 29,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm25) as \"PM2.5 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(pm25) as \"PM2.5 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(pm25) as \"PM2.5 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "PM2.5",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* daily average"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly average"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly max"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 30,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm10) as \"PM10 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(pm10) as \"PM10 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "6"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(pm10) as \"PM10 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "PM10",
+      "transparent": true,
+      "type": "timeseries"
     },
     {
       "collapsed": true,
@@ -1560,14 +1677,14 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 46
       },
       "id": 21,
       "panels": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1607,8 +1724,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1624,7 +1740,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 47
+            "y": 23
           },
           "id": 22,
           "options": {
@@ -1641,23 +1757,33 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(pm1) AS \"PM1 hourly average\", avg(pm25) AS \"PM2.5 hourly average\", avg(pm10) AS \"PM10 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm1) as \"PM1 hourly average\",\n  avg(pm25) as \"PM2.5 hourly average\",\n  avg(pm10) as \"PM10 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n\n",
               "refId": "A",
-              "resultFormat": "table",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "Particulate matter comparative",
@@ -1803,8 +1929,8 @@
       {
         "current": {
           "selected": false,
-          "text": "mtairquality.etairqualityobserved",
-          "value": "mtairquality.etairqualityobserved"
+          "text": "sample_mtairquality.etairqualityobserved",
+          "value": "sample_mtairquality.etairqualityobserved"
         },
         "hide": 2,
         "includeAll": false,
@@ -1813,11 +1939,11 @@
         "options": [
           {
             "selected": true,
-            "text": "mtairquality.etairqualityobserved",
-            "value": "mtairquality.etairqualityobserved"
+            "text": "sample_mtairquality.etairqualityobserved",
+            "value": "sample_mtairquality.etairqualityobserved"
           }
         ],
-        "query": "mtairquality.etairqualityobserved",
+        "query": "sample_mtairquality.etairqualityobserved",
         "skipUrlSync": false,
         "type": "custom"
       }

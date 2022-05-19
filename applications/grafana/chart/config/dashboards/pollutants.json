@@ -24,8 +24,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
-  "iteration": 1652869233305,
+  "id": 5,
+  "iteration": 1652946676307,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -329,8 +329,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -491,7 +491,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -500,23 +500,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(no2) as \"NO2\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(no2) as \"NO2\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -524,8 +534,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -685,7 +695,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -694,23 +704,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(o3) as \"O3\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(o3) as \"O3\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -718,8 +738,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -879,7 +899,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -888,23 +908,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(so2) as \"SO2\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(so2) as \"SO2\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -912,8 +942,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -1073,7 +1103,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -1082,23 +1112,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(co) as \"CO\" FROM mtairquality.etairqualityobserved WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(co) as \"CO\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -1116,8 +1156,8 @@
       "panels": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1157,8 +1197,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1242,7 +1281,7 @@
             "x": 0,
             "y": 22
           },
-          "id": 19,
+          "id": 28,
           "options": {
             "legend": {
               "calcs": [],
@@ -1257,65 +1296,95 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(no2) as \"NO2 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(no2) AS \"NO2 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(no2) as \"NO2 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(no2) AS \"NO2 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(no2) as \"NO2 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "NO2",
@@ -1324,8 +1393,8 @@
         },
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1365,8 +1434,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1450,7 +1518,7 @@
             "x": 0,
             "y": 30
           },
-          "id": 15,
+          "id": 29,
           "options": {
             "legend": {
               "calcs": [],
@@ -1465,65 +1533,95 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(o3) AS \"O3 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(o3) as \"O3 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(o3) AS \"O3 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(o3) as \"O3 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(o3) AS \"O3 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(o3) as \"O3 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "O3",
@@ -1532,8 +1630,8 @@
         },
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1573,8 +1671,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1658,7 +1755,7 @@
             "x": 0,
             "y": 38
           },
-          "id": 16,
+          "id": 30,
           "options": {
             "legend": {
               "calcs": [],
@@ -1673,65 +1770,95 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) AS \"SO2 hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(so2) as \"SO2 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(so2) AS \"SO2 hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(so2) as \"SO2 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(so2) AS \"SO2 daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(so2) as \"SO2 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "SO2",
@@ -1740,8 +1867,8 @@
         },
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1781,8 +1908,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1866,7 +1992,7 @@
             "x": 0,
             "y": 46
           },
-          "id": 17,
+          "id": 31,
           "options": {
             "legend": {
               "calcs": [],
@@ -1881,65 +2007,95 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(co) AS \"CO hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(co) as \"CO hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, max(co) AS \"CO hourly max\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(co) as \"CO hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('day', time_index) as time, avg(co) AS \"CO daily average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(co) as \"CO daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
               "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "CO",
@@ -1962,8 +2118,8 @@
       "panels": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -2019,7 +2175,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 23
+            "y": 55
           },
           "id": 22,
           "options": {
@@ -2036,23 +2192,33 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\", avg(o3) AS \"O3 hourly average\", avg(so2) AS \"SO2 hourly average\", avg(co) AS \"CO hourly average\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected AND no2 >= 0 AND no2 < 10000 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(no2) as \"NO2 hourly average\",\n  avg(o3) as \"O3 hourly average\",\n  avg(so2) as \"SO2 hourly average\",\n  avg(co) as \"CO hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
               "refId": "A",
-              "resultFormat": "table",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "Pollutants comparative",
@@ -2198,8 +2364,8 @@
       {
         "current": {
           "selected": false,
-          "text": "mtairquality.etairqualityobserved",
-          "value": "mtairquality.etairqualityobserved"
+          "text": "sample_mtairquality.etairqualityobserved",
+          "value": "sample_mtairquality.etairqualityobserved"
         },
         "hide": 2,
         "includeAll": false,
@@ -2208,11 +2374,11 @@
         "options": [
           {
             "selected": true,
-            "text": "mtairquality.etairqualityobserved",
-            "value": "mtairquality.etairqualityobserved"
+            "text": "sample_mtairquality.etairqualityobserved",
+            "value": "sample_mtairquality.etairqualityobserved"
           }
         ],
-        "query": "mtairquality.etairqualityobserved",
+        "query": "sample_mtairquality.etairqualityobserved",
         "skipUrlSync": false,
         "type": "custom"
       }
@@ -2226,6 +2392,6 @@
   "timezone": "",
   "title": "Air Quality - Pollutants",
   "uid": "aqapp-po",
-  "version": 13,
+  "version": 2,
   "weekStart": ""
 }

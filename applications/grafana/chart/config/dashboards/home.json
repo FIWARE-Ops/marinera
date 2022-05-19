@@ -25,6 +25,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 2,
+  "iteration": 1652946827432,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -168,15 +169,15 @@
           "defaultFiwareService": false,
           "enableTypeSearch": false,
           "entityId": "All",
-          "entityType": "All",
+          "entityType": "$type",
           "executePostQueryFilter": false,
           "hide": false,
           "invertLocationCoordinates": false,
           "queryFilter": "",
           "refId": "A",
           "selectedRequest": "Entities",
-          "service": "Device",
-          "servicePath": "/alcantarilla",
+          "service": "$service",
+          "servicePath": "$servicepath",
           "target": "select metric",
           "type": "table"
         }
@@ -312,7 +313,71 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Device",
+          "value": "Device"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "service",
+        "options": [
+          {
+            "selected": true,
+            "text": "Device",
+            "value": "Device"
+          }
+        ],
+        "query": "Device",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "/alcantarilla",
+          "value": "/alcantarilla"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "servicepath",
+        "options": [
+          {
+            "selected": true,
+            "text": "/alcantarilla",
+            "value": "/alcantarilla"
+          }
+        ],
+        "query": "/alcantarilla",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Device",
+          "value": "Device"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "type",
+        "options": [
+          {
+            "selected": true,
+            "text": "Device",
+            "value": "Device"
+          }
+        ],
+        "query": "Device",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
@@ -322,6 +387,6 @@
   "timezone": "",
   "title": "Air Quality Data Monitor",
   "uid": "aqapp-home",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }

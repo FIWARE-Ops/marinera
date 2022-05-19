@@ -24,8 +24,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
-  "iteration": 1652878485823,
+  "id": 3,
+  "iteration": 1652945075563,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -329,8 +329,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -491,7 +491,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -500,23 +500,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT floor(extract('epoch' from time_index) / 3600 ) * 3600000 as time, avg(no2) as \"NO2\" FROM ${table:raw} WHERE time_index >= ? AND time_index <= ? AND entity_id = $device_selected   GROUP BY 1 ORDER BY 1 ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(no2) as \"NO2\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -524,8 +534,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -685,7 +695,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -694,23 +704,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT timestamp, avg(hour_avg_o3) OVER(ORDER BY timestamp ASC ROWS 7 PRECEDING) as \"O3\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(o3) as \"hour_avg_o3\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and o3 > 0 and o3 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT $__time(time_index_hour), \n       avg(o3_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 7 PRECEDING) as \"O3\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(o3) as o3_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -718,8 +738,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -879,7 +899,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -888,23 +908,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) as \"SO2\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND so2 >= 0 AND so2 < 1000 GROUP BY time ORDER BY time ASC",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(so2) as \"SO2\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -912,8 +942,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -1073,7 +1103,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -1082,23 +1112,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT timestamp, avg(hour_avg_pm25) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM2.5\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm25) as \"hour_avg_pm25\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm25 > 0 and pm25 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT $__time(time_index_hour), \n       avg(pm25_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 23 PRECEDING) as \"PM2.5\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(pm25) as pm25_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n\n",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -1106,8 +1146,8 @@
     },
     {
       "datasource": {
-        "type": "crate-datasource",
-        "uid": "5"
+        "type": "postgres",
+        "uid": "6"
       },
       "fieldConfig": {
         "defaults": {
@@ -1267,7 +1307,7 @@
         },
         "mergeValues": false,
         "rowHeight": 0.9,
-        "showValue": "auto",
+        "showValue": "never",
         "tooltip": {
           "mode": "single",
           "sort": "none"
@@ -1276,23 +1316,33 @@
       "targets": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
-          "groupByAliases": [],
-          "groupByColumns": [],
-          "metricAggs": [
-            {
-              "$$hashKey": "object:10",
-              "column": "value",
-              "type": "avg"
-            }
-          ],
-          "query": "SELECT timestamp, avg(hour_avg_pm10) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM10\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm10) as \"hour_avg_pm10\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm10 > 0 and pm10 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
           "rawQuery": true,
+          "rawSql": "SELECT $__time(time_index_hour), \n       avg(pm10_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 23 PRECEDING) as \"PM10\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(pm10) as pm10_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
           "refId": "A",
-          "resultFormat": "time_series",
-          "whereClauses": []
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
         }
       ],
       "transparent": true,
@@ -1344,8 +1394,8 @@
       "panels": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1385,7 +1435,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "#7c8996"
+                    "color": "#7c8996",
+                    "value": null
                   },
                   {
                     "color": "#00fffa33",
@@ -1462,23 +1513,33 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND no2 >= 0 AND no2 < 500 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(no2) as \"NO2 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "NO2",
@@ -1487,8 +1548,8 @@
         },
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1528,7 +1589,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "#7c8996"
+                    "color": "#7c8996",
+                    "value": null
                   },
                   {
                     "color": "#00fffa33",
@@ -1605,23 +1667,33 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT timestamp, avg(hour_avg_o3) OVER(ORDER BY timestamp ASC ROWS 7 PRECEDING) as \"O3 eight-hour moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(o3) as \"hour_avg_o3\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and o3 > 0 and o3 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT $__time(time_index_hour), \n       avg(o3_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 7 PRECEDING) as \"O3 eight-hour moving average\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(o3) as o3_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "O3",
@@ -1630,8 +1702,8 @@
         },
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1671,7 +1743,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "#7c8996"
+                    "color": "#7c8996",
+                    "value": null
                   },
                   {
                     "color": "#00fffa33",
@@ -1748,23 +1821,33 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) as \"SO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND so2 >= 0 AND so2 < 1000 GROUP BY time ORDER BY time ASC",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(so2) as \"SO2 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "SO2",
@@ -1773,8 +1856,8 @@
         },
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1814,7 +1897,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "#7c8996"
+                    "color": "#7c8996",
+                    "value": null
                   },
                   {
                     "color": "#00fffa33",
@@ -1891,23 +1975,33 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT timestamp, avg(hour_avg_pm25) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM2.5 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm25) as \"hour_avg_pm25\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm25 > 0 and pm25 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT $__time(time_index_hour), \n       avg(pm25_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 23 PRECEDING) as \"PM2.5 24h moving average\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(pm25) as pm25_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "PM2.5",
@@ -1916,8 +2010,8 @@
         },
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "postgres",
+            "uid": "6"
           },
           "fieldConfig": {
             "defaults": {
@@ -1957,7 +2051,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "#7c8996"
+                    "color": "#7c8996",
+                    "value": null
                   },
                   {
                     "color": "#00fffa33",
@@ -2034,23 +2129,33 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "type": "postgres",
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT timestamp, avg(hour_avg_pm10) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM10 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm10) as \"hour_avg_pm10\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm10 > 0 and pm10 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT $__time(time_index_hour), \n       avg(pm10_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 23 PRECEDING) as \"PM10 24h moving average\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(pm10) as pm10_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "PM10",
@@ -2073,8 +2178,8 @@
       "panels": [
         {
           "datasource": {
-            "type": "crate-datasource",
-            "uid": "5"
+            "type": "datasource",
+            "uid": "-- Mixed --"
           },
           "fieldConfig": {
             "defaults": {
@@ -2114,7 +2219,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2147,108 +2253,153 @@
           "targets": [
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(no2) AS \"NO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND no2 >= 0 AND no2 < 500 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(no2) as \"NO2 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
               "refId": "A",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT timestamp, avg(hour_avg_o3) OVER(ORDER BY timestamp ASC ROWS 7 PRECEDING) as \"O3 eight-hour moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(o3) as \"hour_avg_o3\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and o3 > 0 and o3 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT $__time(time_index_hour), \n       avg(o3_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 7 PRECEDING) as \"O3 eight-hour moving average\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(o3) as o3_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
               "refId": "B",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT date_trunc('hour', time_index) as time, avg(so2) as \"SO2 hourly average\" FROM ${table:raw} WHERE time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND entity_id = $device_selected AND so2 >= 0 AND so2 < 1000 GROUP BY time ORDER BY time ASC",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(so2) as \"SO2 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
               "refId": "C",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT timestamp, avg(hour_avg_pm25) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM2.5 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm25) as \"hour_avg_pm25\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm25 > 0 and pm25 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT $__time(time_index_hour), \n       avg(pm25_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 23 PRECEDING) as \"PM2.5 24h moving average\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(pm25) as pm25_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
               "refId": "D",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             },
             {
               "datasource": {
-                "type": "crate-datasource",
-                "uid": "5"
+                "uid": "6"
               },
-              "groupByAliases": [],
-              "groupByColumns": [],
+              "format": "time_series",
+              "group": [],
               "hide": false,
-              "metricAggs": [
-                {
-                  "$$hashKey": "object:54",
-                  "column": "value",
-                  "type": "avg"
-                }
-              ],
-              "query": "SELECT timestamp, avg(hour_avg_pm10) OVER(ORDER BY timestamp ASC ROWS 23 PRECEDING) as \"PM10 24h moving average\" FROM (SELECT date_trunc('hour', time_index) as timestamp, avg(pm10) as \"hour_avg_pm10\" from ${table:raw} where  time_index >= floor(try_cast(? as BIGINT) / 3600000) * 3600000 AND time_index <= floor(try_cast(? as BIGINT) / 3600000) * 3600000 and pm10 > 0 and pm10 < 25000 AND entity_id = $device_selected group by 1 order by 1 ASC) as t",
+              "metricColumn": "none",
               "rawQuery": true,
+              "rawSql": "SELECT $__time(time_index_hour), \n       avg(pm10_hourly_avg) OVER(ORDER BY time_index_hour ASC ROWS 23 PRECEDING) as \"PM10 24h moving average\"\nFROM (SELECT\n        $__timeGroup(time_index,'1h', 0) as time_index_hour,\n        avg(pm10) as pm10_hourly_avg\n      FROM\n         ${table:raw} \n      WHERE\n        $__timeFilter(time_index) and entity_id = '$device_selected'\n      GROUP BY 1\n      ORDER BY 1 ASC\n      ) as t\n",
               "refId": "E",
-              "resultFormat": "time_series",
-              "whereClauses": []
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
             }
           ],
           "title": "Comparative",
@@ -2394,8 +2545,8 @@
       {
         "current": {
           "selected": false,
-          "text": "mtairquality.etairqualityobserved",
-          "value": "mtairquality.etairqualityobserved"
+          "text": "sample_mtairquality.etairqualityobserved",
+          "value": "sample_mtairquality.etairqualityobserved"
         },
         "hide": 2,
         "includeAll": false,
@@ -2404,24 +2555,24 @@
         "options": [
           {
             "selected": true,
-            "text": "mtairquality.etairqualityobserved",
-            "value": "mtairquality.etairqualityobserved"
+            "text": "sample_mtairquality.etairqualityobserved",
+            "value": "sample_mtairquality.etairqualityobserved"
           }
         ],
-        "query": "mtairquality.etairqualityobserved",
+        "query": "sample_mtairquality.etairqualityobserved",
         "skipUrlSync": false,
         "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-2d",
-    "to": "now"
+    "from": "2021-09-19T22:00:00.000Z",
+    "to": "2021-09-20T21:59:59.000Z"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Air Quality Index (ICA)",
+  "title": "Air Qyuality Index (ICA)",
   "uid": "aqapp-ica",
-  "version": 7,
+  "version": 3,
   "weekStart": ""
 }
