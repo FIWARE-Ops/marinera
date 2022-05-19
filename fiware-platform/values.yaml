@@ -49,7 +49,7 @@ applications:
 
   - name: air-quality
     enabled: true
-    source_path: applications/air-quality/chart
+    source_path: applications/air-quality-app/chart
     source_ref: *branch
     destination: *destination
     helm_values:
