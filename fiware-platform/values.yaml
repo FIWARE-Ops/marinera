@@ -70,3 +70,12 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
+  
+  - name: airquality-simulator
+    enabled: true
+    source_path: applications/airquality-simulator/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+

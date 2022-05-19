@@ -36,12 +36,6 @@ grafana:
       labelValue: grafana
       orgid: 1
       defaultFolderName: default
-      # provider:
-      #   name: dashboards
-      #   orgid: 1
-      #   folder: "Dashboards"
-      #   disableDelete: false
-      #   allowUIUpdates: true
   
   dashboardProviders:
     dashboardproviders.yaml:
