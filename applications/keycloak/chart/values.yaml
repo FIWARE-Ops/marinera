@@ -2,19 +2,19 @@ realm:
   grafana:
     rootUrl: https://grafana
     adminUrl: https://grafana
-    redirectUris: 
+    redirectUris:
       - https://grafana/
       - https://grafana-2/
-    webOrigins: 
+    webOrigins:
       - https://grafana/
       - https://grafana-2/
   orionPep:
     baseUrl: https://orion-ld
     adminUrl: https://orion-ld
-    redirectUris: 
+    redirectUris:
       - https://orion-ld/
       - https://orion-ld-2/
-    webOrigins: 
+    webOrigins:
       - https://orion-ld/
       - https://orion-ld-2/
 

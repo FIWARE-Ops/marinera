@@ -157,6 +157,50 @@ data:
               }
             }
           ]
+        },
+        {
+          "name": "airquality-data",
+          "path": "/airquality-data",
+          "attributes": {
+            "fiware-service": [
+              "AirQuality"
+            ],
+            "fiware-servicepath": [
+              "/data"
+            ]
+          },
+          "realmRoles": [
+            "user"
+          ],
+          "subGroups": [
+            {
+              "name": "airquality-data-subscriptor",
+              "path": "/airquality-data/subscriptor",
+              "clientRoles": {
+                "orion-pep": [
+                  "subscriptor"
+                ]
+              }
+            },
+            {
+              "name": "airquality-data-consumer",
+              "path": "/airquality-data/consumer",
+              "clientRoles": {
+                "orion-pep": [
+                  "consumer"
+                ]
+              }
+            },
+            {
+              "name": "airquality-data-producer",
+              "path": "/airquality-data/producer",
+              "clientRoles": {
+                "orion-pep": [
+                  "producer"
+                ]
+              }
+            }
+          ]
         }
       ],
       "users": [
@@ -242,7 +286,26 @@ data:
           "groups": [
             "/test-test/test-test-subscriptor"
           ]
-        }
+        },
+        {
+          "username": "airquality-producer",
+          "enabled": true,
+          "credentials": [
+            {
+              "type": "password",
+              "value": "airquality-producer"
+            }
+          ],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "groups": [
+            "/airquality-data/producer"
+          ]
+        },
       ],
       "clients": [
         {
