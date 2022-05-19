@@ -89,7 +89,7 @@ init:
   ## configuration for the subscription init-container
   subscription:
     # -- should the init-container be enabled
-    enabled: true 
+    enabled: false 
     ## configuration of the image to be used
     image:
       # -- subscription init image name
