@@ -44,7 +44,7 @@ grafana:
     datasources:
       enabled: true
       label: grafana_datasource
-      labelValue: grafana
+      labelValue: grafana-metrics
   podLabels:
     marinera/platform: fiware
     marinera/component:	monitoring
@@ -70,6 +70,3 @@ datasources:
 
 tests:
   enabled: true
-
-
-
