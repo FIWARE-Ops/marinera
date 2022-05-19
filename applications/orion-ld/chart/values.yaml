@@ -1,5 +1,7 @@
 orion-ld:
   broker:
+    # Avoid inconsistencies when running more than 1 replica.
+    subCacheIval: 1
     db:
       hosts:
         - mongodb-orion-0.mongodb-orion-headless
@@ -9,7 +11,9 @@ orion-ld:
       auth:
         password: test
     logging:
-      level: "WARN"        
+      level: "WARN"
+  deployment:
+    replicaCount: 2
   mongo:
     # we want to use the individually deployed mongodb
     enabled: false
