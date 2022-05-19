@@ -36,7 +36,7 @@ spec:
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
-          {{ if and (.Values.broker.noDevTrace) (eq .Values.deployment.image.repository "fiware/orion-ld") }}
+          {{ if and (.Values.broker.noDevTrace) (eq .Values.broker.envPrefix "ORIONLD_") }}
           args: ["-lmtmp"]
           {{ end }}
           # special handling for the health check of telefonica/orion and json log format
@@ -56,7 +56,7 @@ spec:
             - name: http
               containerPort: {{ .Values.broker.port}}
               protocol: TCP
-          {{ if eq .Values.deployment.image.repository "fiware/orion-ld" }}
+          {{ if eq .Values.broker.envPrefix "ORIONLD_" }}
           readinessProbe:
             tcpSocket:
               port: 1027
@@ -141,7 +141,7 @@ spec:
             {{- end }}
             {{- if .Values.broker.subCacheIval }}
             - name: {{ .Values.broker.envPrefix }}SUBCACHE_IVAL
-              value: {{ .Values.broker.subCacheIval }}
+              value: {{ .Values.broker.subCacheIval | quote }}
             {{- end }}
             {{- if .Values.broker.noCache }}
             - name: {{ .Values.broker.envPrefix }}NOCACHE
