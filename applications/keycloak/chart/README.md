@@ -37,5 +37,6 @@ $ helm install my-release {{ template "chart.name" . }}
 | realm.orionPep.redirectUris | list | `[{"https://orion-ld/", "https://orion-ld-2/"}]` | Orion Redirect URIs |
 | realm.orionPep.webOrigins | list | `[{"https://orion-ld/", "https://orion-ld-2/"}]` | Orion Web Origins |
 | route.enabled | bool | `true` | Enable OpenShift route |
+| tests.enabled | bool | `true` | Enable Helm Chart tests to check that the Realm is properly configured |
 
 For the documentation of the original helm chart, go to the official helm chart at: https://github.com/bitnami/charts/tree/master/bitnami/keycloak 
