@@ -52,7 +52,7 @@
     {
       "datasource": {
         "type": "orion-datasource",
-        "uid": "4"
+        "uid": "2"
       },
       "fieldConfig": {
         "defaults": {
@@ -164,7 +164,7 @@
           "currentTimeColumn": false,
           "datasource": {
             "type": "orion-datasource",
-            "uid": "4"
+            "uid": "2"
           },
           "defaultFiwareService": false,
           "enableTypeSearch": false,

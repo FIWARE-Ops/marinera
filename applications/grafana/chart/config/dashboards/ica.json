@@ -92,7 +92,7 @@
     {
       "datasource": {
         "type": "orion-datasource",
-        "uid": "4"
+        "uid": "2"
       },
       "fieldConfig": {
         "defaults": {
@@ -204,7 +204,7 @@
           "currentTimeColumn": false,
           "datasource": {
             "type": "orion-datasource",
-            "uid": "4"
+            "uid": "2"
           },
           "defaultFiwareService": false,
           "enableTypeSearch": false,
@@ -2425,7 +2425,7 @@
         },
         "datasource": {
           "type": "orion-datasource",
-          "uid": "4"
+          "uid": "2"
         },
         "definition": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\",\n            \"queryFilter\": \"ica==true\"\n }",
         "hide": 0,
@@ -2449,7 +2449,7 @@
         },
         "datasource": {
           "type": "orion-datasource",
-          "uid": "4"
+          "uid": "2"
         },
         "definition": "        {\n            \"request\": \"Entities\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"attributeName\": \"id,name\",\n            \"queryFilter\": \"name=='$device_name'\",\n            \"executePostQueryFilter\": true\n        }",
         "hide": 2,
