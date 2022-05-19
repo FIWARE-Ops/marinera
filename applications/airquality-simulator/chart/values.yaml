@@ -84,20 +84,35 @@ config:
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
       - id: "urn:ngsi:AirQualityObserved:simulated-3"
 
-## configuration for the init-container to create subscriptions
-init: 
-  # -- should the init-container be enabled
-  enabled: true 
-  ## configuration of the image to be used
-  image:
-    # -- subscription init image name
-    # ref: https://quay.io/fiware/v2-subscription-init
-    repository: quay.io/fiware/v2-subscription-init
-    # -- tag of the image to be used
-    tag: 0.1.0
-    # -- specification of the image pull policy
-    pullPolicy: IfNotPresent
-  # -- URL of the quantum leap instance to be notified
-  quantumLeapUrl: "http://quantumleap-quantumleap:8668"
-  # -- type of the entities to be send
-  entityType: "AirQualityObserved"
+## configuration for the init-containers 
+init:
+  ## configuration for the subscription init-container
+  subscription:
+    # -- should the init-container be enabled
+    enabled: true 
+    ## configuration of the image to be used
+    image:
+      # -- subscription init image name
+      # ref: https://quay.io/fiware/v2-subscription-init
+      repository: quay.io/fiware/v2-subscription-init
+      # -- tag of the image to be used
+      tag: 0.1.0
+      # -- specification of the image pull policy
+      pullPolicy: IfNotPresent
+    # -- URL of the quantum leap instance to be notified
+    quantumLeapUrl: "http://quantumleap-quantumleap:8668"
+    # -- type of the entities to be send
+    entityType: "AirQualityObserved"
+  ## configuration for the keycloak init-container
+  keycloak:
+    # -- should the init-container be enabled
+    enabled: true 
+    ## configuration of the image to be used
+    image:
+      # -- subscription init image name
+      # ref: https://quay.io/fiware/v2-subscription-init
+      repository: docker.io/bitnami/keycloak-config-cli
+      # -- tag of the image to be used
+      tag: 5.2.0-debian-10-r9
+      # -- specification of the image pull policy
+      pullPolicy: IfNotPresent
