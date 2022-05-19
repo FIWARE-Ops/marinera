@@ -62,7 +62,7 @@ spec:
               value: fiwareAdmin
             - name: KEYCLOAK_PASSWORD
               value: fiwareAdmin
-            - name: IMPORT_FILES
+            - name: IMPORT_FILES_LOCATIONS
               value: /etc/config/*
         {{- end -}}
       {{- end }}
