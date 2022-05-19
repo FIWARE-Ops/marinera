@@ -2490,8 +2490,8 @@
       {
         "current": {
           "selected": true,
-          "text": "/alcantarilla",
-          "value": "/alcantarilla"
+          "text": "/data",
+          "value": "/data"
         },
         "description": "",
         "hide": 0,
@@ -2501,18 +2501,8 @@
         "options": [
           {
             "selected": true,
-            "text": "/alcantarilla",
-            "value": "/alcantarilla"
-          },
-          {
-            "selected": false,
-            "text": "/datasimulator",
-            "value": "/datasimulator"
-          },
-          {
-            "selected": false,
-            "text": "/demo",
-            "value": "/demo"
+            "text": "/data",
+            "value": "/data"
           }
         ],
         "query": "/alcantarilla,/datasimulator,/demo",

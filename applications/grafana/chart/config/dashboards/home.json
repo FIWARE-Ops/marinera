@@ -317,8 +317,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Device",
-          "value": "Device"
+          "text": "AirQuality",
+          "value": "AirQuality"
         },
         "hide": 0,
         "includeAll": false,
@@ -327,8 +327,8 @@
         "options": [
           {
             "selected": true,
-            "text": "Device",
-            "value": "Device"
+            "text": "AirQuality",
+            "value": "AirQuality"
           }
         ],
         "query": "Device",
@@ -338,8 +338,8 @@
       {
         "current": {
           "selected": false,
-          "text": "/alcantarilla",
-          "value": "/alcantarilla"
+          "text": "/data",
+          "value": "/data"
         },
         "hide": 0,
         "includeAll": false,
@@ -348,8 +348,8 @@
         "options": [
           {
             "selected": true,
-            "text": "/alcantarilla",
-            "value": "/alcantarilla"
+            "text": "/data",
+            "value": "/data"
           }
         ],
         "query": "/alcantarilla",

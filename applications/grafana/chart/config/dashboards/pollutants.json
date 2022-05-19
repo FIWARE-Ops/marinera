@@ -2309,8 +2309,8 @@
       {
         "current": {
           "selected": true,
-          "text": "/alcantarilla",
-          "value": "/alcantarilla"
+          "text": "/data",
+          "value": "/data"
         },
         "description": "",
         "hide": 0,
@@ -2320,18 +2320,8 @@
         "options": [
           {
             "selected": true,
-            "text": "/alcantarilla",
-            "value": "/alcantarilla"
-          },
-          {
-            "selected": false,
-            "text": "/datasimulator",
-            "value": "/datasimulator"
-          },
-          {
-            "selected": false,
-            "text": "/demo",
-            "value": "/demo"
+            "text": "/data",
+            "value": "/data"
           }
         ],
         "query": "/alcantarilla,/datasimulator,/demo",
@@ -2364,8 +2354,8 @@
       {
         "current": {
           "selected": false,
-          "text": "sample_mtairquality.etairqualityobserved",
-          "value": "sample_mtairquality.etairqualityobserved"
+          "text": "mtairquality.etairqualityobserved",
+          "value": "mtairquality.etairqualityobserved"
         },
         "hide": 2,
         "includeAll": false,
@@ -2374,11 +2364,11 @@
         "options": [
           {
             "selected": true,
-            "text": "sample_mtairquality.etairqualityobserved",
-            "value": "sample_mtairquality.etairqualityobserved"
+            "text": "mtairquality.etairqualityobserved",
+            "value": "mtairquality.etairqualityobserved"
           }
         ],
-        "query": "sample_mtairquality.etairqualityobserved",
+        "query": "mtairquality.etairqualityobserved",
         "skipUrlSync": false,
         "type": "custom"
       }
