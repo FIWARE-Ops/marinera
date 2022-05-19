@@ -13,7 +13,7 @@ sources:
   - https://github.com/FIWARE-Ops/marinera/applications/grafana
 dependencies:
 - name: grafana
-  version: 6.28.0 # Grafana 8.5.0
+  version: 6.29.3 # Grafana 8.5.2
   repository: https://grafana.github.io/helm-charts
   # version: 5.0.26 # Grafana 6.7.3
   # repository: https://grafana.github.io/helm-charts
