@@ -36,14 +36,14 @@ spec:
         - name: {{ .Chart.Name }}-metrics
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "quay.io/prometheuscommunity/json-exporter"
-          args: ["--config.file=/config.yml"]
+          args: ["--config.file=/exporter-config/config.yml"]
           ports:
             - name: http-metrics
               containerPort: 7979
               protocol: TCP
           volumeMounts:
             - name: json-exporter-config
-              mountPath: /
+              mountPath: /exporter-config/
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
