@@ -57,7 +57,7 @@ spec:
               mountPath: /etc/config
           env:
             - name: KEYCLOAK_URL
-              value: https://keycloak
+              value: http://keycloak
             - name: KEYCLOAK_USER
               value: fiwareAdmin
             - name: KEYCLOAK_PASSWORD
