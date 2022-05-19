@@ -54,7 +54,7 @@ grafana:
         disableDeletion: true
         editable: false
         options:
-          path: /tmp/dashboards/default  # should match sidecar.dashboards.defaultFolderName
+          path: /tmp/dashboards/dashboards  # should match sidecar.dashboards.defaultFolderName
       - name: 'air-quality'
         orgId: 1
         folder: 'Air Quality'
