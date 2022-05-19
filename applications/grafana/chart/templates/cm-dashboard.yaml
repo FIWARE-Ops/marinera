@@ -1,4 +1,8 @@
-{{- range $path, $bytes := .Files.Glob "config/dashboards/**.json" }}
+{{- $aqAppEnabled  := .Values.aqApp.enabled -}}
+{{- range $path, $bytes := .Files.Glob "config/dashboards/**.json" }} 
+{{- $basePath := base $path}}
+{{ if hasPrefix "aqapp-" $basePath }}
+{{ if $aqAppEnabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -8,6 +12,18 @@ metadata:
     {{- include "grafana.labels" $ | nindent 4 }}
 data:
   {{ base $path }}: {{ $.Files.Get $path | quote }}
-
 ---
+{{ end }}
+{{ else }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-{{ base $path | replace ".json" ""}}
+  labels:
+    grafana_dashboard: grafana
+    {{- include "grafana.labels" $ | nindent 4 }}
+data:
+  {{ base $path }}: {{ $.Files.Get $path | quote }}
+---
+{{ end }}
 {{- end }}

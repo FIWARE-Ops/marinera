@@ -82,4 +82,6 @@ datasources:
 tests:
   enabled: true
 
+aqApp:
+  enabled: true
 
