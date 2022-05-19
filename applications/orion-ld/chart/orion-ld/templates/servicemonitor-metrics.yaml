@@ -13,7 +13,8 @@ spec:
   - interval: 30s
     path: /probe
     params:
-      target: 'http://localhost:1026/statistics'
+      target: 
+        - 'http://localhost:1026/statistics'
     port: http-metrics
     scheme: http
   namespaceSelector:
