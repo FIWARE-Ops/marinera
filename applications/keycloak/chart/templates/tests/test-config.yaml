@@ -32,23 +32,6 @@ data:
 
     echo $TOKEN
 
-    # # get all users of gateway realm, use the token from above and use Bearer as prefix
-    # curl -X GET \
-    #   https://<HOST>/auth/admin/realms/gateway/users \
-    #     -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkI...' \
-    #     -H 'cache-control: no-cache'
-
-    # # Get Timescale Datasource
-    # curl {{ include "keycloak.fullname" . }}.{{ .Release.Namespace }}.svc/api/datasources/name/timescale-datasource \
-    #             -H 'Content-Type: application/json' \
-    #             -H "Accept: application/json"
-
-
-    # # Check Dashboards
-    # curl {{ include "keycloak.fullname" $ }}.{{ $.Release.Namespace }}.svc/api/dashboards/uid/{{ base $path | replace ".json" ""}} \
-    #             -H 'Content-Type: application/json' \
-    #             -H "Accept: application/json"
-
     sleep 30 
 
 {{- end}}
