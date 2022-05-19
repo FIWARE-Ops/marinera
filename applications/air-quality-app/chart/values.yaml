@@ -35,9 +35,9 @@ grafana:
       label: grafana_dashboard
       labelValue: grafana
       provider:
-        name: dashboards
+        name: datasources-validator
         orgid: 1
-        folder: "Dashboards"
+        folder: "Datasources validator"
         disableDelete: false
         allowUIUpdates: true
 
@@ -81,3 +81,7 @@ datasources:
 
 tests:
   enabled: true
+
+aqApp:
+  enabled: true
+
