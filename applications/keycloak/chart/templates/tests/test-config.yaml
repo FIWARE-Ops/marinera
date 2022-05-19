@@ -14,11 +14,12 @@ data:
     # This test checks if the fiware-server Realm is configured as well as users and groups.
     set -e
     # Check if the Realm is present
-    curl {{ include "keycloak.fullname" . }}.{{ .Release.Namespace }}.svc/realms/fiware-server \
+    curl http://{{ include "keycloak.fullname" . }}.{{ .Release.Namespace }}.svc/realms/fiware-server \
                 -H 'Content-Type: application/json' \
                 -H "Accept: application/json"
-                
-    TOKEN=curl {{ include "keycloak.fullname" . }}.{{ .Release.Namespace }}.svc/realms/fiware-server/protocol/openid-connect/token \
+
+    # Check that admin user can retrieve token from Keycloak
+    curl http://keycloak/realms/fiware-server/protocol/openid-connect/token \
         -X POST \
         -H 'Accept: application/json' \
         -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -28,10 +29,7 @@ data:
         -d password=admin-user \
         -d client_id=orion-pep \
         -d client_secret=978ad148-d99b-406d-83fc-578597290a79 \
-        | sed 's/{"access_token":"\(.*\)","expires_in"\(.*\)/\1/'
-
-    echo $TOKEN
-
-    sleep 30 
+        
+    #| sed 's/{"access_token":"\(.*\)","expires_in"\(.*\)/\1/')
 
 {{- end}}
