@@ -2561,7 +2561,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Air Qyuality Index (ICA)",
+  "title": "Air Quality Index (ICA)",
   "uid": "aqapp-ica",
   "version": 3,
   "weekStart": ""
