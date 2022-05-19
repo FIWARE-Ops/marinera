@@ -42,7 +42,7 @@ spec:
               containerPort: 7979
               protocol: TCP
           volumeMounts:
-            - name: json_exporter_config
+            - name: json-exporter-config
               mountPath: /
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
@@ -371,7 +371,7 @@ spec:
           {{- end }}
 
       volumes:
-        - name: json_exporter_config
+        - name: json-exporter-config
           configMap:
             name:  {{ include "orion.fullname" . }}-json-exporter-config
             
