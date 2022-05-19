@@ -175,7 +175,7 @@ data:
           "subGroups": [
             {
               "name": "airquality-data-subscriptor",
-              "path": "/airquality-data/subscriptor",
+              "path": "/airquality-data/airquality-data-subscriptor",
               "clientRoles": {
                 "orion-pep": [
                   "subscriptor"
@@ -184,7 +184,7 @@ data:
             },
             {
               "name": "airquality-data-consumer",
-              "path": "/airquality-data/consumer",
+              "path": "/airquality-data/airquality-data-consumer",
               "clientRoles": {
                 "orion-pep": [
                   "consumer"
@@ -193,7 +193,7 @@ data:
             },
             {
               "name": "airquality-data-producer",
-              "path": "/airquality-data/producer",
+              "path": "/airquality-data/airquality-data-producer",
               "clientRoles": {
                 "orion-pep": [
                   "producer"
@@ -303,7 +303,7 @@ data:
             ]
           },
           "groups": [
-            "/airquality-data/producer"
+            "/airquality-data/airquality-data-producer"
           ]
         }
       ],
