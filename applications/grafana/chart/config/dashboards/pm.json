@@ -337,7 +337,7 @@
     {
       "datasource": {
         "type": "postgres",
-        "uid": "6"
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -507,7 +507,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -541,7 +541,7 @@
     {
       "datasource": {
         "type": "postgres",
-        "uid": "6"
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -711,7 +711,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -745,7 +745,7 @@
     {
       "datasource": {
         "type": "postgres",
-        "uid": "6"
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -915,7 +915,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -962,7 +962,7 @@
     {
       "datasource": {
         "type": "postgres",
-        "uid": "6"
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -1103,7 +1103,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1133,7 +1133,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1164,7 +1164,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1200,7 +1200,7 @@
     {
       "datasource": {
         "type": "postgres",
-        "uid": "6"
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -1340,7 +1340,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1370,7 +1370,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1401,7 +1401,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1437,7 +1437,7 @@
     {
       "datasource": {
         "type": "postgres",
-        "uid": "6"
+        "uid": "3"
       },
       "fieldConfig": {
         "defaults": {
@@ -1577,7 +1577,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1607,7 +1607,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1638,7 +1638,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "format": "time_series",
           "group": [],
@@ -1684,7 +1684,7 @@
         {
           "datasource": {
             "type": "postgres",
-            "uid": "6"
+            "uid": "3"
           },
           "fieldConfig": {
             "defaults": {
@@ -1758,7 +1758,7 @@
             {
               "datasource": {
                 "type": "postgres",
-                "uid": "6"
+                "uid": "3"
               },
               "format": "time_series",
               "group": [],
