@@ -10,8 +10,8 @@ orion-ld:
       user: root
       auth:
         password: test
-    logging:
-      level: "WARN"
+    #logging:
+     # level: "WARN"
   deployment:
     replicaCount: 2
   mongo:
