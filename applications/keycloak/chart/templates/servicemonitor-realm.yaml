@@ -3,7 +3,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "keycloak.fullname" . }}-realm
-  namespace: {{ default .Release.Namespace .Values.keycloak.metrics.serviceMonitor.namespace }}
   labels: {{- include "common.labels.standard" . | nindent 4 }}
     app.kubernetes.io/component: keycloak
     {{- if .Values.keycloak.metrics.serviceMonitor.labels }}
