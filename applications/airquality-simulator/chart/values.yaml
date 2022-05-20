@@ -23,7 +23,7 @@ image:
   # ref: https://quay.io/repository/fiware/airquality-simulator
   repository: quay.io/fiware/airquality-simulator
   # -- tag of the image to be used
-  tag: 0.1.1
+  tag: 0.1.2
   # -- specification of the image pull policy
   pullPolicy: IfNotPresent
 
@@ -77,20 +77,35 @@ config:
     fiwareServicePath: "/data"
     aqSimulations:
       - id: "urn:ngsi:AirQualityObserved:simulated-1"
-        lat: -1.271
-        longi: 38.07
+        lat: -1.2718119
+        longi: 38.0770502
         sampleInterval: 30
         age: 10
+        name: "HOP Ubiquitous"
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
-        lat: -1.271
-        longi: 38.07
+        lat: -1.278310158693678
+        longi: 38.07828651005188
         sampleInterval: 30
         age: 10
+        name: "Parque de la Constitución"
       - id: "urn:ngsi:AirQualityObserved:simulated-3"
-        lat: -1.271
-        longi: 38.07
+        lat: -1.2748824349593826
+        longi: 38.077781381338404
         sampleInterval: 30
         age: 10
+        name: "Parque Juan Carlos I"
+      - id: "urn:ngsi:AirQualityObserved:simulated-4"
+        lat: -1.26895422283374
+        longi: 38.079269292527684
+        sampleInterval: 30
+        age: 10
+        name: "Museo de arte moderno La Conservera"
+      - id: "urn:ngsi:AirQualityObserved:simulated-5"
+        lat: -1.271990770471196
+        longi: 38.07943615142072
+        sampleInterval: 30
+        age: 10
+        name: "Plaza Nueva"
 
 ## configuration for the init-container to create subscriptions
 init: 
