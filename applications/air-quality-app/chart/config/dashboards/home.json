@@ -352,15 +352,15 @@
             "value": "/data"
           }
         ],
-        "query": "/alcantarilla",
+        "query": "/data",
         "skipUrlSync": false,
         "type": "custom"
       },
       {
         "current": {
           "selected": false,
-          "text": "Device",
-          "value": "Device"
+          "text": "AirQualityObserved",
+          "value": "AirQualityObserved"
         },
         "hide": 0,
         "includeAll": false,
@@ -369,8 +369,8 @@
         "options": [
           {
             "selected": true,
-            "text": "Device",
-            "value": "Device"
+            "text": "AirQualityObserved",
+            "value": "AirQualityObserved"
           }
         ],
         "query": "Device",
