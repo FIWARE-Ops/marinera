@@ -94,7 +94,7 @@ keycloak:
       # -- should it be enabled?
       enabled: true
       # -- how many failed request until the alert fires
-      threshold: 2
+      threshold: 25
       # -- timeframe to apply the threshold to
       timeWindow: 15m
       # -- severity of the alert
