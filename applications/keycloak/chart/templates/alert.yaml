@@ -1,0 +1,18 @@
+{{- if and .Values.keycloak.metrics.enabled .Values.keycloak.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ template "keycloak.fullname" . }}-prom-rule
+spec:
+  groups:
+  - name: keycloak.alerts
+    rules:
+    {{- if .Values.keycloak.alerting.requestError.enabled }}
+    - alert: KeycloakReqErrors 
+      expr: |
+        count(keycloak_response_errors{namespace="{{ .Release.namespace }}"}) > {{ .Values.keycloak.alerting.threshold }}
+      for: {{ .Values.keycloak.alerting.timeWindow }}
+      labels:
+        severity: {{ .Values.keycloak.alerting.severity }}
+    {{- end -}}
+{{- end -}}

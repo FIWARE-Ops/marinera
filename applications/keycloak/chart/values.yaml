@@ -88,6 +88,15 @@ keycloak:
     enabled: true
     serviceMonitor:
       interval: 30s
+  
+  # -- config for setting up the alerts.
+  alerting:
+    enabled: true
+    requestError:
+      enabled: true
+      threshold: 20
+      timeWindow: 15m
+      severity: warning
 
   containerPorts:
     management: 8080
