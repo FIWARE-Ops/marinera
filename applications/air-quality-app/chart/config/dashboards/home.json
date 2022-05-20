@@ -151,10 +151,10 @@
           }
         ],
         "view": {
-          "id": "coords",
+          "id": "fit",
           "lat": 37.973241,
           "lon": -1.215439,
-          "zoom": 14
+          "zoom": 15
         }
       },
       "pluginVersion": "8.5.2",

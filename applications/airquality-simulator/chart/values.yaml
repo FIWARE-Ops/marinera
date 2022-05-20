@@ -82,7 +82,15 @@ config:
         sampleInterval: 30
         age: 10
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
+        lat: -1.271
+        longi: 38.07
+        sampleInterval: 30
+        age: 10
       - id: "urn:ngsi:AirQualityObserved:simulated-3"
+        lat: -1.271
+        longi: 38.07
+        sampleInterval: 30
+        age: 10
 
 ## configuration for the init-container to create subscriptions
 init: 
