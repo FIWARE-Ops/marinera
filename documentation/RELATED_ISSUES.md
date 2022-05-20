@@ -36,3 +36,8 @@ Solving the following issues would bring to the platform a better security as we
 | Issue | Component | Description |
 |------------|------|---------|
 | https://bugzilla.redhat.com/show_bug.cgi?id=2081762 |  | Umbrella helm charts do not work with the current |
+
+## Monitoring Issues
+| Issue | Component | Description |
+|------------|------|---------|
+| https://github.com/orchestracities/ngsi-timeseries-api/issues/539 | quantumleap | Metrics in prometheus format available |

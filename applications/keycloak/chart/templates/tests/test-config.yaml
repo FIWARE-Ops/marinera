@@ -25,11 +25,8 @@ data:
         -H 'Content-Type: application/x-www-form-urlencoded' \
         -H 'cache-control: no-cache' \
         -d grant_type=password \
-        -d username=admin-user \
-        -d password=admin-user \
-        -d client_id=orion-pep \
-        -d client_secret=978ad148-d99b-406d-83fc-578597290a79 \
-        
-    #| sed 's/{"access_token":"\(.*\)","expires_in"\(.*\)/\1/')
-
+        -d username={{ .Values.tests.username }} \
+        -d password={{ .Values.tests.password }} \
+        -d client_id={{ .Values.tests.client_id }} \
+        -d client_secret={{ .Values.tests.client_secret }} \
 {{- end}}
