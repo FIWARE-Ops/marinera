@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ template "grafana.fullname" . }}-datasource-thanos-querier
+  name: {{ template "grafana.fullname" . }}-{{ .Release.Namespace }}-datasource-thanos-querier
   labels:
     {{- include "grafana.labels" . | nindent 4 }}
 subjects:
