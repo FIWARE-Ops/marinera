@@ -68,7 +68,7 @@ readinessProbe:
   successThreshold: 1
   timeoutSeconds: 30
 
-## configuration to be used for the simulator
+## configuration to be used for the simulator. Follow https://github.com/FIWARE-Ops/aq-simulator 
 config: 
   general:
     brokerUrl: "http://keycloak-pep:8080"
