@@ -71,7 +71,7 @@ readinessProbe:
 ## configuration to be used for the simulator. Follow https://github.com/FIWARE-Ops/aq-simulator 
 config: 
   general:
-    brokerUrl: "http://keycloak-pep:8080"
+    brokerUrl: "http://orion-ld:1026"
     historicDensity: 15
     fiwareService: "AirQuality"
     fiwareServicePath: "/data"
@@ -129,7 +129,7 @@ init:
   ## configuration for the keycloak init-container
   keycloak:
     # -- should the init-container be enabled
-    enabled: true 
+    enabled: false 
     ## configuration of the image to be used
     image:
       # -- subscription init image name
