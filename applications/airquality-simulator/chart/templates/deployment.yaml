@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "airquality-simulator.fullname" . }}
+  labels:
+    {{ include "airquality-simulator.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "airquality-simulator.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        {{ include "airquality-simulator.labels" . | nindent 8 }}
+        {{- with .Values.additionalLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- if .Values.additionalAnnotations -}}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        prometheus.io/scrape: {{ .Values.prometheus.enabled | quote }}
+        prometheus.io/path: {{ .Values.prometheus.path }}
+        prometheus.io/port: { { .Values.prometheus.port } }
+        {{- with .Values.additionalAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- end }}
+    spec: 
+      serviceAccountName: {{ include "airquality-simulator.serviceAccountName" . }}
+      {{- if .Values.init.enabled  }}
+      initContainers:
+        - name: subscription-init
+          imagePullPolicy: {{ .Values.init.image.pullPolicy }}
+          image: "{{ .Values.init.image.repository }}:{{ .Values.init.image.tag }}"
+          env:
+            - name: FIWARE_SERVICE
+              value: {{ .Values.config.general.fiwareService }}
+            - name: FIWARE_SERVICE_PATH
+              value: {{ .Values.config.general.fiwareServicePath }}
+            - name: BROKER_URL
+              value: {{ .Values.config.general.brokerUrl }}
+            - name: QUANTUM_LEAP_URL
+              value: {{ .Values.init.quantumLeapUrl }}
+            - name: ENTITY_TYPE
+              value: {{ .Values.init.entityType }}
+      {{- end }}
+      containers:
+        - name: airquality-simulator
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - name: http-health
+              containerPort: {{ .Values.healthPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http-health
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+            successThreshold: {{ .Values.livenessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http-health
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            successThreshold: {{ .Values.readinessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          env: 
+            - name: MICRONAUT_CONFIG_FILES
+              value: /etc/config/application.yaml
+            - name: ENDPOINTS_ALL_PORT
+              value: {{ .Values.healthPort | quote }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/config
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "airquality-simulator.fullname" . }}-cm
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
