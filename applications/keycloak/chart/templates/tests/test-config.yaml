@@ -1,0 +1,32 @@
+{{- if .Values.tests.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ include "keycloak.fullname" . }}-keycloak-test"
+  labels:
+    {{ include "keycloak.labels" . | nindent 4 }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+data:
+  test.sh: |-
+
+    # This test checks if the fiware-server Realm is configured as well as users and groups.
+    set -e
+    # Check if the Realm is present
+    curl http://{{ include "keycloak.fullname" . }}.{{ .Release.Namespace }}.svc/realms/fiware-server \
+                -H 'Content-Type: application/json' \
+                -H "Accept: application/json"
+
+    # Check that admin user can retrieve token from Keycloak
+    curl http://keycloak/realms/fiware-server/protocol/openid-connect/token \
+        -X POST \
+        -H 'Accept: application/json' \
+        -H 'Content-Type: application/x-www-form-urlencoded' \
+        -H 'cache-control: no-cache' \
+        -d grant_type=password \
+        -d username={{ .Values.tests.username }} \
+        -d password={{ .Values.tests.password }} \
+        -d client_id={{ .Values.tests.client_id }} \
+        -d client_secret={{ .Values.tests.client_secret }} \
+{{- end}}

@@ -1,0 +1,1952 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 4,
+  "iteration": 1652946705197,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "content": "<style>\n\n.dashboard-header {\n  background: #0971b8;\n  width: 100%;\n  height: 120px;\n  font-family: \"Arial\"!important;\n  font-weight: 700!important;\n  text-align: left\n}\n\n.dashboard-header-left {\n  width: calc(100% - 450px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-right {\n  width: 450px;\n  height: 120px;\n  float: right;\n  background: #fff;\n  text-align: center;\n}\n\n.dashboard-header-right img {\n  height: 100px;\n  width: auto;\n  margin: 10px auto;\n}\n\n.dashboard-header-left-left {\n  width: calc(100% - 250px);\n  height: 120px;\n  float: left;\n}\n\n.dashboard-header-left-right {\n  width: 250px;\n  height: 120px;\n  float: right;\n}\n\n.dashboard-title {\n  width: 100%;\n  height: 120px;\n}\n\n.dashboard-subtitle {\n  width: 100%;\n  height: 40px;\n}\n\n.dashboard-title h1 {\n  margin: 5px 0 0 20px;\n  color: #fff;\n  font-size: 48px;\n  line-height: 120px;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  float: left;\n}\n\n.dashboard-subtitle span {\n  margin: 0 0 0 20px;\n  color: #fff;\n  display: block;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n  line-height: 30px;\n  border: none !important;\n  padding: 0 !important;\n}\n  \n.back-container-text {\n  height: 120px;\n  width: calc(100% - 70px);\n  text-align: right;\n  float: left;\n  font-family: 'Roboto',Helvetica Neue,Arial,sans-serif;\n  font-size: 16px;\n}\n\n.back-container-text h5 {\n  line-height: 120px;\n  color: #fff;\n}\n\n.back-container-icon {\n  width: 50px;\n  height: 50px;\n  background: #fff;\n  border-radius: 50%;\n  text-align: center;\n  float: right;\n  margin: 35px 10px;\n  transition: 0.3s ease all;\n}\n  \n.back-container-icon span {\n  height: 20px;\n  width: auto;\n  line-height: 37px;\n  transition: 0.3s ease all;\n}\n  \na:hover .back-container-icon {\n  background: #edac15;\n}\n\n@media screen and (max-width: 720px) {\n  .dashboard-header-left, .dashboard-header-right {\n    width: 100%;\n    height: 60px;\n    float: none;\n  }\n  \n  .dashboard-header-right img {\n    height: 50px;\n    margin: 5px auto;\n  }\n\n  .dashboard-header-left-left {\n    height: 60px;\n  }\n\n  .dashboard-header-left-right {\n    height: 60px;\n  }\n  \n  .dashboard-title {\n    height: 60px;\n  }\n\n  .dashboard-title h1 {\n    line-height: 60px;\n    font-size: 32px;\n    margin: 5px 0 0 10px;\n  }\n  \n  .back-container-text {\n    height: 60px;\n    display: none;\n  }\n\n  .back-container-text h5 {\n    line-height: 60px;\n  }\n  \n  .back-container-icon {\n    width: 30px;\n    height: 30px;\n    margin: 20px 10px;\n  }\n  \n  .back-container-icon span {\n    line-height: 17px;\n  }\n  \n  .mapcontainer {\n    width: calc(100% - 40px);\n    margin: auto;\n  }\n  \n}\n\n</style>\n\n  <div class=\"dashboard-header\">\n    <div class=\"dashboard-header-left\">\n      <div class=\"dashboard-header-left-left\">\n        <div class=\"dashboard-title\">\n          <h1 style=\"font-weight: 700\">\n            AIR QUALITY - PARTICULATE MATTER\n          </h1>\n        </div>\n      </div>\n      <a href=\"/d/aqapp-home\">\n        <div class=\"dashboard-header-left-right\">\n          <div class=\"back-container-text\">\n          </div>\n          <div class=\"back-container-icon\">\n            <span class=\"fa fa-chevron-left\"></span>\n          </div>\n        </div>\n      </a>\n    </div>\n    <div class=\"dashboard-header-right\">\n      <a href=\"https://hopu.eu/\" target=\"_blank\">\n        <img src=\"https://hopu.eu/wp-content/uploads/2019/12/logo_hopu-large.png\">\n      <a>\n    </div>\n  </div\n",
+        "mode": "html"
+      },
+      "pluginVersion": "8.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 0,
+        "y": 4
+      },
+      "id": 24,
+      "options": {
+        "content": "**Dispositivo seleccionado:** $device_name\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 5,
+        "y": 4
+      },
+      "id": 26,
+      "options": {
+        "content": "<div style=\"accent-color: auto;align-content: normal;align-items: normal;align-self: auto;animation-delay: 0s;animation-direction: normal;animation-duration: 0s;animation-fill-mode: none;animation-iteration-count: 1;animation-name: none;animation-play-state: running;animation-timing-function: ease;appearance: none;aspect-ratio: auto;backface-visibility: visible;background-attachment: scroll;background-blend-mode: normal;background-clip: border-box;background-color: rgba(255, 255, 255, 0.8);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;block-size: 120px;border-block-end-color: rgb(85, 85, 85);border-block-end-style: none;border-block-end-width: 0px;border-block-start-color: rgb(85, 85, 85);border-block-start-style: none;border-block-start-width: 0px;border-bottom-color: rgb(85, 85, 85);border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;border-bottom-style: none;border-bottom-width: 0px;border-collapse: separate;border-end-end-radius: 5px;border-end-start-radius: 5px;border-image-outset: 0;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;border-inline-end-color: rgb(85, 85, 85);border-inline-end-style: none;border-inline-end-width: 0px;border-inline-start-color: rgb(85, 85, 85);border-inline-start-style: none;border-inline-start-width: 0px;border-left-color: rgb(85, 85, 85);border-left-style: none;border-left-width: 0px;border-right-color: rgb(85, 85, 85);border-right-style: none;border-right-width: 0px;border-spacing: 0px 0px;border-start-end-radius: 5px;border-start-start-radius: 5px;border-top-color: rgb(85, 85, 85);border-top-left-radius: 5px;border-top-right-radius: 5px;border-top-style: none;border-top-width: 0px;bottom: 0px;box-decoration-break: slice;box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px 0px;box-sizing: border-box;break-after: auto;break-before: auto;break-inside: auto;caption-side: top;caret-color: rgb(85, 85, 85);clear: both;clip: auto;clip-path: none;clip-rule: nonzero;color: rgb(85, 85, 85);color-interpolation: srgb;color-interpolation-filters: linearrgb;color-scheme: normal;column-count: auto;column-fill: balance;column-gap: normal;column-rule-color: rgb(85, 85, 85);column-rule-style: none;column-rule-width: 0px;column-span: none;column-width: auto;contain: none;content: normal;counter-increment: none;counter-reset: none;counter-set: none;cursor: auto;cx: 0px;cy: 0px;d: none;direction: ltr;display: flex;dominant-baseline: auto;empty-cells: show;fill: rgb(0, 0, 0);fill-opacity: 1;fill-rule: nonzero;filter: none;flex-basis: auto;flex-direction: column;flex-grow: 0;flex-shrink: 1;flex-wrap: nowrap;float: left;flood-color: rgb(0, 0, 0);flood-opacity: 1;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-synthesis: weight style small-caps;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;grid-auto-columns: auto;grid-auto-flow: row;grid-auto-rows: auto;grid-column-end: auto;grid-column-start: auto;grid-row-end: auto;grid-row-start: auto;grid-template-areas: none;grid-template-columns: none;grid-template-rows: none;height: 120px;hyphenate-character: auto;hyphens: manual;image-orientation: from-image;image-rendering: auto;ime-mode: auto;inline-size: 195.2px;inset-block-end: 0px;inset-block-start: 0px;inset-inline-end: 0px;inset-inline-start: 0px;isolation: auto;justify-content: normal;justify-items: normal;justify-self: auto;left: 0px;letter-spacing: normal;lighting-color: rgb(255, 255, 255);line-break: auto;line-height: 18px;list-style-image: none;list-style-position: outside;list-style-type: disc;margin-block-end: 10px;margin-block-start: 0px;margin-bottom: 10px;margin-inline-end: 8px;margin-inline-start: 10px;margin-left: 10px;margin-right: 8px;margin-top: 0px;marker-end: none;marker-mid: none;marker-start: none;mask-clip: border-box;mask-composite: add;mask-image: none;mask-mode: match-source;mask-origin: border-box;mask-position-x: 0%;mask-position-y: 0%;mask-repeat: repeat;mask-size: auto;mask-type: luminance;max-block-size: none;max-height: none;max-inline-size: none;max-width: none;min-block-size: 0px;min-height: 0px;min-inline-size: 0px;min-width: 0px;mix-blend-mode: normal;object-fit: fill;object-position: 50% 50%;offset-anchor: auto;offset-distance: 0px;offset-path: none;offset-rotate: auto;opacity: 1;order: 0;outline-color: rgb(85, 85, 85);outline-offset: 0px;outline-style: none;outline-width: 0px;overflow-anchor: auto;overflow-block: visible;overflow-inline: visible;overflow-wrap: normal;overflow-x: visible;overflow-y: visible;overscroll-behavior-block: auto;overscroll-behavior-inline: auto;overscroll-behavior-x: auto;overscroll-behavior-y: auto;padding-block-end: 6px;padding-block-start: 6px;padding-bottom: 6px;padding-inline-end: 8px;padding-inline-start: 8px;padding-left: 8px;padding-right: 8px;padding-top: 6px;paint-order: normal;perspective: none;perspective-origin: 97.6px 60px;pointer-events: auto;position: relative;print-color-adjust: economy;quotes: auto;r: 0px;resize: none;right: 0px;rotate: none;row-gap: normal;ruby-align: space-around;ruby-position: alternate;rx: auto;ry: auto;scale: none;scroll-behavior: auto;scroll-margin-block-end: 0px;scroll-margin-block-start: 0px;scroll-margin-bottom: 0px;scroll-margin-inline-end: 0px;scroll-margin-inline-start: 0px;scroll-margin-left: 0px;scroll-margin-right: 0px;scroll-margin-top: 0px;scroll-padding-block-end: auto;scroll-padding-block-start: auto;scroll-padding-bottom: auto;scroll-padding-inline-end: auto;scroll-padding-inline-start: auto;scroll-padding-left: auto;scroll-padding-right: auto;scroll-padding-top: auto;scroll-snap-align: none;scroll-snap-type: none;scrollbar-color: auto;scrollbar-gutter: auto;scrollbar-width: auto;shape-image-threshold: 0;shape-margin: 0px;shape-outside: none;shape-rendering: auto;stop-color: rgb(0, 0, 0);stop-opacity: 1;stroke: none;stroke-dasharray: none;stroke-dashoffset: 0px;stroke-linecap: butt;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-opacity: 1;stroke-width: 1px;tab-size: 8;table-layout: auto;text-align: start;text-align-last: auto;text-anchor: start;text-combine-upright: none;text-decoration-color: rgb(85, 85, 85);text-decoration-line: none;text-decoration-skip-ink: auto;text-decoration-style: solid;text-decoration-thickness: auto;text-emphasis-color: rgb(85, 85, 85);text-emphasis-position: over right;text-emphasis-style: none;text-indent: 0px;text-justify: auto;text-orientation: mixed;text-overflow: clip;text-rendering: auto;text-shadow: none;text-transform: none;text-underline-offset: auto;text-underline-position: auto;top: 0px;touch-action: auto;transform: none;transform-box: border-box;transform-origin: 97.6px 60px;transform-style: flat;transition-delay: 0s;transition-duration: 0s;transition-property: all;transition-timing-function: ease;translate: none;unicode-bidi: isolate;user-select: auto;vector-effect: none;vertical-align: baseline;visibility: visible;white-space: normal;width: 195.2px;will-change: auto;word-break: normal;word-spacing: 0px;writing-mode: horizontal-tb;x: 0px;y: 0px;z-index: 800;-moz-box-align: stretch;-moz-box-direction: normal;-moz-box-flex: 0;-moz-box-ordinal-group: 1;-moz-box-orient: horizontal;-moz-box-pack: start;-moz-float-edge: content-box;-moz-force-broken-image-icon: 0;-moz-image-region: auto;-moz-orient: inline;-moz-text-size-adjust: auto;-moz-user-focus: none;-moz-user-input: auto;-moz-user-modify: read-only;-moz-window-dragging: default;-webkit-line-clamp: none;-webkit-text-fill-color: rgb(85, 85, 85);-webkit-text-stroke-color: rgb(85, 85, 85);-webkit-text-stroke-width: 0px;\">\n<div style=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(0, 255, 250, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i> Good</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(80, 200, 163, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Fair</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(235, 235, 54, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Moderate</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(255, 79, 92, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Poor</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(192, 0, 0, 0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Very poor</div>\n<div class=\"box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: normal;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;line-height: 18px;pointer-events: auto;white-space: nowrap;\"><i style=\"background-attachment: scroll;background-clip: border-box;background-color: rgba(153, 0, 255,0.6);background-image: none;background-origin: padding-box;background-position-x: 0%;background-position-y: 0%;background-repeat: repeat;background-size: auto;box-sizing: border-box;color: rgb(85, 85, 85);cursor: auto;float: left;font-family: Arial, Helvetica, sans-serif;font-feature-settings: normal;font-kerning: auto;font-language-override: normal;font-optical-sizing: auto;font-size: 14px;font-size-adjust: none;font-stretch: 100%;font-style: italic;font-variant-alternates: normal;font-variant-caps: normal;font-variant-east-asian: normal;font-variant-ligatures: normal;font-variant-numeric: normal;font-variant-position: normal;font-variation-settings: normal;font-weight: 400;height: 18px;line-height: 18px;margin-left: 10px;margin-right: 10px;opacity: 0.7;pointer-events: auto;white-space: nowrap;width: 18px;\"></i>Extremely poor</div>\n</div>\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "8.5.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "orion-datasource",
+        "uid": "2"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 16,
+        "x": 8,
+        "y": 4
+      },
+      "id": 4,
+      "options": {
+        "basemap": {
+          "config": {
+            "showLabels": true,
+            "theme": "auto"
+          },
+          "name": "Layer 0",
+          "type": "carto"
+        },
+        "controls": {
+          "mouseWheelZoom": true,
+          "showAttribution": true,
+          "showDebug": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "showLegend": true,
+              "style": {
+                "color": {
+                  "fixed": "#0971b8"
+                },
+                "opacity": 0.8,
+                "rotation": {
+                  "fixed": 0,
+                  "max": 360,
+                  "min": -360,
+                  "mode": "clamped"
+                },
+                "size": {
+                  "fixed": 7,
+                  "max": 15,
+                  "min": 2
+                },
+                "symbol": {
+                  "fixed": "img/icons/marker/circle.svg",
+                  "mode": "fixed"
+                },
+                "text": {
+                  "field": "id",
+                  "fixed": "",
+                  "mode": "fixed"
+                },
+                "textConfig": {
+                  "fontSize": 12,
+                  "offsetX": 0,
+                  "offsetY": 0,
+                  "textAlign": "center",
+                  "textBaseline": "middle"
+                }
+              }
+            },
+            "location": {
+              "latitude": "latitude",
+              "longitude": "longitude",
+              "mode": "coords"
+            },
+            "name": "Devices",
+            "tooltip": true,
+            "type": "markers"
+          }
+        ],
+        "view": {
+          "id": "coords",
+          "lat": 37.973241,
+          "lon": -1.215439,
+          "zoom": 14
+        }
+      },
+      "pluginVersion": "8.5.2",
+      "targets": [
+        {
+          "attributes": "All",
+          "currentTimeColumn": false,
+          "datasource": {
+            "type": "orion-datasource",
+            "uid": "2"
+          },
+          "defaultFiwareService": false,
+          "enableTypeSearch": false,
+          "entityId": "All",
+          "entityType": "All",
+          "executePostQueryFilter": false,
+          "hide": false,
+          "invertLocationCoordinates": false,
+          "queryFilter": "",
+          "refId": "B",
+          "selectedRequest": "Entities",
+          "service": "$service",
+          "servicePath": "$servicepath",
+          "target": "select metric",
+          "type": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "source": "location"
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "coordinates"
+              }
+            ],
+            "match": "any",
+            "type": "exclude"
+          }
+        },
+        {
+          "id": "extractFields",
+          "options": {
+            "format": "json",
+            "replace": false,
+            "source": "coordinates"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "0": false,
+              "CO": true,
+              "H2S": true,
+              "NO": true,
+              "NO2": true,
+              "O3": true,
+              "PM1": false,
+              "PM10": false,
+              "PM25": false,
+              "SO2": true,
+              "VOC": true,
+              "coordinates": true,
+              "dataProvider": true,
+              "humidity": true,
+              "ica": true,
+              "id": true,
+              "location": true,
+              "operationalStatus": true,
+              "particulates": true,
+              "pollutants": true,
+              "source": true,
+              "temperature": true,
+              "type 1": true,
+              "type 2": true
+            },
+            "indexByName": {
+              "0": 12,
+              "1": 11,
+              "CO": 5,
+              "H2S": 13,
+              "NO": 15,
+              "NO2": 1,
+              "O3": 6,
+              "PM1": 2,
+              "PM10": 4,
+              "PM25": 3,
+              "SO2": 7,
+              "TimeInstant": 10,
+              "VOC": 16,
+              "coordinates": 26,
+              "dataProvider": 17,
+              "humidity": 9,
+              "ica": 18,
+              "id": 14,
+              "location": 19,
+              "name": 0,
+              "operationalStatus": 21,
+              "particulates": 22,
+              "pollutants": 23,
+              "source": 20,
+              "temperature": 8,
+              "type 1": 24,
+              "type 2": 25
+            },
+            "renameByName": {
+              "0": "longitude",
+              "1": "latitude",
+              "PM25": "PM2.5",
+              "TimeInstant": "timestamp",
+              "operationalStatus": "status"
+            }
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [],
+            "fields": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 67,
+            "lineWidth": 0,
+            "spanNulls": 3600000
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "index": 0,
+                  "text": "GOOD"
+                },
+                "to": 10
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 11,
+                "result": {
+                  "index": 1,
+                  "text": "FAIR"
+                },
+                "to": 20
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 21,
+                "result": {
+                  "index": 2,
+                  "text": "MODERATE"
+                },
+                "to": 25
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 26,
+                "result": {
+                  "index": 3,
+                  "text": "POOR"
+                },
+                "to": 50
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 51,
+                "result": {
+                  "index": 4,
+                  "text": "VERY POOR"
+                },
+                "to": 75
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 76,
+                "result": {
+                  "index": 5,
+                  "text": "EXTREMELY POOR"
+                },
+                "to": 800
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -100000,
+                "result": {
+                  "index": 6,
+                  "text": "OUT OF RANGE"
+                },
+                "to": -1
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 801,
+                "result": {
+                  "index": 7,
+                  "text": "OUT OF RANGE"
+                },
+                "to": 1000000
+              },
+              "type": "range"
+            }
+          ],
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#7c8996",
+                "value": null
+              },
+              {
+                "color": "#00fffa33",
+                "value": 0
+              },
+              {
+                "color": "#50c8a333",
+                "value": 10
+              },
+              {
+                "color": "#ebeb3633",
+                "value": 20
+              },
+              {
+                "color": "#ff4f5c33",
+                "value": 25
+              },
+              {
+                "color": "#c0000033",
+                "value": 50
+              },
+              {
+                "color": "#9900ff33",
+                "value": 75
+              },
+              {
+                "color": "#7c8996",
+                "value": 800
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": false,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm1) as \"PM1\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "transparent": true,
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 67,
+            "lineWidth": 0,
+            "spanNulls": 3600000
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "index": 0,
+                  "text": "GOOD"
+                },
+                "to": 10
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 11,
+                "result": {
+                  "index": 1,
+                  "text": "FAIR"
+                },
+                "to": 20
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 21,
+                "result": {
+                  "index": 2,
+                  "text": "MODERATE"
+                },
+                "to": 25
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 26,
+                "result": {
+                  "index": 3,
+                  "text": "POOR"
+                },
+                "to": 50
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 51,
+                "result": {
+                  "index": 4,
+                  "text": "VERY POOR"
+                },
+                "to": 75
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 76,
+                "result": {
+                  "index": 5,
+                  "text": "EXTREMELY POOR"
+                },
+                "to": 800
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -100000,
+                "result": {
+                  "index": 6,
+                  "text": "OUT OF RANGE"
+                },
+                "to": -1
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 801,
+                "result": {
+                  "index": 7,
+                  "text": "OUT OF RANGE"
+                },
+                "to": 1000000
+              },
+              "type": "range"
+            }
+          ],
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#7c8996",
+                "value": null
+              },
+              {
+                "color": "#00fffa33",
+                "value": 0
+              },
+              {
+                "color": "#50c8a333",
+                "value": 10
+              },
+              {
+                "color": "#ebeb3633",
+                "value": 20
+              },
+              {
+                "color": "#ff4f5c33",
+                "value": 25
+              },
+              {
+                "color": "#c0000033",
+                "value": 50
+              },
+              {
+                "color": "#9900ff33",
+                "value": 75
+              },
+              {
+                "color": "#7c8996",
+                "value": 800
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 11
+      },
+      "id": 27,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": false,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm25) as \"PM2.5\"\nFROM\n   ${table:raw}\nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "transparent": true,
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 67,
+            "lineWidth": 0,
+            "spanNulls": 3600000
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "index": 0,
+                  "text": "GOOD"
+                },
+                "to": 20
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 21,
+                "result": {
+                  "index": 1,
+                  "text": "FAIR"
+                },
+                "to": 40
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 41,
+                "result": {
+                  "index": 2,
+                  "text": "MODERATE"
+                },
+                "to": 50
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 51,
+                "result": {
+                  "index": 3,
+                  "text": "POOR"
+                },
+                "to": 100
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 101,
+                "result": {
+                  "index": 4,
+                  "text": "VERY POOR"
+                },
+                "to": 150
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 151,
+                "result": {
+                  "index": 5,
+                  "text": "EXTREMELY POOR"
+                },
+                "to": 1200
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": -100000,
+                "result": {
+                  "index": 6,
+                  "text": "OUT OF RANGE"
+                },
+                "to": -1
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 1201,
+                "result": {
+                  "index": 7,
+                  "text": "OUT OF RANGE"
+                },
+                "to": 1000000
+              },
+              "type": "range"
+            }
+          ],
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#7c8996",
+                "value": null
+              },
+              {
+                "color": "#00fffa33",
+                "value": 0
+              },
+              {
+                "color": "#50c8a333",
+                "value": 20
+              },
+              {
+                "color": "#ebeb3633",
+                "value": 40
+              },
+              {
+                "color": "#ff4f5c33",
+                "value": 50
+              },
+              {
+                "color": "#c0000033",
+                "value": 100
+              },
+              {
+                "color": "#9900ff33",
+                "value": 150
+              },
+              {
+                "color": "#7c8996",
+                "value": 1200
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 0,
+        "y": 14
+      },
+      "id": 28,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "mergeValues": false,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm10) as \"PM10\"\nFROM\n   ${table:raw}\nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "transparent": true,
+      "type": "state-timeline"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 14,
+      "panels": [],
+      "title": "Show details",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* daily average"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly average"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly max"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm1) as \"PM1 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(pm1) as \"PM1 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(pm1) as \"PM1 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "PM1",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* daily average"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly average"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly max"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 29,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm25) as \"PM2.5 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(pm25) as \"PM2.5 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(pm25) as \"PM2.5 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "PM2.5",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "postgres",
+        "uid": "3"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "conμgm3"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* daily average"
+            },
+            "properties": [
+              {
+                "id": "custom.drawStyle",
+                "value": "points"
+              },
+              {
+                "id": "custom.pointSize",
+                "value": 10
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly average"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 7
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".* hourly max"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-blue",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 30,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm10) as \"PM10 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  max(pm10) as \"PM10 hourly max\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "B",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "format": "time_series",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  $__timeGroup(time_index,'1d'),\n  avg(pm10) as \"PM10 daily average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n",
+          "refId": "C",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "title": "PM10",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 21,
+      "panels": [
+        {
+          "datasource": {
+            "type": "postgres",
+            "uid": "3"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "conμgm3"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 23
+          },
+          "id": 22,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "table",
+              "placement": "right"
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "postgres",
+                "uid": "3"
+              },
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT\n  $__timeGroup(time_index,'1h'),\n  avg(pm1) as \"PM1 hourly average\",\n  avg(pm25) as \"PM2.5 hourly average\",\n  avg(pm10) as \"PM10 hourly average\"\nFROM\n   ${table:raw} \nWHERE\n  $__timeFilter(time_index) and entity_id = '$device_selected'\nGROUP BY 1\nORDER BY 1 ASC\n\n",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "timeColumn": "time",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Particulate matter comparative",
+          "transparent": true,
+          "type": "timeseries"
+        }
+      ],
+      "title": "Particulate matter comparative",
+      "type": "row"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Ayuntamiento",
+          "value": "Ayuntamiento"
+        },
+        "datasource": {
+          "type": "orion-datasource",
+          "uid": "2"
+        },
+        "definition": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\",\n            \"queryFilter\": \"ica==true\"\n }",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Device",
+        "multi": false,
+        "name": "device_name",
+        "options": [],
+        "query": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\",\n            \"queryFilter\": \"ica==true\"\n }",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "urn:ngsi:AirQualityObserved:HOPac67b2cd2cb6",
+          "value": "urn:ngsi:AirQualityObserved:HOPac67b2cd2cb6"
+        },
+        "datasource": {
+          "type": "orion-datasource",
+          "uid": "2"
+        },
+        "definition": "        {\n            \"request\": \"Entities\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"attributeName\": \"id,name\",\n            \"queryFilter\": \"name=='$device_name'\",\n            \"executePostQueryFilter\": true\n        }",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "device_selected",
+        "options": [],
+        "query": "        {\n            \"request\": \"Entities\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"attributeName\": \"id,name\",\n            \"queryFilter\": \"name=='$device_name'\",\n            \"executePostQueryFilter\": true\n        }",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "AirQuality",
+          "value": "AirQuality"
+        },
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "service",
+        "options": [
+          {
+            "selected": true,
+            "text": "AirQuality",
+            "value": "AirQuality"
+          }
+        ],
+        "query": "AirQuality",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "/data",
+          "value": "/data"
+        },
+        "description": "",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "servicepath",
+        "options": [
+          {
+            "selected": true,
+            "text": "/data",
+            "value": "/data"
+          }
+        ],
+        "query": "/alcantarilla,/datasimulator,/demo",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "AirQualityObserved",
+          "value": "AirQualityObserved"
+        },
+        "description": "",
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "type",
+        "options": [
+          {
+            "selected": true,
+            "text": "AirQualityObserved",
+            "value": "AirQualityObserved"
+          }
+        ],
+        "query": "AirQualityObserved",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "sample_mtairquality.etairqualityobserved",
+          "value": "sample_mtairquality.etairqualityobserved"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "table",
+        "options": [
+          {
+            "selected": true,
+            "text": "sample_mtairquality.etairqualityobserved",
+            "value": "sample_mtairquality.etairqualityobserved"
+          }
+        ],
+        "query": "sample_mtairquality.etairqualityobserved",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Air Quality - Particulate Matter",
+  "uid": "aqapp-pm",
+  "version": 3,
+  "weekStart": ""
+}

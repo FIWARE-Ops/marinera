@@ -1,0 +1,72 @@
+nameOverride: "grafana-metrics"
+grafana:
+  admin:
+    existingSecret: "grafana-admin-user"
+    userKey: admin-user
+    passwordKey: admin-password
+  grafana.ini:
+    log:
+      level: warn
+    log.console:
+      format: json
+    plugins:
+      allow_loading_unsigned_plugins: orion-datasource
+    users:
+      default_theme: light # dark | light
+    auth.anonymous:
+      enabled: false
+    dashboards:
+      default_home_dashboard_path: /tmp/dashboards/fiware-metrics-dashboard.json
+      
+  initChownData:
+    enabled: false
+  persistence:
+    enabled: false
+  rbac:
+    pspEnabled: false
+    namespaced: true
+  securityContext: ""
+
+  sidecar:
+    dashboards:
+      enabled: true
+      SCProvider: true
+      label: grafana_dashboard
+      labelValue: grafana-metrics
+      provider:
+        name: FIWARE
+        orgid: 1
+        folder: "FIWARE"
+        disableDelete: true
+        allowUIUpdates: true
+
+    datasources:
+      enabled: true
+      label: grafana_datasource
+      labelValue: grafana-metrics
+
+  podLabels:
+    marinera/platform: fiware
+    marinera/component:	monitoring
+    marinera/subcomponent: ui
+    marinera/product: grafana
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+
+admin:
+  # -- Admin username
+  username: fiwareAdmin
+  # -- Admin password
+  password: fiwareAdmin
+
+route:
+  # -- To enable the OpenShift route
+  enabled: true
+
+datasources:
+  prometheus:
+    url: https://thanos-querier.openshift-monitoring.svc.cluster.local:9091
+
+tests:
+  enabled: true

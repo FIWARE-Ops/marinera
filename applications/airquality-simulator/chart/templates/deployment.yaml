@@ -1,0 +1,125 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "airquality-simulator.fullname" . }}
+  labels:
+    {{ include "airquality-simulator.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: {{ .Values.revisionHistoryLimit }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "airquality-simulator.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        {{ include "airquality-simulator.labels" . | nindent 8 }}
+        {{- with .Values.additionalLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- if .Values.additionalAnnotations -}}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        prometheus.io/scrape: {{ .Values.prometheus.enabled | quote }}
+        prometheus.io/path: {{ .Values.prometheus.path }}
+        prometheus.io/port: { { .Values.prometheus.port } }
+        {{- with .Values.additionalAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- end }}
+    spec: 
+      serviceAccountName: {{ include "airquality-simulator.serviceAccountName" . }}
+      {{- if or .Values.init.subscription.enabled .Values.init.keycloak.enabled }}
+      initContainers:
+        {{- if .Values.init.subscription.enabled }}
+        - name: subscription-init
+          imagePullPolicy: {{ .Values.init.subscription.image.pullPolicy }}
+          image: "{{ .Values.init.subscription.image.repository }}:{{ .Values.init.subscription.image.tag }}"
+          env:
+            - name: FIWARE_SERVICE
+              value: {{ .Values.config.general.fiwareService }}
+            - name: FIWARE_SERVICE_PATH
+              value: {{ .Values.config.general.fiwareServicePath }}
+            - name: BROKER_URL
+              value: {{ .Values.config.general.brokerUrl }}
+            - name: QUANTUM_LEAP_URL
+              value: {{ .Values.init.subscription.quantumLeapUrl }}
+            - name: ENTITY_TYPE
+              value: {{ .Values.init.subscription.entityType }}
+        {{- end -}}
+        {{- if .Values.init.keycloak.enabled }}
+        - name: keycloak-init
+          imagePullPolicy: {{ .Values.init.keycloak.image.pullPolicy }}
+          image: "{{ .Values.init.keycloak.image.repository }}:{{ .Values.init.keycloak.image.tag }}"
+          volumeMounts:
+            - name: kc-config
+              mountPath: /etc/config
+          env:
+            - name: KEYCLOAK_URL
+              value: {{ .Values.init.keycloak.url }}
+            - name: KEYCLOAK_USER
+              value: {{ .Values.init.keycloak.admin.user }}
+            - name: KEYCLOAK_PASSWORD
+              value: {{ .Values.init.keycloak.admin.password }}
+            - name: IMPORT_FILES_LOCATIONS
+              value: /etc/config/*
+        {{- end -}}
+      {{- end }}
+      containers:
+        - name: airquality-simulator
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - name: http-health
+              containerPort: {{ .Values.healthPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http-health
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+            successThreshold: {{ .Values.livenessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.livenessProbe.timeoutSeconds }}
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http-health
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
+            successThreshold: {{ .Values.readinessProbe.successThreshold }}
+            timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+          env: 
+            - name: MICRONAUT_CONFIG_FILES
+              value: /etc/config/application.yaml
+            - name: ENDPOINTS_ALL_PORT
+              value: {{ .Values.healthPort | quote }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/config
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "airquality-simulator.fullname" . }}-cm
+        {{- if .Values.init.keycloak.enabled }}
+        - name: kc-config
+          configMap:
+            name: {{ include "airquality-simulator.fullname" . }}-keycloak-cm
+        {{- end -}}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

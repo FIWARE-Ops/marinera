@@ -1,0 +1,15 @@
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ template "grafana.fullname" . }}-{{ .Release.Namespace }}-datasource-thanos-querier
+  labels:
+    {{- include "grafana.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ template "grafana.fullname" . }}
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-monitoring-view

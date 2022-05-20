@@ -1,0 +1,48 @@
+{{- if .Values.keycloak.metrics.enabled  }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "keycloak.fullname" . }}-realm
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: keycloak
+    {{- if .Values.keycloak.metrics.serviceMonitor.labels }}
+    {{- include "common.tplvalues.render" (dict "value" .Values.keycloak.metrics.serviceMonitor.labels "context" $) | nindent 4 }}
+    {{- end }}
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.keycloak.metrics.serviceMonitor.jobLabel }}
+  jobLabel: {{ .Values.keycloak.metrics.serviceMonitor.jobLabel }}
+  {{- end }}
+  endpoints:
+    - port: http-management
+      {{- if .Values.keycloak.metrics.serviceMonitor.interval }}
+      interval: {{ .Values.keycloak.metrics.serviceMonitor.interval }}
+      {{- end }}
+      {{- if .Values.keycloak.metrics.serviceMonitor.scrapeTimeout }}
+      scrapeTimeout: {{ .Values.keycloak.metrics.serviceMonitor.scrapeTimeout }}
+      {{- end }}
+      path: /realms/fiware-server/metrics
+      {{- if .Values.keycloak.metrics.serviceMonitor.relabelings }}
+      relabelings: {{- include "common.tplvalues.render" ( dict "value" .Values.keycloak.metrics.serviceMonitor.relabelings "context" $) | nindent 6 }}
+      {{- end }}
+      {{- if .Values.keycloak.metrics.serviceMonitor.metricRelabelings }}
+      metricRelabelings: {{- include "common.tplvalues.render" ( dict "value" .Values.keycloak.metrics.serviceMonitor.metricRelabelings "context" $) | nindent 6 }}
+      {{- end }}
+      {{- if .Values.keycloak.metrics.serviceMonitor.honorLabels }}
+      honorLabels: {{ .Values.keycloak.metrics.serviceMonitor.honorLabels }}
+      {{- end }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels: {{- include "common.labels.matchLabels" . | nindent 6 }}
+      {{- if .Values.keycloak.metrics.serviceMonitor.selector }}
+      {{- include "common.tplvalues.render" (dict "value" .Values.keycloak.metrics.serviceMonitor.selector "context" $) | nindent 6 }}
+      {{- end }}
+      app.kubernetes.io/component: metrics
+{{- end }}
