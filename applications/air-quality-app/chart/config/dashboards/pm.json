@@ -1889,7 +1889,7 @@
             "value": "/data"
           }
         ],
-        "query": "/alcantarilla,/datasimulator,/demo",
+        "query": "/data",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1919,8 +1919,8 @@
       {
         "current": {
           "selected": false,
-          "text": "sample_mtairquality.etairqualityobserved",
-          "value": "sample_mtairquality.etairqualityobserved"
+          "text": "etairqualityobserved",
+          "value": "etairqualityobserved"
         },
         "hide": 2,
         "includeAll": false,
@@ -1929,11 +1929,11 @@
         "options": [
           {
             "selected": true,
-            "text": "sample_mtairquality.etairqualityobserved",
-            "value": "sample_mtairquality.etairqualityobserved"
+            "text": "etairqualityobserved",
+            "value": "etairqualityobserved"
           }
         ],
-        "query": "sample_mtairquality.etairqualityobserved",
+        "query": "etairqualityobserved",
         "skipUrlSync": false,
         "type": "custom"
       }
