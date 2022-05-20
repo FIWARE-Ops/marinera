@@ -1,4 +1,4 @@
-{{- if .Values.keycloak.enabled -}}
+{{- if .Values.init.keycloak.enabled }}
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -31,4 +31,4 @@ data:
         }
       ]
     }
-{{- end -}}
+{{- end }}
