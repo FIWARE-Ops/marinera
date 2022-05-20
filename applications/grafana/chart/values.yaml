@@ -36,6 +36,10 @@ grafana:
       labelValue: grafana
       orgid: 1
       defaultFolderName: default
+    datasources:
+      enabled: true
+      label: grafana_datasource
+      labelValue: grafana
 
   dashboardProviders:
     dashboardproviders.yaml:
@@ -58,10 +62,6 @@ grafana:
         options:
           path: /tmp/dashboards/air-quality  # should match sidecar.dashboards.defaultFolderName
 
-    datasources:
-      enabled: true
-      label: grafana_datasource
-      labelValue: grafana
   podLabels:
     marinera/platform: fiware
     marinera/component:	visualization
@@ -101,9 +101,3 @@ datasources:
 
 tests:
   enabled: true
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> main
