@@ -34,22 +34,46 @@ grafana:
       SCProvider: true
       label: grafana_dashboard
       labelValue: grafana
-      provider:
-        name: datasources-validator
-        orgid: 1
-        folder: "Datasources validator"
-        disableDelete: false
-        allowUIUpdates: true
-
+      orgid: 1
+      defaultFolderName: default
     datasources:
       enabled: true
       label: grafana_datasource
       labelValue: grafana
+      
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'dashboards'
+        orgId: 1
+        folder: 'Dashboards'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /tmp/dashboards/dashboards  # should match sidecar.dashboards.defaultFolderName
+      - name: 'air-quality'
+        orgId: 1
+        folder: 'Air Quality'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /tmp/dashboards/air-quality  # should match sidecar.dashboards.defaultFolderName
+    
+
   podLabels:
     marinera/platform: fiware
     marinera/component:	visualization
     marinera/subcomponent: ui
     marinera/product: grafana
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+
+  env:
+    GF_PANELS_DISABLE_SANITIZE_HTML: true
 
 admin:
   # -- Admin username
@@ -78,5 +102,3 @@ datasources:
 
 tests:
   enabled: true
-
-
