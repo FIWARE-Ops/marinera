@@ -87,11 +87,17 @@ keycloak:
   
   # -- config for setting up the alerts.
   alerting:
+    # -- should overall alerting for keycloak be enabled?
     enabled: true
+    ## config for enabling alerting on erronous requests
     requestError:
+      # -- should it be enabled?
       enabled: true
-      threshold: 20
+      # -- how many failed request until the alert fires
+      threshold: 2
+      # -- timeframe to apply the threshold to
       timeWindow: 15m
+      # -- severity of the alert
       severity: warning
 
   containerPorts:
