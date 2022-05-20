@@ -35,9 +35,9 @@ grafana:
       label: grafana_dashboard
       labelValue: grafana
       provider:
-        name: datasources-validator
+        name: dashboards
         orgid: 1
-        folder: "Datasources validator"
+        folder: "Dashboards"
         disableDelete: false
         allowUIUpdates: true
 
@@ -50,6 +50,12 @@ grafana:
     marinera/component:	visualization
     marinera/subcomponent: ui
     marinera/product: grafana
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+
+  env:
+    GF_PANELS_DISABLE_SANITIZE_HTML: true
 
 admin:
   # -- Admin username
@@ -78,5 +84,3 @@ datasources:
 
 tests:
   enabled: true
-
-

@@ -284,13 +284,13 @@ broker:
   ## configratuion of orion metrics
   metrics:
     # -- enable or disable metrics gathering
-    enabled: "false"
+    enabled: "true"
     # -- see statistics documentation for the following configurations
     #ref: https://fiware-orion.readthedocs.io/en/master/admin/statistics/index.html
-    # statCountersEnabled: true
-    # statSemWaitEnabled: true
-    # statTimingEnabled: true
-    # statNotifQueueEnabled: true
+    statCountersEnabled: true
+    statSemWaitEnabled: false
+    statTimingEnabled: false
+    statNotifQueueEnabled: false
 
 ## Configuration for embedding mongodb into the chart. Do not use this in production.
 mongo:

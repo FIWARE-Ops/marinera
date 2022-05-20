@@ -71,7 +71,11 @@ readinessProbe:
 ## configuration to be used for the simulator
 config: 
   general:
+<<<<<<< HEAD
     brokerUrl: "http://keycloak-pep:8080"
+=======
+    brokerUrl: "http://orion-ld:1026"
+>>>>>>> 9afec8e21a8f5cfb6d9e60cadab3a7151d0dcfe3
     historicDensity: 15
     fiwareService: "simulated"
     fiwareServicePath: "/"
@@ -83,6 +87,7 @@ config:
         age: 10
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
       - id: "urn:ngsi:AirQualityObserved:simulated-3"
+<<<<<<< HEAD
   keycloak: 
     enabled: true
     clientId: orion-pep
@@ -136,3 +141,23 @@ init:
       user: airqualityapp-user
       # -- Password for the new username to create in Keycloak for the Air Quality app 
       password: airqualityapp    
+=======
+
+## configuration for the init-container to create subscriptions
+init: 
+  # -- should the init-container be enabled
+  enabled: true 
+  ## configuration of the image to be used
+  image:
+    # -- subscription init image name
+    # ref: https://quay.io/fiware/v2-subscription-init
+    repository: quay.io/fiware/v2-subscription-init
+    # -- tag of the image to be used
+    tag: 0.1.0
+    # -- specification of the image pull policy
+    pullPolicy: IfNotPresent
+  # -- URL of the quantum leap instance to be notified
+  quantumLeapUrl: "http://quantumleap-quantumleap:8668"
+  # -- type of the entities to be send
+  entityType: "AirQualityObserved"
+>>>>>>> 9afec8e21a8f5cfb6d9e60cadab3a7151d0dcfe3
