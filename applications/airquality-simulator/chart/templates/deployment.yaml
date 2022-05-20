@@ -30,11 +30,12 @@ spec:
       {{- end }}
     spec: 
       serviceAccountName: {{ include "airquality-simulator.serviceAccountName" . }}
-      {{- if .Values.init.enabled  }}
+      {{- if or .Values.init.subscription.enabled .Values.init.keycloak.enabled }}
       initContainers:
+        {{- if .Values.init.subscription.enabled }}
         - name: subscription-init
-          imagePullPolicy: {{ .Values.init.image.pullPolicy }}
-          image: "{{ .Values.init.image.repository }}:{{ .Values.init.image.tag }}"
+          imagePullPolicy: {{ .Values.init.subscription.image.pullPolicy }}
+          image: "{{ .Values.init.subscription.image.repository }}:{{ .Values.init.subscription.image.tag }}"
           env:
             - name: FIWARE_SERVICE
               value: {{ .Values.config.general.fiwareService }}
@@ -43,9 +44,27 @@ spec:
             - name: BROKER_URL
               value: {{ .Values.config.general.brokerUrl }}
             - name: QUANTUM_LEAP_URL
-              value: {{ .Values.init.quantumLeapUrl }}
+              value: {{ .Values.init.subscription.quantumLeapUrl }}
             - name: ENTITY_TYPE
-              value: {{ .Values.init.entityType }}
+              value: {{ .Values.init.subscription.entityType }}
+        {{- end -}}
+        {{- if .Values.init.keycloak.enabled }}
+        - name: keycloak-init
+          imagePullPolicy: {{ .Values.init.keycloak.image.pullPolicy }}
+          image: "{{ .Values.init.keycloak.image.repository }}:{{ .Values.init.keycloak.image.tag }}"
+          volumeMounts:
+            - name: kc-config
+              mountPath: /etc/config
+          env:
+            - name: KEYCLOAK_URL
+              value: {{ .Values.init.keycloak.url }}
+            - name: KEYCLOAK_USER
+              value: {{ .Values.init.keycloak.admin.user }}
+            - name: KEYCLOAK_PASSWORD
+              value: {{ .Values.init.keycloak.admin.password }}
+            - name: IMPORT_FILES_LOCATIONS
+              value: /etc/config/*
+        {{- end -}}
       {{- end }}
       containers:
         - name: airquality-simulator
@@ -87,6 +106,11 @@ spec:
         - name: config
           configMap:
             name: {{ include "airquality-simulator.fullname" . }}-cm
+        {{- if .Values.init.keycloak.enabled }}
+        - name: kc-config
+          configMap:
+            name: {{ include "airquality-simulator.fullname" . }}-keycloak-cm
+        {{- end -}}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

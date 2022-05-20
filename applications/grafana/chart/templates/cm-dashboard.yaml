@@ -6,6 +6,8 @@ metadata:
   labels:
     grafana_dashboard: grafana
     {{- include "grafana.labels" $ | nindent 4 }}
+  annotations:
+    k8s-sidecar-target-directory: "/tmp/dashboards/dashboards"
 data:
   {{ base $path }}: {{ $.Files.Get $path | quote }}
 
