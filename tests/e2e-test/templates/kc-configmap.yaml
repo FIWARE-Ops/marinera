@@ -1,0 +1,34 @@
+{{- if .Values.keycloak.enabled -}}
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: marinera-e2e-keycloak-cm
+data:
+  client.json: |-
+    {
+      "realm": "fiware-server",
+      "enabled": true,
+      "users": [
+        {
+          "username": "{{ .Values.keycloak.username }}",
+          "enabled": true,
+          "credentials": [
+            {
+              "type": "password",
+              "value": "{{ .Values.keycloak.password }}"
+            }
+          ],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "groups": [
+            "/admin",
+            "/grafana-admin"
+          ]
+        }
+      ]
+    }
+{{- end -}}

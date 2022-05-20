@@ -6,6 +6,24 @@ metadata:
     "helm.sh/hook": pre-install
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
+ {{- if .Values.init.keycloak.enabled }}
+  initContainers:
+  - name: keycloak-init
+    imagePullPolicy: {{ .Values.init.keycloak.image.pullPolicy }}
+    image: "{{ .Values.init.keycloak.image.repository }}:{{ .Values.init.keycloak.image.tag }}"
+    volumeMounts:
+      - name: kc-config
+        mountPath: /etc/config
+    env:
+      - name: KEYCLOAK_URL
+        value: {{ .Values.init.keycloak.url }}
+      - name: KEYCLOAK_USER
+        value: {{ .Values.init.keycloak.username }}
+      - name: KEYCLOAK_PASSWORD
+        value: {{ .Values.init.keycloak.password }}
+      - name: IMPORT_FILES_LOCATIONS
+        value: /etc/config/*
+  {{- end -}}
   containers:
     - name: marinera-e2e
       image: {{ .Values.image }}
@@ -18,16 +36,38 @@ spec:
         value: {{ .Values.brokerUrl }}
       - name: QUANTUM_LEAP_URL
         value: {{ .Values.quantumLeapUrl }}
-      - name: TEST_TENANT
-        value: {{ .Values.testTenant }}
       - name: GRAFANA_USERNAME
         value: {{ .Values.grafanaUsername }}
       - name: GRAFANA_PASSWORD
         value: {{ .Values.grafanaPassword }}
       - name: FIWARE_SERVICE
-        value: ""
+        value: {{ .Values.fiwareService }}
       - name: FIWARE_SERVICE_PATH
-        value: "/"
+        value: {{ .Values.fiwareServicePath }}
+      - name: KEYCLOAK_USERNAME
+        value: {{ .Values.keycloak.username }}
+      - name: KEYCLOAK_PASSWORD
+        value: {{ .Values.keycloak.password }}
+      - name: KEYCLOAK_CLIENT_ID
+        value: {{ .Values.keycloak.clientId }}
+      - name: KEYCLOAK_CLIENT_SECRET
+        value: {{ .Values.keycloak.clientSecret }}
+      - name: KEYCLOAK_URL
+        value: {{ .Values.keycloak.url }}
+      - name: KEYCLOAK_REALM
+        value: {{ .Values.keycloak.realm }}
+      - name: PEP_URL
+        value: {{ .Values.pepUrl }}
+      {{- if .Values.keycloak.enabled }}
       command: ['mvn', 'test']
+      {{- else }}
+      command: ['mvn', 'test', "-DexcludeGroups=\"secured\""]
+      {{- end -}}
       imagePullPolicy: {{ .Values.imagePullPolicy }}
   restartPolicy: Never
+  {{- if .Values.init.keycloak.enabled }}
+  volumes:
+    - name: kc-config
+      configMap:
+        name: marinera-e2e-keycloak-cm
+  {{- end -}}
