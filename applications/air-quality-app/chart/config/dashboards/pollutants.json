@@ -2354,8 +2354,8 @@
       {
         "current": {
           "selected": false,
-          "text": "etairqualityobserved",
-          "value": "etairqualityobserved"
+          "text": "mtairquality.etairqualityobserved",
+          "value": "mtairquality.etairqualityobserved"
         },
         "hide": 2,
         "includeAll": false,
@@ -2364,11 +2364,11 @@
         "options": [
           {
             "selected": true,
-            "text": "etairqualityobserved",
-            "value": "etairqualityobserved"
+            "text": "mtairquality.etairqualityobserved",
+            "value": "mtairquality.etairqualityobserved"
           }
         ],
-        "query": "etairqualityobserved",
+        "query": "mtairquality.etairqualityobserved",
         "skipUrlSync": false,
         "type": "custom"
       }
