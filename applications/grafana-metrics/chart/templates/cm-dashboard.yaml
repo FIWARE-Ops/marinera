@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-{{ base $path | replace ".json" ""}}
+  name: {{ template "grafana.fullname" . }}-{{ base $path | replace ".json" ""}}
   labels:
     grafana_dashboard: grafana
     {{- include "grafana.labels" $ | nindent 4 }}
