@@ -40,7 +40,7 @@ grafana:
       enabled: true
       label: grafana_datasource
       labelValue: grafana
-      
+
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
@@ -61,7 +61,6 @@ grafana:
         editable: false
         options:
           path: /tmp/dashboards/air-quality  # should match sidecar.dashboards.defaultFolderName
-    
 
   podLabels:
     marinera/platform: fiware
@@ -71,9 +70,9 @@ grafana:
   serviceMonitor:
     enabled: true
     interval: 30s
-
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
+
 
 admin:
   # -- Admin username
