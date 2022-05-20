@@ -1,0 +1,36 @@
+{{- if .Values.init.keycloak.enabled -}}
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "airquality-simulator.fullname" . }}-keycloak-cm
+  labels:
+    {{ include "airquality-simulator.labels" . | nindent 4 }}
+data:
+  client.json: |-
+    {
+      "realm": "fiware-server",
+      "enabled": true,
+      "users": [
+        {
+          "username": "{{ .Values.init.keycloak.airqualitySimulator.user }}",
+          "enabled": true,
+          "credentials": [
+            {
+              "type": "password",
+              "value": "{{ .Values.init.keycloak.airqualitySimulator.password }}"
+            }
+          ],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
+          "groups": [
+            "/admin",
+            "/grafana-admin"
+          ]
+        }
+      ]
+    }
+{{- end }}
