@@ -372,7 +372,7 @@ spec:
         - name: json-exporter-config
           configMap:
             name:  {{ include "orion.fullname" . }}-json-exporter-config
-            
+
       {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
         {{- if .Values.deployment.volumes }}
         {{- toYaml .Values.deployment.volumes | nindent 8 }}
