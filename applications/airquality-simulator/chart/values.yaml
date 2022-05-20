@@ -131,7 +131,7 @@ init:
       user: fiwareAdmin
       # -- Keycloak admin password with permissions to create users
       password: fiwareAdmin
-    airquality-simulator:
+    airqualitySimulator:
       # -- New username to create in Keycloak for the Air Quality app 
       user: airqualityapp-user
       # -- Password for the new username to create in Keycloak for the Air Quality app 

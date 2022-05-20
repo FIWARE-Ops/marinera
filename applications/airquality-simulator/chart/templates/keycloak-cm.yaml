@@ -12,12 +12,12 @@ data:
       "enabled": true,
       "users": [
         {
-          "username": "{{ .Values.init.keycloak.airquality-simulator.user }}",
+          "username": "{{ .Values.init.keycloak.airqualitySimulator.user }}",
           "enabled": true,
           "credentials": [
             {
               "type": "password",
-              "value": "{{ .Values.init.keycloak.airquality-simulator.user }}"
+              "value": "{{ .Values.init.keycloak.airqualitySimulator.password }}"
             }
           ],
           "clientRoles": {
