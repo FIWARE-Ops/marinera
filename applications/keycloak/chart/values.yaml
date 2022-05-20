@@ -23,6 +23,10 @@ route:
 
 tests:
   enabled: true
+  username: admin-user
+  password: admin-user
+  client_id: orion-pep
+  client_secret: 978ad148-d99b-406d-83fc-578597290a79
 
 keycloak:
   replicaCount: 2
