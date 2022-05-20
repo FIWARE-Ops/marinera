@@ -1,0 +1,38 @@
+{{- if .Values.init.keycloak.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: airquality-app-keycloak-cli-job
+spec:
+  backoffLimit: 5
+  activeDeadlineSeconds: 100
+  template:
+    metadata:
+      name: "{{ .Release.Name }}"
+      labels:
+        app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+        app.kubernetes.io/instance: {{ .Release.Name | quote }}
+        helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: keycloak-cli
+          imagePullPolicy: {{ .Values.init.keycloak.image.pullPolicy }}
+          image: "{{ .Values.init.keycloak.image.repository }}:{{ .Values.init.keycloak.image.tag }}"
+          volumeMounts:
+            - name: airquality-app-keycloak-cm
+              mountPath: /etc/config
+          env:
+            - name: KEYCLOAK_URL
+              value: {{ .Values.init.keycloak.url }}
+            - name: KEYCLOAK_USER
+              value: {{ .Values.init.keycloak.admin.user }}
+            - name: KEYCLOAK_PASSWORD
+              value: {{ .Values.init.keycloak.admin.password }}
+            - name: IMPORT_FILES_LOCATIONS
+              value: /etc/config/*
+      volumes:
+      - name: airquality-app-keycloak-cm
+        configMap:
+          name: airquality-app-keycloak-cm
+{{- end }}
