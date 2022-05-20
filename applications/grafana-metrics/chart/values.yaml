@@ -19,10 +19,6 @@ grafana:
     enabled: false
   persistence:
     enabled: false
-  plugins:
-    - grafana-simple-json-datasource
-    - yesoreyeram-infinity-datasource
-    - https://hopu.eu/wp-content/grafana/orion-datasource-0.4.8.zip;orion-datasource
   rbac:
     pspEnabled: false
     namespaced: true
@@ -33,7 +29,7 @@ grafana:
       enabled: true
       SCProvider: true
       label: grafana_dashboard
-      labelValue: grafana
+      labelValue: grafana-metrics
       provider:
         name: datasources-validator
         orgid: 1

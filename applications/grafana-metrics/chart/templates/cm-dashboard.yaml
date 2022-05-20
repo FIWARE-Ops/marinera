@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: grafana-metrics-{{ base $path | replace ".json" ""}}
   labels:
-    grafana_dashboard: grafana
+    grafana_dashboard: grafana-metrics
     {{- include "grafana.labels" $ | nindent 4 }}
 data:
   {{ base $path }}: {{ $.Files.Get $path | quote }}
