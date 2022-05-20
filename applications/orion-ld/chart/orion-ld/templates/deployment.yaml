@@ -47,9 +47,6 @@ spec:
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
-          {{ if and (.Values.broker.noDevTrace) (eq .Values.broker.envPrefix "ORIONLD_") }}
-          args: ["-lmtmp"]
-          {{ end }}
           # special handling for the health check of telefonica/orion and json log format
           {{ if or (eq .Values.broker.envPrefix "ORION_") (.Values.broker.logging.jsonformat) }}
           command:
@@ -59,6 +56,8 @@ spec:
             - "/usr/bin/contextBroker -fg | sed '/SUMMARY/w /tmp/healthcheck' | /scripts/logstojson.sh "
             {{ else if eq .Values.broker.envPrefix "ORION_" }}
             - "/usr/bin/contextBroker -fg | sed '/SUMMARY/w /tmp/healthcheck'"
+            {{ else if .Values.broker.noDevTrace }}
+            - "orionld -fg -multiservice -ngsiv1Autocast -lmtmp | /scripts/logstojson.sh"
             {{ else }}
             - "orionld -fg -multiservice -ngsiv1Autocast | /scripts/logstojson.sh"
             {{ end }}
