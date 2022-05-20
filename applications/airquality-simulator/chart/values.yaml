@@ -77,8 +77,8 @@ config:
     fiwareServicePath: "/data"
     aqSimulations:
       - id: "urn:ngsi:AirQualityObserved:simulated-1"
-        lat: 38.07
-        longi: -1.271
+        lat: -1.271
+        longi: 38.07
         sampleInterval: 30
         age: 10
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
@@ -100,4 +100,4 @@ init:
   # -- URL of the quantum leap instance to be notified
   quantumLeapUrl: "http://quantumleap-quantumleap:8668"
   # -- type of the entities to be send
-  entityType: "Device"
+  entityType: "AirQualityObserved"
