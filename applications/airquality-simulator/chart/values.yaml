@@ -73,8 +73,8 @@ config:
   general:
     brokerUrl: "http://orion-ld:1026"
     historicDensity: 15
-    fiwareService: "simulated"
-    fiwareServicePath: "/"
+    fiwareService: "AirQuality"
+    fiwareServicePath: "/data"
     aqSimulations:
       - id: "urn:ngsi:AirQualityObserved:simulated-1"
         lat: 38.07
@@ -100,4 +100,4 @@ init:
   # -- URL of the quantum leap instance to be notified
   quantumLeapUrl: "http://quantumleap-quantumleap:8668"
   # -- type of the entities to be send
-  entityType: "AirQualityObserved"
+  entityType: "Device"
