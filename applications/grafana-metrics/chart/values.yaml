@@ -31,10 +31,10 @@ grafana:
       label: grafana_dashboard
       labelValue: grafana-metrics
       provider:
-        name: datasources-validator
+        name: FIWARE
         orgid: 1
-        folder: "Datasources validator"
-        disableDelete: false
+        folder: "FIWARE"
+        disableDelete: true
         allowUIUpdates: true
 
     datasources:
