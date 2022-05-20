@@ -124,3 +124,15 @@ init:
       tag: 5.2.0-debian-10-r9
       # -- specification of the image pull policy
       pullPolicy: IfNotPresent
+    # -- URL of the keycloak that will be configured from the init container
+    url: http://keycloak
+    admin:
+      # -- Keycloak admin user with permissions to create users
+      user: fiwareAdmin
+      # -- Keycloak admin password with permissions to create users
+      password: fiwareAdmin
+    airquality-simulator:
+      # -- New username to create in Keycloak for the Air Quality app 
+      user: airqualityapp-user
+      # -- Password for the new username to create in Keycloak for the Air Quality app 
+      password: airqualityapp    

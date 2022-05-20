@@ -57,11 +57,11 @@ spec:
               mountPath: /etc/config
           env:
             - name: KEYCLOAK_URL
-              value: http://keycloak
+              value: {{ .Values.init.keycloak.url }}
             - name: KEYCLOAK_USER
-              value: fiwareAdmin
+              value: {{ .Values.init.keycloak.admin.user }}
             - name: KEYCLOAK_PASSWORD
-              value: fiwareAdmin
+              value: {{ .Values.init.keycloak.admin.password }}
             - name: IMPORT_FILES_LOCATIONS
               value: /etc/config/*
         {{- end -}}
