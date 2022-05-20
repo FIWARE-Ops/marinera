@@ -18,7 +18,7 @@ spec:
     {{- if .Values.keycloak.alerting.requestError.enabled }}
     - alert: KeycloakRequestErrors 
       expr: |
-        count(keycloak_response_errors{namespace="{{ .Release.Namespace }}"}) > {{ .Values.keycloak.alerting.requestError.threshold }}
+        count_values by (namespace) ("responses", keycloak_response_errors{namespace="{{ .Release.Namespace }}"}) > {{ .Values.keycloak.alerting.requestError.threshold }}
       for: {{ .Values.keycloak.alerting.requestError.timeWindow }}
       labels:
         severity: {{ .Values.keycloak.alerting.requestError.severity }}
