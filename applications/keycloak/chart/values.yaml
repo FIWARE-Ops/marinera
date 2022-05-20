@@ -84,7 +84,6 @@ keycloak:
     enabled: true
     serviceMonitor:
       interval: 30s
-  
   # -- config for setting up the alerts.
   alerting:
     # -- should overall alerting for keycloak be enabled?
@@ -99,7 +98,6 @@ keycloak:
       timeWindow: 15m
       # -- severity of the alert
       severity: warning
-
   containerPorts:
     management: 8080
 

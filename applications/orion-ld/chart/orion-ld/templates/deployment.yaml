@@ -276,20 +276,19 @@ spec:
             {{- end }}
             {{ if .Values.broker.metrics.statCountersEnabled  }}
             - name: {{ .Values.broker.envPrefix }}STAT_COUNTERS
-              value: "TRUE"
+              value: {{ printf "%t" .Values.broker.metrics.statCountersEnabled | upper | quote }}
             {{ end }}
             {{ if .Values.broker.metrics.statSemWaitEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_SEM_WAIT
-              value: "TRUE"
+              value: {{ printf "%t" .Values.broker.metrics.statSemWaitEnabled | upper | quote }}
             {{- end }}
             {{ if .Values.broker.metrics.statTimingEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_TIMING
-              value: "TRUE"
+              value: {{ printf "%t" .Values.broker.metrics.statTimingEnabled | upper | quote }}
             {{- end }}
             {{ if .Values.broker.metrics.statNotifQueueEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_NOTIF_QUEUE
-              value: "TRUE"
-            {{- end }}
+              value: {{ printf "%t" .Values.broker.metrics.statNotifQueueEnabled | upper | quote }}
             {{- end }}
 
             # logging
