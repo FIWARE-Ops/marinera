@@ -3,9 +3,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: marinera-e2e-keycloak-cm
-  annotations:
-    "helm.sh/hook": pre-install
-    "helm.sh/hook-delete-policy": hook-succeeded
 data:
   client.json: |-
     {
