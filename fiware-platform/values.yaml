@@ -47,6 +47,14 @@ applications:
     helm_values:
     - values.yaml
 
+  - name: air-quality
+    enabled: true
+    source_path: applications/air-quality-app/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+
   - name: keycloak
     enabled: true
     source_path: applications/keycloak/chart
@@ -66,6 +74,14 @@ applications:
   - name: grafana-metrics
     enabled: true
     source_path: applications/grafana-metrics/chart
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
+
+  - name: airquality-simulator
+    enabled: true
+    source_path: applications/airquality-simulator/chart
     source_ref: *branch
     destination: *destination
     helm_values:

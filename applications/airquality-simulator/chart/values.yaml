@@ -1,0 +1,138 @@
+## Default values for airquality-simulator
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+
+# -- option to override the name config in the _helpers.tpl
+nameOverride: ""
+# -- option to override the fullname config in the _helpers.tpl
+fullnameOverride: ""
+
+
+# -- if a service account should be used, it can be configured here
+# ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+serviceAccount:
+  # -- specifies if the account should be created
+  create: false
+
+# -- initial number of target replications
+replicaCount: 1
+
+## configuration of the image to be used
+image:
+  # -- airquality-simulator image name
+  # ref: https://quay.io/repository/fiware/airquality-simulator
+  repository: quay.io/fiware/airquality-simulator
+  # -- tag of the image to be used
+  tag: 0.1.0
+  # -- specification of the image pull policy
+  pullPolicy: IfNotPresent
+
+# -- additional labels for the deployment, if required
+additionalLabels: { }
+# -- additional annotations for the deployment, if required
+additionalAnnotations: { }
+## resource requests and limits, we leave the default empty to make that a concious choice by the user.
+## for the autoscaling to make sense, you should configure this.
+resources: {}
+  # limits:
+    # cpu: 100m
+    # memory: 128Mi
+  # requests:
+    # cpu: 100m
+    # memory: 128Mi
+
+# -- selector template
+# ref: https://kubernetes.io/docs/user-guide/node-selection/
+nodeSelector: {}
+
+# -- tolerations template
+# ref: ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+tolerations: []
+
+# -- affinity template
+# ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+affinity: {}
+
+# -- port to request health information at
+healthPort: 9090
+## liveness and readiness probes of the airquality-simulator, they will be evaluated against the health endpoint
+# ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
+livenessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 30
+readinessProbe:
+  initialDelaySeconds: 31
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 30
+
+## configuration to be used for the simulator. Follow https://github.com/FIWARE-Ops/aq-simulator 
+config: 
+  general:
+    brokerUrl: "http://keycloak-pep:8080"
+    historicDensity: 15
+    fiwareService: "simulated"
+    fiwareServicePath: "/"
+    aqSimulations:
+      - id: "urn:ngsi:AirQualityObserved:simulated-1"
+        lat: 38.07
+        longi: -1.271
+        sampleInterval: 30
+        age: 10
+      - id: "urn:ngsi:AirQualityObserved:simulated-2"
+      - id: "urn:ngsi:AirQualityObserved:simulated-3"
+  keycloak: 
+    enabled: true
+    clientId: orion-pep
+    clientSecret: 978ad148-d99b-406d-83fc-578597290a79
+    username: airqualityapp-user
+    password: airqualityapp
+    realm: fiware-server
+    url: http://keycloak
+
+## configuration for the init-containers 
+init:
+  ## configuration for the subscription init-container
+  subscription:
+    # -- should the init-container be enabled
+    enabled: false 
+    ## configuration of the image to be used
+    image:
+      # -- subscription init image name
+      # ref: https://quay.io/fiware/v2-subscription-init
+      repository: quay.io/fiware/v2-subscription-init
+      # -- tag of the image to be used
+      tag: 0.1.0
+      # -- specification of the image pull policy
+      pullPolicy: IfNotPresent
+    # -- URL of the quantum leap instance to be notified
+    quantumLeapUrl: "http://quantumleap-quantumleap:8668"
+    # -- type of the entities to be send
+    entityType: "AirQualityObserved"
+  ## configuration for the keycloak init-container
+  keycloak:
+    # -- should the init-container be enabled
+    enabled: true 
+    ## configuration of the image to be used
+    image:
+      # -- subscription init image name
+      # ref: https://quay.io/fiware/v2-subscription-init
+      repository: docker.io/bitnami/keycloak-config-cli
+      # -- tag of the image to be used
+      tag: 5.2.0-debian-10-r9
+      # -- specification of the image pull policy
+      pullPolicy: IfNotPresent
+    # -- URL of the keycloak that will be configured from the init container
+    url: http://keycloak
+    admin:
+      # -- Keycloak admin user with permissions to create users
+      user: fiwareAdmin
+      # -- Keycloak admin password with permissions to create users
+      password: fiwareAdmin
+    airqualitySimulator:
+      # -- New username to create in Keycloak for the Air Quality app 
+      user: airqualityapp-user
+      # -- Password for the new username to create in Keycloak for the Air Quality app 
+      password: airqualityapp    

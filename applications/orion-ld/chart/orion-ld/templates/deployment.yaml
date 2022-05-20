@@ -47,9 +47,6 @@ spec:
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
-          {{ if and (.Values.broker.noDevTrace) (eq .Values.broker.envPrefix "ORIONLD_") }}
-          args: ["-lmtmp"]
-          {{ end }}
           # special handling for the health check of telefonica/orion and json log format
           {{ if or (eq .Values.broker.envPrefix "ORION_") (.Values.broker.logging.jsonformat) }}
           command:
@@ -59,6 +56,8 @@ spec:
             - "/usr/bin/contextBroker -fg | sed '/SUMMARY/w /tmp/healthcheck' | /scripts/logstojson.sh "
             {{ else if eq .Values.broker.envPrefix "ORION_" }}
             - "/usr/bin/contextBroker -fg | sed '/SUMMARY/w /tmp/healthcheck'"
+            {{ else if .Values.broker.noDevTrace }}
+            - "orionld -fg -multiservice -ngsiv1Autocast -lmtmp | /scripts/logstojson.sh"
             {{ else }}
             - "orionld -fg -multiservice -ngsiv1Autocast | /scripts/logstojson.sh"
             {{ end }}
@@ -277,19 +276,19 @@ spec:
             {{- end }}
             {{ if .Values.broker.metrics.statCountersEnabled  }}
             - name: {{ .Values.broker.envPrefix }}STAT_COUNTERS
-              value: "TRUE"
+              value: {{ printf "%t" .Values.broker.metrics.statCountersEnabled | upper | quote }}
             {{ end }}
             {{ if .Values.broker.metrics.statSemWaitEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_SEM_WAIT
-              value: "TRUE"
+              value: {{ printf "%t" .Values.broker.metrics.statSemWaitEnabled | upper | quote }}
             {{- end }}
             {{ if .Values.broker.metrics.statTimingEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_TIMING
-              value: "TRUE"
+              value: {{ printf "%t" .Values.broker.metrics.statTimingEnabled | upper | quote }}
             {{- end }}
             {{ if .Values.broker.metrics.statNotifQueueEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_NOTIF_QUEUE
-              value: "TRUE"
+              value: {{ printf "%t" .Values.broker.metrics.statNotifQueueEnabled | upper | quote }}
             {{- end }}
             {{- end }}
 
@@ -374,7 +373,7 @@ spec:
         - name: json-exporter-config
           configMap:
             name:  {{ include "orion.fullname" . }}-json-exporter-config
-            
+
       {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
         {{- if .Values.deployment.volumes }}
         {{- toYaml .Values.deployment.volumes | nindent 8 }}
