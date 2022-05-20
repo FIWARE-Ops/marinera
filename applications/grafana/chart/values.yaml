@@ -50,6 +50,9 @@ grafana:
     marinera/component:	visualization
     marinera/subcomponent: ui
     marinera/product: grafana
+  serviceMonitor:
+    enabled: true
+    interval: 30s
 
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true

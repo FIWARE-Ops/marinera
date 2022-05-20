@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "orion.fullname" . }}-metrics
+  {{- if .Values.service.annotations }}
+  annotations:
+    {{ toYaml .Values.service.annotations | nindent 4 }}
+  {{- end }}
+  labels:
+    {{ include "orion.labels" . | nindent 4 }}
+spec:
+  endpoints:
+  - interval: 30s
+    path: /probe
+    params:
+      target: 
+        - 'http://localhost:1026/statistics'
+    port: http-metrics
+    scheme: http
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      {{ include "orion.labels" . | nindent 6 }}

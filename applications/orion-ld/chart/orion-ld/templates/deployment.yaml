@@ -33,6 +33,17 @@ spec:
     spec:
       serviceAccountName: {{ include "orion.serviceAccountName" . }}
       containers:
+        - name: {{ .Chart.Name }}-metrics
+          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
+          image: "quay.io/prometheuscommunity/json-exporter:v0.4.0"
+          args: ["--config.file=/etc/config/config.yml"]
+          ports:
+            - name: http-metrics
+              containerPort: 7979
+              protocol: TCP
+          volumeMounts:
+            - name: json-exporter-config
+              mountPath: /etc/config
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
@@ -265,19 +276,19 @@ spec:
             {{- end }}
             {{ if .Values.broker.metrics.statCountersEnabled  }}
             - name: {{ .Values.broker.envPrefix }}STAT_COUNTERS
-              value: {{ .Values.broker.metrics.statCountersEnabled | upper }}
+              value: {{ printf "%t" .Values.broker.metrics.statCountersEnabled | upper | quote }}
             {{ end }}
             {{ if .Values.broker.metrics.statSemWaitEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_SEM_WAIT
-              value: {{ .Values.broker.metrics.statSemWaitEnabled | upper }}
+              value: {{ printf "%t" .Values.broker.metrics.statSemWaitEnabled | upper | quote }}
             {{- end }}
             {{ if .Values.broker.metrics.statTimingEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_TIMING
-              value: {{ .Values.broker.metrics.statTimingEnabled | upper }}
+              value: {{ printf "%t" .Values.broker.metrics.statTimingEnabled | upper | quote }}
             {{- end }}
             {{ if .Values.broker.metrics.statNotifQueueEnabled }}
             - name: {{ .Values.broker.envPrefix }}STAT_NOTIF_QUEUE
-              value: {{ .Values.broker.metrics.statNotifQueueEnabled | upper }}
+              value: {{ printf "%t" .Values.broker.metrics.statNotifQueueEnabled | upper | quote }}
             {{- end }}
             {{- end }}
 
@@ -358,8 +369,12 @@ spec:
               mountPath: /scripts/
           {{- end }}
 
-      {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
       volumes:
+        - name: json-exporter-config
+          configMap:
+            name:  {{ include "orion.fullname" . }}-json-exporter-config
+            
+      {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
         {{- if .Values.deployment.volumes }}
         {{- toYaml .Values.deployment.volumes | nindent 8 }}
         {{- end }}
