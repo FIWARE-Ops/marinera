@@ -57,6 +57,8 @@ keycloak:
   extraEnvVars:
   - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
     value: "true"
+  - name: KEYCLOAK_LOG_LEVEL
+    value: WARN
 
   extraVolumeMounts:
     - name: profiles
@@ -67,12 +69,6 @@ keycloak:
     - name: profiles
       configMap:
         name: keycloak-profile
-
-  extraEnvVars:
-    - name: KEYCLOAK_LOG_LEVEL
-      value: WARN
-    #- name: KEYCLOAK_EXTRA_ARGS
-    #  value: -Dkeycloak.log.console.output=json
 
   podLabels:
     marinera/platform: fiware

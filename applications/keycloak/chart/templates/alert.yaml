@@ -3,16 +3,24 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: {{ template "keycloak.fullname" . }}-prom-rule
+  labels: {{- include "common.labels.standard" . | nindent 4 }}
+    app.kubernetes.io/component: keycloak
+    {{- if .Values.commonLabels }}
+    {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
+    {{- end }}
+  {{- if .Values.commonAnnotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
+  {{- end }}
 spec:
   groups:
   - name: keycloak.alerts
     rules:
     {{- if .Values.keycloak.alerting.requestError.enabled }}
-    - alert: KeycloakReqErrors 
+    - alert: KeycloakRequestErrors 
       expr: |
-        count(keycloak_response_errors{namespace="{{ .Release.namespace }}"}) > {{ .Values.keycloak.alerting.threshold }}
-      for: {{ .Values.keycloak.alerting.timeWindow }}
+        count(keycloak_response_errors{namespace="{{ .Release.Namespace }}"}) > {{ .Values.keycloak.alerting.requestError.threshold }}
+      for: {{ .Values.keycloak.alerting.requestError.timeWindow }}
       labels:
-        severity: {{ .Values.keycloak.alerting.severity }}
+        severity: {{ .Values.keycloak.alerting.requestError.severity }}
     {{- end -}}
 {{- end -}}
