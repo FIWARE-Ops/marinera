@@ -23,10 +23,16 @@ spec:
         value: {{ .Values.init.keycloak.password }}
       - name: IMPORT_FILES_LOCATIONS
         value: /etc/config/*
-  {{- end -}}
+  {{- end }}
   containers:
     - name: marinera-e2e
       image: {{ .Values.image }}
+      imagePullPolicy: {{ .Values.imagePullPolicy }}
+      {{- if .Values.keycloak.enabled }}
+      command: ['mvn', 'test']
+      {{- else }}
+      command: ['mvn', 'test', "-DexcludeGroups=\"secured\""]
+      {{- end }}
       env:
       - name: REMOTE_DRIVER_URL
         value: {{ .Values.remoteDriverUrl }}
@@ -58,16 +64,10 @@ spec:
         value: {{ .Values.keycloak.realm }}
       - name: PEP_URL
         value: {{ .Values.pepUrl }}
-      {{- if .Values.keycloak.enabled }}
-      command: ['mvn', 'test']
-      {{- else }}
-      command: ['mvn', 'test', "-DexcludeGroups=\"secured\""]
-      {{- end -}}
-      imagePullPolicy: {{ .Values.imagePullPolicy }}
-  restartPolicy: Never
   {{- if .Values.init.keycloak.enabled }}
   volumes:
     - name: kc-config
       configMap:
         name: marinera-e2e-keycloak-cm
-  {{- end -}}
+  {{- end }}
+  restartPolicy: Never
