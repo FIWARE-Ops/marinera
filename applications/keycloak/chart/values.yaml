@@ -2,19 +2,19 @@ realm:
   grafana:
     rootUrl: https://grafana
     adminUrl: https://grafana
-    redirectUris: 
+    redirectUris:
       - https://grafana/
       - https://grafana-2/
-    webOrigins: 
+    webOrigins:
       - https://grafana/
       - https://grafana-2/
   orionPep:
     baseUrl: https://orion-ld
     adminUrl: https://orion-ld
-    redirectUris: 
+    redirectUris:
       - https://orion-ld/
       - https://orion-ld-2/
-    webOrigins: 
+    webOrigins:
       - https://orion-ld/
       - https://orion-ld-2/
 
@@ -23,6 +23,10 @@ route:
 
 tests:
   enabled: true
+  username: admin-user
+  password: admin-user
+  client_id: orion-pep
+  client_secret: 978ad148-d99b-406d-83fc-578597290a79
 
 keycloak:
   replicaCount: 1
@@ -84,6 +88,14 @@ keycloak:
   service:
     type: ClusterIP
 
+  metrics:
+    enabled: true
+    serviceMonitor:
+      interval: 30s
+
+  containerPorts:
+    management: 8080
+
   postgresql:
     auth:
       username: bn_keycloak
@@ -105,6 +117,13 @@ keycloak:
       podSecurityContext:
         enabled: false
       containerSecurityContext:
-        enabled: false
+        enabled: false 
     audit:
       clientMinMessages: warning
+    metrics:
+      enabled: true
+      containerSecurityContext:
+        enabled: false
+      serviceMonitor:
+        enabled: true
+        interval: 30s

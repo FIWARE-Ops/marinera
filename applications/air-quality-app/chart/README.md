@@ -4,6 +4,9 @@ A Helm chart for Kubernetes to deploy FIWARE Air Quality app.
 
 It contains a bunch Grafana dashboards, originally tested with the [official Grafana Helm Chart](https://grafana.github.io/helm-charts).
 
+**NOTE:**
+Influenced by this example: https://github.com/ezienecker/grafana-sidecar-folder-sample/blob/master/grafana-values.yaml
+
 ## Maintainers
 
 | Name | Email |

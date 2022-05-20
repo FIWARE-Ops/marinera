@@ -1,0 +1,31 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "orion.fullname" . }}-json-exporter-config
+  labels:
+    {{ include "orion.labels" . | nindent 4 }}
+data:
+  config.yml: |
+    metrics:
+    - name: orionld
+      help: Example of sub-level value scrapes from a json
+      path: '{.counters}'
+      type: object
+      values:
+        jsonRequests: '{.jsonRequests}'
+        queries: '{.queries}'
+        updates: '{.updates}'
+        subscriptions: '{.subscriptions}'
+        registrationRequest: '{.registrationRequest}'
+        registrations: '{.registrations}'
+        unsubscriptions: '{.unsubscriptions}'
+        notificationsReceived: '{.notificationsReceived}'
+        notificationsSent: '{.notificationsSent}'
+        individualContextEntity: '{.individualContextEntity}'
+        allContextEntitiesRequests: '{.allContextEntitiesRequests}'
+        versionRequests: '{.versionRequests}'
+        statisticsRequests: '{.statisticsRequests}'
+        invalidRequests: '{.invalidRequests}'
+
+
+

@@ -34,13 +34,30 @@ grafana:
       SCProvider: true
       label: grafana_dashboard
       labelValue: grafana
-      provider:
-        name: dashboards
-        orgid: 1
-        folder: "Dashboards"
-        disableDelete: false
-        allowUIUpdates: true
-
+      orgid: 1
+      defaultFolderName: default
+  
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'dashboards'
+        orgId: 1
+        folder: 'Dashboards'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /tmp/dashboards/dashboards  # should match sidecar.dashboards.defaultFolderName
+      - name: 'air-quality'
+        orgId: 1
+        folder: 'Air Quality'
+        type: file
+        disableDeletion: true
+        editable: false
+        options:
+          path: /tmp/dashboards/air-quality  # should match sidecar.dashboards.defaultFolderName
+    
     datasources:
       enabled: true
       label: grafana_datasource
@@ -50,6 +67,9 @@ grafana:
     marinera/component:	visualization
     marinera/subcomponent: ui
     marinera/product: grafana
+  serviceMonitor:
+    enabled: true
+    interval: 30s
 
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true

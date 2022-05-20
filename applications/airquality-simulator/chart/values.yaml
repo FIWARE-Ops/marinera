@@ -68,10 +68,10 @@ readinessProbe:
   successThreshold: 1
   timeoutSeconds: 30
 
-## configuration to be used for the simulator
+## configuration to be used for the simulator. Follow https://github.com/FIWARE-Ops/aq-simulator 
 config: 
   general:
-    brokerUrl: "http://orion-ld:1026"
+    brokerUrl: "http://keycloak-pep:8080"
     historicDensity: 15
     fiwareService: "AirQuality"
     fiwareServicePath: "/data"
@@ -107,20 +107,47 @@ config:
         age: 10
         name: "Plaza Nueva"
 
-## configuration for the init-container to create subscriptions
-init: 
-  # -- should the init-container be enabled
-  enabled: true 
-  ## configuration of the image to be used
-  image:
-    # -- subscription init image name
-    # ref: https://quay.io/fiware/v2-subscription-init
-    repository: quay.io/fiware/v2-subscription-init
-    # -- tag of the image to be used
-    tag: 0.1.4
-    # -- specification of the image pull policy
-    pullPolicy: IfNotPresent
-  # -- URL of the quantum leap instance to be notified
-  quantumLeapUrl: "http://quantumleap-quantumleap:8668"
-  # -- type of the entities to be send
-  entityType: "AirQualityObserved"
+## configuration for the init-containers 
+init:
+  ## configuration for the subscription init-container
+  subscription:
+    # -- should the init-container be enabled
+    enabled: true 
+    ## configuration of the image to be used
+    image:
+      # -- subscription init image name
+      # ref: https://quay.io/fiware/v2-subscription-init
+      repository: quay.io/fiware/v2-subscription-init
+      # -- tag of the image to be used
+      tag: 0.1.4
+      # -- specification of the image pull policy
+      pullPolicy: IfNotPresent
+    # -- URL of the quantum leap instance to be notified
+    quantumLeapUrl: "http://quantumleap-quantumleap:8668"
+    # -- type of the entities to be send
+    entityType: "AirQualityObserved"
+  ## configuration for the keycloak init-container
+  keycloak:
+    # -- should the init-container be enabled
+    enabled: true 
+    ## configuration of the image to be used
+    image:
+      # -- subscription init image name
+      # ref: https://quay.io/fiware/v2-subscription-init
+      repository: docker.io/bitnami/keycloak-config-cli
+      # -- tag of the image to be used
+      tag: 5.2.0-debian-10-r9
+      # -- specification of the image pull policy
+      pullPolicy: IfNotPresent
+    # -- URL of the keycloak that will be configured from the init container
+    url: http://keycloak
+    admin:
+      # -- Keycloak admin user with permissions to create users
+      user: fiwareAdmin
+      # -- Keycloak admin password with permissions to create users
+      password: fiwareAdmin
+    airqualitySimulator:
+      # -- New username to create in Keycloak for the Air Quality app 
+      user: airqualityapp-user
+      # -- Password for the new username to create in Keycloak for the Air Quality app 
+      password: airqualityapp    
