@@ -15,6 +15,9 @@ grafana:
       default_theme: light # dark | light
     auth.anonymous:
       enabled: false
+    dashboards:
+      default_home_dashboard_path: /tmp/dashboards/fiware-metrics-dashboard.json
+      
   initChownData:
     enabled: false
   persistence:
@@ -41,6 +44,7 @@ grafana:
       enabled: true
       label: grafana_datasource
       labelValue: grafana-metrics
+
   podLabels:
     marinera/platform: fiware
     marinera/component:	monitoring
