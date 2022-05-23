@@ -33,7 +33,7 @@ spec:
     spec:
       serviceAccountName: {{ include "orion.serviceAccountName" . }}
       containers:
-        {{- if .Values.broker.logging.jsonformat }}
+        {{- if eq .Values.broker.logging.jsonformat  true }}
         - name: {{ .Chart.Name }}-metrics
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "quay.io/prometheuscommunity/json-exporter:v0.4.0"
