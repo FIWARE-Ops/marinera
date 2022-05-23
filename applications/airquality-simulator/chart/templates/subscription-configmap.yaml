@@ -7,13 +7,15 @@ metadata:
     {{ include "airquality-simulator.labels" . | nindent 4 }}
 data:
   create-subscription.sh: |-
+    curl -X DELETE "{{ .Values.config.general.brokerUrl }}/v2/subscriptions/{{ include "airquality-simulator.fullname" . }}"
+
     curl -X POST "{{ .Values.config.general.brokerUrl }}/v2/subscriptions" \
       -H  "accept: application/json" \
       -H  "Content-Type: application/json" \
       -H  "Fiware-Service: {{ .Values.config.general.fiwareService }}" \
       -H  "Fiware-ServicePath: {{ .Values.config.general.fiwareServicePath }}" \
       -d "{ 
-            \"id\": \"test-id\",
+            \"id\": \"{{ include "airquality-simulator.fullname" . }}\",
             \"description\": \"Subscription for simulated air-quality data\",
             \"subject\": {
                 \"entities\": [      {
