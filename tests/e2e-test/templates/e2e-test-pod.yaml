@@ -4,7 +4,7 @@ metadata:
   name: marinera-e2e-{{ randAlphaNum 5 | lower }}
   annotations:
     "helm.sh/hook": pre-install
-    "helm.sh/hook-delete-policy": hook-succeeded
+    "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
     "helm.sh/hook-weight": "1"
 spec:
  {{- if .Values.init.keycloak.enabled }}
