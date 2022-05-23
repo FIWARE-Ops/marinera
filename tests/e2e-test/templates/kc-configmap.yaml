@@ -5,7 +5,7 @@ metadata:
   name: marinera-e2e-keycloak-cm
   annotations:
     "helm.sh/hook": pre-install
-    "helm.sh/hook-delete-policy": hook-succeeded, before-hook-creation
+    "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
     "helm.sh/hook-weight": "0"
 data:
   client.json: |-
@@ -23,9 +23,11 @@ data:
             }
           ],
           "clientRoles": {
-            "account": [
-              "view-profile",
-              "manage-account"
+            "orion-pep": [
+              "admin",
+              "producer",
+              "subscriptor",
+              "consumer"
             ]
           },
           "groups": [
