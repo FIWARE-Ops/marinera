@@ -288,7 +288,7 @@ broker:
     # -- see statistics documentation for the following configurations
     #ref: https://fiware-orion.readthedocs.io/en/master/admin/statistics/index.html
     statCountersEnabled: true
-    statSemWaitEnabled: true
+    statSemWaitEnabled: false
     statTimingEnabled: false
     statNotifQueueEnabled: false
 
