@@ -72,7 +72,7 @@ readinessProbe:
 config: 
   general:
     brokerUrl: "http://orion-ld:1026"
-    historicDensity: 15
+    historicDensity: 120
     fiwareService: "AirQuality"
     fiwareServicePath: "/data"
     aqSimulations:
