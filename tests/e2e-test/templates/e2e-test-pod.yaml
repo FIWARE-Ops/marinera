@@ -17,7 +17,7 @@ spec:
         mountPath: /etc/config
     env:
       - name: KEYCLOAK_URL
-        value: {{ .Values.init.keycloak.url }}
+        value: {{ .Values.keycloak.url }}
       - name: KEYCLOAK_USER
         value: {{ .Values.init.keycloak.username }}
       - name: KEYCLOAK_PASSWORD
