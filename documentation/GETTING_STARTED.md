@@ -154,7 +154,7 @@ The most of the pods/components has the next labels applied so it will easy us t
 
 The completed list:
 
-|                 | platform  | component     | subcomponent | product     |
+|                 | platform  | component     | subcomponent | product     | 
 |-----------------|-----------|---------------|--------------|-------------|
 | mongodb         | fiware    | core          | persistence  | mongodb     |
 | orion-ld        | fiware    | core          | broker       | orion-ld    |
@@ -164,6 +164,19 @@ The completed list:
 | keycloak server | fiware    | security      | auth         | keycloak    |
 | postgres        | fiware    | security      | persistence  | postgres    |
 | pep-proxy       | fiware    | security      | api-gateway  | pep         |
+
+The most of the pods/components brings logs in plain text format. However, some of them have JSON format support or even have been extended in order to be parsed by the collector. 
+
+|                 | logs          | JSON format |
+|-----------------|---------------|-------------|
+| mongodb         | yes           | yes         |
+| orion-ld        | yes           | yes         |
+| quantumleap     | yes           | no          |
+| timescale       | yes           | no          |
+| grafana         | yes           | yes         |
+| keycloak server | yes           | no          |
+| postgres        | yes           | no          |
+| pep-proxy       | yes           | no          |
 
 ### 1. Install Openshift-Logging
 
@@ -207,3 +220,28 @@ spec:
         - default
 ```
 <1> Filter the logs which are parsed. All pods deployed has label `marinera/platform: fiware`
+
+## Monitoring
+
+The monitoring functionality can be enabled to measure the different behavior across the platform components. It is optional to install Openshift-Monitoring in order to obtain this information from the platform services such as number of queries, number of subscriptions, inserts, etc.
+
+The most of the pods/components brings Prometheus metrics. However, some of them have been extended with a JSON exporter. 
+
+|                 | metrics     |
+|-----------------|-------------|
+| mongodb         | native      |
+| orion-ld        | json-exporter    |
+| quantumleap     | not allowed |
+| timescale       | native      |
+| grafana         | native      |
+| keycloak server | native      |
+| postgres        | native      |
+| pep-proxy       | not allowed |
+
+### 1. Install Openshift-Monitoring
+
+To deploy Openshift-Monitoring in the cluster follow the instructions in the [official documentation](https://docs.openshift.com/container-platform/latest/monitoring/monitoring-overview.html).
+
+### 2. Enable Openshift User Workload Monitoring
+
+Follow the instructions in the [official documentation](https://docs.openshift.com/container-platform/4.10/monitoring/enabling-monitoring-for-user-defined-projects.html).
