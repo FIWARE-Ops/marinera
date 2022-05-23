@@ -2313,7 +2313,7 @@
           "value": "/data"
         },
         "description": "",
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "servicepath",

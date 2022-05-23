@@ -261,7 +261,7 @@
       },
       "id": 8,
       "options": {
-        "content": "<a href=\"/d/aqapp-ica?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality Index (ICA)</h1>\n    </div>\n  </div>\n</a>",
+        "content": "<a href=\"/d/aqapp-ica\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality Index (ICA)</h1>\n    </div>\n  </div>\n</a>",
         "mode": "html"
       },
       "pluginVersion": "8.5.2",
@@ -281,7 +281,7 @@
       },
       "id": 7,
       "options": {
-        "content": "<a href=\"/d/aqapp-po?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Pollutants</h1>\n    </div>\n  </div>\n</a>",
+        "content": "<a href=\"/d/aqapp-po\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Pollutants</h1>\n    </div>\n  </div>\n</a>",
         "mode": "html"
       },
       "pluginVersion": "8.5.2",
@@ -301,7 +301,7 @@
       },
       "id": 6,
       "options": {
-        "content": "<a href=\"/d/aqapp-pm?kiosk\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Particulate matter</h1>\n    </div>\n  </div>\n</a>",
+        "content": "<a href=\"/d/aqapp-pm\" style=\"text-decoration: none\">\n  <div class=\"button-container\" style=\"width: 100%; height: 50px; background: rgba(17, 114, 184, 1); padding: 0 10px; transition: 0.3s ease all;\">\n    <div style=\"float: left; width: 30px; height: 30px; margin: 10px 0 0 0; background: #fff; text-align: center\">\n      <span style=\"color: rgba(17, 114, 184, 1); line-height: 30px; font-weight: 700; font-size: 18px\"><span class=\"fa fa-info\"></span></span>\n    </div>\n    <div style=\"float: right; width: calc(100% - 50px); height: 50px; margin: 10px 0 0 0\">\n      <h1 style=\"color: #fff; font-size: 14px; line-height: 30px\">Air Quality - Particulate matter</h1>\n    </div>\n  </div>\n</a>",
         "mode": "html"
       },
       "pluginVersion": "8.5.2",
@@ -320,7 +320,7 @@
           "text": "AirQuality",
           "value": "AirQuality"
         },
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "service",
@@ -341,7 +341,7 @@
           "text": "/data",
           "value": "/data"
         },
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "servicepath",
@@ -362,7 +362,7 @@
           "text": "AirQualityObserved",
           "value": "AirQualityObserved"
         },
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "type",
