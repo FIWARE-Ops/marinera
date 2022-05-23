@@ -1,11 +1,40 @@
-image: quay.io/fiware/marinera-e2e:0.0.3
+image: quay.io/fiware/marinera-e2e:0.1.0
 
-imagePullPolicy: IfNotPresent
+imagePullPolicy: Always
 
 remoteDriverUrl: http://selenium-hub:4444
 grafanaUrl: https://grafana-demo.apps.fiware-spain.emea-1.rht-labs.com
 brokerUrl: http://orion-ld:1026
 quantumLeapUrl: http://quantumleap-quantumleap:8668
-testTenant: test-tenant
 grafanaUsername: fiwareAdmin
 grafanaPassword: fiwareAdmin
+fiwareService: ""
+fiwareServicePath: "/"
+pepUrl: http://keycloak-pep:8080
+keycloak:
+  enabled: true
+  url: http://keycloak
+  username: e2e-test-user
+  password: e2e-test-user
+  clientId: orion-pep
+  clientSecret: 978ad148-d99b-406d-83fc-578597290a79
+  realm: fiware-server
+
+init: 
+  ## configuration for the keycloak init-container
+  keycloak: 
+    enabled: true
+    # -- Keycloak admin password with permissions to create users
+    username: fiwareAdmin
+    # -- Keycloak admin password with permissions to create users
+    password: fiwareAdmin
+    ## configuration of the image to be used
+    image:
+      # -- subscription init image name
+      # ref: https://quay.io/fiware/v2-subscription-init
+      repository: docker.io/bitnami/keycloak-config-cli
+      # -- tag of the image to be used
+      tag: 5.2.0-debian-10-r9
+      # -- specification of the image pull policy
+      pullPolicy: IfNotPresent
+    # -- URL of the keycloak that will be configured from the init container

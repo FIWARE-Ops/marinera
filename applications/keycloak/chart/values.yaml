@@ -61,6 +61,8 @@ keycloak:
   extraEnvVars:
   - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
     value: "true"
+  - name: KEYCLOAK_LOG_LEVEL
+    value: WARN
 
   extraVolumeMounts:
     - name: profiles
@@ -71,12 +73,6 @@ keycloak:
     - name: profiles
       configMap:
         name: keycloak-profile
-
-  extraEnvVars:
-    - name: KEYCLOAK_LOG_LEVEL
-      value: WARN
-    #- name: KEYCLOAK_EXTRA_ARGS
-    #  value: -Dkeycloak.log.console.output=json
 
   podLabels:
     marinera/platform: fiware
@@ -92,7 +88,20 @@ keycloak:
     enabled: true
     serviceMonitor:
       interval: 30s
-
+  # -- config for setting up the alerts.
+  alerting:
+    # -- should overall alerting for keycloak be enabled?
+    enabled: true
+    ## config for enabling alerting on erronous requests
+    requestError:
+      # -- should it be enabled?
+      enabled: true
+      # -- how many failed request until the alert fires
+      threshold: 25
+      # -- timeframe to apply the threshold to
+      timeWindow: 15m
+      # -- severity of the alert
+      severity: warning
   containerPorts:
     management: 8080
 
