@@ -36,17 +36,12 @@ spec:
         - name: subscription-init
           imagePullPolicy: {{ .Values.init.subscription.image.pullPolicy }}
           image: "{{ .Values.init.subscription.image.repository }}:{{ .Values.init.subscription.image.tag }}"
-          env:
-            - name: FIWARE_SERVICE
-              value: {{ .Values.config.general.fiwareService }}
-            - name: FIWARE_SERVICE_PATH
-              value: {{ .Values.config.general.fiwareServicePath }}
-            - name: BROKER_URL
-              value: {{ .Values.config.general.brokerUrl }}
-            - name: QUANTUM_LEAP_URL
-              value: {{ .Values.init.subscription.quantumLeapUrl }}
-            - name: ENTITY_TYPE
-              value: {{ .Values.init.subscription.entityType }}
+          command: 
+            - /bin/sh
+            - /init-script/create-subscription.sh
+          volumeMounts:
+            - name: subscription-init-script
+              mountPath: /init-script
         {{- end -}}
         {{- if .Values.init.keycloak.enabled }}
         - name: keycloak-init
@@ -110,6 +105,11 @@ spec:
         - name: kc-config
           configMap:
             name: {{ include "airquality-simulator.fullname" . }}-keycloak-cm
+        {{- end -}}
+        {{- if .Values.init.keysubscriptioncloak.enabled }}
+        - name: subscription-init-script
+          configMap:
+            name: {{ include "airquality-simulator.fullname" . }}-sub-cm
         {{- end -}}
       {{- with .Values.nodeSelector }}
       nodeSelector:

@@ -115,11 +115,10 @@ init:
     enabled: true 
     ## configuration of the image to be used
     image:
-      # -- subscription init image name
-      # ref: https://quay.io/fiware/v2-subscription-init
-      repository: quay.io/fiware/v2-subscription-init
+      # -- image to execute the script, needs curl and sh
+      repository: quay.io/opencloudio/curl
       # -- tag of the image to be used
-      tag: 0.1.6
+      tag: 4.2.0-build.8
       # -- specification of the image pull policy
       pullPolicy: IfNotPresent
     # -- URL of the quantum leap instance to be notified
