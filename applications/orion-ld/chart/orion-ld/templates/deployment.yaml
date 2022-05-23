@@ -290,7 +290,8 @@ spec:
             - name: {{ .Values.broker.envPrefix }}STAT_NOTIF_QUEUE
               value: {{ printf "%t" .Values.broker.metrics.statNotifQueueEnabled | upper | quote }}
             {{- end }}
-
+            {{- end }}
+            
             # logging
             - name: {{ .Values.broker.envPrefix }}LOG_LEVEL
               value: {{ .Values.broker.logging.level }}
