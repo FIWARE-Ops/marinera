@@ -23,7 +23,7 @@ image:
   # ref: https://quay.io/repository/fiware/airquality-simulator
   repository: quay.io/fiware/airquality-simulator
   # -- tag of the image to be used
-  tag: 0.1.0
+  tag: 0.1.6
   # -- specification of the image pull policy
   pullPolicy: IfNotPresent
 
@@ -71,40 +71,55 @@ readinessProbe:
 ## configuration to be used for the simulator. Follow https://github.com/FIWARE-Ops/aq-simulator 
 config: 
   general:
-    brokerUrl: "http://keycloak-pep:8080"
+    brokerUrl: "http://orion-ld:1026"
     historicDensity: 15
-    fiwareService: "simulated"
-    fiwareServicePath: "/"
+    fiwareService: "AirQuality"
+    fiwareServicePath: "/data"
     aqSimulations:
       - id: "urn:ngsi:AirQualityObserved:simulated-1"
-        lat: 38.07
-        longi: -1.271
+        longi: -1.2718119
+        lat: 38.0770502
         sampleInterval: 30
         age: 10
+        name: "HOP Ubiquitous"
       - id: "urn:ngsi:AirQualityObserved:simulated-2"
+        longi: -1.278310158693678
+        lat: 38.07828651005188
+        sampleInterval: 30
+        age: 10
+        name: "Parque de la Constitución"
       - id: "urn:ngsi:AirQualityObserved:simulated-3"
-  keycloak: 
-    enabled: true
-    clientId: orion-pep
-    clientSecret: 978ad148-d99b-406d-83fc-578597290a79
-    username: airqualityapp-user
-    password: airqualityapp
-    realm: fiware-server
-    url: http://keycloak
+        longi: -1.2748824349593826
+        lat: 38.077781381338404
+        sampleInterval: 30
+        age: 10
+        name: "Parque Juan Carlos I"
+      - id: "urn:ngsi:AirQualityObserved:simulated-4"
+        longi: -1.26895422283374
+        lat: 38.079269292527684
+        sampleInterval: 30
+        age: 10
+        name: "Museo de arte moderno La Conservera"
+      - id: "urn:ngsi:AirQualityObserved:simulated-5"
+        longi: -1.271990770471196
+        lat: 38.07943615142072
+        sampleInterval: 30
+        age: 10
+        name: "Plaza Nueva"
 
 ## configuration for the init-containers 
 init:
   ## configuration for the subscription init-container
   subscription:
     # -- should the init-container be enabled
-    enabled: false 
+    enabled: true 
     ## configuration of the image to be used
     image:
       # -- subscription init image name
       # ref: https://quay.io/fiware/v2-subscription-init
       repository: quay.io/fiware/v2-subscription-init
       # -- tag of the image to be used
-      tag: 0.1.0
+      tag: 0.1.6
       # -- specification of the image pull policy
       pullPolicy: IfNotPresent
     # -- URL of the quantum leap instance to be notified
@@ -114,7 +129,7 @@ init:
   ## configuration for the keycloak init-container
   keycloak:
     # -- should the init-container be enabled
-    enabled: true 
+    enabled: false 
     ## configuration of the image to be used
     image:
       # -- subscription init image name

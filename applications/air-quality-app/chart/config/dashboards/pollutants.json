@@ -191,10 +191,10 @@
           }
         ],
         "view": {
-          "id": "coords",
+          "id": "fit",
           "lat": 37.973241,
           "lon": -1.215439,
-          "zoom": 14
+          "zoom": 15
         }
       },
       "pluginVersion": "8.5.2",
@@ -2246,14 +2246,14 @@
           "type": "orion-datasource",
           "uid": "2"
         },
-        "definition": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\",\n            \"queryFilter\": \"ica==true\"\n }",
+        "definition": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\" }",
         "hide": 0,
         "includeAll": false,
         "label": "Device",
         "multi": false,
         "name": "device_name",
         "options": [],
-        "query": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\",\n            \"queryFilter\": \"ica==true\"\n }",
+        "query": "{\n            \"request\": \"AttributeValue\",\n            \"fiwareScope\": {\n                \"service\": \"$service\",\n                \"servicePath\": \"$servicepath\",\n                \"type\": \"$type\"\n            },\n            \"entityId\": \"All\",\n            \"attributeName\": \"name\" }",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2313,7 +2313,7 @@
           "value": "/data"
         },
         "description": "",
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "servicepath",
@@ -2324,7 +2324,7 @@
             "value": "/data"
           }
         ],
-        "query": "/alcantarilla,/datasimulator,/demo",
+        "query": "/data",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
