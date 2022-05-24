@@ -22,6 +22,12 @@ data:
               "value": "{{ .Values.keycloak.password }}"
             }
           ],
+          "clientRoles": {
+            "account": [
+              "view-profile",
+              "manage-account"
+            ]
+          },
           "groups": [
             "/admin",
             "/e2e-test"
