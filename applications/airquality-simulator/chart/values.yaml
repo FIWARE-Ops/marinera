@@ -71,8 +71,10 @@ readinessProbe:
 ## configuration to be used for the simulator. Follow https://github.com/FIWARE-Ops/aq-simulator 
 config: 
   general:
+    # give it 4min to start, ql needs a little time 
+    startupDelay: 240
     brokerUrl: "http://orion-ld:1026"
-    historicDensity: 15
+    historicDensity: 120
     fiwareService: "AirQuality"
     fiwareServicePath: "/data"
     aqSimulations:

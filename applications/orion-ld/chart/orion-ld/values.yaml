@@ -248,7 +248,7 @@ broker:
     # infoPayloadMaxSize:
     ## to convert logs to json
     # true to enable
-    jsonformat: true
+    jsonformat: false
   ## database configuration
   db:
     # -- configuration of the mongo-db hosts. if multiple hosts are inserted, its assumed that mongo is running as a replica set
@@ -284,7 +284,7 @@ broker:
   ## configratuion of orion metrics
   metrics:
     # -- enable or disable metrics gathering
-    enabled: "true"
+    enabled: "false"
     # -- see statistics documentation for the following configurations
     #ref: https://fiware-orion.readthedocs.io/en/master/admin/statistics/index.html
     statCountersEnabled: true

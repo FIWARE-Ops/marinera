@@ -97,6 +97,29 @@ data:
           }
         },
         {
+          "name": "e2e-test",
+          "path": "/e2e-test",
+          "realmRoles": [
+            "user"
+          ],
+          "attributes": {
+            "fiware-service": [
+              ""
+            ],
+            "fiware-servicepath": [
+              "/"
+            ]
+          },
+          "clientRoles": {
+            "orion-pep": [
+              "admin",
+              "producer",
+              "subscriptor",
+              "consumer"
+            ]
+          }
+        },
+        {
           "name": "grafana-editor",
           "path": "/grafana-editor",
           "clientRoles": {

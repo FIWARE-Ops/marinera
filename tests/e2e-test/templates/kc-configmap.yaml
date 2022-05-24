@@ -23,16 +23,14 @@ data:
             }
           ],
           "clientRoles": {
-            "orion-pep": [
-              "admin",
-              "producer",
-              "subscriptor",
-              "consumer"
+            "account": [
+              "view-profile",
+              "manage-account"
             ]
           },
           "groups": [
             "/admin",
-            "/grafana-admin"
+            "/e2e-test"
           ]
         }
       ]
