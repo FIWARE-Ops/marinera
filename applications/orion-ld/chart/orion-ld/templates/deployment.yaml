@@ -375,10 +375,11 @@ spec:
           {{- end }}
 
       volumes:
+        {{- if eq .Values.broker.metrics.enabled  "true" }}
         - name: json-exporter-config
           configMap:
             name:  {{ include "orion.fullname" . }}-json-exporter-config
-
+        {{end}}
       {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
         {{- if .Values.deployment.volumes }}
         {{- toYaml .Values.deployment.volumes | nindent 8 }}
