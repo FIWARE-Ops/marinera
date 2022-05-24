@@ -32,7 +32,7 @@ spec:
       {{- if .Values.keycloak.enabled }}
       command: ['mvn', 'test']
       {{- else }}
-      command: ['mvn', 'test', "-DexcludeGroups=\"secured\""]
+      command: ['mvn', 'test', "-DexcludedGroups=\"secured\""]
       {{- end }}
       env:
       - name: REMOTE_DRIVER_URL
