@@ -33,6 +33,7 @@ spec:
     spec:
       serviceAccountName: {{ include "orion.serviceAccountName" . }}
       containers:
+        {{- if eq .Values.broker.logging.jsonformat  true }}
         - name: {{ .Chart.Name }}-metrics
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "quay.io/prometheuscommunity/json-exporter:v0.4.0"
@@ -44,9 +45,13 @@ spec:
           volumeMounts:
             - name: json-exporter-config
               mountPath: /etc/config
+        {{ end }}
         - name: {{ .Chart.Name }}
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+          {{ if .Values.broker.noDevTrace }}
+          args: ["-lmtmp"]
+          {{- end }}
           # special handling for the health check of telefonica/orion and json log format
           {{ if or (eq .Values.broker.envPrefix "ORION_") (.Values.broker.logging.jsonformat) }}
           command:
