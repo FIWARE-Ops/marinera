@@ -57,13 +57,13 @@ data:
 
     # Logging configuration
 
-    logging.level.root=WARN
+    logging.level.root={{ .Values.service.log.level }}
 
-    logging.level.org.springframework.boot=WARN
+    logging.level.org.springframework.boot={{ .Values.service.log.level }}
 
-    logging.level.org.keycloak=TRACE
+    logging.level.org.keycloak={{ .Values.service.log.level }}
 
-    logging.level.org.apache.http=WARN
+    logging.level.org.apache.http={{ .Values.service.log.level }}
 
     spring.main.banner-mode=OFF
 

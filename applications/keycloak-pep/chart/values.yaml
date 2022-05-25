@@ -9,6 +9,8 @@ image:
 service:
   type: ClusterIP
   port: 8080
+  log:
+    level: WARN
 
 route: 
   enabled: true
