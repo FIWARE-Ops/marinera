@@ -53,7 +53,7 @@ data:
 
     keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-servicepath]={request.header['fiware-servicepath']}
 
-    keycloak.policy-enforcer-config.path-cache.lifespan=1
+    keycloak.policy-enforcer-config.path-cache-config.lifespan=1
 
     # Logging configuration
 
