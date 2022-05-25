@@ -5,8 +5,8 @@ mongodb:
     fullnameOverride: "mongodb-orion"
   auth:
     enabled: true
-    #existingSecret: mongodb-secret
-    rootPassword: test
+    existingSecret: mongodb-secret
+    # rootPassword: test
   architecture: replicaset
   podSecurityContext:
     enabled: false
