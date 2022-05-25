@@ -1,4 +1,4 @@
-image: quay.io/fiware/marinera-e2e:0.1.0
+image: quay.io/fiware/marinera-e2e:0.2.1
 
 imagePullPolicy: Always
 
@@ -19,6 +19,9 @@ keycloak:
   clientId: orion-pep
   clientSecret: 978ad148-d99b-406d-83fc-578597290a79
   realm: fiware-server
+
+aqApp:
+  enabled: true
 
 init: 
   ## configuration for the keycloak init-container

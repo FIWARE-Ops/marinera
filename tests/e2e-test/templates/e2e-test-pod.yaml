@@ -29,10 +29,17 @@ spec:
     - name: marinera-e2e
       image: {{ .Values.image }}
       imagePullPolicy: {{ .Values.imagePullPolicy }}
-      {{- if .Values.keycloak.enabled }}
+      {{- if and .Values.keycloak.enabled .Values.aqApp.enabled  }}
       command: ['mvn', 'test']
+      {{- else if and (not .Values.keycloak.enabled) (.Values.aqApp.enabled)}}
+      command: ['mvn', 'test']
+      args: ['-DexcludedGroups=secured']
+      {{- else if and (.Values.keycloak.enabled) (not .Values.aqApp.enabled)}}
+      command: ['mvn', 'test']
+      args: ['-DexcludedGroups=aqapp']
       {{- else }}
-      command: ['mvn', 'test', "-DexcludedGroups=\"secured\""]
+      command: ['mvn', 'test']
+      args: ['-DexcludedGroups=aqapp,secured']
       {{- end }}
       env:
       - name: REMOTE_DRIVER_URL

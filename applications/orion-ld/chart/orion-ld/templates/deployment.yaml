@@ -33,7 +33,7 @@ spec:
     spec:
       serviceAccountName: {{ include "orion.serviceAccountName" . }}
       containers:
-        {{- if eq .Values.broker.logging.jsonformat  true }}
+        {{- if eq .Values.broker.metrics.enabled  "true" }}
         - name: {{ .Chart.Name }}-metrics
           imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           image: "quay.io/prometheuscommunity/json-exporter:v0.4.0"
@@ -296,7 +296,7 @@ spec:
               value: {{ printf "%t" .Values.broker.metrics.statNotifQueueEnabled | upper | quote }}
             {{- end }}
             {{- end }}
-            
+
             # logging
             - name: {{ .Values.broker.envPrefix }}LOG_LEVEL
               value: {{ .Values.broker.logging.level }}
@@ -375,10 +375,11 @@ spec:
           {{- end }}
 
       volumes:
+        {{- if eq .Values.broker.metrics.enabled  "true" }}
         - name: json-exporter-config
           configMap:
             name:  {{ include "orion.fullname" . }}-json-exporter-config
-
+        {{end}}
       {{- if or .Values.deployment.volumes .Values.broker.logging.jsonformat }}
         {{- if .Values.deployment.volumes }}
         {{- toYaml .Values.deployment.volumes | nindent 8 }}
