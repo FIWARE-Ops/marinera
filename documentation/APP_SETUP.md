@@ -1,10 +1,10 @@
 # Application setup
 
-For the CI to work properly, the applications have to follow some rules:
+There are some structure and naming conventions in this repo for the applications to work and also expected by the Continuous Integration (CI) tool, in this case [Github CI workflows](./GITHUB_CI.md).
 
 ## Folder structure
 
-The CI expects a certain structure of folders, this structure has been thought to work with both ArgoCD and/or Helm
+It is expected a certain structure of folders, this structure has been thought to work with both ArgoCD and/or Helm
 independently.
 
 All the applications of this repo are expected to be Helm charts. That's why inside every application folder there must be a
@@ -76,3 +76,4 @@ Note the new apps are labeled with the label `destination-namespace=<DESTINATION
 ```bash
 oc -n <ARGOCD_NAMESPACE> get app -l destination-namespace=<DESTINATION_NAMESPACE>
 ```
+
