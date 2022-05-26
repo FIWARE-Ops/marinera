@@ -3,7 +3,6 @@
 # FIWARE Platform Deployment
 
 - [Understanding FIWARE Platform](./documentation/UNDERSTANDING_FIWARE.md)
-- [How to set-up a new application in the repository](./documentation/APP_SETUP.md)
 - [Getting started](./documentation/GETTING_STARTED.md)
 - [Components and configuration](./documentation/FIWARE_COMPONENTS.md)
 - [Logging](./documentation/LOGGING.md)
@@ -11,4 +10,5 @@
 - [Alerting](./documentation/ALERTING.md)
 - [How the Github CI works in this repository](./documentation/GITHUB_CI.md)
 - [E2E Testing](./documentation/E2E_TESTING.md)
+- [How to set-up a new application in the repository](./documentation/APP_SETUP.md)
 - [Related Issues](./documentation/RELATED_ISSUES.md)

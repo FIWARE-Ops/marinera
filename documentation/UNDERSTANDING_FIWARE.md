@@ -2,9 +2,7 @@
 
 Currently the FIWARE Platform is composed by the following components, being FIWARE core (Orion-LD + MongoDB) the only one mandatory.
 
-
 > **NOTE:** Each component may contain more than one piece of software, usually an application plus a data base to store the state of the app.
-
 
 * *FIWARE core*: [Orion-LD](https://fiware-academy.readthedocs.io/en/latest/core/orion-ld/index.html) plus MongoDB as backend. Provides the core FIWARE functionality.
 * *Historical Data Layer*: [QuantumLeap](https://quantumleap.readthedocs.io/en/latest/) plus TimescaleDB. Provides historical data functionality.
