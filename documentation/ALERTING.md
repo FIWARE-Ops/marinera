@@ -15,8 +15,8 @@ For that, create a [PrometheusRule](../applications/keycloak/chart/templates/ale
         groups:
         - name: group.alerts
             rules:
-            - alert: AlertName 
-              expr: | 
+            - alert: AlertName
+              expr: |
                 <alert experession>
               labels:
                 severity: <alert-severtiy>
