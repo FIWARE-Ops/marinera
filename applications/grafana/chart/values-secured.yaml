@@ -2,9 +2,9 @@ nameOverride: "grafana"
 grafana:
 
   extraSecretMounts:
-  - name: timescale-password
+  - name: tsdb-password
     mountPath: "/etc/grafana/secrets"
-    secretName: timescale-password
+    secretName: tsdb-password
     readOnly: true
 
   admin:
