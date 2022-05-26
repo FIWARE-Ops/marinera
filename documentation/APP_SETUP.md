@@ -71,7 +71,9 @@ Ideally only `name` and `source_path` should be changed.
 helm template . | oc -n <ARGOCD_NAMESPACE> apply -f -
 ```
 
-> *NOTE:* Note the new apps are labeled with the label `destination-namespace=<DESTINATION_NAMESPACE>` meaning you can filter them easily by executing the following command.
->```bash
->oc -n <ARGOCD_NAMESPACE> get app -l destination-namespace=<DESTINATION_NAMESPACE>
->```
+> **NOTE:**
+Note the new apps are labeled with the label `destination-namespace=<DESTINATION_NAMESPACE>` meaning you can filter them easily by executing the following command.
+```bash
+oc -n <ARGOCD_NAMESPACE> get app -l destination-namespace=<DESTINATION_NAMESPACE>
+```
+
