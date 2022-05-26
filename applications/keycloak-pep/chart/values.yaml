@@ -9,8 +9,6 @@ image:
 service:
   type: ClusterIP
   port: 8080
-  log:
-    level: WARN
 
 route: 
   enabled: true
@@ -26,3 +24,6 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+log:
+  level: WARN
