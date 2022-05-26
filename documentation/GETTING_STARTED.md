@@ -89,6 +89,7 @@ applications:
     - values.yaml
 ```
 
+
 > **NOTE:** \
 By default each application is deployed with a sane set of default values that have been tested to work in most cases.
 But this does not mean they are the right fit for a production ready deployment.
