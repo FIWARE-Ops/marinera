@@ -78,7 +78,7 @@ admin:
 
 extraSecretMounts:
   - name: timescale-password
-    mountPath: /usr/share/grafana/secrets
+    mountPath: "/usr/share/grafana/secrets"
     secretName: timescale-password
     readOnly: true
 
