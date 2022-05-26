@@ -76,6 +76,13 @@ grafana:
 admin:
   secured: true
 
+extraSecretMounts:
+  - name: timescale-password
+    mountPath: /etc/secrets
+    secretName: timescale-password
+    readOnly: true
+    subPath: ""
+
 route:
   # -- To enable the OpenShift route
   enabled: true
