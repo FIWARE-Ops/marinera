@@ -1,5 +1,12 @@
 nameOverride: "grafana"
 grafana:
+
+  extraSecretMounts:
+  - name: timescale-password
+    mountPath: "/etc/grafana/secrets"
+    secretName: timescale-password
+    readOnly: true
+
   admin:
     existingSecret: "grafana-admin-user"
     userKey: admin-user
@@ -75,12 +82,6 @@ grafana:
 
 admin:
   secured: true
-
-extraSecretMounts:
-  - name: timescale-password
-    mountPath: "/usr/share/grafana/secrets"
-    secretName: timescale-password
-    readOnly: true
 
 route:
   # -- To enable the OpenShift route
