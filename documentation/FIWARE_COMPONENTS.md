@@ -22,7 +22,7 @@ Currently the FIWARE Platform is composed by the following software components a
 | **Marinera README**               | [README](../applications/orion-ld/chart/README.md)
 | **Product Documentation**         | [Orion-LD documentation](https://fiware-academy.readthedocs.io/en/latest/core/orion-ld/index.html) |
 
-- **MongoDB**: NoSQL database, persistence for Orion-LD
+- **MongoDB**: NoSQL database, persistence for Orion-LD.
 
 |   |   |
 |---|---|
@@ -50,7 +50,7 @@ Currently the FIWARE Platform is composed by the following software components a
 | **Marinera README**               | [README](../applications/quantumleap/chart/README.md) |
 | **Product Documentation**         | [QuantumLeap](https://quantumleap.readthedocs.io/en/latest/) |
 
-- **TimescaleDB**: TimescaleDB is an open-source database designed to make SQL scalable for time-series data..
+- **TimescaleDB**: TimescaleDB is an open-source database designed to make SQL scalable for time-series data.
 
 |   |   |
 |---|---|
@@ -65,7 +65,7 @@ Currently the FIWARE Platform is composed by the following software components a
 
 ## Air Quality App
 
-- **Grafana**: Grafana deployment
+- **Grafana**: Grafana deployment.
 
 |   |   |
 |---|---|
@@ -91,7 +91,7 @@ Currently the FIWARE Platform is composed by the following software components a
 
 ## Metrics Layer
 
-- **Grafana Metrics**: Grafana deployment for metrics visualization
+- **Grafana Metrics**: Grafana deployment for metrics visualization.
 
 |   |   |
 |---|---|
@@ -107,7 +107,7 @@ Currently the FIWARE Platform is composed by the following software components a
 
 ## Security Layer
 
-- **Keycloak Server**: Single-Sign On server
+- **Keycloak Server**: Single-Sign On server.
 
 |   |   |
 |---|---|
@@ -120,7 +120,7 @@ Currently the FIWARE Platform is composed by the following software components a
 | **Product Documentation**         | [Keycloak docs](https://www.keycloak.org/documentation) |
 
 
-- **PostgreSQL**: SQL database for Keycloak
+- **PostgreSQL**: SQL database for Keycloak.
 
 > **NOTE** :  This component is installed by Keycloak component as dependency. Values applied are inside keycloak Marinera values.
 
@@ -134,7 +134,7 @@ Currently the FIWARE Platform is composed by the following software components a
 | **Product Documentation**         | [PostgreSQL docs](https://www.postgresql.org/docs/) |
 
 
-- **PEP Proxy**: Policy Enforcement Point (PEP) proxy
+- **PEP Proxy**: Policy Enforcement Point (PEP) proxy.
 
 |   |   |
 |---|---|
@@ -147,7 +147,7 @@ Currently the FIWARE Platform is composed by the following software components a
 
 ## Data Simulation Layer
 
-- **Air Quality Simulator**: Air Quality devices simulator
+- **Air Quality Simulator**: Air Quality Data (devices) simulator.
 
 |   |   |
 |---|---|
