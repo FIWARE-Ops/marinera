@@ -1,6 +1,6 @@
 # Application setup
 
-There are some conventions around structure and naming expected in this repo for the applications to work and also expected by the Continuous Integration (CI) tool, in this case Github CI.
+There are some structure and naming conventions in this repo for the applications to work and also expected by the Continuous Integration (CI) tool, in this case [Github CI workflows](./GITHUB_CI.md).
 
 ## Folder structure
 

@@ -4,13 +4,13 @@
 
 This repo is configured to work with [Github CI](https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration). You can find the CI workflows under the [.github/workflows](../.github/workflows/) folder, in the root folder of this repo.
 
-The CI workflows basically create a new namespace based on any ´feature-*´ branch with the same name of the branch,
+The CI workflows basically create a new namespace based on any `feature-*` branch with the same name of the branch,
 and deploy there the [fiware-platform](../fiware-platform/) helm chart, which governs all the components of the FIWARE platform. This is implemented creating an ArgoCD application per application defined in this repo.
 
 In order for this to work, two Github actions secrets need to be set:
 
-* OPENSHIFT_SERVER: API of the OpenShift cluster.
-* OPENSHIFT_TOKEN: OpenShift service account token to perform of the actions of the CI in the cluster.
+* `OPENSHIFT_SERVER`: API of the OpenShift cluster.
+* `OPENSHIFT_TOKEN`: OpenShift service account token to perform the actions of the CI in the OpenShift cluster.
 
 ![Github Actions Secrets](./images/github-secrets.png)
 
