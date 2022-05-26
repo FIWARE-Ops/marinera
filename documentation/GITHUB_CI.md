@@ -12,6 +12,8 @@ In order for this to work, two Github actions secrets need to be set:
 * OPENSHIFT_SERVER: API of the OpenShift cluster.
 * OPENSHIFT_TOKEN: OpenShift service account token to perform of the actions of the CI in the cluster.
 
+![Github Actions Secrets](./images/github-secrets.png)
+
 ## OpenShift Server URL
 
 In order to set the `OPENSHIFT_SERVER` Github secret, we can extract the OpenShift cluster server url directly from the cli.
@@ -32,12 +34,14 @@ In this case the CI workflows require:
 
 It was decided to give the service account `cluster-admin`permissions. To do that, we have created a service account named
 `github-ci` in our CI/CD namespace and give it the `cluster-admin` role, at cluster level.
+
 ```bash
 oc -n <CI_CD_NAMESPACE> create sa github-ci
 oc -n <CI_CD_NAMESPACE> adm policy add-cluster-role-to-user cluster-admin -z github-ci
 ```
 
 To obtain the token.
+
 ```bash
 oc -n <CI_CD_NAMESPACE> sa get-token github-ci
 ```
