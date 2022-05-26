@@ -8,8 +8,9 @@ orion-ld:
         - mongodb-orion-1.mongodb-orion-headless
       replicaSet: rs0
       user: root
-      auth:
-        password: test
+      existingSecret:
+        name: mongodb-secret
+        key: mongodb-root-password
     logging:
       level: "WARN"
   deployment:
