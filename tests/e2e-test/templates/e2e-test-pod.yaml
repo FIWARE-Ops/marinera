@@ -50,10 +50,25 @@ spec:
         value: {{ .Values.brokerUrl }}
       - name: QUANTUM_LEAP_URL
         value: {{ .Values.quantumLeapUrl }}
+      {{ if .Values.secured.enabled }}
+      - name: GRAFANA_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: grafana-admin-user
+            key: admin-user
+            optional: false
+      - name: GRAFANA_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: grafana-admin-user
+            key: admin-password
+            optional: false
+      {{ else }}
       - name: GRAFANA_USERNAME
         value: {{ .Values.grafanaUsername }}
       - name: GRAFANA_PASSWORD
         value: {{ .Values.grafanaPassword }}
+      {{ end }}
       - name: FIWARE_SERVICE
         value: {{ .Values.fiwareService }}
       - name: FIWARE_SERVICE_PATH
