@@ -50,12 +50,10 @@ applications:
     - values.yaml
 ```
 
-*NOTE:*
-
+> **NOTE:** \
 By default each application is deployed with a sane set of default values that have been tested to work in most cases.
 But this does not mean they are the right fit for a production ready deployment.
-Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps,
-or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
+Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps, or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
 
 ### 3. Set the repo url in the values.yaml
 
