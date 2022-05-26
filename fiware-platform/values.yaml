@@ -11,7 +11,7 @@ applications:
     source_ref: *branch
     destination: *destination
     helm_values:
-    - values.yaml
+    - values-secured.yaml
 
   - name: orion-ld
     enabled: true
@@ -19,7 +19,7 @@ applications:
     source_ref: *branch
     destination: *destination
     helm_values:
-    - values.yaml
+    - values-secured.yaml
 
   - name: timescaledb-single
     # Dont override, will break the tests.
