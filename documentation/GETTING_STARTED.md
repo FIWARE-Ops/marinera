@@ -17,11 +17,11 @@ Since this repository concentrates on deploying the platform, we require the und
 - [Helm](https://helm.sh/docs/intro/install/) installed.
 - [Openshift-Logging](#logging) installed and configured
 
-*NOTE:* A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
+> *NOTE:* A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
 
 ## OpenShift user permissions
 
-*NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
 
 In order to be able to deploy FIWARE applications, an Openshift user needs:
 
@@ -36,7 +36,7 @@ oc adm policy add-cluster-role-to-user self-provisioner alice
 
 ## ArgoCD permissions
 
-*NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
 
 When using ArgoCD to deploy applications in the cluster, the ArgoCD service account `argocd-argocd-server` is basically deploying things on our behalf, meaning is this SA to whom we need to provide the right permissions to deploy our applications.
 
@@ -87,11 +87,9 @@ applications:
     - values.yaml
 ```
 
-*NOTE:*
-
-By default each application is deployed with a sane set of default values that have been tested to work in most cases.
-But this does not mean they are the right fit for a production ready deployment.
-Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps, or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
+> *NOTE:* By default each application is deployed with a sane set of default values that have been tested to work in most cases.
+> But this does not mean they are the right fit for a production ready deployment.
+> Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps, or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
 
 ### 3. Set the repo url in the values.yaml
 
