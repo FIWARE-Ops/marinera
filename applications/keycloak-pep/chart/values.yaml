@@ -26,4 +26,4 @@ resources: {}
   #   memory: 128Mi
 
 log:
-  level: WARN
+  level: DEBUG
