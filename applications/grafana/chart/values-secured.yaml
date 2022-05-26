@@ -73,32 +73,12 @@ grafana:
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
 
-
 admin:
-  secured: false
-  # -- Admin username
-  username: fiwareAdmin
-  # -- Admin password
-  password: fiwareAdmin
+  secured: true
 
 route:
   # -- To enable the OpenShift route
   enabled: true
-
-datasources:
-  orion:
-    # -- Orion URL
-    url: "http://orion-ld:1026"
-  timescale:
-    # -- Timescale URL
-    url: tsdb
-    # -- Timescale database name
-    database: postgres
-    credentials:
-      # -- Timescale database username
-      username: postgres
-      # -- Timescale database password
-      password: test
 
 tests:
   enabled: true
