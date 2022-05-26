@@ -10,3 +10,4 @@
 - [Alerting](./documentation/ALERTING.md)
 - [E2E Testing](./documentation/E2E_TESTING.md)
 - [Related Issues](./documentation/RELATED_ISSUES.md)
+- [Load Testing](./documentation/LOAD_TESTING.md)
