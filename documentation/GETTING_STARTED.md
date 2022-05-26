@@ -57,7 +57,11 @@ But this does not mean they are the right fit for a production ready deployment.
 Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps,
 or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
 
-### 3. Set the repo url in the values.yaml
+### 3. Decide if you want to use Sealed Secrets
+
+By default, all passwords needed for the deployment are in plain in the `values.yaml` file of each component. If you want to keep those secrets safe follow this [documentation](./SECRETS.md) and then continue from this point onward.
+
+### 4. Set the repo url in the values.yaml
 
 Since ArgoCD should now follow the new fork, instead of the original repository, you have to replace the ```source``` in `fiware-platform/values.yaml`.
 
@@ -66,7 +70,7 @@ This can be done with this one liner:
 sed -i'' -e 's,source: https://github.com/FIWARE-Ops/marinera,source:  <FORK_URL>,g' fiware-platform/values.yaml
 ```
 
-### 4. Create the target namespace inside your cluster
+### 5. Create the target namespace inside your cluster
 
 > :warning: Make sure for the next steps that you are logged in to the cluster via ```oc login```
 > and that the account has enough permissions to create namespaces and create resources
@@ -76,7 +80,7 @@ The platform should be deployed to a namespace. Create the namespace via:
 oc new-project <PLATFORM_NAMESPACE>
 ```
 
-### 5. Set the target namespace in the values.yaml
+### 6. Set the target namespace in the values.yaml
 
 Similar to the ```source```, the ```destination``` namespace can be replaced.
 This can be done with the following command:
@@ -85,7 +89,7 @@ This can be done with the following command:
 sed -i'' -e 's/destination_namespace: \&destination demo/destination_namespace: \&destination <PLATFORM_NAMESPACE>/g' fiware-platform/values.yaml
 ```
 
-### 6. Set the target branch in the values.yaml
+### 7. Set the target branch in the values.yaml
 
 Similar to the ```source```,, the ```branch``` can be replaced, so the ArgoCD apps will sync to that branch.
 This can be done with the following command:
@@ -93,7 +97,7 @@ This can be done with the following command:
 ```shell
 sed -i'' -e 's/branch: \&branch main/branch: \&branch <FORK_BRANCH>/g' fiware-platform/values.yaml
 ```
-### 7. Apply the applications to the cluster
+### 8. Apply the applications to the cluster
 
 Now that everything is prepared, we can deploy the FIWARE components chosen by creating the ArgoCD applications
 and applying them to the cluster:
