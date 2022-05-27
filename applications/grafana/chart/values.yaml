@@ -22,7 +22,7 @@ grafana:
   plugins:
     - grafana-simple-json-datasource
     - yesoreyeram-infinity-datasource
-    - https://hopu.eu/wp-content/grafana/orion-datasource-0.4.8.zip;orion-datasource
+    - https://github.com/HOP-Ubiquitous/orion-datasource/releases/download/1.0.0/orion-datasource.zip;orion-datasource
   rbac:
     pspEnabled: false
     namespaced: true
