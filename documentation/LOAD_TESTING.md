@@ -60,6 +60,8 @@ This table shows the idle consumption of all the components of the deployment:
 | AirQuality Simulator | 1        | <0.1 | 300MB |
 | **TOTAL**            | 17       | 0.14 | 5GB |
 
+<!---
+
 
 ### 2.3 Load tests results without limits and requests
 
@@ -73,27 +75,51 @@ This table shows the idle consumption of all the components of the deployment:
 | Keycloak             |  |  |  |
 | Keycloak PostgreSQL  |  |  |  |
 | PEP Proxy            |  |  |  |
-
+--->
 
 ### 2.3 Load tests results
 
-#### 2.3.1 Scenario 1
+#### 2.3.1 Scenario 1: Low devices, high rate
 
-| # Devices            | #numUpdates | #updateDelay | Time To Complete | Req / min | Report |
-|----------------------|---|---|---|---|---|
-| 3,000                | 5 | 300s | 286s | 3,000 * 5  / 286  | Link
-
-
-| Component            | Replicas | CPU[Min,Max] | Memory[Min,Max] |
-|----------------------|----------|-------|---|
-| Orion-LD             | | [,] | [,] |
-| MongoDB              | | [,] | [,] |
-| QuantumLeap          | | [,] | [,] |
-| TimeScale            | | [,] | [,] |
-| Keycloak             | | [,] | [,] |
-| Keycloak PostgreSQL  | | [,] | [,] |
-| PEP Proxy            | | [,] | [,] |
+| Execution | # Devices | #numUpdates | #updateDelay | Duration | Req/s | OK/KO | Report |
+|-----------|-----------|-------------|--------------|----------|-------|----------|----------|
+| #1        |100        | 300         | 1s           | 547s     | 55.109| 30200 / 0 | [Link](https://fiware-ops.github.io/marinera/tests/load-test-reports/scenario1/execution1/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527092140490-->
+| #2        | 300       | 300         | 1s           |  1638s   | 55.104| 90315 / 285 | [Link](https://fiware-ops.github.io/marinera/tests/load-test-reports/scenario1/execution2/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527094623925 -->
+| #3        | 500       | 50         | 1s           |  517s | 49.591  | 25688 / 312 | [Link](https://fiware-ops.github.io/marinera/tests/load-test-reports/scenario1/execution3/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527102857129 -->
 
 
+**Execution 1**
+| Component            | Replicas | CPU Min | CPU Max | CPU Avg | MEM Min | MEM Max | MEM Avg | 
+|----------------------|---|------:|------:|------:|------------:|------------:|------------:|
+| Orion-LD             | 2 | 0.02 | 0.09 | 0.05 | 31.16 MiB  | 34.40 MiB  | 32.46 MiB  |
+| MongoDB              | 2 | 0.08 | 0.20 | 0.15 | 264.72 MiB | 294.98 MiB | 283.47 MiB |
+| QuantumLeap          | 2 | 0.00 | 0.33 | 0.23 | 69.56 MiB  | 94.17 MiB  | 87.32 MiB  |
+| TimeScale            | 3 | 0.03 | 0.10 | 0.07 | 323.75 MiB | 347.16 MiB | 336.56 MiB |
+| Keycloak             | 1 | 1.88 | 4.71 | 3.49 | 833.83 MiB | 924.51 MiB | 891.65 MiB |
+| Keycloak PostgreSQL  | 2 | 0.01 | 0.03 | 0.02 | 134.27 MiB | 137.59 MiB | 135.41 MiB |
+| PEP Proxy            | 2 | 0.08 | 0.37 | 0.17 | 351.36 MiB | 371.70 MiB | 362.94 MiB |
 
 
+**Execution 2**
+| Component            | Replicas | CPU Min | CPU Max | CPU Avg | MEM Min | MEM Max | MEM Avg |
+|----------------------|---|------:|------:|------:|------------:|------------:|------------:|
+| Orion-LD             | 2 | 0.04 | 0.09 | 0.06 | 28.45 MiB | 34.88 MiB  | 31.84 MiB  | 
+| MongoDB              | 2 | 0.12 | 0.32 | 0.23 | 301.05 MiB| 430.62 MiB | 362.06 MiB | 
+| QuantumLeap          | 2 | 0.05 | 0.34 | 0.23 | 93.90 MiB | 94.41 MiB  | 94.07 MiB  | 
+| TimeScale            | 3 | 0.03 | 0.12 | 0.08 | 345.18 MiB| 439.01 MiB | 390.26 MiB | 
+| Keycloak             | 1 | 2.24 | 4.94 | 3.83 | 739.38 MiB| 1.05 GiB   | 961.84 MiB | 
+| Keycloak PostgreSQL  | 2 | 0.01 | 0.03 | 0.02 | 143.84 MiB| 147.87 MiB | 145.74 MiB | 
+| PEP Proxy            | 2 | 0.08 | 0.31 | 0.16 | 299.29 MiB| 585.83 MiB | 343.41 MiB | 
+
+
+
+**Execution 3**
+| Component            | Replicas | CPU Min | CPU Max | CPU Avg | MEM Min | MEM Max | MEM Avg |
+|----------------------|---|------:|------:|------:|------------:|------------:|------------:|
+| Orion-LD             | 2 | 0.03 | 0.08 | 0.06 | 28.45 MiB  | 32.63 MiB  | 29.91 MiB  |
+| MongoDB              | 2 | 0.15 | 0.32 | 0.23 | 360.81 MiB | 459.20 MiB | 400.15 MiB |
+| QuantumLeap          | 2 | 0.06 | 0.23 | 0.19 | 93.90 MiB  | 94.17 MiB  | 94.00 MiB  |
+| TimeScale            | 3 | 0.02 | 0.13 | 0.07 | 443.46 MiB | 521.72 MiB | 458.30 MiB |
+| Keycloak             | 1 | 1.67 | 4.87 | 3.39 | 1.08 GiB   | 1.09 GiB   | 1.09 GiB   |
+| Keycloak PostgreSQL  | 2 | 0.01 | 0.03 | 0.02 | 132.92 MiB | 136.04 MiB | 134.06 MiB |
+| PEP Proxy            | 2 | 0.08 | 0.24 | 0.16 | 323.41 MiB | 332.26 MiB | 328.28 MiB |
