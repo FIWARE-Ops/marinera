@@ -1,13 +1,13 @@
 
  ![FIWARE Banner](https://fiware.github.io/tutorials.Getting-Started/img/Fiware.png)
 
-# FIWARE Platform Deployment 
+# FIWARE Platform Deployment
 
 The open-source Platform for Our Smart Digital Future.
 
 ![Demo deployment](https://github.com/FIWARE-Ops/marinera/actions/workflows/deploy.yaml/badge.svg)
 
-## Get started
+## Get Started
 
 - [Getting started](./documentation/GETTING_STARTED.md)
 - [Alternative deployments](./documentation/ALT_DEPLOYMENTS.md)
@@ -23,7 +23,7 @@ The open-source Platform for Our Smart Digital Future.
 
 ## Contributing
 
-  - [How the Github CI works in this repository](./documentation/GITHUB_CI.md)
-  - [End-2-End Testing](./documentation/E2E_TESTING.md)
-  - [How to set-up a new application in the repository](./documentation/APP_SETUP.md)
-  - [Related Issues](./documentation/RELATED_ISSUES.md)
+- [How the Github CI works in this repository](./documentation/GITHUB_CI.md)
+- [End-2-End Testing](./documentation/E2E_TESTING.md)
+- [How to set-up a new application in the repository](./documentation/APP_SETUP.md)
+- [Related Issues](./documentation/RELATED_ISSUES.md)
