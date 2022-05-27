@@ -85,7 +85,7 @@ This table shows the idle consumption of all the components of the deployment:
 
 
 | Component            | Replicas | CPU[Min,Max] | Memory[Min,Max] |
-|----------------------|---|---|---|
+|----------------------|----------|-------|---|
 | Orion-LD             | | [,] | [,] |
 | MongoDB              | | [,] | [,] |
 | QuantumLeap          | | [,] | [,] |
