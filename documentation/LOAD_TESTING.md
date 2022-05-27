@@ -79,18 +79,21 @@ This table shows the idle consumption of all the components of the deployment:
 
 #### 2.3.1 Scenario 1
 
-| Component            | Replicas | CPU[Req,Lim] | Memory[Req,Lim] |
+| # Devices            | #numUpdates | #updateDelay | Time To Complete | Req / min | Report |
+|----------------------|---|---|---|---|---|
+| 3,000                | 5 | 300s | 286s | 3,000 * 5  / 286  | Link
+
+
+| Component            | Replicas | CPU[Min,Max] | Memory[Min,Max] |
 |----------------------|---|---|---|
-| Orion-LD             |  |  |  |
-| MongoDB              |  |  |  |
-| QuantumLeap          |  |  |  |
-| TimeScale            |  |  |  |
-| Keycloak             |  |  |  |
-| Keycloak PostgreSQL  |  |  |  |
-| PEP Proxy            |  |  |  |
+| Orion-LD             | | [,] | [,] |
+| MongoDB              | | [,] | [,] |
+| QuantumLeap          | | [,] | [,] |
+| TimeScale            | | [,] | [,] |
+| Keycloak             | | [,] | [,] |
+| Keycloak PostgreSQL  | | [,] | [,] |
+| PEP Proxy            | | [,] | [,] |
 
 
-| # Devices            | #numUpdates | #updateDelay | Time To Complete | Report |
-|----------------------|---|---|---|---|
-| Orion-LD             |  |  |  |
+
 
