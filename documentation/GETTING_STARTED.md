@@ -120,6 +120,10 @@ The platform should be deployed to a namespace. Create the namespace via:
 ```shell
 oc new-project <PLATFORM_NAMESPACE>
 ```
+> **WARNING:** Depending on your ArgoCD deployment and configuration it's probably you need to add label `argocd.argoproj.io/managed-by:<ARGOCD_NAMESPACE>` in your `<PLATFORM_NAMESPACE>`
+```shell
+oc label namespace <PLATFORM_NAMESPACE> argocd.argoproj.io/managed-by=<ARGOCD_NAMESPACE>
+```
 
 ### 6. Set the target namespace in the values.yaml
 
