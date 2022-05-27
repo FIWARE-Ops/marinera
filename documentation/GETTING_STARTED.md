@@ -56,7 +56,7 @@ With the following command, we give the ArgoCD running in the namespace <ARGOCD_
 ```bash
 oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:argocd-argocd-server
 ```
-> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command.
+> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
 
 > **WARNING:** Maybe you ServiceAcoount name is not `argocd-argocd-server`. Use your service account name according to your ArgoCD Server instance.
 
