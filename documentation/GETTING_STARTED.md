@@ -6,16 +6,55 @@ This repository contains all scripts required for deploying a FIWARE platform to
 
 Since this repository concentrates on deploying the platform, we require the underlying infrastructure to be already setup in a defined way. The listed preconditions have to be met and are constantly tested, but it might also work on comparable alternative setups.
 
-<B>The following preconditions need to be fulfilled before starting :warning: :</B>
+**The following preconditions need to be fulfilled before starting :warning: :**
 
-- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) in >= 4.x installed - see [official documentation](https://docs.openshift.com/container-platform/latest/welcome/index.html) for installing it
+- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) in >= 4.x installed - see [official documentation](https://docs.openshift.com/container-platform/latest/welcome/index.html) for installing it.
 - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) >=2.3.x installed - multiple options are available:
-    - [install ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
-    - [use OpenShift operator](https://argocd-operator-helm.readthedocs.io/en/latest/ocp/ocp4.html)
+    - [Install ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
+    - [Install using Argo CD Openshift Operator ](https://argocd-operator-helm.readthedocs.io/en/latest/ocp/ocp4.html)
     - [FIWARE installation documentation](https://github.com/FIWARE-Ops/fiware-gitops#4-install-argocd)
 - [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) installed - see [installation documentation](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli)
-- [Helm](https://helm.sh/docs/intro/install/) installed.
-- [Openshift-Logging](#logging) installed and configured
+- [Helm](https://helm.sh/docs/intro/install/) binary installed.
+- [Sealed Secrets Controller](https://github.com/bitnami-labs/sealed-secrets#helm-chart) deployed and [Kubeseal](https://github.com/bitnami-labs/sealed-secrets/releases) binary installed. (Optional, only if sealed secrets)
+- [Openshift Logging](./LOGGING.md) installed and configured.
+- [Openshift User Workload Monitoring](./MONITORING.md) enabled.
+
+> *NOTE:* A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
+
+## OpenShift user permissions
+
+> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+
+In order to be able to deploy FIWARE applications, an Openshift user needs:
+
+1. To have permissions to manage ArgoCD applications, given by the role `applications.argoproj.io-v1alpha1-admin`. Usually this role is given only inside the namespace where ArgoCD runs.
+2. To have permissions to create projects (if the projects are not already pre-created for him/her), given by the role `self-provisioner`.
+
+So, we are gonna assume the user `alice` requires both permissions:
+```bash
+oc -n <ARGOCD_NAMESPACE> adm policy add-role-to-user applications.argoproj.io-v1alpha1-admin alice
+oc adm policy add-cluster-role-to-user self-provisioner alice
+```
+
+## ArgoCD permissions
+
+> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+
+When using ArgoCD to deploy applications in the cluster, the ArgoCD service account `argocd-argocd-server` is basically deploying things on our behalf, meaning is this SA to whom we need to provide the right permissions to deploy our applications.
+
+When our applications are composed by only traditional OpenShift/K8s objects such as deployments, services or secrets, giving ArgoCD SA the `admin` role would be enough. But when our applications are composed by no so traditional objects such as Operators CRs like Prometheus `ServiceMonitors` or `PrometheuRules` (like some of the FIWARE apps do) then we need additional permissions.
+
+We could be very granular and test ArgoCD with every app we deploy and see if the permissions are enough, otherwise look for the right role to be assigned, but this requires a trial and error approach, very time consuming.
+
+In our case, as the number of applications deployed is substantial, and some of those are complex with many objects, we have decided to give the ArgoCD SA
+the `cluster-admin` role, but at a namespace level. This may sound counterintuitive and feel like we are giving the ArgoCD SA root like access to the whole cluster, but that is not the case.
+
+We are giving the ArgoCD SA root like access, but only at a certain namespaces, this way we don't need to study every application helm chart in advance, but at the same time, we are scoping the permissions to a certain namespace.
+
+With the following command, we give the ArgoCD running in the namespace <ARGOCD_NAMESPACE> `cluster-admin` permissions in the namespace <PLATFORM_NAMESPACE>, meaning ArgoCD can deploy any object inside that namespace, but only in that namespace.
+```bash
+oc -n <PLATFORM_NAMESPACE> add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:argocd-argocd-server
+```
 
 ## Installation steps
 
@@ -50,12 +89,12 @@ applications:
     - values.yaml
 ```
 
-*NOTE:*
 
+> **NOTE:** \
 By default each application is deployed with a sane set of default values that have been tested to work in most cases.
 But this does not mean they are the right fit for a production ready deployment.
-Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps,
-or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
+Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps, or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
+
 
 ### 3. Set the repo url in the values.yaml
 
