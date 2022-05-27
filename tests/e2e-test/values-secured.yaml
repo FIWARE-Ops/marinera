@@ -3,14 +3,12 @@ image: quay.io/fiware/marinera-e2e:0.2.1
 imagePullPolicy: Always
 
 secured:
-  enabled: false
+  enabled: true
 
 remoteDriverUrl: http://selenium-hub:4444
 grafanaUrl: https://grafana-demo.apps.fiware-spain.emea-1.rht-labs.com
 brokerUrl: http://orion-ld:1026
 quantumLeapUrl: http://quantumleap-quantumleap:8668
-grafanaUsername: fiwareAdmin
-grafanaPassword: fiwareAdmin
 fiwareService: ""
 fiwareServicePath: "/"
 pepUrl: http://keycloak-pep:8080
