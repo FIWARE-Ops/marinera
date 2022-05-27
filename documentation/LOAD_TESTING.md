@@ -83,8 +83,8 @@ This table shows the idle consumption of all the components of the deployment:
 | Scenario | numDevices | numUpdates | updateDelay | Duration | Req/s | OK/KO | Report |
 |-----------|-----------|-------------|--------------|----------|-------|----------|----------|
 | [#1](#231-scenario-1)        |100        | 300         | 1s           | 547s     | 55.109| 30200 / 0 | [Link](https://fiware-ops.github.io/marinera/documentation/load-test-reports/scenario1/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527092140490-->
-| [#2](#232-scenario-2)        | 300       | 300         | 1s           |  1638s   | 55.104| 90315 / 285 | [Link](https://fiware-ops.github.io/marinera/documentation/load-test-reports/scenario1/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527094623925 -->
-| [#3](#233-scenario-3)        | 500       | 50         | 1s           |  517s | 49.591  | 25688 / 312 | [Link](https://fiware-ops.github.io/marinera/documentation/load-test-reports/scenario1/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527102857129 -->
+| [#2](#232-scenario-2)        | 300       | 300         | 1s           |  1638s   | 55.104| 90315 / 285 | [Link](https://fiware-ops.github.io/marinera/documentation/load-test-reports/scenario2/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527094623925 -->
+| [#3](#233-scenario-3)        | 500       | 50         | 1s           |  517s | 49.591  | 25688 / 312 | [Link](https://fiware-ops.github.io/marinera/documentation/load-test-reports/scenario3/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527102857129 -->
 
 * **Scenario**: This is the scenario number. You can use this number to check resource consumption of the test in the tables below.
 * **numDevices**: Number of simultaneous devices reporting data.
