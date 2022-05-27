@@ -52,9 +52,12 @@ the `cluster-admin` role, but at a namespace level. This may sound counterintuit
 We are giving the ArgoCD SA root like access, but only at a certain namespaces, this way we don't need to study every application helm chart in advance, but at the same time, we are scoping the permissions to a certain namespace.
 
 With the following command, we give the ArgoCD running in the namespace <ARGOCD_NAMESPACE> `cluster-admin` permissions in the namespace <PLATFORM_NAMESPACE>, meaning ArgoCD can deploy any object inside that namespace, but only in that namespace.
+
 ```bash
 oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:argocd-argocd-server
 ```
+> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command.
+
 > **WARNING:** Maybe you ServiceAcoount name is not `argocd-argocd-server`. Use your service account name according to your ArgoCD Server instance.
 
 ## Installation steps
