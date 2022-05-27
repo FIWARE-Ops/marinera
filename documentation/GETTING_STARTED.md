@@ -65,7 +65,7 @@ oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serv
 ### 1. Fork the repo
 
 To build and configure the platform using the [GitOps-Pattern](https://www.gitops.tech/), you should fork this repository to your own git.
-On [github](github.com), follow the [fork-a-repo tutorial](https://docs.github.com/en/get-started/quickstart/fork-a-repo). For other git-installations, see the corresponding documentation
+On [github](github.com), follow the [fork-a-repo tutorial](https://docs.github.com/en/get-started/quickstart/fork-a-repo). For other git-installations, see the corresponding documentation. Now you can git-clone your own fork.
 
 ### 2. Decide which FIWARE applications to deploy
 
