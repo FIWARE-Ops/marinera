@@ -1,6 +1,6 @@
 # E2E Testing
 
-This End-2-End tests have been developed using Selenium. [Selenium](https://www.selenium.dev/documentation/) is a open-source automated testing framework used to validate web applications across different browsers and platforms. You can use multiple programming languages like create Selenium Test Scripts.
+This End-2-End tests have been developed using Selenium. [Selenium](https://www.selenium.dev/documentation/) is an open-source automated testing framework used to validate web applications across different browsers and platforms. You can use multiple programming languages like create Selenium Test Scripts.
 
 For that reason we need an instance of Selenium running in the cluster, and then we can run our test using it.
 
@@ -35,7 +35,7 @@ The e2e tests will spin up a pod called `marinera-e2e` and run the tests, to see
 oc logs -f marinera-e2e -n <PLATFORM_NAMESPACE>
 ```
 
-If the test e2e works, the pod will get to a `Completed` status and will be deleted automatically. If it doesn't work, the helm installation will failed and the pod will remain with an `Error` status.
+If the test e2e works, the pod will get to a `Completed` status and will be deleted automatically. If it doesn't work, the helm installation will fail and the pod will remain in `Error` state.
 
 ### 4. Uninstall
 After the test, remember to remove the helm charts. You can do the following:
