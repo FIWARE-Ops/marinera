@@ -5,7 +5,7 @@ You can run load tests to calculate the maximum throughput for your deployment. 
 ## 1. Run your own load tests
 
 1. Clone [load-tests](https://github.com/FIWARE/load-tests) repository locally.
-2. Configure the load test on [/src/test/resources/test.conf]()
+2. Configure the load test on */src/test/resources/test.conf*
 3. Execute the test locally:
 
     ```bash
