@@ -81,7 +81,7 @@ This table shows the idle consumption of all the components of the deployment:
 
 #### 2.3.1 Scenario 1: Low devices, high rate
 
-| Execution | # Devices | #numUpdates | #updateDelay | Duration | Req/s | OK/KO | Report |
+| Execution | numDevices | numUpdates | updateDelay | Duration | Req/s | OK/KO | Report |
 |-----------|-----------|-------------|--------------|----------|-------|----------|----------|
 | #1        |100        | 300         | 1s           | 547s     | 55.109| 30200 / 0 | [Link](https://fiware-ops.github.io/marinera/tests/load-test-reports/scenario1/execution1/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527092140490-->
 | #2        | 300       | 300         | 1s           |  1638s   | 55.104| 90315 / 285 | [Link](https://fiware-ops.github.io/marinera/tests/load-test-reports/scenario1/execution2/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527094623925 -->
