@@ -1,34 +1,55 @@
+# -- override container image
 image: quay.io/fiware/marinera-e2e:0.2.1
 
+# -- option to override the pull policy
 imagePullPolicy: Always
 
 secured:
+  # -- If enabled, a secret called `grafana-admin-user` is expected to exist containing username and password.
   enabled: false
 
-remoteDriverUrl: http://selenium-hub:4444
-grafanaUrl: https://grafana-demo.apps.fiware-spain.emea-1.rht-labs.com
-brokerUrl: http://orion-ld:1026
-quantumLeapUrl: http://quantumleap-quantumleap:8668
+# -- Username to be used for logging into grafana. Used if `secured.enabled` is false.
 grafanaUsername: fiwareAdmin
+# -- Password to be used for logging into grafana. Used if `secured.enabled` is false.
 grafanaPassword: fiwareAdmin
+
+# -- Url of the selenium instance to be used.
+remoteDriverUrl: http://selenium-hub:4444
+# -- Url of the grafana to check.
+grafanaUrl: http://grafana:80
+# -- Url of the broker to be used for data creation.
+brokerUrl: http://orion-ld:1026
+# -- Url of the quantum-leap to receive the notifications from the broker.
+quantumLeapUrl: http://quantumleap-quantumleap:8668
+# -- FIWARE service
 fiwareService: ""
+# -- FIWARE service path.
 fiwareServicePath: "/"
+# -- Url of the broker has to be changed to the PEP-Proxy.
 pepUrl: http://keycloak-pep:8080
 keycloak:
+  # -- Enable test e2e going through Keycloak
   enabled: true
+  # -- Url of the keycloak.
   url: http://keycloak
+  # -- Username to be used for JWT generation.
   username: e2e-test-user
+  # -- Password to be used for JWT generation.
   password: e2e-test-user
+  # -- ClientId to be used for JWT generation.
   clientId: orion-pep
+  # -- ClientSecret to be used for JWT generation.
   clientSecret: 978ad148-d99b-406d-83fc-578597290a79
+  # -- Realm to authenticate in.
   realm: fiware-server
 
 aqApp:
+  # -- Enable the test for the Air Quality Application
   enabled: true
 
-init: 
+init:
   ## configuration for the keycloak init-container
-  keycloak: 
+  keycloak:
     enabled: true
     # -- Keycloak admin password with permissions to create users
     username: fiwareAdmin
@@ -43,4 +64,3 @@ init:
       tag: 5.2.0-debian-10-r9
       # -- specification of the image pull policy
       pullPolicy: IfNotPresent
-    # -- URL of the keycloak that will be configured from the init container

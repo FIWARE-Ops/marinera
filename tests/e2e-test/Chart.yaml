@@ -10,4 +10,5 @@ keywords:
   - helm
   - chart
 sources:
+  - https://github.com/FIWARE-Ops/marinera-e2e
   - https://github.com/FIWARE-Ops/marinera/tests/e2e-test
