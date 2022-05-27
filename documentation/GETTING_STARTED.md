@@ -6,16 +6,18 @@ This repository contains all scripts required for deploying a FIWARE platform to
 
 Since this repository concentrates on deploying the platform, we require the underlying infrastructure to be already setup in a defined way. The listed preconditions have to be met and are constantly tested, but it might also work on comparable alternative setups.
 
-<B>The following preconditions need to be fulfilled before starting :warning: :</B>
+**The following preconditions need to be fulfilled before starting :warning: :**
 
-- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) in >= 4.x installed - see [official documentation](https://docs.openshift.com/container-platform/latest/welcome/index.html) for installing it
+- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) in >= 4.x installed - see [official documentation](https://docs.openshift.com/container-platform/latest/welcome/index.html) for installing it.
 - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) >=2.3.x installed - multiple options are available:
-    - [install ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
-    - [use OpenShift operator](https://argocd-operator-helm.readthedocs.io/en/latest/ocp/ocp4.html)
+    - [Install ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
+    - [Install using Argo CD Openshift Operator ](https://argocd-operator-helm.readthedocs.io/en/latest/ocp/ocp4.html)
     - [FIWARE installation documentation](https://github.com/FIWARE-Ops/fiware-gitops#4-install-argocd)
 - [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) installed - see [installation documentation](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli)
-- [Helm](https://helm.sh/docs/intro/install/) installed.
-- [Openshift-Logging](#logging) installed and configured
+- [Helm](https://helm.sh/docs/intro/install/) binary installed.
+- [Sealed Secrets Controller](https://github.com/bitnami-labs/sealed-secrets#helm-chart) deployed and [Kubeseal](https://github.com/bitnami-labs/sealed-secrets/releases) binary installed. (Optional, only if sealed secrets)
+- [Openshift Logging](./LOGGING.md) installed and configured.
+- [Openshift User Workload Monitoring](./MONITORING.md) enabled.
 
 > *NOTE:* A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
 
@@ -87,9 +89,12 @@ applications:
     - values.yaml
 ```
 
-> *NOTE:* By default each application is deployed with a sane set of default values that have been tested to work in most cases.
-> But this does not mean they are the right fit for a production ready deployment.
-> Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps, or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
+
+> **NOTE:** \
+By default each application is deployed with a sane set of default values that have been tested to work in most cases.
+But this does not mean they are the right fit for a production ready deployment.
+Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps, or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
+
 
 ### 3. Decide if you want to use Sealed Secrets
 
