@@ -74,7 +74,7 @@ jobs:
 
       - name: Check if all apps are healthy
         run: |
-          # wait for the changes to take place and potentially crash the applictions
+          # wait for the changes to take place and potentially crash the applications
           sleep 30
 
           # bool to check if the apps are healthy
