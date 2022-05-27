@@ -14,16 +14,16 @@ Please read the docs for more info: https://github.com/FIWARE-Ops/marinera/blob/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| grafana.datasources.timescale.credentials.password | string | <ENCRYPTED> | TimescaleDB password to connect Grafana to TimescaleDB |
+| grafana.datasources.timescale.credentials.password | string | \<ENCRYPTED\> | TimescaleDB password to connect Grafana to TimescaleDB |
 | grafana.datasourcesNotEncrypted.orion.url | string | `"http://orion-ld:1026"` | Orion-LD URL, not encrypted |
 | grafana.datasourcesNotEncrypted.timescale.credentials.username | string | `"postgres"` | TimescaleDB username, not encrypted |
 | grafana.datasourcesNotEncrypted.timescale.database | string | `"postgres"` | TimescaleDB database to connect to, not encrypted |
 | grafana.datasourcesNotEncrypted.timescale.url | string | `"tsdb"` | TimescaleDB URL, not encrypted |
-| grafana.grafanaPassword | string | <ENCRYPTED> | password for Grafana |
-| grafana.grafanaUsername | string |<ENCRYPTED> | username for Grafana |
-| grafanaMetrics.grafanaPassword | string | <ENCRYPTED> | password for Grafana Metrics |
-| grafanaMetrics.grafanaUsername | string <ENCRYPTED> | replica set key for MongoDB (minimun 5 characters) |
-| mongodb.mongodbRootPassword | string | <ENCRYPTED> | root password for MongoDB |
+| grafana.grafanaPassword | string | \<ENCRYPTED\> | password for Grafana |
+| grafana.grafanaUsername | string |\<ENCRYPTED\> | username for Grafana |
+| grafanaMetrics.grafanaPassword | string | \<ENCRYPTED\> | password for Grafana Metrics |
+| grafanaMetrics.grafanaUsername | string \<ENCRYPTED\> | replica set key for MongoDB (minimun 5 characters) |
+| mongodb.mongodbRootPassword | string | \<ENCRYPTED\> | root password for MongoDB |
 | scope.namespace | bool | `false` | if true, all secrets will be namespace-wide and need to be created like that |
 
 ----------------------------------------------
