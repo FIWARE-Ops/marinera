@@ -9,12 +9,14 @@ realm:
       - https://grafana/
       - https://grafana-2/
   orionPep:
-    baseUrl: https://keycloak-pep-feature-lt.apps.fiware-spain.emea-1.rht-labs.com
-    adminUrl: https://keycloak-pep-feature-lt.apps.fiware-spain.emea-1.rht-labs.com
+    baseUrl: https://orion-ld
+    adminUrl: https://orion-ld
     redirectUris:
-      - https://keycloak-pep-feature-lt.apps.fiware-spain.emea-1.rht-labs.com/
+      - https://orion-ld/
+      - https://orion-ld-2/
     webOrigins:
-      - https://keycloak-pep-feature-lt.apps.fiware-spain.emea-1.rht-labs.com/
+      - https://orion-ld/
+      - https://orion-ld-2/
 
 route:
   enabled: true
