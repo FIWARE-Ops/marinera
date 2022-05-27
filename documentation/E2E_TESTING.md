@@ -18,7 +18,7 @@ helm install --wait <my-selenium-release> . -n <PLATFORM_NAMESPACE>
 
 ### 2. Change `values.yaml`
 
-Change `values.yaml` file in the folder `tests/e2e-test/` to adjust it to your deployment. By default, the variables match if you deploy the FIWARE platform as is.
+Change `values.yaml` file in the folder `tests/e2e-test/` to adjust it to your deployment. By default, no changes should be required to run the default scenario of the tests.
 
 ### 3. Run e2e tests
 
