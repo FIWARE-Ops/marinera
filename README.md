@@ -1,6 +1,7 @@
 
+ ![FIWARE Banner](https://fiware.github.io/tutorials.Getting-Started/img/Fiware.png)
 
-# FIWARE Platform Deployment
+# FIWARE Platform Deployment 
 
 The open-source Platform for Our Smart Digital Future.
 
