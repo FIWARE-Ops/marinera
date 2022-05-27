@@ -8,12 +8,9 @@ You can run load tests to calculate the maximum throughput for your deployment. 
 2. Configure the load test on */src/test/resources/test.conf*
 3. Execute the test locally:
 
-    ```bash
-    mvn install gatling:test -Dgatling.simulationClass=simulations.nosec.v2.EntityUpdateWithSingleSubscriptionSimulation
-    ```
-
-
-
+```bash
+mvn install gatling:test -Dgatling.simulationClass=simulations.nosec.v2.EntityUpdateWithSingleSubscriptionSimulation
+```
 ## 2. Load test example reports
 
 In order to calculate a starting configuration, you can check the load test reports in this section.
@@ -31,9 +28,6 @@ Bear in mind that all the tests have been executed with the following versions o
 | Keycloak            | 8.0.0 | 17.0.1 | Mar, 2022 |
 | Keycloak PostgreSQL | 8.0.0 | 14.2.0 | Feb, 2022 |
 | PEP Proxy           | 0.1.0 | 1.0.0 | May, 2022 |
-
-
-
 
 ### 2.2 Idle results
 
@@ -61,10 +55,7 @@ This table shows the idle consumption of all the components of the deployment:
 | **TOTAL**            | 17       | 0.14 | 5GB |
 
 <!---
-
-
 ### 2.3 Load tests results without limits and requests
-
 
 | Component            | Replicas | CPU[Req,Lim] | Memory[Req,Lim] |
 |----------------------|---|---|---|
@@ -78,7 +69,6 @@ This table shows the idle consumption of all the components of the deployment:
 --->
 
 ### 2.3 Load tests results
-
 
 | Scenario | numDevices | numUpdates | updateDelay | Duration | Req/s | OK/KO | Report |
 |-----------|-----------|-------------|--------------|----------|-------|----------|----------|
@@ -107,7 +97,6 @@ This table shows the idle consumption of all the components of the deployment:
 | Keycloak PostgreSQL  | 2 | 0.01 | 0.03 | 0.02 | 134.27 MiB | 137.59 MiB | 135.41 MiB |
 | PEP Proxy            | 2 | 0.08 | 0.37 | 0.17 | 351.36 MiB | 371.70 MiB | 362.94 MiB |
 
-
 #### 2.3.2 Scenario 2
 
 | Component            | Replicas | CPU Min | CPU Max | CPU Avg | MEM Min | MEM Max | MEM Avg |
@@ -119,8 +108,6 @@ This table shows the idle consumption of all the components of the deployment:
 | Keycloak             | 1 | 2.24 | 4.94 | 3.83 | 739.38 MiB| 1.05 GiB   | 961.84 MiB | 
 | Keycloak PostgreSQL  | 2 | 0.01 | 0.03 | 0.02 | 143.84 MiB| 147.87 MiB | 145.74 MiB | 
 | PEP Proxy            | 2 | 0.08 | 0.31 | 0.16 | 299.29 MiB| 585.83 MiB | 343.41 MiB | 
-
-
 
 #### 2.3.3 Scenario 3
 
