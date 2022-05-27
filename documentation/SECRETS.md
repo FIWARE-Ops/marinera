@@ -1,6 +1,6 @@
 # Secrets
 
-> **NOTE:** For this moment, this feature is only compatible with **MongoDB** and **Orion-LD** charts.
+> **NOTE:** For this moment, this feature is only compatible with **MongoDB**, **Orion-LD**, **Grafana** and **Grafana Metrics** charts.
 
 To manage the secrets in this repo we are using the Sealed Secrets approach by Bitnami. Sealed Screts allow you to store your password in a safe way event in a public repository due to they only can be decrypted by the controller running in the target cluster. If you want to know more, go to the Sealed Secrets Github repo at https://github.com/bitnami-labs/sealed-secrets.
 
