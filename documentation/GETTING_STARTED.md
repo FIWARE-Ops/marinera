@@ -93,7 +93,7 @@ applications:
 
 ### 3. Decide if you want to use Sealed Secrets
 
-By default, all passwords needed for the deployment are in plain in the `values.yaml` file of each component. If you want to keep those secrets safe follow this [documentation](./SECRETS.md) and then continue from this point onward.
+By default, all passwords needed for the deployment are in plain text in the `values.yaml` file of each component. If you want to keep those secrets safe follow this [documentation](./SECRETS.md) and then continue from this point onward.
 
 ### 4. Set the repo url in the values.yaml
 
