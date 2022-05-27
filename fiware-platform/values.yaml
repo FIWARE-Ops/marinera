@@ -11,7 +11,7 @@ applications:
     source_ref: *branch
     destination: *destination
     helm_values:
-    - values-secured.yaml
+    - values.yaml
 
   - name: orion-ld
     enabled: true
@@ -19,7 +19,7 @@ applications:
     source_ref: *branch
     destination: *destination
     helm_values:
-    - values-secured.yaml
+    - values.yaml
 
   - name: timescaledb-single
     # Dont override, will break the tests.
@@ -45,7 +45,7 @@ applications:
     source_ref: *branch
     destination: *destination
     helm_values:
-    - values-secured.yaml
+    - values.yaml
 
   - name: air-quality
     enabled: true
@@ -77,7 +77,7 @@ applications:
     source_ref: *branch
     destination: *destination
     helm_values:
-    - values-secured.yaml
+    - values.yaml
 
   - name: airquality-simulator
     enabled: true
