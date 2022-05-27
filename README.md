@@ -4,6 +4,7 @@
 
 - [Understanding FIWARE Platform](./documentation/UNDERSTANDING_FIWARE.md)
 - [Getting started](./documentation/GETTING_STARTED.md)
+- [Secrets](./documentation/SECRETS.md)
 - [Components and configuration](./documentation/FIWARE_COMPONENTS.md)
 - [Logging](./documentation/LOGGING.md)
 - [Monitoring](./documentation/MONITORING.md)

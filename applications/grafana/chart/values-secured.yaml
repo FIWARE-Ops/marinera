@@ -1,5 +1,12 @@
 nameOverride: "grafana"
 grafana:
+
+  extraSecretMounts:
+  - name: tsdb-password
+    mountPath: "/etc/grafana/secrets"
+    secretName: tsdb-password
+    readOnly: true
+
   admin:
     existingSecret: "grafana-admin-user"
     userKey: admin-user
@@ -22,7 +29,7 @@ grafana:
   plugins:
     - grafana-simple-json-datasource
     - yesoreyeram-infinity-datasource
-    - https://github.com/HOP-Ubiquitous/orion-datasource/releases/download/1.0.0/orion-datasource.zip;orion-datasource
+    - https://hopu.eu/wp-content/grafana/orion-datasource-0.4.8.zip;orion-datasource
   rbac:
     pspEnabled: false
     namespaced: true
@@ -73,32 +80,12 @@ grafana:
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
 
-
 admin:
-  secured: false
-  # -- Admin username
-  username: fiwareAdmin
-  # -- Admin password
-  password: fiwareAdmin
+  secured: true
 
 route:
   # -- To enable the OpenShift route
   enabled: true
-
-datasources:
-  orion:
-    # -- Orion URL
-    url: "http://orion-ld:1026"
-  timescale:
-    # -- Timescale URL
-    url: tsdb
-    # -- Timescale database name
-    database: postgres
-    credentials:
-      # -- Timescale database username
-      username: postgres
-      # -- Timescale database password
-      password: test
 
 tests:
   enabled: true

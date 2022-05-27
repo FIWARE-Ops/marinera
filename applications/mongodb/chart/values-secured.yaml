@@ -1,11 +1,10 @@
-
 mongodb:
   global:
     nameOverride: "mongodb-orion"
     fullnameOverride: "mongodb-orion"
   auth:
     enabled: true
-    rootPassword: test
+    existingSecret: mongodb-secret
   architecture: replicaset
   podSecurityContext:
     enabled: false
