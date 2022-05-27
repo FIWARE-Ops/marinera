@@ -6,7 +6,7 @@ secured:
   enabled: true
 
 remoteDriverUrl: http://selenium-hub:4444
-grafanaUrl: https://grafana-demo.apps.fiware-spain.emea-1.rht-labs.com
+grafanaUrl: http://grafana:80
 brokerUrl: http://orion-ld:1026
 quantumLeapUrl: http://quantumleap-quantumleap:8668
 fiwareService: ""
@@ -24,21 +24,12 @@ keycloak:
 aqApp:
   enabled: true
 
-init: 
-  ## configuration for the keycloak init-container
-  keycloak: 
+init:
+  keycloak:
     enabled: true
-    # -- Keycloak admin password with permissions to create users
     username: fiwareAdmin
-    # -- Keycloak admin password with permissions to create users
     password: fiwareAdmin
-    ## configuration of the image to be used
     image:
-      # -- subscription init image name
-      # ref: https://quay.io/fiware/v2-subscription-init
       repository: docker.io/bitnami/keycloak-config-cli
-      # -- tag of the image to be used
       tag: 5.2.0-debian-10-r9
-      # -- specification of the image pull policy
       pullPolicy: IfNotPresent
-    # -- URL of the keycloak that will be configured from the init container
