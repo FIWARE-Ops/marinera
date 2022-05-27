@@ -16,7 +16,7 @@ grafanaPassword: fiwareAdmin
 # -- Url of the selenium instance to be used.
 remoteDriverUrl: http://selenium-hub:4444
 # -- Url of the grafana to check.
-grafanaUrl: http://grafana:80
+grafanaUrl: http://grafana
 # -- Url of the broker to be used for data creation.
 brokerUrl: http://orion-ld:1026
 # -- Url of the quantum-leap to receive the notifications from the broker.
