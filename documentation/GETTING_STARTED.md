@@ -19,11 +19,11 @@ Since this repository concentrates on deploying the platform, we require the und
 - [Openshift Logging](./LOGGING.md) installed and configured.
 - [Openshift User Workload Monitoring](./MONITORING.md) enabled.
 
-> *NOTE:* A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
+> **NOTE:** A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
 
 ## OpenShift user permissions
 
-> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
 
 In order to be able to deploy FIWARE applications, an Openshift user needs:
 
@@ -38,11 +38,11 @@ oc adm policy add-cluster-role-to-user self-provisioner alice
 
 ## ArgoCD permissions
 
-> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
 
 When using ArgoCD to deploy applications in the cluster, the ArgoCD service account `XXX-argocd-server` is basically deploying things on our behalf, meaning is this SA to whom we need to provide the right permissions to deploy our applications.
 
-> *NOTE:* The ArgoCD SA name follows the pattern `<ARGOCD_INSTANCE_NAME>-argocd-server`, so if for example your ArgoCD instances is named "myargo", then the SA name would be `myargo-argocd-server`
+> **NOTE:** The ArgoCD SA name follows the pattern `<ARGOCD_INSTANCE_NAME>-argocd-server`, so if for example your ArgoCD instances is named "myargo", then the SA name would be `myargo-argocd-server`
 
 When our applications are composed by only traditional OpenShift/K8s objects such as deployments, services or secrets, giving ArgoCD SA the `admin` role would be enough. But when our applications are composed by no so traditional objects such as Operators CRs like Prometheus `ServiceMonitors` or `PrometheuRules` (like some of the FIWARE apps do) then we need additional permissions.
 
@@ -54,20 +54,22 @@ the `cluster-admin` role, but at a namespace level. This may sound counterintuit
 We are giving the ArgoCD SA root like access, but only at a certain namespaces, this way we don't need to study every application helm chart in advance, but at the same time, we are scoping the permissions to a certain namespace.
 
 With the following command, we give the ArgoCD running in the namespace <ARGOCD_NAMESPACE> `cluster-admin` permissions in the namespace <PLATFORM_NAMESPACE>, meaning ArgoCD can deploy any object inside that namespace, but only in that namespace.
+
 ```bash
 # get ArgoCD SA name
 oc -n <ARGOCD_NAMESPACE> get sa | grep argocd-server
 
-# Provide the SA with the right permissions
+# Give the SA the right permissions
 oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:<SA_NAME>
 ```
+> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
 
 ## Installation steps
 
 ### 1. Fork the repo
 
 To build and configure the platform using the [GitOps-Pattern](https://www.gitops.tech/), you should fork this repository to your own git.
-On [github](github.com), follow the [fork-a-repo tutorial](https://docs.github.com/en/get-started/quickstart/fork-a-repo). For other git-installations, see the corresponding documentation
+On [github](github.com), follow the [fork-a-repo tutorial](https://docs.github.com/en/get-started/quickstart/fork-a-repo). For other git-installations, see the corresponding documentation. Now you can git-clone your own fork.
 
 ### 2. Decide which FIWARE applications to deploy
 
@@ -115,12 +117,15 @@ sed -i'' -e 's,source: https://github.com/FIWARE-Ops/marinera,source:  <FORK_URL
 
 ### 5. Create the target namespace inside your cluster
 
-> :warning: Make sure for the next steps that you are logged in to the cluster via ```oc login```
-> and that the account has enough permissions to create namespaces and create resources
+> **WARNING:** Make sure for the next steps that you are logged in to the cluster via ```oc login``` and that the account has enough permissions to create namespaces and create resources
 
 The platform should be deployed to a namespace. Create the namespace via:
 ```shell
 oc new-project <PLATFORM_NAMESPACE>
+```
+> **WARNING:** Depending on your ArgoCD deployment and configuration you may need to add the label `argocd.argoproj.io/managed-by:<ARGOCD_NAMESPACE>` to your `<PLATFORM_NAMESPACE>`
+```shell
+oc label namespace <PLATFORM_NAMESPACE> argocd.argoproj.io/managed-by=<ARGOCD_NAMESPACE>
 ```
 
 ### 6. Set the target namespace in the values.yaml
