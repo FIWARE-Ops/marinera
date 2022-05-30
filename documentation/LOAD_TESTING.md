@@ -2,7 +2,7 @@
 
 You can run load tests to calculate the maximum throughput for your deployment. This section shows how to run tests using the FIWARE load testing tool and some reports of tests run in a demo scenario.
 
-## 1. Run your own load tests
+## 1. Run your load tests
 
 1. Clone [load-tests](https://github.com/FIWARE/load-tests) repository locally.
 2. Configure the load test on [/src/test/resources/test.conf]()
@@ -88,7 +88,7 @@ This table shows the idle consumption of all the components of the deployment:
 
 * **Scenario**: This is the scenario number. You can use this number to check resource consumption of the test in the tables below.
 * **numDevices**: Number of simultaneous devices reporting data.
-* **numUpdates**: Number of reports per each device during the load test.
+* **numUpdates**: Number of reports per device during the load test.
 * **updateDelay**: Time between reports.
 * **Duration**: This value is part of the Gatling report and shows the number of seconds that the scenario took to execute.  
 * **Req/s**: This value is part of the Gatling report and shows the number of successful requests from the Gatling application running locally.
@@ -133,3 +133,33 @@ This table shows the idle consumption of all the components of the deployment:
 | Keycloak             | 1 | 1.67 | 4.87 | 3.39 | 1.08 GiB   | 1.09 GiB   | 1.09 GiB   |
 | Keycloak PostgreSQL  | 2 | 0.01 | 0.03 | 0.02 | 132.92 MiB | 136.04 MiB | 134.06 MiB |
 | PEP Proxy            | 2 | 0.08 | 0.24 | 0.16 | 323.41 MiB | 332.26 MiB | 328.28 MiB |
+
+
+## 3. Limits and Requests
+
+Load tests help us to estimate the resources (CPU and Memory) that each component will demand when they run under high pressure. To get a good QoS for our pods, we are going to set CPU and memory requests and limits for all the components of our deployment:
+
+
+| Component            | Replicas | CPU Req | CPU Lim | MEM Req | MEM Lim |
+|----------------------|----------|---------|---------|---------|---------|
+| Orion-LD             | 2        | 10m     | 250m    | 50Mi    | 1GB     |
+| MongoDB              | 2        | 50m     | 500m    | 300Mi   | 1.5GB   |
+| MongoDB - Arbiter    | 1        | 50m     | 500m    | 300Mi   | 1.5GB   |
+| MongoDB - Metrics    | 2        | 50m     | 200m    | 50Mi    | 500Mi   |
+| QuantumLeap          | 2        | 10m     | 500m    | 50Mi    | 250Mi   |
+| TimeScale            | 3        | 10m     | 250m    | 300Mi   | 800Mi   |
+| Keycloak             | 1        | 100m    | 6       | 400Mi   | 2GB     |
+| Keycloak PostgreSQL  | 2        | 10m     | 250m    | 50Mi    | 250Mi   |
+| PEP Proxy            | 2        | 50m     | 1       | 300Mi   | 800Mi   |
+| Grafana              | 1        | 10m     | 1       | 100Mi   | 1GB     |
+| Grafana Metrics      | 1        | 10m     | 250m    | 50Mi    | 250Mi   |
+| AirQuality Simulator | 1        | 10m     | 1       | 300Mi   | 800Mi   |
+
+
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi 
+      requests:
+        cpu: 50m 
+        memory: 50Mi 
