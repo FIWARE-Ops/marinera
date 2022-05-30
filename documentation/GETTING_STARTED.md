@@ -19,11 +19,11 @@ Since this repository concentrates on deploying the platform, we require the und
 - [Openshift Logging](./LOGGING.md) installed and configured.
 - [Openshift User Workload Monitoring](./MONITORING.md) enabled.
 
-> *NOTE:* A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
+> **NOTE:** A user with `cluster-admin` permissions is needed to install the ArgoCD operator.
 
 ## OpenShift user permissions
 
-> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
 
 In order to be able to deploy FIWARE applications, an Openshift user needs:
 
@@ -59,12 +59,10 @@ With the following command, we give the ArgoCD running in the namespace <ARGOCD_
 # get ArgoCD SA name
 oc -n <ARGOCD_NAMESPACE> get sa | grep argocd-server
 
-# Provide the SA with the right permissions
+# Give the SA the right permissions
 oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:<SA_NAME>
 ```
 > **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
-
-> **WARNING:** Maybe you ServiceAcoount name is not `argocd-argocd-server`. Use your service account name according to your ArgoCD Server instance.
 
 ## Installation steps
 
@@ -119,14 +117,13 @@ sed -i'' -e 's,source: https://github.com/FIWARE-Ops/marinera,source:  <FORK_URL
 
 ### 5. Create the target namespace inside your cluster
 
-> :warning: Make sure for the next steps that you are logged in to the cluster via ```oc login```
-> and that the account has enough permissions to create namespaces and create resources
+> **WARNING:** Make sure for the next steps that you are logged in to the cluster via ```oc login``` and that the account has enough permissions to create namespaces and create resources
 
 The platform should be deployed to a namespace. Create the namespace via:
 ```shell
 oc new-project <PLATFORM_NAMESPACE>
 ```
-> **WARNING:** Depending on your ArgoCD deployment and configuration it's probably you need to add label `argocd.argoproj.io/managed-by:<ARGOCD_NAMESPACE>` in your `<PLATFORM_NAMESPACE>`
+> **WARNING:** Depending on your ArgoCD deployment and configuration you may need to add the label `argocd.argoproj.io/managed-by:<ARGOCD_NAMESPACE>` to your `<PLATFORM_NAMESPACE>`
 ```shell
 oc label namespace <PLATFORM_NAMESPACE> argocd.argoproj.io/managed-by=<ARGOCD_NAMESPACE>
 ```
