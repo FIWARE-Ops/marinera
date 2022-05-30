@@ -38,9 +38,11 @@ oc adm policy add-cluster-role-to-user self-provisioner alice
 
 ## ArgoCD permissions
 
-> *NOTE:* A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
 
-When using ArgoCD to deploy applications in the cluster, the ArgoCD service account `argocd-argocd-server` is basically deploying things on our behalf, meaning is this SA to whom we need to provide the right permissions to deploy our applications.
+When using ArgoCD to deploy applications in the cluster, the ArgoCD service account `XXX-argocd-server` is basically deploying things on our behalf, meaning is this SA to whom we need to provide the right permissions to deploy our applications.
+
+> **NOTE:** The ArgoCD SA name follows the pattern `<ARGOCD_INSTANCE_NAME>-argocd-server`, so if for example your ArgoCD instances is named "myargo", then the SA name would be `myargo-argocd-server`
 
 When our applications are composed by only traditional OpenShift/K8s objects such as deployments, services or secrets, giving ArgoCD SA the `admin` role would be enough. But when our applications are composed by no so traditional objects such as Operators CRs like Prometheus `ServiceMonitors` or `PrometheuRules` (like some of the FIWARE apps do) then we need additional permissions.
 
@@ -54,7 +56,11 @@ We are giving the ArgoCD SA root like access, but only at a certain namespaces, 
 With the following command, we give the ArgoCD running in the namespace <ARGOCD_NAMESPACE> `cluster-admin` permissions in the namespace <PLATFORM_NAMESPACE>, meaning ArgoCD can deploy any object inside that namespace, but only in that namespace.
 
 ```bash
-oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:argocd-argocd-server
+# get ArgoCD SA name
+oc -n <ARGOCD_NAMESPACE> get sa | grep argocd-server
+
+# Provide the SA with the right permissions
+oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:<SA_NAME>
 ```
 > **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
 
