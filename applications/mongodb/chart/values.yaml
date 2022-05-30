@@ -11,13 +11,13 @@ mongodb:
     enabled: false
   containerSecurityContext:
     enabled: false
-#  resources:
-#    limits:
-#      cpu: 400m
-#      memory: 1024Mi
-#    requests:
-#      cpu: 400m
-#      memory: 1024Mi
+  resources:
+    limits:
+      cpu: 500m #400m
+      memory: 1.5GB #1024Mi
+    requests:
+      cpu: 50m #400m
+      memory: 300Mi #1024Mi
   persistence:
     enabled: true
     size: 8Gi
@@ -31,6 +31,13 @@ mongodb:
       marinera/component: core
       marinera/subcomponent: persistence
       marinera/product: mongodb
+    resources:
+      limits:
+        cpu: 500m #400m
+        memory: 1.5GB #1024Mi
+      requests:
+        cpu: 50m #400m
+        memory: 300Mi #1024Mi
   systemLogVerbosity: 1
   podLabels:
     marinera/platform: fiware
@@ -41,3 +48,10 @@ mongodb:
     enabled: true
     serviceMonitor:
       enabled: true
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi 
+      requests:
+        cpu: 50m 
+        memory: 50Mi 

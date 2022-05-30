@@ -11,6 +11,7 @@ keywords:
   - chart
 sources:
   - https://github.com/FIWARE-Ops/marinera/applications/grafana
+  - https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
 dependencies:
 - name: grafana
   version: 6.29.3 # Grafana 8.5.2

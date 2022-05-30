@@ -40,7 +40,13 @@ grafana:
       enabled: true
       label: grafana_datasource
       labelValue: grafana
-
+    resources:
+      limits:
+        cpu: 1
+        memory: 1Gi
+      requests:
+        cpu: 10m
+        memory: 10Mi
   dashboardProviders:
     dashboardproviders.yaml:
       apiVersion: 1
@@ -72,6 +78,14 @@ grafana:
     interval: 30s
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
+
+  resources:
+    limits:
+      cpu: 1
+      memory: 1Gi
+    requests:
+      cpu: 10m
+      memory: 100Mi
 
 
 admin:
