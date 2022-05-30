@@ -1,4 +1,4 @@
-# How to connect devices
+# How to persist data
 
 The platform uses the QuantumLeap component linked to a TimescaleDB database to provide persistence of each of the
 modifications in the entities represented in Orion-LD. Each entity modification is reported through the subscription
