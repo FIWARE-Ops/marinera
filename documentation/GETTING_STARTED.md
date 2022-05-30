@@ -145,7 +145,16 @@ This can be done with the following command:
 ```shell
 sed -i'' -e 's/branch: \&branch main/branch: \&branch <FORK_BRANCH>/g' fiware-platform/values.yaml
 ```
-### 8. Apply the applications to the cluster
+
+### 8. Set the target namespace as the name of the release in the values.yaml
+
+Since all of your ArgoCD applications are going to live in the ArgoCD namespace, it is important to differentiate them with the name of the release, so a good strategy is to make it the name of the namespace you are deploying to:
+
+```shell
+sed -i'' -e 's/release: demo/release: <PLATFORM_NAMESPACE>/g' fiware-platform/values.yaml
+```
+
+### 9. Apply the applications to the cluster
 
 Now that everything is prepared, we can deploy the FIWARE components chosen by creating the ArgoCD applications
 and applying them to the cluster:
@@ -157,3 +166,17 @@ helm template . | oc -n <ARGOCD_NAMESPACE> apply -f -
 This will create ArgoCD apps.
 
 ![FIWARE components deployed](./images/argocd-apps.png)
+
+
+### 10. Uninstall the platform
+
+If you want to uninstall the FIWARE platform, you just need to run the following commands:
+
+> **CRITICAL:** Make sure you are in the correct namespace in the cluster and the name of the release inside `fiware-platform/values.yaml` is the one you are going to uninstall.
+
+```bash
+cd fiware-platform/
+helm template . | oc -n <ARGOCD_NAMESPACE> delete -f -
+
+oc delete project <PLATFORM_NAMESPACE>
+```
