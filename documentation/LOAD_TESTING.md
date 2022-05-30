@@ -12,8 +12,6 @@ You can run load tests to calculate the maximum throughput for your deployment. 
     mvn install gatling:test -Dgatling.simulationClass=simulations.nosec.v2.EntityUpdateWithSingleSubscriptionSimulation
     ```
 
-
-
 ## 2. Load test example reports
 
 In order to calculate a starting configuration, you can check the load test reports in this section.
@@ -31,9 +29,6 @@ Bear in mind that all the tests have been executed with the following versions o
 | Keycloak            | 8.0.0 | 17.0.1 | Mar, 2022 |
 | Keycloak PostgreSQL | 8.0.0 | 14.2.0 | Feb, 2022 |
 | PEP Proxy           | 0.1.0 | 1.0.0 | May, 2022 |
-
-
-
 
 ### 2.2 Idle results
 
@@ -76,7 +71,6 @@ This table shows the idle consumption of all the components of the deployment:
 
 ### 2.3 Load tests results
 
-
 | Scenario | numDevices | numUpdates | updateDelay | Duration | Req/s | OK/KO | Report |
 |-----------|-----------|-------------|--------------|----------|-------|----------|----------|
 | [#1](#231-scenario-1)        |100        | 300         | 1s           | 547s     | 55.109| 30200 / 0 | [Link](https://fiware-ops.github.io/marinera/documentation/load-test-reports/scenario1/report.html) <!--- entityupdatewithsinglesubscriptionsimulation-20220527092140490-->
@@ -118,7 +112,6 @@ This table shows the idle consumption of all the components of the deployment:
 | PEP Proxy            | 2 | 0.08 | 0.31 | 0.16 | 299.29 MiB| 585.83 MiB | 343.41 MiB | 
 
 
-
 #### 2.3.3 Scenario 3
 
 | Component            | Replicas | CPU Min | CPU Max | CPU Avg | MEM Min | MEM Max | MEM Avg |
@@ -136,7 +129,6 @@ This table shows the idle consumption of all the components of the deployment:
 
 Load tests help us to estimate the resources (CPU and Memory) that each component will demand when they run under high pressure. To get a good QoS for our pods, we are going to set CPU and memory requests and limits for all the components of our deployment:
 
-
 | Component            | Replicas | CPU Req | CPU Lim | MEM Req | MEM Lim |
 |----------------------|----------|---------|---------|---------|---------|
 | Orion-LD             | 2        | 10m     | 250m    | 50Mi    | 1GB     |
@@ -151,4 +143,3 @@ Load tests help us to estimate the resources (CPU and Memory) that each componen
 | Grafana              | 1        | 10m     | 1       | 100Mi   | 1GB     |
 | Grafana Metrics      | 1        | 10m     | 250m    | 50Mi    | 250Mi   |
 | AirQuality Simulator | 1        | 10m     | 1       | 300Mi   | 800Mi   |
-
