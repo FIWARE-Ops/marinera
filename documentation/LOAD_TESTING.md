@@ -145,7 +145,7 @@ Load tests help us to estimate the resources (CPU and Memory) that each componen
 | MongoDB - Metrics    | 2        | 50m     | 200m    | 50Mi    | 500Mi   |
 | QuantumLeap          | 2        | 10m     | 500m    | 50Mi    | 250Mi   |
 | TimeScale            | 3        | 10m     | 250m    | 300Mi   | 800Mi   |
-| Keycloak             | 1        | 100m    | 6       | 400Mi   | 2GB     |
+| Keycloak             | 1        | 100m    | 7       | 400Mi   | 2GB     |
 | Keycloak PostgreSQL  | 2        | 10m     | 250m    | 50Mi    | 250Mi   |
 | PEP Proxy            | 2        | 50m     | 1       | 300Mi   | 800Mi   |
 | Grafana              | 1        | 10m     | 1       | 100Mi   | 1GB     |

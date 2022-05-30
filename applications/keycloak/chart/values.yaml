@@ -86,7 +86,7 @@ keycloak:
 
   resources:
     limits:
-      cpu: 6
+      cpu: 7
       memory: 2Gi
     requests:
       cpu: 100m
