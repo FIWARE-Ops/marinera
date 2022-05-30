@@ -155,11 +155,3 @@ Load tests help us to estimate the resources (CPU and Memory) that each componen
 | Grafana Metrics      | 1        | 10m     | 250m    | 50Mi    | 250Mi   |
 | AirQuality Simulator | 1        | 10m     | 1       | 300Mi   | 800Mi   |
 
-
-    resources:
-      limits:
-        cpu: 200m
-        memory: 500Mi 
-      requests:
-        cpu: 50m 
-        memory: 50Mi 
