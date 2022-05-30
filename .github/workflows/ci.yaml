@@ -122,8 +122,6 @@ jobs:
           helm install --wait selenium . -n ${{ steps.branch-name.outputs.current_branch }}
           # go to the e2e-test directory
           cd ../e2e-test
-          # replace the default destination namespace(demo) with the branch namespace in the Grafana URL
-          sed -i 's/demo/${{ steps.branch-name.outputs.current_branch }}/' values.yaml 
           # install the helm chart
           helm install e2e . -n ${{ steps.branch-name.outputs.current_branch }}
           
