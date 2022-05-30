@@ -34,3 +34,68 @@ jobs:
           cd fiware-platform/
           # render app of apps and apply it
           helm template . | oc -n labs-ci-cd apply -f -
+
+      - name: Check if all apps are healthy
+        run: |
+          # wait for the changes to take place and potentially crash the applications
+          sleep 30
+
+          # bool to check if the apps are healthy
+          healthy=0
+          # counter to set a number of tries
+          try=0
+          tries=30
+          # get the list of apps in the namespace 
+          componentsInstalled=$(grep "enabled: true" fiware-platform/values.yaml -c)
+          # check if the condition is met
+          while [ $healthy == 0 ] && [ $try -lt $tries ]
+          do
+            apps=$(oc get applications.argoproj.io --no-headers -n labs-ci-cd -l destination-namespace=demo | awk '{ print $3 }')
+            healthyapps=0
+            for app in $apps
+            do
+              if [ $app != "Healthy" ]
+              then
+                echo "Trying again in 10 seconds"
+                sleep 10
+                try=$(( try + 1 ))
+                break
+              elif [ $app == "Healthy" ]
+              then  
+                healthyapps=$(( healthyapps + 1 ))
+              fi
+              if [ $healthyapps == $componentsInstalled ]
+              then
+                healthy=1
+              fi
+            done
+          done
+
+          if [ $try -eq $tries ]
+          then
+            echo "ERROR: Tried too many times"
+            exit 1
+          fi
+
+      - name: Deploy the helm charts for the e2e
+        run: |
+          # go to selenium-grid directory
+          cd tests/selenium-grid
+          # install selenium-grid
+          helm install --wait selenium . -n demo
+          # go to the e2e-test directory
+          cd ../e2e-test
+          # install the helm chart
+          helm install e2e . -n demo
+          
+      - name: Uninstall marinera-e2e helm chart
+        if: always()
+        run: |
+          # uninstall the e2e helm chart
+          helm uninstall e2e -n demo
+
+      - name: Uninstall selenium-grid helm chart
+        if: always()
+        run: |
+          # uninstall the selenium-grid helm chart
+          helm uninstall selenium -n demo

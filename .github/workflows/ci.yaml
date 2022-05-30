@@ -74,7 +74,7 @@ jobs:
 
       - name: Check if all apps are healthy
         run: |
-          # wait for the changes to take place and potentially crash the applictions
+          # wait for the changes to take place and potentially crash the applications
           sleep 30
 
           # bool to check if the apps are healthy
@@ -122,8 +122,6 @@ jobs:
           helm install --wait selenium . -n ${{ steps.branch-name.outputs.current_branch }}
           # go to the e2e-test directory
           cd ../e2e-test
-          # replace the default destination namespace(demo) with the branch namespace in the Grafana URL
-          sed -i 's/demo/${{ steps.branch-name.outputs.current_branch }}/' values.yaml 
           # install the helm chart
           helm install e2e . -n ${{ steps.branch-name.outputs.current_branch }}
           
