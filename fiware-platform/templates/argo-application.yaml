@@ -63,6 +63,7 @@ spec:
       selfHeal: true
     syncOptions:
       - Validate=true
+      - CreateNamespace=true
   ignoreDifferences:
     - group: apps
       kind: Deployment
