@@ -14,7 +14,7 @@ mongodb:
   resources:
     limits:
       cpu: 500m #400m
-      memory: 1.5GB #1024Mi
+      memory: 1.5Gi #1024Mi
     requests:
       cpu: 50m #400m
       memory: 300Mi #1024Mi
@@ -34,7 +34,7 @@ mongodb:
     resources:
       limits:
         cpu: 500m #400m
-        memory: 1.5GB #1024Mi
+        memory: 1.5Gi #1024Mi
       requests:
         cpu: 50m #400m
         memory: 300Mi #1024Mi
