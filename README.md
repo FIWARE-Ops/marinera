@@ -16,6 +16,8 @@ The open-source Platform for Our Smart Digital Future.
 
 - [Understanding FIWARE Platform](./documentation/UNDERSTANDING_FIWARE.md)
 - [Components and configuration](./documentation/FIWARE_COMPONENTS.md)
+- [How to connect devices](./documentation/HOW_TO_CONNECT_DEVICES.md)
+- [How to persist data](./documentation/HOW_TO_PERSIST_DATA.md)
 - [Secrets](./documentation/SECRETS.md)
 - [Logging](./documentation/LOGGING.md)
 - [Monitoring](./documentation/MONITORING.md)
