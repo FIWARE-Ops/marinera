@@ -84,6 +84,14 @@ keycloak:
   service:
     type: ClusterIP
 
+  resources:
+    limits:
+      cpu: 6
+      memory: 2Gi
+    requests:
+      cpu: 100m
+      memory: 400Mi
+
   metrics:
     enabled: true
     serviceMonitor:
