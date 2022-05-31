@@ -16,11 +16,11 @@ orion-ld:
     replicaCount: 2
     resources:
       limits:
-        cpu: 250m #100m
-        memory: 1GB #128Mi
+        cpu: 250m
+        memory: 1GB
       requests:
-        cpu: 10m #100m
-        memory: 50Mi #128Mi
+        cpu: 10m
+        memory: 50Mi
   mongo:
     # we want to use the individually deployed mongodb
     enabled: false

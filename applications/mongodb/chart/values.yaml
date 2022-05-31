@@ -13,11 +13,11 @@ mongodb:
     enabled: false
   resources:
     limits:
-      cpu: 500m #400m
-      memory: 1.5Gi #1024Mi
+      cpu: 500m
+      memory: 1.5Gi
     requests:
-      cpu: 50m #400m
-      memory: 300Mi #1024Mi
+      cpu: 50m
+      memory: 300Mi
   persistence:
     enabled: true
     size: 8Gi
@@ -33,11 +33,11 @@ mongodb:
       marinera/product: mongodb
     resources:
       limits:
-        cpu: 500m #400m
-        memory: 1.5Gi #1024Mi
+        cpu: 500m
+        memory: 1.5Gi
       requests:
-        cpu: 50m #400m
-        memory: 300Mi #1024Mi
+        cpu: 50m
+        memory: 300Mi
   systemLogVerbosity: 1
   podLabels:
     marinera/platform: fiware
