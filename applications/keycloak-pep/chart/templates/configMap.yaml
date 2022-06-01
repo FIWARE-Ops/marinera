@@ -23,7 +23,9 @@ data:
 
     keycloak.realm=fiware-server
 
-    keycloak.auth-server-url=http://keycloak:80
+    keycloak.auth-server-url=https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com
+
+    keycloak.proxy-url=http://keycloak:80
 
     keycloak.ssl-required=external
 
