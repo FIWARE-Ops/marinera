@@ -8,12 +8,12 @@ Since this repository concentrates on deploying the platform, we require the und
 
 **The following preconditions need to be fulfilled before starting :warning: :**
 
-- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) in >= 4.x installed - see [official documentation](https://docs.openshift.com/container-platform/latest/welcome/index.html) for installing it.
+- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift)  >=4.9.x installed - see [official documentation](https://docs.openshift.com/container-platform/4.9/welcome/index.html) for installing it.
 - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) >=2.3.x installed - multiple options are available:
     - [Install ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
     - [Install using Argo CD Openshift Operator ](https://argocd-operator-helm.readthedocs.io/en/latest/ocp/ocp4.html)
     - [FIWARE installation documentation](https://github.com/FIWARE-Ops/fiware-gitops#4-install-argocd)
-- [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) installed - see [installation documentation](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli)
+- [OpenShift CLI](https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html) installed - see [installation documentation](https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli)
 - [Helm](https://helm.sh/docs/intro/install/) binary installed.
 - [Sealed Secrets Controller](https://github.com/bitnami-labs/sealed-secrets#helm-chart) deployed and [Kubeseal](https://github.com/bitnami-labs/sealed-secrets/releases) binary installed. (Optional, only if sealed secrets)
 - [Openshift Logging](./LOGGING.md) installed and configured.
@@ -23,7 +23,7 @@ Since this repository concentrates on deploying the platform, we require the und
 
 ## OpenShift user permissions
 
-> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.9/authentication/using-rbac.html) works is required to understand this topic.
 
 In order to be able to deploy FIWARE applications, an Openshift user needs:
 
@@ -38,7 +38,7 @@ oc adm policy add-cluster-role-to-user self-provisioner alice
 
 ## ArgoCD permissions
 
-> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.9/authentication/using-rbac.html) works is required to understand this topic.
 
 When using ArgoCD to deploy applications in the cluster, the ArgoCD service account `XXX-argocd-server` is basically deploying things on our behalf, meaning is this SA to whom we need to provide the right permissions to deploy our applications.
 
