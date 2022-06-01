@@ -55,6 +55,7 @@ We are giving the ArgoCD SA root like access, but only at a certain namespaces, 
 
 With the following command, we give the ArgoCD running in the namespace <ARGOCD_NAMESPACE> `cluster-admin` permissions in the namespace <PLATFORM_NAMESPACE>, meaning ArgoCD can deploy any object inside that namespace, but only in that namespace.
 
+> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
 ```bash
 # get ArgoCD SA name
 oc -n <ARGOCD_NAMESPACE> get sa | grep argocd-server
@@ -62,8 +63,6 @@ oc -n <ARGOCD_NAMESPACE> get sa | grep argocd-server
 # Give the SA the right permissions
 oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:<SA_NAME>
 ```
-> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
-
 ## Installation steps
 
 ### 1. Fork the repo
