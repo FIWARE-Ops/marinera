@@ -9,7 +9,7 @@ keywords:
   - helm
   - chart
 sources:
-  - https://github.com/FIWARE-Ops/marinera/applications/quantumleap
+  - https://github.com/FIWARE-Ops/marinera/tree/main/applications/quantumleap/chart
 dependencies:
 - name: quantumleap
   version: 0.1.18

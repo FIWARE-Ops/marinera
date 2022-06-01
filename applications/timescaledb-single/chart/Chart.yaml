@@ -10,7 +10,7 @@ keywords:
   - helm
   - chart
 sources:
-  - https://github.com/FIWARE-Ops/marinera/tree/main/applications/timescaledb-single
+  - https://github.com/FIWARE-Ops/marinera/tree/main/applications/timescaledb-single/chart
 
 dependencies:
 #home: copy of https://github.com/timescale/timescaledb-kubernetes
