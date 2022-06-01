@@ -1,12 +1,12 @@
 realm:
   grafana:
-    rootUrl: https://grafana
+    rootUrl: https://grafana-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com
     adminUrl: https://grafana
     redirectUris:
-      - https://grafana-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/
+      - /*
       # - https://grafana-2/
     webOrigins:
-      - https://grafana-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/
+      - /
       # - https://grafana-2/
   orionPep:
     baseUrl: https://orion-ld
