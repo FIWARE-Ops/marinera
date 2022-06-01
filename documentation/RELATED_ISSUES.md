@@ -21,6 +21,7 @@ Solving the following issues would bring to the platform a better security as we
 |------------|------|---------|
 | https://github.com/orchestracities/ngsi-timeseries-api/issues/377 | quantumleap | Fix health method to set liveness and readiness |
 | https://github.com/orchestracities/ngsi-timeseries-api/issues/393 | quantumleap | Connect to Timescale over SSL |
+| https://github.com/orchestracities/charts/issues/33 | quantumleap | Support configuration of sensible data via secrets |
 
 
 ## ArgoCD Issues
