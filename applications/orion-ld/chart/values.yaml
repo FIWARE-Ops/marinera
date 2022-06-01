@@ -14,6 +14,13 @@ orion-ld:
       level: "WARN"
   deployment:
     replicaCount: 2
+    resources:
+      limits:
+        cpu: 250m
+        memory: 1Gi
+      requests:
+        cpu: 10m
+        memory: 50Mi
   mongo:
     # we want to use the individually deployed mongodb
     enabled: false

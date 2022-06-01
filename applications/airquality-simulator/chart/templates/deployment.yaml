@@ -95,7 +95,7 @@ spec:
               value: /etc/config/application.yaml
             - name: ENDPOINTS_ALL_PORT
               value: {{ .Values.healthPort | quote }}
-          {{- with .Values.resources }}
+          {{- if .Values.resources }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- end }}

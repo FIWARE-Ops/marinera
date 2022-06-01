@@ -79,13 +79,11 @@ quantumleap:
 
   resources:
     limits:
-      # -- Memory limits
-      memory: 1Gi
+      cpu: 500m
+      memory: 250Mi
     requests:
-      # -- CPU request
-      cpu: 100m
-      # -- Memory request
-      memory: 256Mi
+      cpu: 10m
+      memory: 50Mi
 
   geocoding:
     # -- Caching can be disabled by setting the host to empty
