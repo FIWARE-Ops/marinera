@@ -20,7 +20,7 @@ grafana:
         enabled: true
         name: Keycloak
         allow_sign_up: true
-        scopes: profile,email,roles
+        scopes: profile,email,roles 
         auth_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/auth
         token_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/token
         api_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/userinfo
