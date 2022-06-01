@@ -13,20 +13,21 @@ grafana:
       allow_loading_unsigned_plugins: orion-datasource
     users:
       default_theme: light # dark | light
-    auth.anonymous:
-      enabled: false
-    auth.generic_oauth:
-      enabled: true
-      name: Keycloak
-      allow_sign_up: true
-      scopes: profile,email,groups
-      auth_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/auth
-      token_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/token
-      api_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/userinfo
-      client_id: grafana
-      client_secret: secret
-      # role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
-      role_attribute_path: resource_access.grafana.roles[0]
+    auth:
+      anonymous:
+        enabled: false
+      generic_oauth:
+        enabled: true
+        name: Keycloak
+        allow_sign_up: true
+        scopes: profile,email,roles
+        auth_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/auth
+        token_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/token
+        api_url: https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server/protocol/openid-connect/userinfo
+        client_id: grafana
+        client_secret: secret
+        # role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
+        role_attribute_path: resource_access.grafana.roles[0]
     server:
       root_url: https://grafana-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/
   initChownData:
