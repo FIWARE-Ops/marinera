@@ -27,6 +27,8 @@ grafana:
       client_secret: secret
       # role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
       role_attribute_path: resource_access.grafana.roles[0]
+    server:
+      root_url: https://grafana-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/
   initChownData:
     enabled: false
   persistence:
