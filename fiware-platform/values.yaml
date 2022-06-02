@@ -46,6 +46,7 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
+    - values-unsecured.yaml
 
   - name: air-quality
     enabled: true
