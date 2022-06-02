@@ -30,6 +30,7 @@ Solving the following issues would bring to the platform a better security as we
 |------------|------|---------|
 | https://github.com/argoproj/argo-cd/issues/2789 |  | Support remote helm values files |
 | https://github.com/argoproj/argo-cd/issues/5065#issuecomment-745593317 |  | Helm Value files from different location |
+| https://github.com/argoproj/argo-cd/issues/5202 |  | Currently, ArgoCD does not support the Helm lookup function |
 
 
 ## OpenShift Helm Charts Repo
@@ -42,3 +43,9 @@ Solving the following issues would bring to the platform a better security as we
 | Issue | Component | Description |
 |------------|------|---------|
 | https://github.com/orchestracities/ngsi-timeseries-api/issues/539 | quantumleap | Metrics in prometheus format available |
+
+## Keycloak Issues
+
+| Issue | Component | Description |
+|------------|------|---------|
+| https://issues.redhat.com/browse/KEYCLOAK-15553 | Keycloak | Keycloak does not allow to set a issuer name different than the Frontend URL. This prevents Grafana OAuth from working as login to Grafana tries to redirect you to the service URL. This is also related to [this other issue](https://issues.redhat.com/browse/KEYCLOAK-6984)|
