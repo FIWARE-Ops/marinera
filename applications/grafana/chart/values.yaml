@@ -20,9 +20,9 @@ grafana:
       name: Keycloak
       allow_sign_up: true
       scopes: profile,email 
-      auth_url: ${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/auth
-      token_url: ${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/token
-      api_url: ${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/userinfo
+      auth_url: https://${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/auth
+      token_url:  https://${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/token
+      api_url:  https://${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/userinfo
       client_id: grafana
       client_secret: secret # $__file(/tmp/secret)
       # role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
