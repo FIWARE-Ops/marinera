@@ -57,8 +57,6 @@ data:
 
     keycloak.policy-enforcer-config.path-cache-config.lifespan=5000
 
-    rest.security.issuer-uri=https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/realms/fiware-server
-
     # Logging configuration
 
     logging.level.root={{ .Values.log.level }}
