@@ -37,6 +37,7 @@ grafana:
   extraVolumeMounts: 
     - name: env-dir
       mountPath: /env
+      readOnly: true
 
   sidecar:
     dashboards:
@@ -88,7 +89,7 @@ grafana:
     interval: 30s
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
-
+    KEYCLOAK_HOST_FILE: /env/kc.env
   resources:
     limits:
       cpu: 1
@@ -105,15 +106,11 @@ grafana:
         - -c
         - |
           host=$(kubectl get route keycloak -o jsonpath={.spec.host})
-          echo export KEYCLOAK_HOST=$host >> /env/kc.sh 
+          echo $host >> /env/kc.env 
       volumeMounts:
       - name: env-dir
         mountPath: "/env"
 
-  command: 
-    - /bin/sh
-    - -c
-    - /env/kc.sh && /run.sh
 admin:
   secured: false
   # -- Admin username
