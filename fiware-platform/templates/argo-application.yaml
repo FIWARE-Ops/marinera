@@ -41,10 +41,10 @@ spec:
 {{- if .helm_values }}
       valueFiles:
 {{- toYaml .helm_values | nindent 8 }}
-{{- if $secretsEnabled }}
-      - values-unsecured.yaml
+{{- if $secrets }}
+        - values-secured.yaml
 {{- else }}
-      - values-secured.yaml
+        - values-unsecured.yaml
 {{- end }}
 {{- end }}
 {{- if .values }}
