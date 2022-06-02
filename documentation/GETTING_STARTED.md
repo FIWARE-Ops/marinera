@@ -72,8 +72,10 @@ On [github](github.com), follow the [fork-a-repo tutorial](https://docs.github.c
 
 ### 2. Decide which FIWARE applications to deploy
 
-Go to `fiware-platform/values.yaml` and set the `enabled` value to either `true` or `false`.
+Go to `fiware-platform/values.yaml` and set the `enabled` value to either `true` or `false`. To know more about what are the FIWARE components of this platform you can go to the [FIWARE components and configuration docs](./FIWARE_COMPONENTS.md).
+
 For example, you can enable Orion-LD but disable Quantum Leap:
+
 ```yaml
 applications:
   - name: orion-ld
