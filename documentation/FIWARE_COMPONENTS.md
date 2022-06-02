@@ -2,12 +2,11 @@
 
 All the applications of this repo are expected to be Helm charts. There are components used as dependencies, and others components have been imported and modified.
 
-In order to modify options or parameters in the helm chart values, take note the following list to modify the proper files related to each component.
+In order to modify options or parameters in the helm chart values, take note of the following list to modify the proper files related to each component.
 
-> **WARNING** : changing parameters can cause the platform to stop working as is. Be sure of the changes before applying them.
+> **WARNING** : changing parameters can cause the platform to stop working as it is. Be sure of the changes before applying them.
 
 Currently the FIWARE Platform is composed by the following software components and subcomponents:
-
 
 ## FIWARE core
 
