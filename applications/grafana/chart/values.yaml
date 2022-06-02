@@ -90,7 +90,7 @@ grafana:
   extraInitContainers:
     - name: get-route
       image: bitnami/kubectl
-      command: ["kubectl", "get", "routes", "-n", "default"]
+      command: ["kubectl", "get", "routes"]
 admin:
   secured: false
   # -- Admin username
