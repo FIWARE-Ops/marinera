@@ -111,7 +111,11 @@ grafana:
       - name: env-dir
         mountPath: "/env"
 
-  command: ["/bin/sh", "-c", "export $(cat /env/kc.env) | /run.sh"]
+  command: 
+   - "/bin/sh"
+   - "-c"
+   - "host=$(cat /env/kc.env)"
+   - "export $host | /run.sh"
 admin:
   secured: false
   # -- Admin username
