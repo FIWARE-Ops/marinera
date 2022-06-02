@@ -86,3 +86,11 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
+
+  - name: marinera-secrets
+    enabled: false
+    source_path: secrets
+    source_ref: *branch
+    destination: *destination
+    helm_values:
+    - values.yaml
