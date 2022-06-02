@@ -114,9 +114,7 @@ grafana:
   command: 
     - /bin/sh
     - -c
-    - |
-      export $(cat /env/kc.env) \
-      /run.sh
+    -  export $(cat /env/kc.env) && /run.sh
 admin:
   secured: false
   # -- Admin username
