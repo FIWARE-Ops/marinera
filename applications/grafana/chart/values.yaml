@@ -105,7 +105,7 @@ grafana:
         - /bin/sh
         - -c
         - |
-          host=$(kubectl get route keycloak -o jsonpath={.spec.host}
+          host=$(kubectl get route keycloak -o jsonpath={.spec.host})
           echo KEYCLOAK_HOST=$host >> /env/kc.env 
       volumeMounts:
       - name: env-dir
