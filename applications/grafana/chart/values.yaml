@@ -101,7 +101,7 @@ grafana:
   extraInitContainers:
     - name: get-route
       image: bitnami/kubectl
-      command: |
+      command:
         - /bin/sh
         - -c
         - |
