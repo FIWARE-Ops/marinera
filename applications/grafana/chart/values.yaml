@@ -89,7 +89,7 @@ grafana:
     interval: 30s
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
-    KEYCLOAK_HOST__FILE: /env/kc.env
+    GF_KEYCLOAK_HOST__FILE: /env/kc.env
   resources:
     limits:
       cpu: 1
