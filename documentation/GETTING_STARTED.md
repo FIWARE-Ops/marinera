@@ -140,7 +140,7 @@ sed -i'' -e 's/destination_namespace: \&destination demo/destination_namespace: 
 
 ### 7. Set the target branch in the values.yaml
 
-Similar to the ```source```,, the ```branch``` can be replaced, so the ArgoCD apps will sync to that branch.
+Similar to the ```source```, the ```branch``` can be replaced is needed. By default when forking you are still using `main` branch, if you want to deploy from another one, you could change it so the ArgoCD apps will sync to that branch.
 This can be done with the following command:
 
 ```shell
