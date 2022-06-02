@@ -22,4 +22,5 @@ resources:
     memory: 300Mi
 
 log:
-  level: WARN
+  # level: WARN
+  level: DEBUG
