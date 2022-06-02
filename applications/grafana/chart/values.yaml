@@ -94,7 +94,7 @@ grafana:
   extraInitContainers:
     - name: get-route
       image: bitnami/kubectl
-      command: ["kubectl", "get", "routes"]
+      command: ["kubectl", "get", "route", "keycloak", "-o", "jsonpath={.spec.host}"]
 admin:
   secured: false
   # -- Admin username
