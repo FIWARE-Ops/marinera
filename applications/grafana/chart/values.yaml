@@ -106,7 +106,7 @@ grafana:
         - -c
         - |
           host=$(kubectl get route keycloak -o jsonpath={.spec.host})
-          echo KEYCLOAK_HOST=$host >> /env/kc.env 
+          echo export KEYCLOAK_HOST=$host >> /env/kc.sh 
       volumeMounts:
       - name: env-dir
         mountPath: "/env"
@@ -114,7 +114,7 @@ grafana:
   command: 
     - /bin/sh
     - -c
-    -  host=$(cat /env/kc.env) && export $host && /run.sh
+    - ./env/kc.sh && /run.sh
 admin:
   secured: false
   # -- Admin username
