@@ -164,6 +164,8 @@ cd fiware-platform/
 helm template . | oc -n <ARGOCD_NAMESPACE> apply -f -
 ```
 
+> **NOTE:** The deployment of the entire platform will take between 4 and 6 minutes with several components restarting several times until their dependencies are fulfilled.
+
 This will create ArgoCD apps.
 
 ![FIWARE components deployed](./images/argocd-apps.png)
