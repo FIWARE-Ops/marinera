@@ -22,5 +22,4 @@ resources:
     memory: 300Mi
 
 log:
-  # level: WARN
-  level: TRACE
+  level: WARN
