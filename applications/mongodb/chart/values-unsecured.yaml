@@ -1,4 +1,5 @@
+
 mongodb:
   auth:
     enabled: true
-    existingSecret: mongodb-secret
+    rootPassword: test

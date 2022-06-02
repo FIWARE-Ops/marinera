@@ -1,27 +1,6 @@
 orion-ld:
   broker:
-    # Avoid inconsistencies when running more than 1 replica.
-    subCacheIval: 1
     db:
-      hosts:
-        - mongodb-orion-0.mongodb-orion-headless
-        - mongodb-orion-1.mongodb-orion-headless
-      replicaSet: rs0
-      user: root
       existingSecret:
         name: mongodb-secret
         key: mongodb-root-password
-    logging:
-      level: "WARN"
-  deployment:
-    replicaCount: 2
-    resources:
-      limits:
-        cpu: 250m
-        memory: 1Gi
-      requests:
-        cpu: 10m
-        memory: 50Mi    
-  mongo:
-    # we want to use the individually deployed mongodb
-    enabled: false
