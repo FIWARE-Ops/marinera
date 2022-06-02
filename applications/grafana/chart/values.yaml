@@ -114,7 +114,7 @@ grafana:
   command: 
     - /bin/sh
     - -c
-    - export "KEYCLOAK_HOST"="$(< /env/kc.env)" && /run.sh
+    - export KEYCLOAK_HOST=$(cat /env/kc.env)
 admin:
   secured: false
   # -- Admin username
