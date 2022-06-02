@@ -1,10 +1,10 @@
 replicaCount: 2
 
 image:
-  repository: docker.io/hopu/keycloak-rest-pep
+  repository: docker.io/wistefan/pep
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "dev"
+  tag: "test"
 
 service:
   type: ClusterIP
