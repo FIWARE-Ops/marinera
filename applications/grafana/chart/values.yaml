@@ -31,6 +31,13 @@ grafana:
       resources: ["routes"]
       verbs: ["get","list"]
   securityContext: ""
+  extraContainerVolumes:
+    - name: env-dir
+      emptyDir: {}
+  extraVolumeMounts: 
+    - name: env-dir
+      mountPath: /env
+      readOnly: true
 
   sidecar:
     dashboards:
@@ -94,7 +101,15 @@ grafana:
   extraInitContainers:
     - name: get-route
       image: bitnami/kubectl
-      command: ["kubectl", "get", "route", "keycloak", "-o", "jsonpath={.spec.host}"]
+      command: |
+        - /bin/sh
+        - -c
+        - |
+          host=$(kubectl get route keycloak -o jsonpath={.spec.host}
+          echo KEYCLOAK_HOST=$host >> /env/kc.env 
+      volumeMounts:
+      - name: env-dir
+        mountPath: "/env"
 admin:
   secured: false
   # -- Admin username
