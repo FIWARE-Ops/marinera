@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: docker.io/wistefan/pep
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "test"
 
