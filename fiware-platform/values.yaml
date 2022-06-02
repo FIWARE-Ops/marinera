@@ -2,6 +2,7 @@ source: https://github.com/FIWARE-Ops/marinera
 release: demo
 destination_namespace: &destination demo
 branch: &branch main
+secretsEnabled: &secretsEnabled false
 
 applications:
   # Dont change mongodb name, current orion config relies on it.
@@ -46,7 +47,6 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
-    - values-unsecured.yaml
 
   - name: air-quality
     enabled: true
@@ -89,7 +89,7 @@ applications:
     - values.yaml
 
   - name: marinera-secrets
-    enabled: false
+    enabled: *secretsEnabled
     source_path: secrets
     source_ref: *branch
     destination: *destination

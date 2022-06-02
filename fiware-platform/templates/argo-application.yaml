@@ -1,4 +1,5 @@
 {{- if .Values.applications }}
+{{- $secrets := .Values.secretsEnabled }}
 {{- $release := .Values.release }}
 {{- $source := .Values.source }}
 {{- $team := .Values.team }}
@@ -40,6 +41,11 @@ spec:
 {{- if .helm_values }}
       valueFiles:
 {{- toYaml .helm_values | nindent 8 }}
+{{- if $secretsEnabled }}
+      - values-unsecured.yaml
+{{- else }}
+      - values-secured.yaml
+{{- end }}
 {{- end }}
 {{- if .values }}
       values: |
