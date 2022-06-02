@@ -89,7 +89,7 @@ grafana:
     interval: 30s
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
-    GF_KEYCLOAK_HOST__FILE: /env/kc.env
+    
   resources:
     limits:
       cpu: 1
@@ -111,6 +111,10 @@ grafana:
       - name: env-dir
         mountPath: "/env"
 
+  command: 
+    - /bin/sh
+    - -c
+    - export "KEYCLOAK_HOST"="$(< /env/kc.env)" && /run.sh
 admin:
   secured: false
   # -- Admin username
