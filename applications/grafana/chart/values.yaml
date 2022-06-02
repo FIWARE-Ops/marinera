@@ -37,7 +37,6 @@ grafana:
   extraVolumeMounts: 
     - name: env-dir
       mountPath: /env
-      readOnly: true
 
   sidecar:
     dashboards:
