@@ -11,6 +11,7 @@ applications:
     source_path: applications/mongodb/chart
     source_ref: *branch
     destination: *destination
+    secrets: false
     helm_values:
     - values.yaml
 
@@ -19,6 +20,7 @@ applications:
     source_path: applications/orion-ld/chart
     source_ref: *branch
     destination: *destination
+    secrets: false
     helm_values:
     - values.yaml
 
@@ -29,6 +31,7 @@ applications:
     source_path: applications/timescaledb-single/chart
     source_ref: *branch
     destination: *destination
+    secrets: false
     helm_values:
     - values.yaml
 
@@ -37,6 +40,7 @@ applications:
     source_path: applications/quantumleap/chart
     source_ref: *branch
     destination: *destination
+    secrets: false # Don't change
     helm_values:
     - values.yaml
 
@@ -45,6 +49,7 @@ applications:
     source_path: applications/grafana/chart
     source_ref: *branch
     destination: *destination
+    secrets: true
     helm_values:
     - values.yaml
 
@@ -53,6 +58,7 @@ applications:
     source_path: applications/air-quality-app/chart
     source_ref: *branch
     destination: *destination
+    secrets: false # Don't change
     helm_values:
     - values.yaml
 
@@ -61,6 +67,7 @@ applications:
     source_path: applications/keycloak/chart
     source_ref: *branch
     destination: *destination
+    secrets: false # Don't change
     helm_values:
     - values.yaml
 
@@ -69,6 +76,7 @@ applications:
     source_path: applications/keycloak-pep/chart
     source_ref: *branch
     destination: *destination
+    secrets: false # Don't change
     helm_values:
     - values.yaml
 
@@ -77,6 +85,7 @@ applications:
     source_path: applications/grafana-metrics/chart
     source_ref: *branch
     destination: *destination
+    secrets: false
     helm_values:
     - values.yaml
 
@@ -85,6 +94,7 @@ applications:
     source_path: applications/airquality-simulator/chart
     source_ref: *branch
     destination: *destination
+    secrets: false # Don't change
     helm_values:
     - values.yaml
 
@@ -93,5 +103,6 @@ applications:
     source_path: secrets
     source_ref: *branch
     destination: *destination
+    secrets: false # Don't change
     helm_values:
     - values.yaml
