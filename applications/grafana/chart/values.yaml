@@ -26,6 +26,10 @@ grafana:
   rbac:
     pspEnabled: false
     namespaced: true
+    extraRoleRules:
+    - apiGroups: ["route.openshift.io"]
+      resources: ["routes"]
+      verbs: ["get","list"]
   securityContext: ""
 
   sidecar:
