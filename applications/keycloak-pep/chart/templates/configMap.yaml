@@ -5,66 +5,38 @@ metadata:
     app: {{ include "keycloak-pep.fullname" . }}
   name: {{ include "keycloak-pep.fullname" . }}-config
 data:
-  application.properties: >
-
+  application.properties: |
     server.connection-timeout=5000
-
     server.port={{ .Values.service.port }}
 
     # Proxy config
-
     proxy.schema=http
-
     proxy.host=orion-ld
-
     proxy.port=1026
 
     # Keycloak PEP config
-
     keycloak.realm=fiware-server
-
     keycloak.auth-server-url=https://keycloak-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com
-
     keycloak.ssl-required=external
-
     keycloak.disable-trust-manager=true
-
     keycloak.allow-any-hostname=true
-
     keycloak.resource=orion-pep
-
     keycloak.bearer-only=true
-
     keycloak.credentials.secret=978ad148-d99b-406d-83fc-578597290a79
-
     keycloak.securityConstraints[0].authRoles[0]=user
-
     keycloak.securityConstraints[0].securityCollections[0].name=protected
-
     keycloak.securityConstraints[0].securityCollections[0].patterns[0]=/*
-
     keycloak.policy-enforcer-config.enforcement-mode=ENFORCING
-
     keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.uri]={request.relativePath}
-
     keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.method]={request.method}
-
     keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-service]={request.header['fiware-service']}
-
     keycloak.policy-enforcer-config.claimInformationPointConfig.claims[http.fiware-servicepath]={request.header['fiware-servicepath']}
-
     keycloak.policy-enforcer-config.path-cache-config.lifespan=5000
 
     # Logging configuration
-
     logging.level.root={{ .Values.log.level }}
-
     logging.level.org.springframework.boot={{ .Values.log.level }}
-
     logging.level.org.keycloak={{ .Values.log.level }}
-
     logging.level.org.apache.http={{ .Values.log.level }}
-
     spring.main.banner-mode=OFF
-
     spring.freemarker.checkTemplateLocation=false
