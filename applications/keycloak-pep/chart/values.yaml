@@ -23,4 +23,4 @@ resources:
 
 log:
   # level: WARN
-  level: DEBUG
+  level: TRACE
