@@ -1,0 +1,6 @@
+admin:
+  secured: false
+  # -- Admin username
+  username: fiwareAdmin
+  # -- Admin password
+  password: fiwareAdmin
