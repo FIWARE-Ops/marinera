@@ -3,7 +3,8 @@ name: timescaledb-single
 description: Chart holder for Timescale DB Single. Based on https://github.com/timescale/timescaledb-kubernetes and adapted for OpenShift.
 
 type: application
-version: 0.1
+version: 1.0.0
+appVersion: "pg14.2-ts2.6.1-p2" # PostgreSQL v14.2 TimescaleDB v2.6.1-p2
 
 keywords:
   - timescale
