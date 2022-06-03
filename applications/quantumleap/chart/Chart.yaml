@@ -2,8 +2,8 @@ apiVersion: v2
 name: quantumleap
 description: A Helm chart for Kubernetes to deploy QuantumLeap using the official Helm Chart.
 type: application
-version: 0.1.0
-appVersion: "0.8.0"
+version: 1.0.0
+appVersion: "0.9.0-PRE" # QuantumLeap version
 keywords:
   - quantumleap
   - helm
