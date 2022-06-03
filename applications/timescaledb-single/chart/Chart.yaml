@@ -17,3 +17,10 @@ dependencies:
 - name: timescaledb-single
   version: 0.11.0
   repository: file://./timescaledb-single
+maintainers:
+  - name: Felipe Roca
+    email: felipe@hopu.org
+  - name: Alvaro Lopez
+    email: alopezme@redhat.com
+  - name: Stefan Wiedemann 
+    email: stefan.wiedemann@fiware.org

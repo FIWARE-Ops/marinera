@@ -12,10 +12,12 @@ keywords:
 sources:
   - https://github.com/FIWARE-Ops/marinera
 maintainers:
-  - name: Felipe Roca 
+  - name: Felipe Roca
     email: felipe@hopu.org
   - name: Alvaro Lopez
     email: alopezme@redhat.com
+  - name: Stefan Wiedemann 
+    email: stefan.wiedemann@fiware.org
 dependencies:
 - name: keycloak
   version: 8.0.0 

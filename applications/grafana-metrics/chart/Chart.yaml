@@ -18,7 +18,9 @@ dependencies:
   version: 6.29.3
   repository: https://grafana.github.io/helm-charts
 maintainers:
-  - name: Felipe Roca 
+  - name: Felipe Roca
     email: felipe@hopu.org
   - name: Alvaro Lopez
     email: alopezme@redhat.com
+  - name: Stefan Wiedemann 
+    email: stefan.wiedemann@fiware.org
