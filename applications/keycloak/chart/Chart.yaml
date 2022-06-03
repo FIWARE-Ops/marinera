@@ -2,8 +2,8 @@ apiVersion: v2
 name: keycloak
 description: A Helm chart for Kubernetes to deploy Keycloak using the official Keycloak Operator.
 type: application
-version: 0.1.0
-appVersion: "17.0.0"
+version: 1.0.0
+appVersion: "17.0.1" # Keycloak 17.0.1 PostgreSQL 14.2.0
 home: https://www.keycloak.org/
 icon: https://www.keycloak.org/resources/images/keycloak_icon_512px.svg
 keywords:
@@ -18,7 +18,7 @@ maintainers:
     email: alopezme@redhat.com
 dependencies:
 - name: keycloak
-  version: 8.0.0 # Keycloak 17.0.1
+  version: 8.0.0 
   repository: https://charts.bitnami.com/bitnami
 
 
