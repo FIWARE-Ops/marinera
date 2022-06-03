@@ -16,6 +16,8 @@ A Helm chart for running the fiware orion-ld context broker on kubernetes.
 
 * <https://github.com/FIWARE/context.Orion-LD>
 
+This chart was ported from version 1.0.2 of the original Orion-LD helm chart with a few modifications.
+
 ## Requirements
 
 Kubernetes: `>= 1.19`
