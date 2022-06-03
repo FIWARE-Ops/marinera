@@ -1,0 +1,21 @@
+admin:
+  secured: false
+  # -- Admin username
+  username: fiwareAdmin
+  # -- Admin password
+  password: fiwareAdmin
+
+datasources:
+  orion:
+    # -- Orion URL
+    url: "http://orion-ld:1026"
+  timescale:
+    # -- Timescale URL
+    url: tsdb
+    # -- Timescale database name
+    database: postgres
+    credentials:
+      # -- Timescale database username
+      username: postgres
+      # -- Timescale database password
+      password: test
