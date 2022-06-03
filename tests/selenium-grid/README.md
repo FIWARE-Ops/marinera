@@ -7,6 +7,8 @@ This chart is based on the official selenium-grid chart available at https://git
 * <https://github.com/FIWARE-Ops/marinera>
 * <https://github.com/SeleniumHQ/docker-selenium>
 
+This chart was ported from version 0.3.0 of the original Selenium Grid helm chart with a few modifications.
+
 ## Installing
 
 To install the selenium-grid helm chart, you can run:
