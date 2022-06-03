@@ -15,6 +15,20 @@ grafana:
       default_theme: light # dark | light
     auth.anonymous:
       enabled: false
+    auth.generic_oauth:
+      enabled: true
+      name: Keycloak
+      allow_sign_up: true
+      scopes: profile,email 
+      auth_url: https://${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/auth
+      token_url:  https://${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/token
+      api_url:  https://${KEYCLOAK_HOST}/realms/fiware-server/protocol/openid-connect/userinfo
+      client_id: grafana
+      client_secret: secret # $__file(/tmp/secret)
+      # role_attribute_path: contains(groups[*], 'grafana-admin') && 'Admin' || contains(groups[*], 'grafana-dev') && 'Editor' || 'Viewer'
+      role_attribute_path: resource_access.grafana.roles[0]
+    server:
+      root_url: https://grafana-feature-add-grafana-oauth.apps.fiware-spain.emea-1.rht-labs.com/
   initChownData:
     enabled: false
   persistence:
@@ -26,7 +40,18 @@ grafana:
   rbac:
     pspEnabled: false
     namespaced: true
+    extraRoleRules:
+    - apiGroups: ["route.openshift.io"]
+      resources: ["routes"]
+      verbs: ["get","list"]
   securityContext: ""
+  extraContainerVolumes:
+    - name: env-dir
+      emptyDir: {}
+  extraVolumeMounts: 
+    - name: env-dir
+      mountPath: /env
+      readOnly: true
 
   sidecar:
     dashboards:
@@ -78,7 +103,7 @@ grafana:
     interval: 30s
   env:
     GF_PANELS_DISABLE_SANITIZE_HTML: true
-
+    
   resources:
     limits:
       cpu: 1
@@ -87,7 +112,23 @@ grafana:
       cpu: 10m
       memory: 100Mi
 
+  extraInitContainers:
+    - name: get-route
+      image: bitnami/kubectl
+      command:
+        - /bin/sh
+        - -c
+        - |
+          host=$(kubectl get route keycloak -o jsonpath={.spec.host})
+          echo $host >> /env/kc.env 
+      volumeMounts:
+      - name: env-dir
+        mountPath: "/env"
 
+  command: 
+    - /bin/sh
+    - -c
+    - export KEYCLOAK_HOST=$(cat /env/kc.env) && env && /run.sh
 admin:
   secured: false
   # -- Admin username
