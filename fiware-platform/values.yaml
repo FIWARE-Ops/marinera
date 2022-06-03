@@ -2,7 +2,7 @@ source: https://github.com/FIWARE-Ops/marinera
 release: demo
 destination_namespace: &destination demo
 branch: &branch main
-secretsEnabled: &secretsEnabled true
+secretsEnabled: &secretsEnabled false
 
 applications:
   # Dont change mongodb name, current orion config relies on it.
