@@ -3,8 +3,8 @@ name: mongo-db
 description: Chart holder for argo-cd
 
 type: application
-version: 0.1.0
-appVersion: "4.4.12"
+version: 1.0.0
+appVersion: "4.4.12" # MongoDB version 4.4.12
 
 dependencies:
 - name: mongodb
