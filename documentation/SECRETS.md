@@ -10,7 +10,7 @@ Now, follow the procedure to activate the secret management:
 
 To be able to encrypt your secrets, you need to install the Sealed Secrets controller and the `kubeseal` binary. To do that, please follow the documentation from Bitnami at https://github.com/bitnami-labs/sealed-secrets#installation.
 
-## 2. Change the values in Fiware Platform chart
+## 2. Change the values in FIWARE Platform chart
 
 Go to `fiware-platform/values.yaml` and set the `helm-values` property to `values-secured.yaml` in the compatible apps (see the note at the beginning of this guide). For example:
 
@@ -49,6 +49,6 @@ After editting the `values.yaml` file with all your secrets encrypted, you can d
 helm install secrets .
 ```
 
-## 5. Continue with the Fiware Platform deployment
+## 5. Continue with the FIWARE Platform deployment
 
 Now go back to the [Getting Started](./GETTING_STARTED.md#3-set-the-repo-url-in-the-valuesyaml) and continue from where you left.
