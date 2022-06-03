@@ -2,8 +2,8 @@ apiVersion: v2
 name: grafana
 description: A Helm chart for Kubernetes to deploy Grafana using the official Helm Chart.
 type: application
-version: 0.1.0
-appVersion: "v7.5.15"
+version: 1.0.0
+appVersion: "8.5.2" # Grafana version 8.5.2
 icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
 keywords:
   - grafana
@@ -14,12 +14,12 @@ sources:
   - https://github.com/grafana/helm-charts/blob/main/charts/grafana/README.md
 dependencies:
 - name: grafana
-  version: 6.29.3 # Grafana 8.5.2
+  version: 6.29.3
   repository: https://grafana.github.io/helm-charts
-  # version: 5.0.26 # Grafana 6.7.3
-  # repository: https://grafana.github.io/helm-charts
 maintainers:
-  - name: Felipe Roca 
+  - name: Felipe Roca
     email: felipe@hopu.org
   - name: Alvaro Lopez
     email: alopezme@redhat.com
+  - name: Stefan Wiedemann 
+    email: stefan.wiedemann@fiware.org

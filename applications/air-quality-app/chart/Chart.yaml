@@ -2,8 +2,8 @@ apiVersion: v2
 name: air-quality
 description: A Helm chart for Kubernetes to deploy FIWARE Air quality application.
 type: application
-version: 0.1.0
-appVersion: "v7.5.15"
+version: 1.0.0
+appVersion: "1.0.0"
 icon: https://raw.githubusercontent.com/grafana/grafana/master/public/img/logo_transparent_400x.png
 keywords:
   - grafana
@@ -16,3 +16,5 @@ maintainers:
     email: felipe@hopu.org
   - name: Alvaro Lopez
     email: alopezme@redhat.com
+  - name: Stefan Wiedemann
+    email: stefan.wiedemann@fiware.org

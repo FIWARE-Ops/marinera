@@ -2,8 +2,8 @@ apiVersion: v2
 name: marinera-e2e
 description: A Helm chart for Kubernetes to deploy the Marinera E2E test.
 type: application
-version: 0.0.1
-appVersion: "0.0.1"
+version: 1.0.0
+appVersion: "0.2.1" # Marinera E2E version 0.2.1 for FIWARE Platform 1.0.0
 keywords:
   - marinera
   - e2e
@@ -12,3 +12,10 @@ keywords:
 sources:
   - https://github.com/FIWARE-Ops/marinera-e2e
   - https://github.com/FIWARE-Ops/marinera/tests/e2e-test
+maintainers:
+  - name: Felipe Roca
+    email: felipe@hopu.org
+  - name: Alvaro Lopez
+    email: alopezme@redhat.com
+  - name: Stefan Wiedemann 
+    email: stefan.wiedemann@fiware.org
