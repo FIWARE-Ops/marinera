@@ -10,7 +10,7 @@ metadata:
       {{- end }}
   {{- end }}
 spec:
-  {{- if .Values.route.host -}}
+  {{- if .Values.route.host }}
   host: {{ .Values.route.host}}
   {{- end }}
   {{- if .Values.route.tls }}
