@@ -3,6 +3,8 @@
 {{- $release := .Values.release }}
 {{- $source := .Values.source }}
 {{- $team := .Values.team }}
+{{- $host := .Values.host }}
+{{- $tlsSecret := .Values.tlsSecret }}
 {{- range $app := .Values.applications }}
 {{- if $app.source }}
 {{- $source = $app.source }}
@@ -49,16 +51,23 @@ spec:
 {{- end }}
 {{- end }}
 {{- end }}
-{{- if or (.values) (.host) (.tlsSecret)  }}
+{{- if or (.values) ($host) ($tlsSecret) (.overwriteHost) (.overwriteSecret) }}
       values: |
-{{- if (.host) }}      
+{{- if .overwriteHost }}
         route:
-          host: {{ .name }}.{{ .host }}
+          host: {{ .overwriteHost }}
+{{- else if ($host) }}      
+        route:
+          host: {{ .name }}.{{ $host }}
 {{- end }}
-{{- if (.tlsSecret) }}      
+{{- if .overwriteSecret }}
         route:
           annotations: 
-            cert-utils-operator.redhat-cop.io/certs-from-secret: {{ .tlsSecret }}
+            cert-utils-operator.redhat-cop.io/certs-from-secret: {{ .overwriteSecret }}
+{{- else if ($tlsSecret) }}      
+        route:
+          annotations: 
+            cert-utils-operator.redhat-cop.io/certs-from-secret: {{ $tlsSecret }}
 {{- end }}
 {{- if (.values) }}      
 {{- toYaml .values | nindent 8 }}

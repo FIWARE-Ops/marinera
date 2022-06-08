@@ -54,9 +54,6 @@ applications:
     secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
     helm_values:
     - values.yaml
-    # only required for apps to be made publicly available
-    host: *host
-    tlsSecret: *tlsSecret
 
   - name: air-quality
     enabled: true
@@ -73,9 +70,6 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
-    # only required for apps to be made publicly available
-    host: *host
-    tlsSecret: *tlsSecret
 
   - name: keycloak-pep
     enabled: true
@@ -84,9 +78,6 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
-    # only required for apps to be made publicly available
-    host: *host
-    tlsSecret: *tlsSecret
 
   - name: grafana-metrics
     enabled: true
