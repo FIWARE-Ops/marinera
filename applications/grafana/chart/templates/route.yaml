@@ -5,10 +5,22 @@ metadata:
   name: {{ template "grafana.fullname" . }}
   labels:
     {{- include "grafana.labels" . | nindent 4 }}
+  {{- if .Values.route.annotations }}
+  annotations:
+    {{- with .Values.route.annotations }}
+      {{- toYaml . | nindent 4 }}
+      {{- end }}
+  {{- end }}
 spec:
+  {{- if .Values.route.host -}}
+  host: {{ .Values.route.host}}
+  {{- end }}
+  {{- if .Values.route.tls }}
   tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
+  {{- with .Values.route.tls }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- end }}
   to:
     kind: Service
     name: {{ template "grafana.fullname" . }}
