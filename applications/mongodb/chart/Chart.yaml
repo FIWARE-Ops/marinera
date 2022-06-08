@@ -3,10 +3,18 @@ name: mongo-db
 description: Chart holder for argo-cd
 
 type: application
-version: 0.1.0
-appVersion: "4.4.12"
+version: 1.0.0
+appVersion: "4.4.12" # MongoDB version 4.4.12
 
 dependencies:
 - name: mongodb
   version: 11.0.4
   repository: https://charts.bitnami.com/bitnami
+
+maintainers:
+  - name: Felipe Roca
+    email: felipe@hopu.org
+  - name: Alvaro Lopez
+    email: alopezme@redhat.com
+  - name: Stefan Wiedemann 
+    email: stefan.wiedemann@fiware.org

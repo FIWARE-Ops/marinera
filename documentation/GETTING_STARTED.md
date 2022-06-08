@@ -8,12 +8,12 @@ Since this repository concentrates on deploying the platform, we require the und
 
 **The following preconditions need to be fulfilled before starting :warning: :**
 
-- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) in >= 4.x installed - see [official documentation](https://docs.openshift.com/container-platform/latest/welcome/index.html) for installing it.
+- [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift)  >=4.9.x installed - see [official documentation](https://docs.openshift.com/container-platform/4.9/welcome/index.html) for installing it.
 - [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) >=2.3.x installed - multiple options are available:
     - [Install ArgoCD documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
     - [Install using Argo CD Openshift Operator ](https://argocd-operator-helm.readthedocs.io/en/latest/ocp/ocp4.html)
     - [FIWARE installation documentation](https://github.com/FIWARE-Ops/fiware-gitops#4-install-argocd)
-- [OpenShift CLI](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html) installed - see [installation documentation](https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli)
+- [OpenShift CLI](https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html) installed - see [installation documentation](https://docs.openshift.com/container-platform/4.9/cli_reference/openshift_cli/getting-started-cli.html#installing-openshift-cli)
 - [Helm](https://helm.sh/docs/intro/install/) binary installed.
 - [Sealed Secrets Controller](https://github.com/bitnami-labs/sealed-secrets#helm-chart) deployed and [Kubeseal](https://github.com/bitnami-labs/sealed-secrets/releases) binary installed. (Optional, only if sealed secrets)
 - [Openshift Logging](./LOGGING.md) installed and configured.
@@ -23,7 +23,7 @@ Since this repository concentrates on deploying the platform, we require the und
 
 ## OpenShift user permissions
 
-> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.9/authentication/using-rbac.html) works is required to understand this topic.
 
 In order to be able to deploy FIWARE applications, an Openshift user needs:
 
@@ -38,7 +38,7 @@ oc adm policy add-cluster-role-to-user self-provisioner alice
 
 ## ArgoCD permissions
 
-> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.10/authentication/using-rbac.html) works is required to understand this topic.
+> **NOTE:** A certain understanding of how [OpenShift RBAC](https://docs.openshift.com/container-platform/4.9/authentication/using-rbac.html) works is required to understand this topic.
 
 When using ArgoCD to deploy applications in the cluster, the ArgoCD service account `XXX-argocd-server` is basically deploying things on our behalf, meaning is this SA to whom we need to provide the right permissions to deploy our applications.
 
@@ -55,6 +55,7 @@ We are giving the ArgoCD SA root like access, but only at a certain namespaces, 
 
 With the following command, we give the ArgoCD running in the namespace <ARGOCD_NAMESPACE> `cluster-admin` permissions in the namespace <PLATFORM_NAMESPACE>, meaning ArgoCD can deploy any object inside that namespace, but only in that namespace.
 
+> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
 ```bash
 # get ArgoCD SA name
 oc -n <ARGOCD_NAMESPACE> get sa | grep argocd-server
@@ -62,8 +63,6 @@ oc -n <ARGOCD_NAMESPACE> get sa | grep argocd-server
 # Give the SA the right permissions
 oc -n <PLATFORM_NAMESPACE> adm policy add-role-to-user cluster-admin system:serviceaccount:<ARGOCD_NAMESPACE>:<SA_NAME>
 ```
-> **NOTE:** Remember to create your namespace <PLATFORM_NAMESPACE> before executing this command. See step [below](#5-create-the-target-namespace-inside-your-cluster).
-
 ## Installation steps
 
 ### 1. Fork the repo
@@ -73,8 +72,10 @@ On [github](github.com), follow the [fork-a-repo tutorial](https://docs.github.c
 
 ### 2. Decide which FIWARE applications to deploy
 
-Go to `fiware-platform/values.yaml` and set the `enabled` value to either `true` or `false`.
+Go to `fiware-platform/values.yaml` and set the `enabled` value to either `true` or `false`. To know more about what are the FIWARE components of this platform you can go to the [FIWARE components and configuration docs](./FIWARE_COMPONENTS.md).
+
 For example, you can enable Orion-LD but disable Quantum Leap:
+
 ```yaml
 applications:
   - name: orion-ld
@@ -101,10 +102,11 @@ applications:
 By default each application is deployed with a sane set of default values that have been tested to work in most cases.
 But this does not mean they are the right fit for a production ready deployment.
 Please verify each application potential values (as all of them are Helm charts). You can either directly change the `values.yaml` of individual apps, or use the `values:` property directly in the app definition list in `fiware-platform/values.yaml` to override and/or set default values.
+Also, some applications have `values-secured.yaml` and `values-unsecured.yaml` files to secret management. If you are not using secrets (next step), you can change the passwords in the `values-unsecured.yaml` file and the apps will use that file merged with the `values.yaml` file.
 
 ### 3. Decide if you want to use Sealed Secrets
 
-By default, all passwords needed for the deployment are in plain text in the `values.yaml` file of each component. If you want to keep those secrets safe follow this [documentation](./SECRETS.md) and then continue from this point onward.
+By default, all passwords needed for the deployment are in plain text in the Values files of each component. If you want to keep those secrets safe, follow this [documentation](./SECRETS.md) and then continue from this point onward.
 
 ### 4. Set the repo url in the values.yaml
 
@@ -139,7 +141,7 @@ sed -i'' -e 's/destination_namespace: \&destination demo/destination_namespace: 
 
 ### 7. Set the target branch in the values.yaml
 
-Similar to the ```source```,, the ```branch``` can be replaced, so the ArgoCD apps will sync to that branch.
+Similar to the ```source```, the ```branch``` can be replaced is needed. By default when forking you are still using `main` branch, if you want to deploy from another one, you could change it so the ArgoCD apps will sync to that branch.
 This can be done with the following command:
 
 ```shell
@@ -162,6 +164,8 @@ and applying them to the cluster:
 cd fiware-platform/
 helm template . | oc -n <ARGOCD_NAMESPACE> apply -f -
 ```
+
+> **NOTE:** The deployment of the entire platform will take between 4 and 6 minutes with several components restarting several times until their dependencies are fulfilled.
 
 This will create ArgoCD apps.
 

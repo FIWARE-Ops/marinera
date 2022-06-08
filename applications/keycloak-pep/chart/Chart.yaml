@@ -2,8 +2,8 @@ apiVersion: v2
 name: keycloak-pep
 description: A Helm chart for Kubernetes to deploy a Spring Boot application that uses the PEP Keycloak library.
 type: application
-version: 0.1.0
-appVersion: "1.0.0"
+version: 1.0.0
+appVersion: "v18-1.1.0"
 home: https://spring.io/projects/spring-boot
 keywords:
   - keycloak
@@ -17,3 +17,5 @@ maintainers:
     email: felipe@hopu.org
   - name: Alvaro Lopez
     email: alopezme@redhat.com
+  - name: Stefan Wiedemann
+    email: stefan.wiedemann@fiware.org

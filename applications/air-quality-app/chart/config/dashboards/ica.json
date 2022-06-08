@@ -2563,6 +2563,6 @@
   "timezone": "",
   "title": "Air Quality Index (ICA)",
   "uid": "aqapp-ica",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }

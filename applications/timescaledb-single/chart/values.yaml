@@ -8,12 +8,6 @@ timescaledb-single:
           parameters:
             log_min_messages: WARNING
 
-  secrets:
-    credentials:
-      PATRONI_SUPERUSER_PASSWORD: "test"
-      PATRONI_REPLICATION_PASSWORD: "test"
-      PATRONI_admin_PASSWORD: "test"
-
   persistentVolumes:
     data:
       size: 5Gi

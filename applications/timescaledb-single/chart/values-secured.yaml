@@ -1,31 +1,3 @@
 timescaledb-single:
-  patroni:
-    log:
-      level: WARNING
-    bootstrap:
-      dcs:
-        postgresql:
-          parameters:
-            log_min_messages: WARNING
-
   secrets:
     credentialsSecretName: "tsdb-credentials"
-
-  persistentVolumes:
-    data:
-      size: 5Gi
-    wal:
-      size: 1Gi
-
-#  resources:
-#    limits:
-#      cpu: 2000m
-#      memory: 2Gi
-#    requests:
-#      cpu: 500m
-#      memory: 500Mi
-
-  rbac:
-    create: true
-    # Specific of this chart. Creates anyuid Role and RoleBinding for the timescaledb SA to run.
-    openshift: true
