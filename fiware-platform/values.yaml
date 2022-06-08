@@ -51,7 +51,10 @@ applications:
     secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
     helm_values:
     - values.yaml
-
+    values:
+      route:  
+        host: grafana.test.fiware.dev
+        
   - name: air-quality
     enabled: true
     source_path: applications/air-quality-app/chart
