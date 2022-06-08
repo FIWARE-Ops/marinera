@@ -25,11 +25,11 @@ jobs:
         with:
           # URL to your OpenShift cluster.
           # Refer to Step 2.
-          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_FIWARE }}
 
           # Authentication Token. Can use username and password instead.
           # Refer to Step 3.
-          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN_FIWARE }}
 
           # Disables SSL cert checking. Use this if you don't have the certificate authority data.
           insecure_skip_tls_verify: true
@@ -69,7 +69,7 @@ jobs:
         run: |
           cd fiware-platform/
           # render app of apps and apply it
-          helm template . | oc -n labs-ci-cd apply -f -
+          helm template . | oc -n argocd apply -f -
           cd ..
 
       - name: Check if all apps are healthy
@@ -87,7 +87,7 @@ jobs:
           # check if the condition is met
           while [ $healthy == 0 ] && [ $try -lt $tries ]
           do
-            apps=$(oc get applications.argoproj.io --no-headers -n labs-ci-cd -l destination-namespace=${{ steps.branch-name.outputs.current_branch }} | awk '{ print $3 }')
+            apps=$(oc get applications.argoproj.io --no-headers -n argocd -l destination-namespace=${{ steps.branch-name.outputs.current_branch }} | awk '{ print $3 }')
             healthyapps=0
             for app in $apps
             do
