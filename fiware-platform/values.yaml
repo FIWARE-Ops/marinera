@@ -3,6 +3,8 @@ release: demo
 destination_namespace: &destination demo
 branch: &branch main
 secretsEnabled: &secretsEnabled false
+host: &host
+tlsSecret: &tlsSecret
 
 applications:
   # Dont change mongodb name, current orion config relies on it.
@@ -14,6 +16,7 @@ applications:
     secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
     helm_values:
     - values.yaml
+  
 
   - name: orion-ld
     enabled: true
@@ -51,10 +54,10 @@ applications:
     secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
     helm_values:
     - values.yaml
-    values:
-      route:  
-        host: grafana.test.fiware.dev
-        
+    # only required for apps to be made publicly available
+    host: *host
+    tlsSecret: *tlsSecret
+
   - name: air-quality
     enabled: true
     source_path: applications/air-quality-app/chart
@@ -70,6 +73,9 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
+    # only required for apps to be made publicly available
+    host: *host
+    tlsSecret: *tlsSecret
 
   - name: keycloak-pep
     enabled: true
@@ -78,6 +84,9 @@ applications:
     destination: *destination
     helm_values:
     - values.yaml
+    # only required for apps to be made publicly available
+    host: *host
+    tlsSecret: *tlsSecret
 
   - name: grafana-metrics
     enabled: true
