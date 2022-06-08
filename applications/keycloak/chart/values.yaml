@@ -20,6 +20,9 @@ realm:
 
 route:
   enabled: true
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
 
 tests:
   enabled: true
