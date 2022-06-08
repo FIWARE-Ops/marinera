@@ -11,6 +11,9 @@ service:
 
 route: 
   enabled: true
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
 
 resources:
   limits:
