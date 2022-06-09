@@ -87,11 +87,6 @@ grafana:
       cpu: 10m
       memory: 100Mi
 
-
-  extraInitContainers:
-    - name: get-route
-      image: bitnami/kubectl
-      command: ["kubectl", "get", "routes", "-n", "default"]
 admin:
   secured: false
   # -- Admin username
