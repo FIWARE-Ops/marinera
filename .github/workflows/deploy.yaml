@@ -33,7 +33,7 @@ jobs:
 
           cd fiware-platform/
           # render app of apps and apply it
-          helm template . | oc -n argocd apply -f -
+          helm template ${{ .secrets.OVERWRITE_VALUES }} . | oc -n argocd apply -f -
 
       - name: Check if all apps are healthy
         run: |
