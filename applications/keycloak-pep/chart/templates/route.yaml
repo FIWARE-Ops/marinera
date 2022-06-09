@@ -3,6 +3,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: {{ include "keycloak-pep.fullname" . }}
+    {{- if .Values.route.annotations }}
   annotations:
     {{- with .Values.route.annotations }}
       {{- toYaml . | nindent 4 }}
