@@ -98,11 +98,6 @@ spec:
         - /spec/replicas
         - /spec/template/spec/containers/0/image
         - /spec/template/spec/containers/1/image
-    - group: route.openshift.io
-      kind: Route
-      jsonPointers:
-        - /status/ingress
-        - /spec/host
     - group: integreatly.org
       kind: GrafanaDataSource
       jsonPointers:
