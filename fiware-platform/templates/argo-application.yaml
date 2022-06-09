@@ -53,13 +53,6 @@ spec:
 {{- end }}
 {{- if or (.values) ($host) ($tlsSecret) (.overwriteHost) (.overwriteSecret) }}
       values: |
-{{- if .overwriteHost }}
-        route:
-          host: {{ .overwriteHost }}
-{{- else if ($host) }}      
-        route:
-          host: {{ .name }}.{{ $host }}
-{{- end }}
 {{- if .overwriteSecret }}
         route:
           annotations: 
@@ -68,6 +61,13 @@ spec:
         route:
           annotations: 
             cert-utils-operator.redhat-cop.io/certs-from-secret: {{ $tlsSecret }}
+{{- end }}
+{{- if .overwriteHost }}
+        route:
+          host: {{ .overwriteHost }}
+{{- else if ($host) }}      
+        route:
+          host: {{ .name }}.{{ $host }}
 {{- end }}
 {{- if (.values) }}      
 {{- toYaml .values | nindent 8 }}
