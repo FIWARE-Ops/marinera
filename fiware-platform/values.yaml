@@ -3,6 +3,8 @@ release: demo
 destination_namespace: &destination demo
 branch: &branch main
 secretsEnabled: &secretsEnabled false
+host: &host
+tlsSecret: &tlsSecret
 
 applications:
   # Dont change mongodb name, current orion config relies on it.
@@ -14,6 +16,7 @@ applications:
     secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
     helm_values:
     - values.yaml
+  
 
   - name: orion-ld
     enabled: true

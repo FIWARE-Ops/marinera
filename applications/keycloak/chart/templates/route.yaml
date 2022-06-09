@@ -3,11 +3,23 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: {{ include "keycloak.fullname" . }}
+    {{- if .Values.route.annotations }}
+  annotations:
+    {{- with .Values.route.annotations }}
+      {{- toYaml . | nindent 4 }}
+      {{- end }}
+  {{- end }}
 spec:
+  {{- if .Values.route.host }}
+  host: {{ .Values.route.host}}
+  {{- end }}
+  {{- if .Values.route.tls }}
+  tls:
+  {{- with .Values.route.tls }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- end }}
   to:
     kind: Service
     name: {{ include "keycloak.fullname" . }}
-  tls:
-    termination: edge
-    insecureEdgeTerminationPolicy: Redirect
 {{- end }}

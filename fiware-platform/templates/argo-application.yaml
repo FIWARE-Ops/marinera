@@ -3,6 +3,8 @@
 {{- $release := .Values.release }}
 {{- $source := .Values.source }}
 {{- $team := .Values.team }}
+{{- $host := .Values.host }}
+{{- $tlsSecret := .Values.tlsSecret }}
 {{- range $app := .Values.applications }}
 {{- if $app.source }}
 {{- $source = $app.source }}
@@ -49,9 +51,27 @@ spec:
 {{- end }}
 {{- end }}
 {{- end }}
-{{- if .values }}
+{{- if or (.values) ($host) ($tlsSecret) (.overwriteHost) (.overwriteSecret) }}
       values: |
+{{- if .overwriteHost }}
+        route:
+          host: {{ .overwriteHost }}
+{{- else if ($host) }}      
+        route:
+          host: {{ .name }}.{{ $host }}
+{{- end }}
+{{- if .overwriteSecret }}
+        route:
+          annotations: 
+            cert-utils-operator.redhat-cop.io/certs-from-secret: {{ .overwriteSecret }}
+{{- else if ($tlsSecret) }}      
+        route:
+          annotations: 
+            cert-utils-operator.redhat-cop.io/certs-from-secret: {{ $tlsSecret }}
+{{- end }}
+{{- if (.values) }}      
 {{- toYaml .values | nindent 8 }}
+{{- end }}
 {{- end }}
 {{- if or .releaseName .name }}
       releaseName: {{ .releaseName | default .name }}
