@@ -102,7 +102,10 @@ admin:
 route:
   # -- To enable the OpenShift route
   enabled: true
-
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+    
 datasources:
   orion:
     # -- Orion URL
