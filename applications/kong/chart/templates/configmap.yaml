@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kong-configmap
+data:
+  kong.yml: |
+    _format_version: "2.1"
+    _transform: true
+    services:
+      - host: "orion-ld"
+        name: "orion"
+        port: 1026
+        protocol: http
+  
+        routes:
+          - name: orion-keycloak
+            paths:
+              - /
+            strip_path: true
+  
+        plugins:
+          - name: pep-plugin
+            config:
+              authorizationendpointtype: Keycloak
+              authorizationendpointaddress: http://keycloak:80
+              keycloakrealm: fiware-server
+              keycloakclientid: orion-pep
+              keycloakclientsecret: 978ad148-d99b-406d-83fc-578597290a79
+              keycloackadditionalclaims:
+                "http.fiware-servicepath": "fiware-servicepath"
+                "http:fiware-service": "fiware-service"
+  
+          - name: request-transformer
+            config:
+              remove:
+                headers:
+                  - Authorization
+                  - authorization
