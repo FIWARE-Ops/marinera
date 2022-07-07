@@ -4,7 +4,7 @@ kong:
     tag: "0.3.0-PRE-11"
     pullPolicy: Always
 
-  replicaCount: 1
+  replicaCount: 2
 
   autoscaling:
     enabled: false
@@ -12,10 +12,10 @@ kong:
   env:
     database: "off"
     nginx_worker_processes: "2"
-    proxy_access_log: /dev/stdout
-    admin_access_log: /dev/stdout
-    admin_gui_access_log: /dev/stdout
-    portal_api_access_log: /dev/stdout
+    proxy_access_log: /dev/null
+    admin_access_log: /dev/null
+    admin_gui_access_log: /dev/null
+    portal_api_access_log: /dev/null
     proxy_error_log: /dev/stderr
     admin_error_log: /dev/stderr
     admin_gui_error_log: /dev/stderr
