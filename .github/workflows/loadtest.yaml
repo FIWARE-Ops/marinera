@@ -29,7 +29,7 @@ jobs:
           echo ${GITHUB_REF##*/}
 
           echo "numEntities=500" >> src/test/resources/test.conf
-          echo 'baseUrl="https://kong-kong-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev/v2/"' >> src/test/resources/test.conf
+          echo baseUrl="https://kong-kong-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev/v2/" >> src/test/resources/test.conf
           echo 'numUpdates=50' >> src/test/resources/test.conf
           echo 'fiwareService="AirQuality"' >> src/test/resources/test.conf
           echo 'fiwareServicePath="/test"' >> src/test/resources/test.conf
@@ -38,7 +38,7 @@ jobs:
           echo 'keycloakPassword="e2e-test-user"' >> src/test/resources/test.conf
           echo 'keycloakClientId="orion-pep"' >> src/test/resources/test.conf
           echo 'keycloakClientSecret="978ad148-d99b-406d-83fc-578597290a79"' >> src/test/resources/test.conf
-          echo 'keycloakURL="https://keycloak-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev"' >> src/test/resources/test.conf
+          echo keycloakURL="https://keycloak-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev" >> src/test/resources/test.conf
           echo 'keycloakRealm="fiware-server"' >> src/test/resources/test.conf
           # add the defaults too
           echo 'numUpdates=50' >> src/test/resources/test.conf
