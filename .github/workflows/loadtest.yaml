@@ -1,6 +1,7 @@
 name: Run loadtests
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
