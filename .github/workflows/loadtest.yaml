@@ -50,11 +50,5 @@ jobs:
           echo 'notificationServerUrl="http://quantumleap-quantumleap:8668"' >> src/test/resources/test.conf
           echo 'numPrefillEntities=0' >> src/test/resources/test.conf
 
-      - name: Run tests
-        run: |
-          mvn install gatling:test -Dgatling.simulationClass=simulations.nosec.v2.EntityUpdateSimulation
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: test-result
-          path: target/gatling/results/
+          cat src/test/resources/test.conf
