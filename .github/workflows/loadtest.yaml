@@ -1,0 +1,47 @@
+name: Run loadtests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  load-test:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Git checkout
+        uses: actions/checkout@v3
+        with:
+          repository: 'FIWARE/load-test'
+      
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+          java-package: jdk
+
+      - name: Create config
+        run: |
+          # empty the conf 
+          > src/test/resources/test.conf
+          # config 
+          echo "numEntities=500" >> src/test/resources/test.conf
+          echo 'baseUrl="https://kong-kong-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev/v2/"' >> src/test/resources/test.conf
+          echo 'numUpdates=50' >> src/test/resources/test.conf
+          echo 'fiwareService="AirQuality"' >> src/test/resources/test.conf
+          echo 'fiwareServicePath="/test"' >> src/test/resources/test.conf
+          echo 'keycloakAuthEnabled=true' >> src/test/resources/test.conf
+          echo 'keycloakUsername="e2e-test-user"' >> src/test/resources/test.conf
+          echo 'keycloakPassword="e2e-test-user"' >> src/test/resources/test.conf
+          echo 'keycloakClientId="orion-pep"' >> src/test/resources/test.conf
+          echo 'keycloakClientSecret="978ad148-d99b-406d-83fc-578597290a79"' >> src/test/resources/test.conf
+          echo 'keycloakURL="https://keycloak-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev"' >> src/test/resources/test.conf
+          echo 'keycloakRealm="fiware-server"' >> src/test/resources/test.conf
+
+      - name: Run tests
+        run: |
+          mvn install gatling:test -Dgatling.simulationClass=simulations.nosec.v2.EntityUpdateSimulation
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-result
+          path: target/gatling/results/
