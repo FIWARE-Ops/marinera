@@ -36,6 +36,7 @@ kong:
   
   proxy:
     enabled: true
+    type: NodePort
     tls:
       enabled: false
     ingress:
