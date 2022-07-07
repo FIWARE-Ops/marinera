@@ -28,7 +28,7 @@ jobs:
           # config 
           echo ${GITHUB_REF##*/}
 
-          echo "numEntities=300" >> src/test/resources/test.conf
+          echo "numEntities=400" >> src/test/resources/test.conf
           echo baseUrl=\"https://kong-kong-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev/v2/\" >> src/test/resources/test.conf
           echo 'numUpdates=50' >> src/test/resources/test.conf
           echo 'fiwareService="AirQuality"' >> src/test/resources/test.conf

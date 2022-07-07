@@ -4,7 +4,7 @@ kong:
     tag: "0.3.0-PRE-11"
     pullPolicy: Always
 
-  replicaCount: 2
+  replicaCount: 1
 
   autoscaling:
     enabled: false
