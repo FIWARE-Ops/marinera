@@ -12,10 +12,6 @@ kong:
   env:
     database: "off"
     nginx_worker_processes: "2"
-    proxy_access_log: /dev/null
-    admin_access_log: /dev/null
-    admin_gui_access_log: /dev/null
-    portal_api_access_log: /dev/null
     proxy_error_log: /dev/stderr
     admin_error_log: /dev/stderr
     admin_gui_error_log: /dev/stderr
