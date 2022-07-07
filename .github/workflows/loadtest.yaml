@@ -12,7 +12,7 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
         with:
-          repository: 'FIWARE/load-test'
+          repository: 'https://github.com/FIWARE/load-tests'
       
       - uses: actions/setup-java@v1
         with:
