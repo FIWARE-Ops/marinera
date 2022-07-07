@@ -28,7 +28,7 @@ jobs:
           # config 
           echo ${GITHUB_REF##*/}
 
-          echo "numEntities=500" >> src/test/resources/test.conf
+          echo "numEntities=300" >> src/test/resources/test.conf
           echo baseUrl=\"https://kong-kong-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev/v2/\" >> src/test/resources/test.conf
           echo 'numUpdates=50' >> src/test/resources/test.conf
           echo 'fiwareService="AirQuality"' >> src/test/resources/test.conf
@@ -41,7 +41,6 @@ jobs:
           echo keycloakURL=\"https://keycloak-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev\" >> src/test/resources/test.conf
           echo 'keycloakRealm="fiware-server"' >> src/test/resources/test.conf
           # add the defaults too
-          echo 'numUpdates=50' >> src/test/resources/test.conf
           echo 'numGets=20' >> src/test/resources/test.conf
           echo 'numQueries= 100' >> src/test/resources/test.conf
           echo 'parallelQueries=100' >> src/test/resources/test.conf
