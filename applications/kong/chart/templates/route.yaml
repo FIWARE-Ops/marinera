@@ -20,7 +20,6 @@ spec:
   {{- end }}
   port:
     targetPort: kong-proxy
-  path: "/"
   to:
     kind: Service
     name: {{ include "kong.fullname" . }}-proxy
