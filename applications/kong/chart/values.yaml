@@ -21,7 +21,7 @@ kong:
     admin_gui_error_log: /dev/stderr
     portal_api_error_log: /dev/stderr
     prefix: /kong_prefix/
-    log_level: debug
+    log_level: warn
     nginx_proxy_large_client_header_buffers: "16 128k"
     nginx_proxy_http2_max_field_size: "32k"
     nginx_proxy_http2_max_header_size: "32k"
