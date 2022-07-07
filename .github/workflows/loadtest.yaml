@@ -38,7 +38,7 @@ jobs:
           echo 'keycloakPassword="e2e-test-user"' >> src/test/resources/test.conf
           echo 'keycloakClientId="orion-pep"' >> src/test/resources/test.conf
           echo 'keycloakClientSecret="978ad148-d99b-406d-83fc-578597290a79"' >> src/test/resources/test.conf
-          echo keycloakURL='"https://keycloak-'${GITHUB_REF##*/}'.apps.fiware-dev-aws.fiware.dev"' >> src/test/resources/test.conf
+          echo keycloakURL=\"https://keycloak-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev\" >> src/test/resources/test.conf
           echo 'keycloakRealm="fiware-server"' >> src/test/resources/test.conf
           # add the defaults too
           echo 'numUpdates=50' >> src/test/resources/test.conf
@@ -50,5 +50,13 @@ jobs:
           echo 'notificationServerUrl="http://quantumleap-quantumleap:8668"' >> src/test/resources/test.conf
           echo 'numPrefillEntities=0' >> src/test/resources/test.conf
 
-
           cat src/test/resources/test.conf
+
+
+      - name: Run tests
+        run: |
+          mvn install gatling:test -Dgatling.simulationClass=simulations.nosec.v2.EntityUpdateSimulation
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-result
+          path: target/gatling/results/
