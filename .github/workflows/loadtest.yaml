@@ -26,6 +26,8 @@ jobs:
           # empty the conf 
           > src/test/resources/test.conf
           # config 
+          echo ${GITHUB_REF##*/}
+
           echo "numEntities=500" >> src/test/resources/test.conf
           echo 'baseUrl="https://kong-kong-${GITHUB_REF##*/}.apps.fiware-dev-aws.fiware.dev/v2/"' >> src/test/resources/test.conf
           echo 'numUpdates=50' >> src/test/resources/test.conf
