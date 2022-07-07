@@ -36,7 +36,7 @@ kong:
   
   proxy:
     enabled: true
-    type: NodePort
+    type: ClusterIP
     tls:
       enabled: false
     ingress:
