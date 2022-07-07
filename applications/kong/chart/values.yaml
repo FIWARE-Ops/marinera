@@ -43,6 +43,9 @@ kong:
       enabled: false
     route:
       enabled: true
+      tls:
+        termination: edge
+        insecureEdgeTerminationPolicy: Redirect
         
   dblessConfig:
     configMap: kong-configmap
