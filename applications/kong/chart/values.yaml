@@ -1,0 +1,47 @@
+kong:
+  image:
+    repository: quay.io/fiware/kong
+    tag: "0.3.0-PRE-11"
+    pullPolicy: Always
+
+  replicaCount: 1
+
+  autoscaling:
+    enabled: false
+
+  env:
+    database: "off"
+    nginx_worker_processes: "2"
+    proxy_error_log: /dev/stderr
+    admin_error_log: /dev/stderr
+    admin_gui_error_log: /dev/stderr
+    portal_api_error_log: /dev/stderr
+    prefix: /kong_prefix/
+    log_level: warn
+    nginx_proxy_large_client_header_buffers: "16 128k"
+    nginx_proxy_http2_max_field_size: "32k"
+    nginx_proxy_http2_max_header_size: "32k"
+    plugins: "bundled,pep-plugin"
+    pluginserver_names: "pep-plugin"
+    pluginserver_pep_plugin_query_cmd: '/go-plugins/pep-plugin -dump'
+    pluginserver_pep_plugin_start_cmd: '/go-plugins/pep-plugin'
+
+  ingressController:
+    enabled: false
+    installCRDs: false
+  
+  proxy:
+    enabled: true
+    type: ClusterIP
+    tls:
+      enabled: false
+    ingress:
+      enabled: false
+    route:
+      enabled: true
+      tls:
+        termination: edge
+        insecureEdgeTerminationPolicy: Redirect
+        
+  dblessConfig:
+    configMap: kong-configmap

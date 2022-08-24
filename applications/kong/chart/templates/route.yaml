@@ -1,0 +1,32 @@
+{{- if .Values.kong.proxy.route.enabled -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "kong.fullname" . }}
+  labels:
+    {{ include "kong.metaLabels" . | nindent 4 }}
+  {{- if or .Values.kong.proxy.route.annotations .Values.kong.proxy.route.certificate }}
+  annotations:
+    {{- if .Values.kong.proxy.route.certificate }}
+    cert-utils-operator.redhat-cop.io/certs-from-secret: {{ include "kong.fullname" . }}-tls-sec
+    {{- end }}
+    {{- with .Values.kong.proxy.route.annotations }}
+      {{- toYaml . | nindent 4 }}
+      {{- end }}
+  {{- end }}
+spec:
+  {{- if .Values.kong.proxy.route.host }}
+  host: {{ .Values.kong.proxy.route.host }}
+  {{- end }}
+  port:
+    targetPort: kong-proxy
+  to:
+    kind: Service
+    name: {{ include "kong.fullname" . }}-proxy
+  {{- if .Values.kong.proxy.route.tls }}
+  tls:
+  {{- with .Values.kong.proxy.route.tls }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- end }}
+{{- end }}
