@@ -28,7 +28,7 @@ data:
               keycloakclientsecret: 978ad148-d99b-406d-83fc-578597290a79
               keycloackadditionalclaims:
                 "http.fiware-servicepath": "fiware-servicepath"
-                "http:fiware-service": "fiware-service"
+                "http.fiware-service": "fiware-service"
   
           - name: request-transformer
             config:
