@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+#  - https://github.com/disposab1e/argocd-operator-helm/raw/master/guides/ocp4/olm/namespace.yaml
+#  - https://github.com/disposab1e/argocd-operator-helm/raw/master/guides/ocp4/olm/operator-group.yaml
+#  - https://github.com/disposab1e/argocd-operator-helm/raw/master/guides/ocp4/olm/catalog-source.yaml
+#  - https://github.com/disposab1e/argocd-operator-helm/raw/master/guides/ocp4/olm/subscription.yaml
+  - namespaces
+  - operatorgroups
+  - subscriptions
+  - argocds
