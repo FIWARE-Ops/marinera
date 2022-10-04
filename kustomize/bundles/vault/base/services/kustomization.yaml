@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - vault/service.yaml
+  - vault-active/service.yaml
+  - vault-internal/service.yaml
+  - vault-standby/service.yaml
+  - vault-ui/service.yaml
