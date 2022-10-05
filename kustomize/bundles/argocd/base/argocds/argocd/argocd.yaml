@@ -38,18 +38,12 @@ spec:
     route:
       enabled: false
   initialSSHKnownHosts: {}
-  sso:
-    dex:
-      openShiftOAuth: true
-      resources:
-        limits:
-          cpu: 500m
-          memory: 256Mi
-        requests:
-          cpu: 250m
-          memory: 128Mi
-    provider: dex
-  rbac: {}
+  rbac:
+    policy: |
+      g, system:cluster-admins, role:admin
+      g, cluster-admins, role:admin
+      g, ArgoCDAdmins, role:admin
+    scopes: '[groups]'
   repo:
     resources:
       limits:
@@ -87,4 +81,3 @@ spec:
         cpu: 250m
         memory: 1Gi
     sharding: {}
-  

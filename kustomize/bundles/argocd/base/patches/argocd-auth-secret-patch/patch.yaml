@@ -1,0 +1,30 @@
+---
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: argocd-auth-secret-patch
+  namespace: argocd
+spec:
+  serviceAccountRef:
+    name: patch-operator
+  patches:
+    argocd-auth-secret-patch:
+      targetObjectRef:
+        apiVersion: argoproj.io/v1alpha1
+        kind: ArgoCD
+        name: argocd
+        namespace: argocd
+      patchTemplate: |
+        spec:
+          oidcConfig: |
+            name: {{ (index . 1).data.name | b64dec }}
+            issuer: {{ (index . 1).data.issuer | b64dec }}
+            clientID: {{ (index . 1).data.clientID | b64dec }}
+            clientSecret: {{ (index . 1).data.clientSecret | b64dec }}
+            requestedScopes: {{ (index . 1).data.requestedScopes | b64dec }}
+      patchType: application/merge-patch+json
+      sourceObjectRefs:
+      - apiVersion: v1
+        kind: Secret
+        name: argocd-auth-secret
+        namespace: argocd

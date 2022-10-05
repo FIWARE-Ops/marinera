@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: patch-operator
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+      - configmaps
+    verbs:
+      - update
+      - patch
+      - get
+      - watch
+      - list
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - argocds
+    verbs:
+      - update
+      - patch
+      - get
+      - watch
+      - list

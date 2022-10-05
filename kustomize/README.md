@@ -18,31 +18,26 @@ oc apply -k kustomize/overlays/openshift-local/
 - Path: fiware
 - Click [ Enable Engine ]
 
-## Setup a read policy
+## Setup a Vault read policy
 
-- Click Policies
+- In the Vault, click Policies
 - Click [ Create ACL policy + ]
 - Name: vault-secret-reader
-- Policy: 
+- Here is the policy: 
+
+```
+path "/fiware/data/*" {
+  capabilities = ["read"]
+}
+```
 
 ## Setup a new Access Authentication Method in vault
 
-# Setup Kubernetes authentication for Vault, see: https://learn.hashicorp.com/tutorials/vault/kubernetes-external-vault
-# Visit: https://vault-ui-vault.apps-crc.testing
-# VAULT_HELM_SECRET_NAME: oc -n vault get secrets | grep vault-token
-# TOKEN_REVIEW_JWT: oc -n vault get secret $VAULT_HELM_SECRET_NAME --output='go-template={{ .data.token }}' | base64 --decode
-# KUBE_HOST: oc config view --raw --minify --flatten --output='jsonpath={.clusters[].cluster.server}'
-# KUBE CA CERT: oc config view --raw --minify --flatten --output='jsonpath={.clusters[].cluster.certificate-authority-data}' | base64 --decode
-# Role Name: secret-reader
-# Bound service account names: vault-secret-reader
-# Bound service account namespaces: external-secrets-operator
-
+- In the Vault, click Access
+- In Auth Methods, click [ Enable new method + ]
+- In "Infra", click "Kubernetes"
 - Path: kubernetes
 - Click [ Enable Method ]
-- Kubernetes host: https://api.crc.testing:6443 `oc config view --raw --minify --flatten --output='jsonpath={.clusters[].cluster.server}'`
-  
-- Kubernetes CA Certificate: `oc config view --raw --minify --flatten --output='jsonpath={.clusters[].cluster.certificate-authority-data}' | base64 --decode`
-- Click [ Save ]
 
 ### Setup a secret-reader Auth Role
 
@@ -54,20 +49,28 @@ oc apply -k kustomize/overlays/openshift-local/
 - Generated token's policies: vault-secret-reader
 - Click [ Save ]
 
-vault write auth/kubernetes/role/secret-reader bound_service_account_names=vault-secret-reader bound_service_account_namespaces=external-secrets-operator policies=vault-secret-reader ttl=24h
-
-```
-path "*" {
-  capabilities = ["read"]
-}
-```
-
-- Click [ Create policy ]
-
 ## Setup new mongodb-secret in vault
 
-- Inside the "fiware" path, add a new secret with a path of "mongodb-secret"
-- Add a password for: mongodb-password
-- Add a password for: mongodb-replica-set-key
-- Add a password for: mongodb-root-password
+- In Vault, click Secrets
+- In the "fiware" path, add a new secret with a path of "mongodb-secret"
+- Add a password for the key: mongodb-password
+- Add a password for the key: mongodb-replica-set-key
+- Add a password for the key: mongodb-root-password
 - Click [ Save ]
+
+## Setup new argocd-auth-secret in vault
+
+- In Vault, click Secrets
+- In the "fiware" path, add a new secret with a path of "argocd-auth-secret"
+- issuer: https://sso.computate.org/auth/realms/RH-IMPACT
+- name: Keycloak
+- requestedScopes: ["openid", "profile", "email", "groups"]
+- clientID: fiware-hackathon
+- Add a given client secret for the key: clientSecret
+- Click [ Save ]
+
+## Setup namespaces in the in-cluster in ArgoCD
+
+- Visit https://argocd-server-argocd.apps-crc.testing/settings/clusters/https%3A%2F%2Fkubernetes.default.svc
+- Click [ Edit ]
+- Update the NAMESPACES to the namespaces argocd will manage: argocd,fiware
