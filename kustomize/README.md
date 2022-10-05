@@ -1,10 +1,48 @@
 
-# Setting up the OpenShift Environment for FIWARE using Kustomize GitOps
-
-Login to the cli for your OpenShift Local cluster
+# Installing OpenShift Local
+- See Installation documentation: https://access.redhat.com/documentation/en-us/red_hat_openshift_local/2.4/html/getting_started_guide/installation_gsg#installing_gsg
+- Download Latest OpenShift Local: https://console.redhat.com/openshift/create/local
+- Extract the crc binary and add it to your local bin path
 
 ```bash
-git clone git@github.com:FIWARE-Ops/marinera.git ~/.local/src/fiware-marinera
+(cd ~/Downloads && tar xvf crc-linux-amd64.tar.xz)
+mkdir -p ~/bin
+cp ~/Downloads/crc-linux-*-amd64/crc ~/bin
+```
+
+# Setup and Start a new  OpenShift Local
+
+You can configure the amount of cpu cores, memory in MiB and disk size in GiB allocated to your OpenShift Local environment depending on the resources of your machine
+
+```bash
+crc setup
+crc config --help
+crc config set cpus 8
+crc config set memory 12000
+crc config set disk-size 200
+crc start
+```
+
+If you need to upgrade your OpenShift Local because of some version error, delete the cluster and create it again like above. 
+
+```bash
+crc delete
+```
+
+# Setting up the OpenShift Environment for FIWARE using Kustomize GitOps
+
+## Login to OpenShift
+
+- Visit your OpenShift environment at the URL provided by the `crc start` command: https://console-openshift-console.apps-crc.testing
+- Login with username "kubeadmin", and the password provided in the `crc start` command. 
+- Login to the cli for your OpenShift Local cluster by clicking on "kubeadmin" in the top right corner and selecting "Copy login command". 
+- Click "Display token"
+- Copy the part that starts with `oc login --token=... --server=...` to the clipboard and paste it into the terminal and press [ Enter ] to login to the CLI. 
+
+## Clone the fiware-marinera repo
+
+```bash
+git clone git@github.com:rh-impact/fiware-marinera.git ~/.local/src/fiware-marinera
 cd ~/.local/src/fiware-marinera
 oc apply -k kustomize/overlays/openshift-local/
 ```
