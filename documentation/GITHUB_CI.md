@@ -45,3 +45,9 @@ To obtain the token.
 ```bash
 oc -n <CI_CD_NAMESPACE> sa get-token github-ci
 ```
+
+In case of OpenShift >= 4.11, use: 
+
+```bash
+
+```
