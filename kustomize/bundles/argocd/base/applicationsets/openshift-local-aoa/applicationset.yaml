@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: openshift-local-aoa
-  namespace: openshift-gitops
+  namespace: argocd
 spec:
   generators:
     - clusters: {}
@@ -12,7 +12,7 @@ spec:
     spec:
       project: default
       destination:
-        namespace: openshift-gitops
+        namespace: argocd
         name: default/api-crc-testing:6443/kubeadmin
       source:
         path: "clusters/{{ name }}"

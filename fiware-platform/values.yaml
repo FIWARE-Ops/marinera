@@ -16,7 +16,6 @@ applications:
     secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
     helm_values:
     - values.yaml
-  
 
   - name: orion-ld
     enabled: true
