@@ -44,8 +44,24 @@ crc delete
 ```bash
 git clone git@github.com:rh-impact/fiware-marinera.git ~/.local/src/fiware-marinera
 cd ~/.local/src/fiware-marinera
-oc apply -k kustomize/overlays/openshift-local/
+# the approach allows to use helm charts as part of kustomize and deploy the full marinera
+# if only orion-ld and mongodb are enabled "oc apply -k kustomize/overlays/openshift-local/" is sufficient
+oc kustomize kustomize/overlays/openshift-local/ --enable-helm --load-restrictor=LoadRestrictionsNone | oc apply -f -
 ```
+
+If ```oc kustomize``` does not succeed on first try with a message similar to:
+
+```
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post applications.argoproj.io)
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post applications.argoproj.io)
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post applicationsets.argoproj.io)
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post argocds.argoproj.io)
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post clustersecretstores.external-secrets.io)
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post externalsecrets.external-secrets.io)
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post externalsecrets.external-secrets.io)
+Error from server (NotFound): error when creating "STDIN": the server could not find the requested resource (post operatorconfigs.operator.external-secrets.io)
+```
+then you have to wait for a couple of seconds and repeat. The error happens, since the CRDs not created at the time oc tries to create such resources. 
 
 ## Setup a new vault
 
@@ -75,11 +91,12 @@ path "/fiware/data/*" {
 - In Auth Methods, click [ Enable new method + ]
 - In "Infra", click "Kubernetes"
 - Path: kubernetes
+- Kubernetes host: https://api.crc.testing:6443
 - Click [ Enable Method ]
 
 ### Setup a secret-reader Auth Role
 
-- In the new `kubernetes/openshift-local` Authentication Method, click [ Create role + ]
+- In the new `kubernetes/` Authentication Method, click [ Create role + ]
 - Name: secret-reader
 - Bound service account names: vault-secret-reader
 - Bound service account namespaces: external-secrets-operator
@@ -112,3 +129,21 @@ path "/fiware/data/*" {
 - Visit https://argocd-server-argocd.apps-crc.testing/settings/clusters/https%3A%2F%2Fkubernetes.default.svc
 - Click [ Edit ]
 - Update the NAMESPACES to the namespaces argocd will manage: argocd,fiware
+
+## Check
+
+When all steps are done, you should have a running orion-ld with its mongo-db in namespace ```fiware```:
+
+```oc get pods -n fiware ``` :
+
+```
+NAME                             READY   STATUS    RESTARTS   AGE
+mongodb-orion-59fd8f47f9-84vvr   2/2     Running   0          34m
+orion-ld-85cd7b4894-z8hg4        1/1     Running   0          6m29s
+```
+
+The [API](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.06.01_60/gs_cim009v010601p.pdf) can be reached at ```http://orion-ld-fiware.apps-crc.testing```,
+f.e.:
+```shell
+curl --location --request GET 'http://orion-ld-fiware.apps-crc.testing/version'
+```

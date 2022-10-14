@@ -4,6 +4,8 @@ metadata:
   name: argocd
   namespace: argocd
 spec:
+  dex:
+    openShiftOAuth: true
   server:
     autoscale:
       enabled: false
