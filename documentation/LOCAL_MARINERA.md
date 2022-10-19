@@ -1,5 +1,17 @@
+# The local Marinera
 
-# Installing OpenShift Local
+In order to provide an easy way to start for developers, marinera can also be installed locally. To get as close to a real production environment, the local version will be served by [RedHat OpenShift Local](https://developers.redhat.com/products/openshift-local/overview). When following the guide, you will have an instance with the following components:
+
+- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) to deploy the local components
+- Integration of ArgoCD with the OpenShift-Authentication
+- a [Vault](https://www.vaultproject.io/) to handle all secrets in a 
+- a reduced installation of the Marinera, containing only [Orion-LD](https://github.com/FIWARE/context.Orion-LD) and its [MongoDB](https://www.mongodb.com/)
+
+The setup uses [kustomize](https://kustomize.io/) to apply some local modifications and setup the system to serve Marinera.
+
+
+## Installing OpenShift Local
+
 - See Installation documentation: https://access.redhat.com/documentation/en-us/red_hat_openshift_local/2.4/html/getting_started_guide/installation_gsg#installing_gsg
 - Download Latest OpenShift Local: https://console.redhat.com/openshift/create/local
 - Extract the crc binary and add it to your local bin path
@@ -10,7 +22,7 @@ mkdir -p ~/bin
 cp ~/Downloads/crc-linux-*-amd64/crc ~/bin
 ```
 
-# Setup and Start a new  OpenShift Local
+## Setup and Start a new  OpenShift Local
 
 You can configure the amount of cpu cores, memory in MiB and disk size in GiB allocated to your OpenShift Local environment depending on the resources of your machine
 
@@ -29,9 +41,9 @@ If you need to upgrade your OpenShift Local because of some version error, delet
 crc delete
 ```
 
-# Setting up the OpenShift Environment for FIWARE using Kustomize GitOps
+## Setting up the OpenShift Environment for FIWARE using Kustomize GitOps
 
-## Login to OpenShift
+### Login to OpenShift
 
 - Visit your OpenShift environment at the URL provided by the `crc start` command: https://console-openshift-console.apps-crc.testing
 - Login with username "kubeadmin", and the password provided in the `crc start` command. 
@@ -39,7 +51,7 @@ crc delete
 - Click "Display token"
 - Copy the part that starts with `oc login --token=... --server=...` to the clipboard and paste it into the terminal and press [ Enter ] to login to the CLI. 
 
-## Clone the fiware-marinera repo
+### Clone the fiware-marinera repo
 
 ```bash
 git clone git@github.com:rh-impact/fiware-marinera.git ~/.local/src/fiware-marinera
@@ -63,7 +75,7 @@ Error from server (NotFound): error when creating "STDIN": the server could not 
 ```
 then you have to wait for a couple of seconds and repeat. The error happens, since the CRDs not created at the time oc tries to create such resources. 
 
-## Setup a new vault
+### Setup a new vault
 
 - Visit the vault here: https://vault-ui-vault.apps-crc.testing
 - Setup a new vault and keep track of the Initial Root Token, and the vault keys (1 key is enough). 
@@ -72,7 +84,7 @@ then you have to wait for a couple of seconds and repeat. The error happens, sin
 - Path: fiware
 - Click [ Enable Engine ]
 
-## Setup a Vault read policy
+### Setup a Vault read policy
 
 - In the Vault, click Policies
 - Click [ Create ACL policy + ]
@@ -85,7 +97,7 @@ path "/fiware/data/*" {
 }
 ```
 
-## Setup a new Access Authentication Method in vault
+### Setup a new Access Authentication Method in vault
 
 - In the Vault, click Access
 - In Auth Methods, click [ Enable new method + ]
@@ -104,7 +116,7 @@ path "/fiware/data/*" {
 - Generated token's policies: vault-secret-reader
 - Click [ Save ]
 
-## Setup new mongodb-secret in vault
+### Setup new mongodb-secret in vault
 
 - In Vault, click Secrets
 - In the "fiware" path, add a new secret with a path of "mongodb-secret"
@@ -113,22 +125,6 @@ path "/fiware/data/*" {
 - Add a password for the key: mongodb-root-password
 - Click [ Save ]
 
-## Setup new argocd-auth-secret in vault
-
-- In Vault, click Secrets
-- In the "fiware" path, add a new secret with a path of "argocd-auth-secret"
-- issuer: https://sso.computate.org/auth/realms/RH-IMPACT
-- name: Keycloak
-- requestedScopes: ["openid", "profile", "email", "groups"]
-- clientID: fiware-hackathon
-- Add a given client secret for the key: clientSecret
-- Click [ Save ]
-
-## Setup namespaces in the in-cluster in ArgoCD
-
-- Visit https://argocd-server-argocd.apps-crc.testing/settings/clusters/https%3A%2F%2Fkubernetes.default.svc
-- Click [ Edit ]
-- Update the NAMESPACES to the namespaces argocd will manage: argocd,fiware
 
 ## Check
 
@@ -147,3 +143,7 @@ f.e.:
 ```shell
 curl --location --request GET 'http://orion-ld-fiware.apps-crc.testing/version'
 ```
+
+## Modification
+
+Once the system is setup and you're used to it, the marinera-plattform can be configured through the typical way, by chaning the single [values.yaml](../clusters/in-cluster/marinera/values.yaml). Depending on the needs and available resources, additional components can be enabled or configured, as described in the [Alternative deployments guide](ALT_DEPLOYMENTS.md).

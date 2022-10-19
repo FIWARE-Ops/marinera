@@ -23,6 +23,7 @@ The open-source Platform for Our Smart Digital Future.
 - [Monitoring](./documentation/MONITORING.md)
 - [Alerting](./documentation/ALERTING.md)
 - [Load Testing](./documentation/LOAD_TESTING.md)
+- [Local marinera](./documentation/LOCAL_MARINERA.md)
 
 ## Contributing
 
