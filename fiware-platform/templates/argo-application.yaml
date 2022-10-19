@@ -5,6 +5,7 @@
 {{- $team := .Values.team }}
 {{- $host := .Values.host }}
 {{- $tlsSecret := .Values.tlsSecret }}
+{{- $argoNamespace := .Values.argoNamespace -}}
 {{- range $app := .Values.applications }}
 {{- if $app.source }}
 {{- $source = $app.source }}
@@ -20,6 +21,9 @@ metadata:
   name: {{ .name }}
 {{- else }}
   name: {{ $release }}-{{ .name }}
+{{- end }}
+{{- if $argoNamespace }}
+  namespace: {{ $argoNamespace }}
 {{- end }}
   labels:
     destination-namespace: {{ .destination }}

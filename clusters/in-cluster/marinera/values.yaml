@@ -1,0 +1,70 @@
+source: https://github.com/FIWARE-Ops/marinera
+release: fiware
+destination_namespace: &destination fiware
+branch: &branch main
+secretsEnabled: &secretsEnabled true
+host: crc.testing 
+argoNamespace: argocd
+
+applications:
+  # Dont change mongodb name, current orion config relies on it.
+  - name: mongodb-orion
+    enabled: true
+    source_path: applications/mongodb/chart
+    source_ref: *branch
+    destination: *destination
+    secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
+    helm_values:
+    - values.yaml
+    values: 
+      mongodb:
+        architecture: standalone
+
+  - name: orion-ld
+    enabled: true
+    source_path: applications/orion-ld/chart
+    source_ref: *branch
+    destination: *destination
+    secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
+    helm_values:
+    - values.yaml
+    values:
+      orion-ld:
+        broker:
+          db:
+            hosts: 
+              - mongodb-orion
+        deployment:
+          replicaCount: 1
+        route:
+          enabled: true
+
+  - name: grafana
+    enabled: false
+
+  - name: grafana-metrics
+    enabled: false
+
+  - name: keycloak
+    enabled: false
+
+  - name: kong
+    enabled: false
+
+  - name: timescaledb-single
+    enabled: false
+  
+  - name: quantumleap
+    enabled: false
+
+  - name: air-quality
+    enabled: false
+
+  - name: keycloak-pep
+    enabled: false
+  
+  - name: airquality-simulator
+    enabled: false
+  
+  - name: marinera-secrets
+    enabled: false
