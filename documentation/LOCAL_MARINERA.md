@@ -22,6 +22,18 @@ mkdir -p ~/bin
 cp ~/Downloads/crc-linux-*-amd64/crc ~/bin
 ```
 
+## Installing Helm
+
+- See Installation documentation: https://helm.sh/docs/intro/install/
+- Download the latest Helm: https://github.com/helm/helm/releases
+- Extract the helm binary and add it to your local bin path
+
+```bash
+(cd ~/Downloads && tar xvf helm-*-linux-amd64.tar.gz --strip-components=1)
+mkdir -p ~/bin
+cp ~/Downloads/helm ~/bin
+```
+
 ## Setup and Start a new  OpenShift Local
 
 You can configure the amount of cpu cores, memory in MiB and disk size in GiB allocated to your OpenShift Local environment depending on the resources of your machine
@@ -78,7 +90,13 @@ then you have to wait for a couple of seconds and repeat. The error happens, sin
 ### Setup a new vault
 
 - Visit the vault here: https://vault-ui-vault.apps-crc.testing
-- Setup a new vault and keep track of the Initial Root Token, and the vault keys (1 key is enough). 
+- For Raft Storage, select `Create a new Raft cluster`, then click [ Next ]
+- Set Key shares: 1
+- Set Key threshold: 1
+- Click [ Initialize ]
+- Setup a new vault and keep track of the `Initial Root Token`, and the vault keys (1 key is enough). 
+- When asked for the Unseal Key Portion, enter the `Key 1` password
+- When asked to Sign in to Vault, choose Method `Token`, enter the `Initial Root Token`
 - Click [ Enable new engine + ]
 - Select Generic -> KV, then click [ Next ]
 - Path: fiware
@@ -103,8 +121,9 @@ path "/fiware/data/*" {
 - In Auth Methods, click [ Enable new method + ]
 - In "Infra", click "Kubernetes"
 - Path: kubernetes
-- Kubernetes host: https://api.crc.testing:6443
 - Click [ Enable Method ]
+- Kubernetes host: https://api.crc.testing:6443
+- Click [ Save ]
 
 ### Setup a secret-reader Auth Role
 
@@ -143,6 +162,14 @@ f.e.:
 ```shell
 curl --location --request GET 'http://orion-ld-fiware.apps-crc.testing/version'
 ```
+
+### ArgoCD
+
+Orion-LD and MongoDB are installed using ArgoCD. You can check the status of the ArgoCD apps: 
+
+- See: https://argocd-server-argocd.apps-crc.testing/applications
+- Click [ Allow selected permissions ]
+- The `fiware-mongodb-orion` and `fiware-orion-ld` should be `Healthy` and `Synced`
 
 ## Modification
 
