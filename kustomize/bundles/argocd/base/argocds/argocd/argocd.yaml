@@ -42,6 +42,11 @@ spec:
   initialSSHKnownHosts: {}
   rbac:
     policy: |
+      p, role:admin, applications, sync, */*, allow
+      p, role:admin, applications, update, */*, allow
+      p, role:admin, applications, delete, */*, allow
+
+      g, system:authenticated, role:admin
       g, system:cluster-admins, role:admin
       g, cluster-admins, role:admin
       g, ArgoCDAdmins, role:admin
