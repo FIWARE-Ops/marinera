@@ -7,6 +7,5 @@ resources:
   - operatorgroups/
   - subscriptions/
   - argocds/
-  - applicationsets/
   - externalsecrets/
   - serviceaccounts/
