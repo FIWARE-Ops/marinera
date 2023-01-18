@@ -9,14 +9,15 @@ mongodb:
     enabled: false
   resources:
     limits:
-      cpu: 500m
-      memory: 1.5Gi
+      memory: 3Gi
     requests:
       cpu: 50m
       memory: 300Mi
   persistence:
     enabled: true
     size: 8Gi
+  readinessProbe:
+    timeoutSeconds: 60
   arbiter:
     podSecurityContext:
       enabled: false
@@ -29,11 +30,12 @@ mongodb:
       marinera/product: mongodb
     resources:
       limits:
-        cpu: 500m
         memory: 1.5Gi
       requests:
         cpu: 50m
         memory: 300Mi
+    readinessProbe:
+      timeoutSeconds: 60
   systemLogVerbosity: 1
   podLabels:
     marinera/platform: fiware
@@ -46,8 +48,9 @@ mongodb:
       enabled: true
     resources:
       limits:
-        cpu: 200m
-        memory: 500Mi 
+        memory: 1Gi
       requests:
-        cpu: 50m 
-        memory: 50Mi 
+        cpu: 50m
+        memory: 50Mi
+    readinessProbe:
+      timeoutSeconds: 60

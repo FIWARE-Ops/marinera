@@ -7,6 +7,5 @@ helmCharts:
     version: 1.0.0
     releaseName: marinera
     namespace: argocd
-    valuesFile: 
+    valuesFile:
       values.yaml
-     

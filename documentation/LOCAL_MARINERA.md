@@ -22,6 +22,18 @@ mkdir -p ~/bin
 cp ~/Downloads/crc-linux-*-amd64/crc ~/bin
 ```
 
+## Installing Helm
+
+- See Installation documentation: https://helm.sh/docs/intro/install/
+- Download the latest Helm: https://github.com/helm/helm/releases
+- Extract the helm binary and add it to your local bin path
+
+```bash
+(cd ~/Downloads && tar xvf helm-*-linux-amd64.tar.gz --strip-components=1)
+mkdir -p ~/bin
+cp ~/Downloads/helm ~/bin
+```
+
 ## Setup and Start a new  OpenShift Local
 
 You can configure the amount of cpu cores, memory in MiB and disk size in GiB allocated to your OpenShift Local environment depending on the resources of your machine
@@ -75,36 +87,52 @@ Error from server (NotFound): error when creating "STDIN": the server could not 
 ```
 then you have to wait for a couple of seconds and repeat. The error happens, since the CRDs not created at the time oc tries to create such resources. 
 
-### Setup a new vault
+### Setup a new Vault
 
 - Visit the vault here: https://vault-ui-vault.apps-crc.testing
-- Setup a new vault and keep track of the Initial Root Token, and the vault keys (1 key is enough). 
+- For Raft Storage, select `Create a new Raft cluster`, then click [ Next ]
+- Set Key shares: 1
+- Set Key threshold: 1
+- Click [ Initialize ]
+- Setup a new vault and keep track of the `Initial Root Token`, and the vault keys (1 key is enough). 
+- When asked for the Unseal Key Portion, enter the `Key 1` password
+- When asked to Sign in to Vault, choose Method `Token`, enter the `Initial Root Token`
+
+### Setup a new Vault Engine
+
+- In the Vault, click Secrets
 - Click [ Enable new engine + ]
 - Select Generic -> KV, then click [ Next ]
 - Path: fiware
 - Click [ Enable Engine ]
 
-### Setup a Vault read policy
+WARNING: You can ingnore the following error message in case you receive it:
+```yaml
+Upgrading from non-versioned to versioned data. This backend will be unavailable for a brief period and will resume service shortly.
+```
+
+### Setup a Vault Read Policy
 
 - In the Vault, click Policies
 - Click [ Create ACL policy + ]
 - Name: vault-secret-reader
-- Here is the policy: 
+- Here is the policy:
 
-```
+```json
 path "/fiware/data/*" {
   capabilities = ["read"]
 }
 ```
 
-### Setup a new Access Authentication Method in vault
+### Setup a new Access Authentication Method in Vault
 
 - In the Vault, click Access
 - In Auth Methods, click [ Enable new method + ]
 - In "Infra", click "Kubernetes"
 - Path: kubernetes
-- Kubernetes host: https://api.crc.testing:6443
 - Click [ Enable Method ]
+- Kubernetes host: https://api.crc.testing:6443
+- Click [ Save ]
 
 ### Setup a secret-reader Auth Role
 
@@ -116,7 +144,7 @@ path "/fiware/data/*" {
 - Generated token's policies: vault-secret-reader
 - Click [ Save ]
 
-### Setup new mongodb-secret in vault
+### Setup new mongodb-secret in Vault
 
 - In Vault, click Secrets
 - In the "fiware" path, add a new secret with a path of "mongodb-secret"
@@ -138,11 +166,48 @@ mongodb-orion-59fd8f47f9-84vvr   2/2     Running   0          34m
 orion-ld-85cd7b4894-z8hg4        1/1     Running   0          6m29s
 ```
 
-The [API](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.06.01_60/gs_cim009v010601p.pdf) can be reached at ```http://orion-ld-fiware.apps-crc.testing```,
-f.e.:
+Note that both mongo-db and orion-ld pods won't come up untill the mongo-db `ExternalSecret` is `Synced`.
+You can easily check the in the `fiware` namespace:
+
+```oc -n fiware get externalsecret mongodb-secret``` :
+
+```
+NAME             STORE                    REFRESH INTERVAL   STATUS         READY
+mongodb-secret   fiware-cluster-secrets   15s                SecretSynced   True
+```
+
+Once the `ExternalSecret` is `Synced`, both mongo-db and orion-ld should start soon.
+Otherwise you can force a restart by deleting the Pods:
+
+```oc -n fiware delete pod --all```
+
+
+Once mongo-db and orion-ld are up, the [API](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.06.01_60/gs_cim009v010601p.pdf) 
+can be reached at ```http://orion-ld-fiware.apps-crc.testing```, f.e.:
 ```shell
 curl --location --request GET 'http://orion-ld-fiware.apps-crc.testing/version'
+
+{
+  "orionld version": "1.0.1-PRE-468",
+  "orion version":   "1.15.0-next",
+  "uptime":          "0 d, 0 h, 10 m, 33 s",
+  "git_hash":        "47989a0d865f0aeef6a3f7cf3bc0e314bc4f3fb5",
+  "compile_time":    "Tue Jan 18 08:17:10 UTC 2022",
+  "compiled_by":     "root",
+  "compiled_in":     "",
+  "release_date":    "Tue Jan 18 08:17:10 UTC 2022",
+  "doc":             "https://fiware-orion.readthedocs.org/en/master/"
+}
+
 ```
+
+### ArgoCD
+
+Orion-LD and MongoDB are installed using ArgoCD. You can check the status of the ArgoCD apps: 
+
+- See: https://argocd-server-argocd.apps-crc.testing/applications
+- Click [ Allow selected permissions ]
+- The `fiware-mongodb-orion` and `fiware-orion-ld` should be `Healthy` and `Synced`
 
 ## Modification
 

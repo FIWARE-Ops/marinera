@@ -3,7 +3,7 @@ release: fiware
 destination_namespace: &destination fiware
 branch: &branch main
 secretsEnabled: &secretsEnabled true
-host: crc.testing 
+host: crc.testing
 argoNamespace: argocd
 
 applications:
@@ -16,7 +16,7 @@ applications:
     secretsReady: true # Don't change. This means that the chart is prepared to use Sealed Secrets
     helm_values:
     - values.yaml
-    values: 
+    values:
       mongodb:
         architecture: standalone
 
@@ -32,7 +32,7 @@ applications:
       orion-ld:
         broker:
           db:
-            hosts: 
+            hosts:
               - mongodb-orion
         deployment:
           replicaCount: 1
@@ -53,7 +53,7 @@ applications:
 
   - name: timescaledb-single
     enabled: false
-  
+
   - name: quantumleap
     enabled: false
 
@@ -62,9 +62,9 @@ applications:
 
   - name: keycloak-pep
     enabled: false
-  
+
   - name: airquality-simulator
     enabled: false
-  
+
   - name: marinera-secrets
     enabled: false
