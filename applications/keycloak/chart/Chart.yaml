@@ -21,6 +21,6 @@ maintainers:
 dependencies:
 - name: keycloak
   version: 8.0.0 
-  repository: https://charts.bitnami.com/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
 
 
