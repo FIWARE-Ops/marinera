@@ -9,7 +9,7 @@ tlsSecret: &tlsSecret
 applications:
   # Dont change mongodb name, current orion config relies on it.
   - name: mongodb-orion
-    enabled: true
+    enabled: false
     source_path: applications/mongodb/chart
     source_ref: *branch
     destination: *destination
@@ -18,7 +18,7 @@ applications:
     - values.yaml
 
   - name: orion-ld
-    enabled: true
+    enabled: false
     source_path: applications/orion-ld/chart
     source_ref: *branch
     destination: *destination
@@ -29,7 +29,7 @@ applications:
   - name: timescaledb-single
     # Dont override, will break the tests.
     releaseName: tsdb
-    enabled: true
+    enabled: false
     source_path: applications/timescaledb-single/chart
     source_ref: *branch
     destination: *destination
@@ -38,7 +38,7 @@ applications:
     - values.yaml
 
   - name: quantumleap
-    enabled: true
+    enabled: false
     source_path: applications/quantumleap/chart
     source_ref: *branch
     destination: *destination
@@ -46,7 +46,7 @@ applications:
     - values.yaml
 
   - name: grafana
-    enabled: true
+    enabled: false
     source_path: applications/grafana/chart
     source_ref: *branch
     destination: *destination
@@ -55,7 +55,7 @@ applications:
     - values.yaml
 
   - name: air-quality
-    enabled: true
+    enabled: false
     source_path: applications/air-quality-app/chart
     source_ref: *branch
     destination: *destination
@@ -63,7 +63,7 @@ applications:
     - values.yaml
 
   - name: keycloak
-    enabled: true
+    enabled: false
     source_path: applications/keycloak/chart
     source_ref: *branch
     destination: *destination
@@ -71,7 +71,7 @@ applications:
     - values.yaml
 
   - name: keycloak-pep
-    enabled: true
+    enabled: false
     source_path: applications/keycloak-pep/chart
     source_ref: *branch
     destination: *destination
@@ -79,7 +79,7 @@ applications:
     - values.yaml
 
   - name: kong
-    enabled: true
+    enabled: false
     source_path: applications/kong/chart
     source_ref: *branch
     destination: *destination
@@ -87,7 +87,7 @@ applications:
     - values.yaml
 
   - name: grafana-metrics
-    enabled: true
+    enabled: false
     source_path: applications/grafana-metrics/chart
     source_ref: *branch
     destination: *destination
@@ -96,7 +96,7 @@ applications:
     - values.yaml
 
   - name: airquality-simulator
-    enabled: true
+    enabled: false
     source_path: applications/airquality-simulator/chart
     source_ref: *branch
     destination: *destination
